@@ -306,6 +306,9 @@ html, body {
     justify-content: center;
     align-items: center;
 }
+.pro-list .products {
+    display: none;
+}
 .products {
     margin-bottom: 4rem !important;
 }
@@ -329,67 +332,11 @@ html, body {
     border: 1px solid #F3F3F3;
     float: left;
 }
-
 .sizechart {
     width: 100%;
 }
-
 .sizechart-img {
     width: 100%;
-}
-
-.more {
-    text-decoration: none;
-    color: #000000;
-}
-.pro-detail {
-    text-align: center;
-    padding: 20px 0;
-}
-.pro-detail h3 {
-    text-transform: uppercase;
-    margin: 0 0 5px;
-    font-size: 14px;
-    position: relative;
-    font-weight: 500;
-}
-.pro-sale {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 11px;
-    font-weight: bold;
-    z-index: 2;
-    color: #FFFFFF;
-    background: #FF0004;
-    opacity: 0.8;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-}
-.pro-price-retail {
-    color: #222222;
-    font-size: 13px;
-    margin-left: 5px;
-    font-weight: 500;
-}
-p.pro-price.sale{
-    color: #FF0004;
-}
-p.pro-price {
-    line-height: 1.4;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 0;
-}
-.pro-name-link {
-    text-decoration: none;
-    color: #000000;
-}
-.pro-name-link:hover {
-    text-decoration: none;
-    color: #666666
 }
 .pro-img:hover .pro-img-1 {
     opacity: 1;
@@ -415,6 +362,14 @@ p.pro-price {
     background-color: #00CED1;
     color: #FFFFFF;
 }
+.pro-img:hover .pro-btn {
+    z-index: 2;
+    visibility: visible;
+    opacity: 0.7;
+    left: 10%;
+    bottom: 10%;
+    width: 100%;
+}
 .hidden-btn {
     border-radius: 100px;
     font-weight: 500;
@@ -426,22 +381,6 @@ p.pro-price {
     padding: 9px 10px;
     outline: none;
     transition: all 0.5s;
-}
-.up-icon {
-    height: 32px;
-    width: 32px;
-    fill: grey;
-}
-.pro-img:hover .pro-btn {
-    z-index: 2;
-    visibility: visible;
-    opacity: 0.7;
-    left: 10%;
-    bottom: 10%;
-    width: 100%;
-}
-.up-icon:hover {
-    fill: #00CED1;
 }
 #pro-load-more {
     width: 100px;
@@ -465,49 +404,6 @@ p.pro-price {
 /* END CONTENT */
 
 /* FOOTER */
-.ftr-background {
-    background-color: #000000;
-}
-.ftr-image {
-    width: 350px;
-    height: 350px;
-    border: 2px solid #FFFFFF;
-}
-#ftr-image {
-    z-index: 1;
-}
-.ftr-shopname {
-    text-align: center;
-    color: #FFFFFF;
-    margin: 30px;
-}
-.ftr-whitespace {
-    background-color: #FFFFFF;
-    height: 60px;
-    z-index: 5;
-}
-.ftr-title {
-    text-align: center;
-    color: #FFFFFF;
-    margin: 40px;
-}
-#ct-if {
-    list-style-type: none;
-}
-footer p {
-    margin: 0px;
-    color: #FFFFFF;
-}
-.ftr-copyright {
-    color: #FFFFFF;
-    margin: 0px 0px 0px 40px;
-}
-.ftr-media {
-    color: #FFFFFF;
-    margin: 0px 0px 0px 10px;
-    height: 32px;
-    width: 32px;
-}
 #back-to-top {
     
     display: none;
@@ -518,9 +414,15 @@ footer p {
     border: none;
     cursor: pointer;
 }
-
+.up-icon {
+    height: 32px;
+    width: 32px;
+    fill: grey;
+}
+.up-icon:hover {
+    fill: #00CED1;
+}
 /* ANIMATION */
-/* Làm nhưng hông có xài =)) */
 @keyframes fadeInUp {
     from {
         transform: translate3d(0,40px,0)

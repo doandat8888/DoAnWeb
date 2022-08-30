@@ -107,3 +107,15 @@ function scrollToTop() {
   })();
   
 inputNumber($('.detail-number'));
+
+//LOAD MORE
+$(document).ready (function () {  
+	$(".products").slice(0, 4).show();  
+	$("#pro-load-more").on("click", function(e){  
+	    e.preventDefault();  
+	    $(".products:hidden").slice(0, 4).show().slideDown();  
+	    if ($(".products:hidden").length == 0) {  
+			$("#pro-load-more").style.display = 'none'  
+	    }  
+	});  
+})
