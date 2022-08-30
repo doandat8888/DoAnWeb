@@ -370,6 +370,9 @@ html, body {
     bottom: 10%;
     width: 100%;
 }
+.product-cart-buy {
+    color: #FFFFFF;
+}
 .hidden-btn {
     border-radius: 100px;
     font-weight: 500;
