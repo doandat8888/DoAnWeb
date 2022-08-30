@@ -59,7 +59,6 @@ function scrollFunction() {
   }
   
 }
-
 function scrollToTop() {
   
   window.scrollTo(0, 0);
@@ -108,16 +107,3 @@ function scrollToTop() {
   })();
   
 inputNumber($('.detail-number'));
-
-var navBtn = document.getElementById('navigation-bar');
-var category = document.querySelector('.category');
-
-navBtn.onclick = function() {
-	category.classList.add('active');
-}
-var cancelBtn = document.querySelector('.category .cancel-icon');
-cancelBtn.onclick = function() {
-	category.classList.remove('active');
-}
-
-
