@@ -270,10 +270,10 @@ html, body {
     .product-price__old {
         font-size: 1.2rem !important;
     }
-    .product-cart {
+    /* .product-cart {
         width: 2rem !important;
         height: 2rem !important;
-    }
+    } */
 }
 
 /*Breadcrumb*/
@@ -460,6 +460,11 @@ h2{
 }
 
 /*Result_Search_Product*/
+.card-body a {
+    width: 100% !important;
+    padding: 0 !important;
+}
+
 #product-body{
     margin-top: 2rem;
 }
@@ -570,6 +575,12 @@ h2{
     border-top-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     display: flex;
+}
+
+.product-cart p {
+    margin-bottom: 0;
+    font-size: 1.6rem;
+    margin-left: 0.4rem;
 }
 
 .product-cart:hover{
