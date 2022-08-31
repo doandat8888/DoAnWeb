@@ -108,6 +108,16 @@ function scrollToTop() {
   
 inputNumber($('.detail-number'));
 
+//Heart active
+var isActiveBorder = true;
+            var heartIconList = document.querySelectorAll('.favorite-icon');
+            console.log(heartIconList);
+            for(let i = 0; i < heartIconList.length; i++) {
+                heartIconList[i].onclick = function() {
+                    heartIconList[i].classList.toggle('active2')
+                }
+            }
+
 //LOAD MORE
 $(document).ready (function () {  
 	$(".products").slice(0, 4).show();  

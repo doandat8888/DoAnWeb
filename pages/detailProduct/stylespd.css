@@ -34,7 +34,7 @@ html, body {
 
 /* NAV Breadcrumb */
 .breadcrumb {
-    margin-top: calc(var(--header-height) + 20px);
+    margin-top: calc(var(--header-height) + 35px);
     background-color: transparent;
     margin-bottom: 1rem;
     display: flex;
