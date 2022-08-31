@@ -408,14 +408,14 @@ html, body {
 
 /* FOOTER */
 #back-to-top {
-    
     display: none;
     position: fixed;
     bottom: 100px;
     right: 10px;
-    z-index: 99;
+    z-index: 100;
     border: none;
     cursor: pointer;
+    margin-right: 10px;
 }
 .up-icon {
     height: 32px;

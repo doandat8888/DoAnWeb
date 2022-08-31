@@ -61,9 +61,8 @@ function scrollFunction() {
 }
 function scrollToTop() {
   
-  window.scrollTo(0, 0);
-}
-
+	window.scrollTo(0, 0);
+  }
 
 // quantity action
 (function() {
@@ -125,7 +124,7 @@ $(document).ready (function () {
 	    e.preventDefault();  
 	    $(".products:hidden").slice(0, 4).show().slideDown();  
 	    if ($(".products:hidden").length == 0) {  
-			$("#pro-load-more").style.display = 'none'  
+			$("#pro-load-more").style.display = "none";
 	    }  
 	});  
 })
