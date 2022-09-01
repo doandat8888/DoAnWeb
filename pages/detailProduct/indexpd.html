@@ -78,12 +78,22 @@
                         <span class="material-symbols-outlined header-icon search-icon">
                             search
                         </span>
-                        <span class="material-symbols-outlined header-icon cart">
+                        <span class="material-symbols-outlined header-icon cart-icon">
                             shopping_cart
                             </span>
-                        <span class="material-symbols-outlined header-icon user">
+                        <span class="material-symbols-outlined header-icon user-icon">
                             person
                         </span>
+                    </div>
+                    <div class="cart">
+                        <div class="cart-header">
+                            <div class="cart-title">
+                                <div class="content">Giỏ hàng</div>
+                                <div class="quantity">2</div>
+                            </div>
+                            <i class="fa-solid fa-xmark cancel-icon"></i>
+                        </div>
+                       
                     </div>
                 </div>            
             </div>
@@ -775,6 +785,16 @@
                     }
                 }
             }
+        }
+        const cartBtn = document.querySelector('.nav-icon .cart-icon');
+        console.log(cartBtn);
+        const cartMenu = document.querySelector('.cart');
+        cartBtn.onclick = function() {
+            cartMenu.classList.add('translateX');
+        }
+        const cancleBtnCart = document.querySelector('.cart-header .cancel-icon');
+        cancleBtnCart.onclick = function() {
+            cartMenu.classList.remove('translateX');
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
