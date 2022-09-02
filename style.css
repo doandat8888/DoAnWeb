@@ -168,6 +168,7 @@ html, body {
     padding: 20px 24px;
     transform: translateX(100%);
     transition: transform 0.3s ease;
+    overflow: scroll;
 }
 
 .cart-header {
@@ -209,6 +210,18 @@ html, body {
 
 .cart-header .cancel-icon:hover {opacity: 0.8;}
 
+.cart-products {
+    width: 100%;
+    height: 70%;
+    overflow: scroll;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
 .cart-item {
     padding: 1.4rem 0;
     margin-bottom: 2rem;
@@ -216,38 +229,50 @@ html, body {
 
 .cart-item .cart-item-img {
     width: 100%;
+    height: auto;
 }
 
 .cart-item-name {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: var(--text-color);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
 }
 
 .cart-item-color-size {
     display: flex;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
 }
 
 .cart-item-color-size .color {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: var(--text-color);
     margin-right: 2rem;
 }
 
 .cart-item-color-size .size {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: var(--text-color);
+}
+
+.cart-item-quantity-price {
+    display: flex;
+    justify-content: space-between;
 }
 
 .cart-item-quantity {
     display: flex;
 }
 
+.cart-item-price {
+    font-size: 1.6rem;
+    color: #AC2F33;
+    font-weight: bold;
+}
+
 .cart-item-quantity-input {
     width: 8%;
     border: none;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: var(--text-color);
     text-align: center;
 }
@@ -258,7 +283,46 @@ html, body {
     cursor: pointer;
 }
 
+.cart-total {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
 
+.cart-total-title {
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+
+.cart-total-money {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-left: 0.4rem;
+}
+
+.cart-btn-view {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black);
+    color: var(--white);
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-btn-view:hover {
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+}
 
 
 @media only screen and (max-width: 600px) {
@@ -289,7 +353,7 @@ html, body {
     .nav-icon .search {
        
     }
-    .nav-icon .user {
+    .nav-icon .user-icon {
         display: none;
     }
     
