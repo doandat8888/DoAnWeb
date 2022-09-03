@@ -1,16 +1,19 @@
-
+//Hàm biến đổi đơn vị tiền tệ thành số nguyên. VD: 20.000đ -> 20000
 const formatNumber = (number) => {
     return Number(number.replace(/[^0-9,-]+/g,""));
 }
+//Hàm biến đổi số nguyên thành đơn vị tiền tệ
 const numberWithCommat = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 }
+//Hiện navbar
 var navBtn = document.getElementById('navigation-bar');
 var category = document.querySelector('.category');
 
 navBtn.onclick = function() {
     category.classList.add('translateX');
 }
+//Ẩn navbar
 var cancelBtnCategory = document.querySelector('.category .cancel-icon');
 cancelBtnCategory.onclick = function() {
     category.classList.remove('translateX');
@@ -63,22 +66,25 @@ cancleBtnCart.onclick = function() {
 }
 const cartItems = document.querySelectorAll('.cart .cart-item');
 var count = 0;
-for(let i = 0; i < cartItems.length; i++) {
-    count++;
-}
+
 const cartQuantity = document.querySelector('.cart-title .quantity');
-cartQuantity.innerHTML = count;
 var totalPrice = 0;
 const productPrices = document.querySelectorAll('.cart-item-price');
 const productQuantities = document.querySelectorAll('.cart-item-quantity-input');
 for(let i = 0; i < cartItems.length; i++) {
     let productPrice = formatNumber(productPrices[i].innerText);
     let productQuantity = productQuantities[i].value;
+    count += Number.parseInt(productQuantity);
     console.log(Number.parseInt(productPrice) * productQuantity);
     totalPrice += productPrice * productQuantity;
 }
+cartQuantity.innerHTML = count;
 const totalMoney = document.querySelector('.cart-total-money');
 totalMoney.innerHTML = numberWithCommat(totalPrice) + 'đ';
 
-const moneyCheckout = document.querySelector('.sum-checkout'); 
-moneyCheckout.innerHTML = numberWithCommat(totalPrice) + 'đ';             
+const sumCheckout = document.querySelector('.checkout-sum'); 
+sumCheckout.innerHTML = numberWithCommat(totalPrice) + 'đ';  
+
+const shipCheckout = formatNumber(document.querySelector('.checkout-ship').innerText);
+const totalCheckOut = document.querySelector('.checkout-total');
+totalCheckOut.innerHTML = numberWithCommat(totalPrice - shipCheckout) + 'đ';

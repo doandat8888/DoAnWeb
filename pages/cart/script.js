@@ -1,7 +1,8 @@
-
+//Hàm biến đổi đơn vị tiền tệ thành số nguyên. VD: 20.000đ -> 20000
 const formatNumber = (number) => {
     return Number(number.replace(/[^0-9,-]+/g,""));
 }
+//Hàm biến đổi số nguyên thành đơn vị tiền tệ
 const numberWithCommat = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 }
@@ -63,23 +64,22 @@ cancleBtnCart.onclick = function() {
 }
 const cartItems = document.querySelectorAll('.cart .cart-item');
 var count = 0;
-for(let i = 0; i < cartItems.length; i++) {
-    count++;
-}
+
 const cartQuantity = document.querySelector('.cart-title .quantity');
-cartQuantity.innerHTML = count;
+
 var totalPrice = 0;
 const productPrices = document.querySelectorAll('.cart-item-price');
 const productQuantities = document.querySelectorAll('.cart-item-quantity-input');
 for(let i = 0; i < cartItems.length; i++) {
     let productPrice = formatNumber(productPrices[i].innerText);
     let productQuantity = productQuantities[i].value;
+    count += Number.parseInt(productQuantity);
     console.log(Number.parseInt(productPrice) * productQuantity);
     totalPrice += productPrice * productQuantity;
 }
 const totalMoney = document.querySelector('.cart-total-money');
 totalMoney.innerHTML = numberWithCommat(totalPrice) + 'đ';
-
+cartQuantity.innerHTML = count;
 var cartInfoTxt = document.querySelector('.cart-info-txt');
 cartInfoTxt.innerText = `Bạn đang có ${count} sản phẩm trong giỏ hàng`;
 var totalMoneyTxt = document.querySelector('.cart-info-content-price-money');
