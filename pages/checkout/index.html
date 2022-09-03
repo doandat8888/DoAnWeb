@@ -10,7 +10,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../../style.css">
         <link rel="stylesheet" href="./style.css">
-        <link rel="stylesheet" href="./pages/detailProduct/stylespd.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -44,9 +43,7 @@
                     <li class="category-item">Liên hệ</li>
                 </ul>
             </div>
-            
-            
-            
+
             <div id="header">
                 <div class="container">
                     <div class="logo">
@@ -212,149 +209,191 @@
                 </div>            
             </div>
 
-            <div class="cart-body">
+            <div class="checkout-body">
                 <div class="row">
-                    <div class="col-lg-5 col-md-12 col-12 cart-info">
-                        <div class="cart-info-content">
-                            <p class="cart-info-txt"></p>
-                            <div class="cart-info-content-price">
-                                <p class="cart-info-content-price-txt">Thành tiền</p>
-                                <p class="cart-info-content-price-money"></p>
+                    <div class="col-lg-6 col-md-12 col-12 checkout-body-left">
+                        <div class="checkout-info">
+                            <div class="checkout-info-title">
+                                Thông tin giao hàng
+                            </div>
+                            <div class="checkout-info-input">
+                                <input type="text" class="checkout-info-input-item" placeholder="* Họ và tên">
+                                <input type="text" class="checkout-info-input-item" placeholder="* Email">
+                                <input type="text" class="checkout-info-input-item" placeholder="* Số điện thoại">
+                                <input type="text" class="checkout-info-input-item" placeholder="* Địa chỉ">
+                                <div class="checkout-info-input-txt">
+                                    * là trường không được để trống
+                                </div>
                             </div>
                         </div>
-                        <div class="cart-info-btn">
-                            <a href="../checkout/index.html" class="cart-btn-link">
-                                <div class="cart-btn-view">
-                                    Đặt hàng
+        
+                        <div class="checkout-payment">
+                            <div class="checkout-payment-title">
+                                Phương thức thanh toán
+                            </div>
+                            <div class="checkout-payment-input">
+                                <div class="checkout-payment-input-item">
+                                    <input type="radio">
+                                    <span class="material-symbols-outlined checkout-payment-input-item-icon">
+                                        credit_card
+                                    </span>
+                                    <div class="checkout-payment-input-item-txt">Thanh toán thẻ (ATM, Visa, Mastercard)</div>
                                 </div>
-                            </a>
-                            <a href="../../index.html" class="cart-btn-link">
-                                <div class="cart-btn-view">
-                                    Về trang chủ
+                                <div class="checkout-payment-input-item">
+                                    <input type="radio">
+                                    <span class="material-symbols-outlined checkout-payment-input-item-icon">
+                                        shopping_bag
+                                    </span>
+                                    <div class="checkout-payment-input-item-txt">Thanh toán bằng ví Shopee Pay</div>
                                 </div>
-                            </a>
+                                <div class="checkout-payment-input-item">
+                                    <input type="radio">
+                                    <span class="material-symbols-outlined checkout-payment-input-item-icon">
+                                        local_shipping
+                                    </span>
+                                    <div class="checkout-payment-input-item-txt">Thanh toán ngay khi nhận hàng (COD)</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-md-12 col-12 cart-products">
-                        <div class="cart-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="../../src/img/products/women/product-women-6-1.jpg" class="cart-item-img" alt="">
+                    <div class="col-lg-6 col-md-12 col-12 checkout-body-right">
+                        <div class="cart-products checkout-products">
+                            <div class="cart-item">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="../../src/img/products/women/product-women-6-1.jpg" class="cart-item-img" alt="">
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="cart-item-name">
+                                            Đầm Cut Out Đính Ngọc Trai
+                                        </div>
+                                        <div class="cart-item-color-size">
+                                            <div class="color">
+                                                Màu sắc: Trắng
+                                            </div>
+                                            <div class="size">
+                                                Size: S
+                                            </div>
+                                        </div>
+                                        <div class="cart-item-quantity-price">
+                                            <div class="cart-item-quantity">
+                                                <div class="cart-item-quantity-minus">
+                                                    <span class="material-symbols-outlined minus-icon">
+                                                        remove
+                                                    </span>
+                                                </div>
+                                                <input type='text' value='1' min='0' max='10' class='cart-item-quantity-input'>
+                                                <div class="cart-item-quantity-plus">
+                                                    <span class="material-symbols-outlined plus-icon">
+                                                        add
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-item-price">950.000đ</div>
+                                            <span class="material-symbols-outlined del-icon">
+                                                delete
+                                            </span>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
-                                <div class="col-9">
-                                    <div class="cart-item-name">
-                                        Đầm Cut Out Đính Ngọc Trai
+                            </div>
+                            <div class="cart-item">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="../../src/img/products/women/product-women-7-1.jpg" class="cart-item-img" alt="">
                                     </div>
-                                    <div class="cart-item-color-size">
-                                        <div class="color">
-                                            Màu sắc: Trắng
+                                    <div class="col-9">
+                                        <div class="cart-item-name">
+                                            Set Áo Và Chân Váy Họa Tiết Kẻ
                                         </div>
-                                        <div class="size">
-                                            Size: S
-                                        </div>
-                                    </div>
-                                    <div class="cart-item-quantity-price">
-                                        <div class="cart-item-quantity">
-                                            <div class="cart-item-quantity-minus">
-                                                <span class="material-symbols-outlined minus-icon">
-                                                    remove
-                                                </span>
+                                        <div class="cart-item-color-size">
+                                            <div class="color">
+                                                Màu sắc: Xanh
                                             </div>
-                                            <input type='text' value='1' min='0' max='10' class='cart-item-quantity-input'>
-                                            <div class="cart-item-quantity-plus">
-                                                <span class="material-symbols-outlined plus-icon">
-                                                    add
-                                                </span>
+                                            <div class="size">
+                                                Size: XL
                                             </div>
                                         </div>
-                                        <div class="cart-item-price">950.000đ</div>
-                                        <span class="material-symbols-outlined del-icon">
-                                            delete
-                                        </span>
+                                        <div class="cart-item-quantity-price">
+                                            <div class="cart-item-quantity">
+                                                <div class="cart-item-quantity-minus">
+                                                    <span class="material-symbols-outlined minus-icon">
+                                                        remove
+                                                    </span>
+                                                </div>
+                                                <input type='text' value='1' min='0' max='10' class='cart-item-quantity-input'>
+                                                <div class="cart-item-quantity-plus">
+                                                    <span class="material-symbols-outlined plus-icon">
+                                                        add
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-item-price">750.000đ</div>
+                                            <span class="material-symbols-outlined del-icon">
+                                                delete
+                                            </span>
+                                        </div>
+                                        
                                     </div>
-                                    
+                                </div>
+                            </div>
+                            <div class="cart-item">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="../../src/img/products/women/product-women-5-1.jpg" class="cart-item-img" alt="">
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="cart-item-name">
+                                            Set Áo Blazer Và Quần Suông Dài
+                                        </div>
+                                        <div class="cart-item-color-size">
+                                            <div class="color">
+                                                Màu sắc: Vàng Cam
+                                            </div>
+                                            <div class="size">
+                                                Size: X
+                                            </div>
+                                        </div>
+                                        <div class="cart-item-quantity-price">
+                                            <div class="cart-item-quantity">
+                                                <div class="cart-item-quantity-minus">
+                                                    <span class="material-symbols-outlined minus-icon">
+                                                        remove
+                                                    </span>
+                                                </div>
+                                                <input type='text' value='2' min='0' max='10' class='cart-item-quantity-input'>
+                                                <div class="cart-item-quantity-plus">
+                                                    <span class="material-symbols-outlined plus-icon">
+                                                        add
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-item-price">1.250.000đ</div>
+                                            <span class="material-symbols-outlined del-icon">
+                                                delete
+                                            </span>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="cart-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="../../src/img/products/women/product-women-7-1.jpg" class="cart-item-img" alt="">
-                                </div>
-                                <div class="col-9">
-                                    <div class="cart-item-name">
-                                        Set Áo Và Chân Váy Họa Tiết Kẻ
-                                    </div>
-                                    <div class="cart-item-color-size">
-                                        <div class="color">
-                                            Màu sắc: Xanh
-                                        </div>
-                                        <div class="size">
-                                            Size: XL
-                                        </div>
-                                    </div>
-                                    <div class="cart-item-quantity-price">
-                                        <div class="cart-item-quantity">
-                                            <div class="cart-item-quantity-minus">
-                                                <span class="material-symbols-outlined minus-icon">
-                                                    remove
-                                                </span>
-                                            </div>
-                                            <input type='text' value='1' min='0' max='10' class='cart-item-quantity-input'>
-                                            <div class="cart-item-quantity-plus">
-                                                <span class="material-symbols-outlined plus-icon">
-                                                    add
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="cart-item-price">750.000đ</div>
-                                        <span class="material-symbols-outlined del-icon">
-                                            delete
-                                        </span>
-                                    </div>
-                                    
-                                </div>
+                        <div class="checkout-confirm">
+                            <div class="checkout-confirm-title">
+                                Thông tin giỏ hàng
                             </div>
-                        </div>
-                        <div class="cart-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="../../src/img/products/women/product-women-5-1.jpg" class="cart-item-img" alt="">
+                            <div class="checkout-confirm-list">
+                                <div class="checkout-confirm-item">
+                                    <div class="checkout-confirm-item-left">Tổng tiền hàng</div>
+                                    <div class="checkout-confirm-item-right sum-checkout"></div>
                                 </div>
-                                <div class="col-9">
-                                    <div class="cart-item-name">
-                                        Set Áo Blazer Và Quần Suông Dài
-                                    </div>
-                                    <div class="cart-item-color-size">
-                                        <div class="color">
-                                            Màu sắc: Vàng Cam
-                                        </div>
-                                        <div class="size">
-                                            Size: X
-                                        </div>
-                                    </div>
-                                    <div class="cart-item-quantity-price">
-                                        <div class="cart-item-quantity">
-                                            <div class="cart-item-quantity-minus">
-                                                <span class="material-symbols-outlined minus-icon">
-                                                    remove
-                                                </span>
-                                            </div>
-                                            <input type='text' value='2' min='0' max='10' class='cart-item-quantity-input'>
-                                            <div class="cart-item-quantity-plus">
-                                                <span class="material-symbols-outlined plus-icon">
-                                                    add
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="cart-item-price">1.250.000đ</div>
-                                        <span class="material-symbols-outlined del-icon">
-                                            delete
-                                        </span>
-                                    </div>
-                                    
-                                </div>
+                                <div class="checkout-confirm-item"></div>
+                                <div class="checkout-confirm-item"></div>
+                                <div class="checkout-confirm-item"></div>
+                                <div class="checkout-confirm-item"></div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

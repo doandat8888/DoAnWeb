@@ -301,6 +301,10 @@ html, body {
     margin-left: 0.4rem;
 }
 
+.cart-btn-link{
+    text-decoration: none !important;
+}
+
 .cart-btn-view {
     width: 100%;
     display: flex;

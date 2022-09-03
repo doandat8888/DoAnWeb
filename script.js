@@ -80,6 +80,4 @@ for(let i = 0; i < cartItems.length; i++) {
 const totalMoney = document.querySelector('.cart-total-money');
 totalMoney.innerHTML = numberWithCommat(totalPrice) + 'đ';
 
-var cartInfoTxt = document.querySelector('.cart-info-txt');
-cartInfoTxt.innerText = `Bạn đang có ${count} sản phẩm trong giỏ hàng`;
                
