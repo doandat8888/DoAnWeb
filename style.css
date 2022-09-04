@@ -81,6 +81,7 @@ html, body {
     cursor: pointer;
     float: right;
     font-size: 2rem;
+    color: var(--black);
 }
 
 .cart-number {
@@ -95,7 +96,7 @@ html, body {
 }
 
 .header-icon:hover {
-    opacity: 0.8;
+    color: var(--gray);
 }
 
 #header {

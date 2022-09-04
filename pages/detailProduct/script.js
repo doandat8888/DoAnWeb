@@ -191,6 +191,8 @@ for(let i = 0; i < cartItems.length; i++) {
 	totalPrice += productPrice * productQuantity;
 }
 cartQuantity.innerHTML = count;
+const cartNumber = document.querySelector('.cart-number');
+cartNumber.innerHTML = count;
 const totalMoney = document.querySelector('.cart-total-money');
 totalMoney.innerHTML = numberWithCommat(totalPrice) + 'đ';  
 

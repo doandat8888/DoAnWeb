@@ -1,3 +1,4 @@
+const cartNumber = document.querySelector('.cart-number');
 //Hàm biến đổi đơn vị tiền tệ thành số nguyên. VD: 20.000đ -> 20000
 const formatNumber = (number) => {
     return Number(number.replace(/[^0-9,-]+/g,""));
@@ -6,14 +7,12 @@ const formatNumber = (number) => {
 const numberWithCommat = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 }
-//Hiện navbar
 var navBtn = document.getElementById('navigation-bar');
 var category = document.querySelector('.category');
 
 navBtn.onclick = function() {
     category.classList.add('translateX');
 }
-//Ẩn navbar
 var cancelBtnCategory = document.querySelector('.category .cancel-icon');
 cancelBtnCategory.onclick = function() {
     category.classList.remove('translateX');
@@ -64,10 +63,11 @@ const cancleBtnCart = document.querySelector('.cart-header .cancel-icon');
 cancleBtnCart.onclick = function() {
     cartMenu.classList.remove('translateX');
 }
-const cartItems = document.querySelectorAll('.cart .cart-item');
+const cartItems = document.querySelectorAll('.cart-item');
 var count = 0;
 
 const cartQuantity = document.querySelector('.cart-title .quantity');
+
 var totalPrice = 0;
 const productPrices = document.querySelectorAll('.cart-item-price');
 const productQuantities = document.querySelectorAll('.cart-item-quantity-input');
@@ -79,14 +79,8 @@ for(let i = 0; i < cartItems.length; i++) {
     totalPrice += productPrice * productQuantity;
 }
 cartQuantity.innerHTML = count;
+cartNumber.innerHTML = count;
 const totalMoney = document.querySelector('.cart-total-money');
 totalMoney.innerHTML = numberWithCommat(totalPrice) + 'đ';
-const cartNumber = document.querySelector('.cart-number');
-cartNumber.innerHTML = count;
 
-const sumCheckout = document.querySelector('.checkout-sum'); 
-sumCheckout.innerHTML = numberWithCommat(totalPrice) + 'đ';  
-
-const shipCheckout = formatNumber(document.querySelector('.checkout-ship').innerText);
-const totalCheckOut = document.querySelector('.checkout-total');
-totalCheckOut.innerHTML = numberWithCommat(totalPrice - shipCheckout) + 'đ';
+               
