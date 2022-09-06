@@ -508,7 +508,10 @@ html, body {
 .category .cancel-icon {
     margin-bottom: 3.2rem;
     font-size: 1.6rem;
+    cursor: pointer;
 }
+
+.category .cancel-icon:hover {opacity: 0.8;}
 
 .category .login-btn {
     border: none;
@@ -524,6 +527,13 @@ html, body {
     border-bottom-right-radius: 1.5rem;
     font-weight: bold;
     font-size: 1.4rem;
+    transition: all 0.3s ease;
+}
+
+.category .login-btn:hover {
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
 }
 
 .category-list {
@@ -538,6 +548,11 @@ html, body {
     font-size: 1.4rem;
     text-transform: uppercase;
     color: var(--text-color);
+    cursor: pointer;
+}
+
+.category-list .category-item:hover {
+    opacity: 0.8;
 }
 
 .active {
