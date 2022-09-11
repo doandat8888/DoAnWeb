@@ -21,7 +21,7 @@
             
             <div class="search-section d-flex justify-content-center align-items-center">
                 <input type="text" placeholder="TÌM KIẾM SẢN PHẨM" class="search-input">
-                <a href="../../pages/search/index.html" class="search-link" style="color: none !important;">
+                <a href="../../pages/search/index.php" class="search-link" style="color: none !important;">
                     <span class="material-symbols-outlined header-icon search-icon-1">
                         search
                     </span>
@@ -32,7 +32,7 @@
             <div class="category">
                 <i class="fa-solid fa-xmark cancel-icon"></i>
                 <br>
-                <a href="../../pages/login/index.html">
+                <a href="../../pages/login/index.php">
                     <button class="login-btn">
                         Đăng nhập
                     </button>
@@ -49,7 +49,7 @@
             <div id="header">
                 <div class="container">
                     <div class="logo">
-                        <a href="../../index.html"><img src="../../src/img/logo.png" class="image"/></a>
+                        <a href="../../index.php"><img src="../../src/img/logo.png" class="image"/></a>
                     </div>
                     <div id="navigation-bar">
                         <span class="material-symbols-outlined bar-icon">
@@ -75,7 +75,7 @@
                             </span>
                             <span class="cart-number"></span>
                         </div>
-                        <a href="../../pages/login/index.html" class="header-icon user-icon">
+                        <a href="../../pages/login/index.php" class="header-icon user-icon">
                             <span class="material-symbols-outlined">
                                 person
                             </span>
@@ -206,7 +206,7 @@
                             <div class="cart-total-title">Tổng cộng:</div>
                             <div class="cart-total-money"></div>
                         </div>
-                        <a href="../cart/index.html" class="cart-btn-link">
+                        <a href="../cart/index.php" class="cart-btn-link">
                             <div class="cart-btn-view">
                                 Xem giỏ hàng
                             </div>

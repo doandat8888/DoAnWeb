@@ -19,10 +19,9 @@
     </head>
     <body>
         <div class="container">
-            
             <div class="search-section d-flex justify-content-center align-items-center">
                 <input type="text" placeholder="TÌM KIẾM SẢN PHẨM" class="search-input">
-                <a href="../../pages/search/index.html" class="search-link" style="color: none !important;">
+                <a href="../../pages/search/index.php" class="search-link" style="color: none !important;">
                     <span class="material-symbols-outlined header-icon search-icon-1">
                         search
                     </span>
@@ -33,7 +32,7 @@
             <div class="category">
                 <i class="fa-solid fa-xmark cancel-icon"></i>
                 <br>
-                <a href="../../pages/login/index.html">
+                <a href="./index.php">
                     <button class="login-btn">
                         Đăng nhập
                     </button>
@@ -52,7 +51,7 @@
             <div id="header">
                 <div class="container">
                     <div class="logo">
-                        <a href="../../index.html"><img src="../../src/img/logo.png" class="image"/></a>
+                        <a href="../../index.php"><img src="../../src/img/logo.png" class="image"/></a>
                     </div>
                     <div id="navigation-bar">
                         <span class="material-symbols-outlined bar-icon">
@@ -78,11 +77,9 @@
                             </span>
                             <span class="cart-number"></span>
                         </div>
-                        <a href="../../pages/login/index.html" class="header-icon user-icon">
-                            <span class="material-symbols-outlined">
-                                person
-                            </span>
-                        </a>
+                        <span class="material-symbols-outlined header-icon user-icon">
+                            person
+                        </span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-9 cart">
                         <div class="cart-header">
@@ -209,7 +206,7 @@
                             <div class="cart-total-title">Tổng cộng:</div>
                             <div class="cart-total-money"></div>
                         </div>
-                        <a href="./index.html" class="cart-btn-link">
+                        <a href="../../pages/cart/index.php" class="cart-btn-link">
                             <div class="cart-btn-view">
                                 Xem giỏ hàng
                             </div>
@@ -219,210 +216,29 @@
                 </div>            
             </div>
 
-            <div class="cart-body">
-                <div class="row">
-                    <div class="col-lg-5 col-md-12 col-12 cart-info">
-                        <div class="cart-info-content">
-                            <p class="cart-info-txt"></p>
-                            <div class="cart-info-content-price">
-                                <p class="cart-info-content-price-txt">Thành tiền</p>
-                                <p class="cart-info-content-price-money"></p>
-                            </div>
-                        </div>
-                        <div class="cart-info-btn">
-                            <a href="../checkout/index.html" class="cart-btn-link">
-                                <div class="cart-btn-view">
-                                    Đặt hàng
-                                </div>
-                            </a>
-                            <a href="../../index.html" class="cart-btn-link">
-                                <div class="cart-btn-view">
-                                    Về trang chủ
-                                </div>
-                            </a>
-                        </div>
+            <div class="login-body row">
+                <div class="col-sm-8 col-md-6 col-lg-4 col-12 login-form">
+                    <div class="login-form-logo">
+                        <img src="../../src/img/logo.png" class="login-logo-img">
                     </div>
-                    <div class="col-lg-7 col-md-12 col-12 cart-products">
-                        <div class="cart-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="../../src/img/products/women/product-women-6-1.jpg" class="cart-item-img" alt="">
-                                </div>
-                                <div class="col-9">
-                                    <div class="cart-item-name">
-                                        Đầm Cut Out Đính Ngọc Trai
-                                    </div>
-                                    <div class="cart-item-color-size">
-                                        <div class="color">
-                                            Màu sắc: Trắng
-                                        </div>
-                                        <div class="size">
-                                            Size: S
-                                        </div>
-                                    </div>
-                                    <div class="cart-item-quantity-price">
-                                        <div class="cart-item-quantity">
-                                            <div class="cart-item-quantity-minus">
-                                                <span class="material-symbols-outlined minus-icon">
-                                                    remove
-                                                </span>
-                                            </div>
-                                            <input type='text' value='1' min='0' max='10' class='cart-item-quantity-input'>
-                                            <div class="cart-item-quantity-plus">
-                                                <span class="material-symbols-outlined plus-icon">
-                                                    add
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="cart-item-price">950.000đ</div>
-                                        <span class="material-symbols-outlined del-icon">
-                                            delete
-                                        </span>
-                                    </div>
-                                    
-                                </div>
-                            </div>
+                    <div class="login-form-body">
+                        <div class="login-form-input">
+                            <input type="text" class="login-form-input-item" placeholder="Họ">
+                            <input type="text" class="login-form-input-item" placeholder="Tên">
+                            <input type="text" class="login-form-input-item" placeholder="SĐT">
+                            <input type="text" class="login-form-input-item" placeholder="Email">
+                            <input type="text" class="login-form-input-item col-12" placeholder="Tên đăng nhập">
+                            <input type="text" class="login-form-input-item col-12" placeholder="Mật khẩu">
                         </div>
-                        <div class="cart-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="../../src/img/products/women/product-women-7-1.jpg" class="cart-item-img" alt="">
-                                </div>
-                                <div class="col-9">
-                                    <div class="cart-item-name">
-                                        Set Áo Và Chân Váy Họa Tiết Kẻ
-                                    </div>
-                                    <div class="cart-item-color-size">
-                                        <div class="color">
-                                            Màu sắc: Xanh
-                                        </div>
-                                        <div class="size">
-                                            Size: XL
-                                        </div>
-                                    </div>
-                                    <div class="cart-item-quantity-price">
-                                        <div class="cart-item-quantity">
-                                            <div class="cart-item-quantity-minus">
-                                                <span class="material-symbols-outlined minus-icon">
-                                                    remove
-                                                </span>
-                                            </div>
-                                            <input type='text' value='1' min='0' max='10' class='cart-item-quantity-input'>
-                                            <div class="cart-item-quantity-plus">
-                                                <span class="material-symbols-outlined plus-icon">
-                                                    add
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="cart-item-price">750.000đ</div>
-                                        <span class="material-symbols-outlined del-icon">
-                                            delete
-                                        </span>
-                                    </div>
-                                    
-                                </div>
-                            </div>
+                        <div class="login-form-btn">
+                            Đăng ký
                         </div>
-                        <div class="cart-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="../../src/img/products/women/product-women-5-1.jpg" class="cart-item-img" alt="">
-                                </div>
-                                <div class="col-9">
-                                    <div class="cart-item-name">
-                                        Set Áo Blazer Và Quần Suông Dài
-                                    </div>
-                                    <div class="cart-item-color-size">
-                                        <div class="color">
-                                            Màu sắc: Vàng Cam
-                                        </div>
-                                        <div class="size">
-                                            Size: X
-                                        </div>
-                                    </div>
-                                    <div class="cart-item-quantity-price">
-                                        <div class="cart-item-quantity">
-                                            <div class="cart-item-quantity-minus">
-                                                <span class="material-symbols-outlined minus-icon">
-                                                    remove
-                                                </span>
-                                            </div>
-                                            <input type='text' value='2' min='0' max='10' class='cart-item-quantity-input'>
-                                            <div class="cart-item-quantity-plus">
-                                                <span class="material-symbols-outlined plus-icon">
-                                                    add
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="cart-item-price">1.250.000đ</div>
-                                        <span class="material-symbols-outlined del-icon">
-                                            delete
-                                        </span>
-                                    </div>
-                                    
-                                </div>
-                            </div>
+                        <div class="login-form-sign-up">
+                            Bạn đã có tài khoản? <a href="../login/index.php" class="login-form-sign-up-link">Đăng nhập</a>
                         </div>
                     </div>
                 </div>
-                <div class="footer">
-                    <div class="row">
-                        <div class="col-md-3 col-12 footer-item">
-                            <div class="title">
-                                <a href="#"><img src="../../src/img/logo.png" class="logo" alt=""></a>
-                            </div>
-                            <div class="body">
-                                <ul class="list">
-                                    <li class="item">Về IvyModa</li>
-                                    <li class="item">Tuyển dụng</li>
-                                    <li class="item">Hệ thống cửa hàng</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-12 footer-item">
-                            <div class="title">
-                                Dịch vụ khách hàng
-                            </div>
-                            <div class="body">
-                                <ul class="list">
-                                    <li class="item">Chính sách điều khoản</li>
-                                    <li class="item">Hướng dẫn mua hàng</li>
-                                    <li class="item">Chính sách thanh toán</li>
-                                    <li class="item">Chính sách đổi trả</li>
-                                    <li class="item">Chính sách bảo hành</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-12 footer-item">
-                            <div class="title">
-                                Liên hệ
-                            </div>
-                            <div class="body">
-                                <ul class="list">
-                                    <li class="item">Hotline</li>
-                                    <li class="item">Email</li>
-                                    <li class="item">Messenger</li>
-                                    <li class="item">Live chat</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-12 footer-item">
-                            <div class="title">
-                                Download App
-                            </div>
-                            <div class="body">
-                                <ul class="list">
-                                    <li class="item">
-                                        <a href="https://apps.apple.com/app/id1430094474?fbclid=IwAR3xAzj-xTmtj35aQUB8KhTLk1zFgyw2zssisSyn9qkRA6w4fgt6kI7j8Q8"><img src="../../src/img/download-1.png" alt=""></a>
-                                    </li>
-                                    <li class="item">
-                                        <a href="https://play.google.com/store/apps/details?id=com.ivymoda.app&fbclid=IwAR2Ki0MhC0MdCSEqmnP9BUNLhKg7ZresCBqA8BfRkPBBswJ99-YNqOX4cL8"><img src="../../src/img/download-2.png" alt=""></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             
         </div>

@@ -22,7 +22,7 @@
     <header>
         <div class="search-section d-flex justify-content-center align-items-center">
             <input type="text" placeholder="TÌM KIẾM SẢN PHẨM" class="search-input">
-            <a href="./index.html">
+            <a href="./index.php">
                 <span class="material-symbols-outlined header-icon search-icon-1">
                     search
                 </span>
@@ -34,7 +34,7 @@
         <div class="category">
             <i class="fa-solid fa-xmark cancel-icon"></i>
             <br>
-            <a href="../../pages/login/index.html">
+            <a href="../../pages/login/index.php">
                 <button class="login-btn">
                     Đăng nhập
                 </button>
@@ -60,7 +60,7 @@
         <div id="header">
             <div class="container">
                 <div class="logo">
-                    <a href="../../index.html"><img src="../../src/img/logo.png" class="image"/></a>
+                    <a href="../../index.php"><img src="../../src/img/logo.png" class="image"/></a>
                 </div>
                 <div id="navigation-bar">
                     <span class="material-symbols-outlined bar-icon">
@@ -86,7 +86,7 @@
                         </span>
                         <span class="cart-number"></span>
                     </div>
-                    <a href="../../pages/login/index.html" class="header-icon user-icon">
+                    <a href="../../pages/login/index.php" class="header-icon user-icon">
                         <span class="material-symbols-outlined">
                             person
                         </span>
@@ -217,7 +217,7 @@
                         <div class="cart-total-title">Tổng cộng:</div>
                         <div class="cart-total-money"></div>
                     </div>
-                    <a href="../cart/index.html" class="cart-btn-link">
+                    <a href="../cart/index.php" class="cart-btn-link">
                         <div class="cart-btn-view">
                             Xem giỏ hàng
                         </div>
@@ -232,7 +232,7 @@
     <nav aria-label="breadcrumb" style="background-color: #e9ecef; margin-top: 12rem;" class="breadcrumb-container">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../../index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="../../index.php">Trang chủ</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Tìm kiếm</li>
             </ol>
         </div>
@@ -361,7 +361,7 @@
                             <span class="badget">
                                 -50%
                             </span>
-                            <a href="../../pages/detailProduct/indexpd.html">
+                            <a href="../../pages/detailProduct/indexpd.php">
                                 <img src="../../src/img/products/women/product-women-2-2.jpg" class="product-img-content product-img2"/>
                             </a>
                             <img src="../../src/img/products/women/product-women-2-1.jpg" class="product-img-content product-img1"/>
@@ -494,7 +494,7 @@
             </div>
         </div>
     </div>
-<footer>
+    <footer>
     
         <div class="footer">
             <div class="row">

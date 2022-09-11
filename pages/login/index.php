@@ -21,7 +21,7 @@
         <div class="container">
             <div class="search-section d-flex justify-content-center align-items-center">
                 <input type="text" placeholder="TÌM KIẾM SẢN PHẨM" class="search-input">
-                <a href="../../pages/search/index.html" class="search-link" style="color: none !important;">
+                <a href="../../pages/search/index.php" class="search-link" style="color: none !important;">
                     <span class="material-symbols-outlined header-icon search-icon-1">
                         search
                     </span>
@@ -32,7 +32,7 @@
             <div class="category">
                 <i class="fa-solid fa-xmark cancel-icon"></i>
                 <br>
-                <a href="./index.html">
+                <a href="./index.php">
                     <button class="login-btn">
                         Đăng nhập
                     </button>
@@ -51,7 +51,7 @@
             <div id="header">
                 <div class="container">
                     <div class="logo">
-                        <a href="../../index.html"><img src="../../src/img/logo.png" class="image"/></a>
+                        <a href="../../index.php"><img src="../../src/img/logo.png" class="image"/></a>
                     </div>
                     <div id="navigation-bar">
                         <span class="material-symbols-outlined bar-icon">
@@ -206,7 +206,7 @@
                             <div class="cart-total-title">Tổng cộng:</div>
                             <div class="cart-total-money"></div>
                         </div>
-                        <a href="../../pages/cart/index.html" class="cart-btn-link">
+                        <a href="../../pages/cart/index.php" class="cart-btn-link">
                             <div class="cart-btn-view">
                                 Xem giỏ hàng
                             </div>
@@ -223,23 +223,30 @@
                     </div>
                     <div class="login-form-body">
                         <div class="login-form-input">
-                            <input type="text" class="login-form-input-item" placeholder="Họ">
-                            <input type="text" class="login-form-input-item" placeholder="Tên">
-                            <input type="text" class="login-form-input-item" placeholder="SĐT">
-                            <input type="text" class="login-form-input-item" placeholder="Email">
-                            <input type="text" class="login-form-input-item col-12" placeholder="Tên đăng nhập">
-                            <input type="text" class="login-form-input-item col-12" placeholder="Mật khẩu">
+                            <input type="text" class="login-form-input-item" placeholder="Tên đăng nhập">
+                            <input type="text" class="login-form-input-item" placeholder="Mật khẩu">
+                        </div>
+                        <div class="login-form-auth">
+                            <div class="login-form-auto">
+                                <input type="checkbox">
+                                <div class="auto-content">Ghi nhớ đăng nhập</div>
+                            </div>
+                            <a href="#" class="login-form-forget">
+                                Quên mật khẩu?
+                            </a>
                         </div>
                         <div class="login-form-btn">
-                            Đăng ký
+                            Đăng nhập
                         </div>
                         <div class="login-form-sign-up">
-                            Bạn đã có tài khoản? <a href="../login/index.html" class="login-form-sign-up-link">Đăng nhập</a>
+                            Bạn chưa có tài khoản? <a href="../register/index.php" class="login-form-sign-up-link">Đăng kí tại đây</a>
                         </div>
                     </div>
                 </div>
                 
             </div>
+
+           
             
         </div>
         

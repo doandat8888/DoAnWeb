@@ -30,7 +30,7 @@
             <!-- search-bar -->
             <div class="search-section d-flex justify-content-center align-items-center">
                 <input type="text" placeholder="TÌM KIẾM SẢN PHẨM" class="search-input">
-                <a href="../search/index.html">
+                <a href="../search/index.php">
                     <span class="material-symbols-outlined header-icon search-icon-1">
                         search
                     </span>
@@ -42,7 +42,7 @@
                 <div class="container ">
                     <i class="fa-solid fa-xmark cancel-icon"></i>
                     <br>
-                    <a href="../../pages/login/index.html">
+                    <a href="../../pages/login/index.php">
                         <button class="login-btn">
                             Đăng nhập
                         </button>
@@ -60,7 +60,7 @@
             <div id="header">
                 <div class="container">
                     <div class="logo">
-                        <a href="../../index.html"><img src="../../src/img/logo.png" class="image"/></a>
+                        <a href="../../index.php"><img src="../../src/img/logo.png" class="image"/></a>
                     </div>
                     <div id="navigation-bar">
                         <span class="material-symbols-outlined bar-icon">
@@ -86,7 +86,7 @@
                             </span>
                             <span class="cart-number"></span>
                         </div>
-                        <a href="../../pages/login/index.html" class="header-icon user-icon">
+                        <a href="../../pages/login/index.php" class="header-icon user-icon">
                             <span class="material-symbols-outlined">
                                 person
                             </span>
@@ -217,7 +217,7 @@
                             <div class="cart-total-title">Tổng cộng:</div>
                             <div class="cart-total-money"></div>
                         </div>
-                        <a href="../cart/index.html" class="cart-btn-link">
+                        <a href="../cart/index.php" class="cart-btn-link">
                             <div class="cart-btn-view">
                                 Xem giỏ hàng
                             </div>
@@ -231,7 +231,7 @@
         <nav class ="row d-sm-none d-md-block" aria-label ="breadcrumb">
             <ol class ="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="../../index.html" class="breadcrumb-item-link">Trang chủ</a>
+                    <a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     Áo Lụa Cách Điệu Phối Nơ Lệch
