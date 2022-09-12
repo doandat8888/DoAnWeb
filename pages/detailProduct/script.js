@@ -65,47 +65,22 @@ function scrollToTop() {
   }
 
 // quantity action
-(function() {
- 
-	window.inputNumber = function(el) {
-  
-	  var min = el.attr('min') || false;
-	  var max = el.attr('max') || false;
-  
-	  var els = {};
-  
-	  els.dec = el.prev();
-	  els.inc = el.next();
-  
-	  el.each(function() {
-		init($(this));
-	  });
-  
-	  function init(el) {
-  
-		els.dec.on('click', decrement);
-		els.inc.on('click', increment);
-  
-		function decrement() {
-		  var value = el[0].value;
-		  value--;
-		  if(!min || value >= min) {
-			el[0].value = value;
-		  }
-		}
-  
-		function increment() {
-		  var value = el[0].value;
-		  value++;
-		  if(!max || value <= max) {
-			el[0].value = value++;
-		  }
-		}
-	  }
+function increaseCount(a,b) {
+	var input = b.previousElementSibling;
+	var value = parseInt(input.value, 10);
+	value = isNaN(value) ? 0 : value;
+	value++;
+	input.value = value;
+}
+function decreaseCount(a,b) {
+	var input = b.nextElementSibling;
+	var value = parseInt(input.value, 10);
+	if(value > 1) {
+		value = isNaN(value) ? 0 : value;
+		value--;
+		input.value = value;
 	}
-  })();
-  
-inputNumber($('.detail-number'));
+}
 
 //Heart active
 var isActiveBorder = true;
@@ -207,3 +182,9 @@ $(document).ready (function () {
 	    }  
 	});  
 })
+
+//Thêm vào giỏ hàng
+//chưa xong
+// function addCart(id) {
+// 	num = $("num").val();
+// }

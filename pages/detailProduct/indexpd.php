@@ -84,9 +84,9 @@
 
                     <div class="selector-actions">
                         <div class='quantity' style='clear: both'>
-                            <button class='minusdecrease'>-</button>
+                            <button class='minusdecrease' onclick="creaseCount(event, this)">-</button>
                             <input type='text' value='1' min='0' max='10' class='detail-number'>
-                            <button class='plusincrease'>+</button>
+                            <button class='plusincrease' onclick="increaseCount(event, this)">+</button>
                         </div>
     
                         <br style='clear: both'></br>

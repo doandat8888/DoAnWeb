@@ -22,36 +22,13 @@
 html, body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.4;
+    height: 100%;
+    width: 100%;
     font-size: 14px;
-    overflow-x: hidden;
     box-sizing: border-box;
 }
 
 .row {
-    --color-gutter-x: 1.5rem;
-    --color-gutter-y: 0;
     display: flex;
     flex-wrap: wrap;
-    margin-top: calc(var(--color-gutter-y) * -1);
-    margin-right: calc(var(--color-gutter-x) * -.5);
-    margin-left: calc(var(--color-gutter-x) * -.5);
-}
-/* RESPONSIVE */
-
-/* BUTTON STYLE */
-.btn {
-    min-width: 142px;
-    height: 36px;
-    text-decoration: none;
-    border: none;
-    border-radius: 2px;
-    font-size: 1.5rem;
-    padding: 0 12px;
-    outline: none;
-    cursor: pointer;
-    color: var(--hover-color);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1.6rem;
 }
