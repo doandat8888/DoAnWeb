@@ -62,7 +62,7 @@ class main{
 				$this->controller->{$this->methodName}($this->url[2]);
 
 			}else{
-				header("Location:".BASE_URL."/index/notfound"); //định nghĩa lại trong file configurl.php (để link)
+				// header("Location:".BASE_URL."/index/notfound"); //định nghĩa lại trong file configurl.php (để link)
 			}
 		}else{
 			if(isset($this->url[1])){
@@ -73,7 +73,7 @@ class main{
 				$this->controller->{$this->methodName}();
 
 				}else{
-					header("Location:".BASE_URL."/index/notfound");
+					// header("Location:".BASE_URL."/index/notfound");
 				}
 			}else{
 
@@ -82,7 +82,7 @@ class main{
 				$this->controller->{$this->methodName}();
 
 				}else{
-					header("Location:".BASE_URL."/index/notfound");
+					// header("Location:".BASE_URL."/index/notfound");
 				}
 
 			}
