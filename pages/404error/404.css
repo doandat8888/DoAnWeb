@@ -1,0 +1,75 @@
+html {
+    font-size: 80%;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+.page {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
+}
+.leftsrc {
+    border: none;
+    margin-top: 30px;
+    margin-left: 30px;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: 400;
+    position: relative;
+}
+.img {
+    width: 40%;
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    z-index: 10;
+}
+.btn {
+    background-color: #ec9d2e;
+    border: rgb(247, 126, 6) 1px solid;
+    position: relative;
+}
+.btn::before {
+    content: "";
+    position: absolute;
+    width: 270px;
+    height: 100%;
+    background-color: rgba(255,255,255,0.4);
+    top: 50%;
+    transform: skewX(30deg) translate(-150%, -50%);
+    transition: all 0.5s;
+}
+.btn a{
+	color: #fff;
+	text-decoration: none;
+}
+.btn:hover::before {
+    transform: skewX(30deg) translate(150%, -50%);
+    transition-delay: 0.1s;
+}
+.btn:hover,
+.btn:focus-visible {
+    background-color:  #ffffff;
+    border: rgb(233, 116, 0) 1px solid;
+}
+.btn:hover > a,
+.btn:focus-visible > a{
+	color: #000000;
+	text-decoration: none;
+}
+.bg {
+    height: 300px;
+    width: 100%;
+    background-color: #e6a35b;
+    clip-path: polygon(0 85%, 100% 5%, 100% 100%, 0 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}

@@ -183,8 +183,22 @@ $(document).ready (function () {
 	});  
 })
 
-//Thêm vào giỏ hàng
-//chưa xong
-// function addCart(id) {
-// 	num = $("num").val();
-// }
+var keyLocalStorageItemCart = ''
+//Tạo item giỏ hàng
+function createItemCart(id, quantity) {
+	var icProduct = new Object();
+	icProduct.id = id;
+	icProduct.quantity = quantity;
+	return iProduct
+}
+// Lấy toàn bộ các item giỏ hàng (local storage)
+function getAllItemCart() {
+	var iList = new Array();
+	//get json lưu trữ tại storage
+	var jsonIListCart = localStorage.getItem(keyLocalStorageItemCart);
+	//trans json -> iList
+	if(jsonIListCart == null) {
+		iList = JSON.parse(jsonIListCart);
+	}
+	return iList;
+}
