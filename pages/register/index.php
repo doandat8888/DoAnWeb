@@ -23,28 +23,40 @@
                 include_once "../../components/header.php";
             ?>
 
-            <div class="login-body row">
-                <div class="col-sm-8 col-md-6 col-lg-4 col-12 login-form">
-                    <div class="login-form-logo">
-                        <img src="../../src/img/logo.png" class="login-logo-img">
+            <div class="register-body row">
+                <form class="col-sm-8 col-md-6 col-lg-4 col-12 register-form" method="post" action="register.php">
+                    <div class="register-form-logo">
+                        <img src="../../src/img/logo.png" class="register-logo-img">
                     </div>
-                    <div class="login-form-body">
-                        <div class="login-form-input">
-                            <input type="text" class="login-form-input-item" placeholder="Họ">
-                            <input type="text" class="login-form-input-item" placeholder="Tên">
-                            <input type="text" class="login-form-input-item" placeholder="SĐT">
-                            <input type="text" class="login-form-input-item" placeholder="Email">
-                            <input type="text" class="login-form-input-item col-12" placeholder="Tên đăng nhập">
-                            <input type="text" class="login-form-input-item col-12" placeholder="Mật khẩu">
+                    <div class="register-form-body">
+                        <div class="register-form-input">
+                            <input type="text" class="register-form-input-item" placeholder="Họ" name="firstName">
+                            <input type="text" class="register-form-input-item" placeholder="Tên" name="lastName">
+                            <input type="text" class="register-form-input-item" placeholder="SĐT" name="phoneNumber">
+                            <input type="text" class="register-form-input-item" placeholder="Email" name="email">
+                            <input type="text" class="register-form-input-item col-12" placeholder="Tên đăng nhập" name="username">
+                            <input type="password" class="register-form-input-item col-12" placeholder="Mật khẩu" name="password">
+                            <select class="register-form-input-item col-12" placeholder="Giới tính" name="gender">
+                                <option value="">Giới tính</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                            <?php 
+                                if(isset($_GET['msg'])) {
+                                    if($_GET['msg'] === 'missing-info') {
+                                        echo "<span style='margin-bottom: 40px; color: red; font-size: 12px;'>Vui lòng nhập đủ thông tin</span>";
+                                    }
+                                }
+                            ?>
                         </div>
-                        <div class="login-form-btn">
+                        <button class="register-form-btn" type="submit">
                             Đăng ký
-                        </div>
-                        <div class="login-form-sign-up">
-                            Bạn đã có tài khoản? <a href="../login/index.php" class="login-form-sign-up-link">Đăng nhập</a>
+                        </button>
+                        <div class="register-form-sign-up">
+                            Bạn đã có tài khoản? <a href="../login/index.php" class="register-form-sign-up-link">Đăng nhập</a>
                         </div>
                     </div>
-                </div>
+                </form>
                 
             </div>
             
