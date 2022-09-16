@@ -1,4 +1,4 @@
 <?php
 	define('BASE_URL','http://localhost/');
-    //http://localhost/link;
+    //http://localhost/link; //link mvc
 ?>

@@ -4,7 +4,7 @@ $filepath = realpath(dirname(__FILE__));
   include ($filepath. '/../config/config.php');
 ?>
 <?php
-Class Database{
+Class Database {
    public $host   = HOST;
    public $user   = USER;
    public $pass   = PASSWORD;
@@ -61,15 +61,36 @@ public function insert($query){
  }
   
 // Delete data
- public function delete($query){
+public function delete($query){
    $delete_row = $this->link->query($query) or 
      die($this->link->error.__LINE__);
    if($delete_row){
      return $delete_row;
    } else {
      return false;
-    }
-   }
+  }
+}
  
+public function chayTruyVanTraVeDL($link, $q)
+{
+	$result = mysqli_query($link, $q);
+	return $result;
+}
+
+public function chayTruyVanKhongTraVeDL($link, $q)
+{
+	$result = mysqli_query($link, $q);
+	return $result;
+}
+
+public function giaiPhongBoNho($link, $result)
+{
+	try {
+		mysqli_close($link);
+		mysqli_free_result($result);
+	} 
+  catch (TypeError $e) {
+	}
+}
 }
 ?>
