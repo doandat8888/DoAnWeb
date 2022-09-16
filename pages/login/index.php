@@ -24,15 +24,22 @@
             ?>
 
             <div class="login-body row">
-                <div class="col-sm-8 col-md-6 col-lg-4 col-12 login-form">
+                <form class="col-sm-8 col-md-6 col-lg-4 col-12 login-form" method="post" action="login.php">
                     <div class="login-form-logo">
                         <img src="../../src/img/logo.png" class="login-logo-img">
                     </div>
                     <div class="login-form-body">
                         <div class="login-form-input">
-                            <input type="text" class="login-form-input-item" placeholder="Tên đăng nhập">
-                            <input type="text" class="login-form-input-item" placeholder="Mật khẩu">
+                            <input type="text" class="login-form-input-item" placeholder="Tên đăng nhập" name="username">
+                            <input type="password" class="login-form-input-item" placeholder="Mật khẩu" name="password">
                         </div>
+                        <?php 
+                            if(isset($_GET['msg'])) {
+                                if($_GET['msg'] === 'login-fail') {
+                                    echo "<span style='margin-bottom: 40px; color: red; font-size: 12px;'>Sai thông tin đăng nhập</span>";
+                                }
+                            }
+                        ?>  
                         <div class="login-form-auth">
                             <div class="login-form-auto">
                                 <input type="checkbox">
@@ -42,18 +49,15 @@
                                 Quên mật khẩu?
                             </a>
                         </div>
-                        <div class="login-form-btn">
+                        <button class="login-form-btn" type="submit">
                             Đăng nhập
-                        </div>
+                        </button>
                         <div class="login-form-sign-up">
                             Bạn chưa có tài khoản? <a href="../register/index.php" class="login-form-sign-up-link">Đăng kí tại đây</a>
                         </div>
                     </div>
-                </div>
-                
+                </form>
             </div>
-
-           
             
         </div>
         

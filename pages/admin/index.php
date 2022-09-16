@@ -94,7 +94,15 @@
                                 <div class="admin-img-container">
                                     <img src="../../src/img/admin/admin1.jpg" alt="" class="admin-img">
                                 </div>
-                                <div class="welcome">Đoàn Trần Bá Đạt</div>
+                                <div class="welcome">
+                                    <?php 
+                                        if(isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
+                                            $firstName = $_SESSION['firstName'];
+                                            $lastName = $_SESSION['lastName'];
+                                            echo $firstName .' '.$lastName;
+                                        }
+                                    ?>
+                                </div>
                             </div>
                         </div>
                         

@@ -103,6 +103,9 @@
     transition: all 0.3s ease;
     cursor: pointer;
     margin: 2rem 0;
+    width: 100%;
+    outline: none;
+    border: none;
 }
 
 .login-form-btn:hover {
