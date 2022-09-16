@@ -378,6 +378,13 @@
     outline: none;
     transition: all 0.5s;
 }
+.pro-list .products:nth-child(1),
+.pro-list .products:nth-child(2),
+.pro-list .products:nth-child(3),
+.pro-list .products:nth-child(4) {
+    display: inline-block;
+}
+
 #pro-load-more {
     width: 100px;
     display: block;

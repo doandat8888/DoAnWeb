@@ -172,13 +172,16 @@ const totalMoney = document.querySelector('.cart-total-money');
 totalMoney.innerHTML = numberWithCommat(totalPrice) + 'đ';  
 
 //LOAD MORE
-$(document).ready (function () {  
-	$(".products").slice(0, 4).show();  
-	$("#pro-load-more").on("click", function(e){  
-	    e.preventDefault();  
-	    $(".products:hidden").slice(0, 4).show().slideDown();  
-	    if ($(".products:hidden").length == 0) {  
-			$("#pro-load-more").style.display = "none";
-	    }  
-	});  
-})
+let loadMoreBtn = document.querySelector('#pro-load-more');
+let currentItem = 4;
+
+loadMoreBtn.onclick = () => {
+	let boxes = [...document.querySelectorAll('.pro-list .products')];
+	for(var i = currentItem; i < currentItem + 4; i++) {
+		boxes[i].style.display = 'flex';
+	}
+	currentItem += 4;
+	if(currentItem >= boxes.length) {
+		loadMoreBtn.style.display = 'none';
+	}
+}
