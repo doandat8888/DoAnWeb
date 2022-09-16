@@ -28,6 +28,7 @@
                         <div class="login-form-logo">
                             <img src="../../src/img/logo.png" class="login-logo-img">
                         </div>
+<<<<<<< Updated upstream
                         <div class="login-form-body">
                             <div class="login-form-input">
                                 <input type="text" class="login-form-input-item" placeholder="Tên đăng nhập">
@@ -47,6 +48,21 @@
                             </div>
                             <div class="login-form-sign-up">
                                 Bạn chưa có tài khoản? <a href="../register/index.php" class="login-form-sign-up-link">Đăng kí tại đây</a>
+=======
+                        <?php 
+                            if(isset($_GET['msg'])) {
+                                if($_GET['msg'] === 'login-fail') {
+                                    echo "<span style='margin-bottom: 40px; color: red; font-size: 12px;'>Sai thông tin đăng nhập</span>";
+                                }else if($_GET['msg'] === 'missing-info') {
+                                    echo "<span style='margin-bottom: 40px; color: red; font-size: 12px;'>Vui lòng nhập đủ thông tin</span>";
+                                }
+                            }
+                        ?>  
+                        <div class="login-form-auth">
+                            <div class="login-form-auto">
+                                <input type="checkbox">
+                                <div class="auto-content">Ghi nhớ đăng nhập</div>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>     

@@ -12,7 +12,7 @@
     --border-color: #221F20;
 }
 
-.login-body {
+.register-body {
     position: relative;
     top: 12rem;
     display: flex;
@@ -21,27 +21,27 @@
     padding: 0 1.2rem
 }
 
-.login-form {
+.register-form {
     padding: 2rem;
     border: 1px solid var(--gray);
     box-shadow: 0 0.8rem 1.8rem hsl(210deg 8% 62% / 20%);
 }
 
-.login-form-logo {
+.register-form-logo {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.login-logo-img{
+.register-logo-img{
     width: 50%;
 }
 
-.login-form-body {
+.register-form-body {
     margin-top: 2rem;
 }
 
-.login-form-input-item {
+.register-form-input-item {
     width: 100%;
     margin-bottom: 2rem;
     padding: 1.4rem 1.2rem;
@@ -50,48 +50,48 @@
     font-size: 1.2rem;
 }
 
-.login-form-auth {
+.register-form-auth {
     display: flex;
     justify-content: space-between;
 }
 
-.login-form-auto {
+.register-form-auto {
     display: flex;
 }
 
-.login-form-auto .auto-content {
+.register-form-auto .auto-content {
     margin-left: 1.2rem;
     font-size: 1.2rem;
 }
 
-.login-form-forget {
+.register-form-forget {
     font-size: 1.2rem;
     color: var(--black);
     font-weight: bold;
     text-decoration: none !important;
 }
 
-.login-form-forget:hover {
+.register-form-forget:hover {
     color: var(--gray);
 }
 
-.login-form-sign-up {
+.register-form-sign-up {
     width: 100%;
     text-align: center;
     font-size: 1.2rem;
 }
 
-.login-form-sign-up-link {
+.register-form-sign-up-link {
     color: var(--black);
     font-weight: bold;
     text-decoration: none !important;
 }
 
-.login-form-sign-up-link:hover {
+.register-form-sign-up-link:hover {
     color: var(--gray);
 }
 
-.login-form-btn {
+.register-form-btn {
     padding: 1.2rem 0;
     display: flex;
     align-items: center;
@@ -103,9 +103,12 @@
     transition: all 0.3s ease;
     cursor: pointer;
     margin: 2rem 0;
+    width: 100%;
+    outline: none;
+    border: none;
 }
 
-.login-form-btn:hover {
+.register-form-btn:hover {
     color: var(--black);
     background-color: var(--white);
     border: 1px solid var(--black);
