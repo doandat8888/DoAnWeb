@@ -46,24 +46,39 @@
                 <li class="nav-item">Liên hệ</li>
             </ul>
         </div>
+       
         <div class="nav-icon">
-            <span class="material-symbols-outlined header-icon search-icon">
-                search
-            </span>
+            <?php 
+                session_start();
+                if(isset($_SESSION['role'])) {
+                    if($_SESSION['role'] === 'R1') {
+                        if(isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
+                            $firstName = $_SESSION['firstName'];
+                            $lastName = $_SESSION['lastName'];
+                            echo "<span class='user-info'>$firstName $lastName</span>";
+                        }
+                    }
+                }else {
+                    echo '<a href="./pages/login/index.php" class="header-icon user-icon">
+                        <span class="material-symbols-outlined">
+                            person
+                        </span>
+                    </a>';
+                }
+            ?>
             <div class="header-icon">
                 <span class="material-symbols-outlined cart-icon">
                     shopping_cart
                 </span>
                 <span class="cart-number"></span>
             </div>
-            <a href="./pages/login/index.php" class="header-icon user-icon">
-                <span class="material-symbols-outlined">
-                    person
-                </span>
-            </a>
+            <span class="material-symbols-outlined header-icon search-icon">
+                search
+            </span>
+           
         </div>
         <?php
-        include_once "cart.php";
+            include_once "cart.php";
         ?>
     </div>
 </div>

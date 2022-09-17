@@ -23,40 +23,17 @@
         }
     }
     if($count == count($registerInfo)) {
-        // register($link, $username, $password, $firstName, $lastName, $phoneNumber, $email, $gender);
-        // giaiPhongBoNho($link, true);
-        // echo "Đăng kí thành công";
-        // if(validateLenUp($username) == true 
-        // && validateLenUp($password) == true) {
-        //     if(validateEmail($email) == true) {
-        //         if(existsUsername($link, $username) == true) {
-        //             header('Location: ../../pages/register/index.php?msg=username-existed');
-        //         }else {
-        //             register($link, $username, $password, $firstName, $lastName, $phoneNumber, $email, $gender);
-        //             giaiPhongBoNho($link, true);
-        //             echo "Đăng kí thành công";
-                    
-        //         }
-        //     }
-        // }
-        // $valid = false;
-        // $valid = $valid && validateLenUp($username);
-        // $valid = $valid && validateLenUp($password);
-        // $valid = $valid && validateEmail($email);
-        // if($valid) {
-        //     if(existsUsername($link, $username)) {
-        //         giaiPhongBoNho($link, true);
-        //         header('Location: ../../pages/register/index.php?msg=username-existed');
-        //     }else {
-        //         register($link, $username, $password, $firstName, $lastName, $phoneNumber, $email, $gender);
-        //         giaiPhongBoNho($link, true);
-        //         header('Location: ../../pages/register/index.php?msg=done');
-        //     }
-        // }else {
-        //     echo "Thông tin dăng ký không hợp lệ";
-        // }
-        register($link, $username, $password, $firstName, $lastName, $phoneNumber, $email, $gender);
-        giaiPhongBoNho($link, true);
-        header('Location: ../../pages/register/index.php?msg=done');
+        if(existsUsername($link, $username)) {
+            giaiPhongBoNho($link, true);
+            header('Location: ../../pages/register/index.php?msg=username-existed');
+        }else {
+            $password = md5($password);
+            $username = mysqli_real_escape_string($link, $username);
+            $query = "INSERT INTO `users` (`username`, `password`, `firstName`, `lastName`, `email`, `phoneNumber`, `gender`, `role`, `status`) VALUES ('$username', '$password', '$firstName', '$lastName', '$email', '$phoneNumber', '$gender', 'R1', 1)";
+            $setuser = chayTruyVanKhongTraVeDL($link, $query);
+            if($setuser) {
+                header('Location: ../../pages/register/index.php?msg=done');
+            }
+        }
     }
 ?>

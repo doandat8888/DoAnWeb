@@ -143,7 +143,6 @@ html, body {
 .navbar-toggle {
     border: none;
     outline: none;
-    
 }
 
 .navbar-img {
@@ -152,7 +151,16 @@ html, body {
 
 .nav-icon {
     width: 20%;
-    
+    display: flex;
+    align-items: center;
+}
+
+.user-info {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--text-color);
 }
 
 .search-section .search-input {
@@ -408,7 +416,6 @@ html, body {
     }
     .nav-icon {
         width: 85%;
-        float: right;
         font-size: 1rem;
     }
     .logo {

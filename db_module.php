@@ -28,6 +28,7 @@ function giaiPhongBoNho($link, $result)
 		mysqli_close($link);
 		mysqli_free_result($result);
 	} catch (TypeError $e) {
+		echo "ERROR: " .$e -> getMessage();
 	}
 }
 

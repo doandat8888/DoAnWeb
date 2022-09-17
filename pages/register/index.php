@@ -45,6 +45,10 @@
                                 if(isset($_GET['msg'])) {
                                     if($_GET['msg'] === 'missing-info') {
                                         echo "<span style='margin-bottom: 40px; color: red; font-size: 12px;'>Vui lòng nhập đủ thông tin</span>";
+                                    }else if($_GET['msg'] === 'username-existed') {
+                                        echo "<span style='margin-bottom: 40px; color: red; font-size: 12px;'>Tài khoản đã tồn tại trong hệ thống</span>";
+                                    }else if($_GET['msg'] === 'done') {
+                                        echo "<span style='margin-bottom: 40px; color: green; font-size: 12px;'>Đăng kí thành công</span>";
                                     }
                                 }
                             ?>
