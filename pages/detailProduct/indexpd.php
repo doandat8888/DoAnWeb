@@ -79,6 +79,14 @@
                         <input type='radio' class='size-selector' name='size' id='XL' value='XL' autocomplete='off' checked=''>
                         <label class='size-btn' for='XL'>XL</label>
                     </div>
+                    <div class='color-select'>
+                        <input type='radio' class='color-selector' name='color' id='green' value='green' autocomplete='off' checked=''>
+                        <label class='color-btn' for='green'></label>
+                        <input type='radio' class='color-selector' name='color' id='pink' value='pink' autocomplete='off' checked=''>
+                        <label class='color-btn' for='pink'></label>
+                        <input type='radio' class='color-selector' name='color' id='yellow' value='yellow' autocomplete='off' checked=''>
+                        <label class='color-btn' for='yellow'></label>
+                    </div>
 
                     <div class="selector-actions">
                         <div class='quantity' style='clear: both'>
