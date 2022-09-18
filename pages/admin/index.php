@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,7 +20,7 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3 d-lg-block d-none menu">
+                <div class="col-lg-3 d-lg-block menu">
                     <div class="menu-logo">
                         <img src="../../src/img/logo.png" alt="">
                     </div>
@@ -72,7 +75,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a href="../../index.php" class="menu-item-link">
+                            <a href="../../index.php?msg=login-out" class="menu-item-link">
                                 <span class="material-symbols-outlined">
                                     door_open
                                 </span>
@@ -81,65 +84,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9 col-12 pages">
-                    <div class="pages-header">
-                        <div class="row">
-                            <span class="material-symbols-outlined pages-header-icon col-3">
-                                reorder
-                            </span>
-                            <div class="pages-header-search col-5">
-                                <input type="text" placeholder="Bạn tìm gì..." class="pages-header-search-input">
-                            </div>
-                            <div class="admin-info col-4 d-flex">
-                                <div class="admin-img-container">
-                                    <img src="../../src/img/admin/admin1.jpg" alt="" class="admin-img">
-                                </div>
-                                <div class="welcome">
-                                    <?php 
-                                        if(isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
-                                            $firstName = $_SESSION['firstName'];
-                                            $lastName = $_SESSION['lastName'];
-                                            echo $firstName .' '.$lastName;
-                                        }
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <?php 
-                        if(isset($_GET['page'])) {
-                            switch ($_GET['page']) {
-                                case 'dashboard':
-                                    include_once "dashboard.php";
-                                    break;
-                                case 'category':
-                                    include_once "category.php";
-                                    break;
-                                case 'manage-product':
-                                    include_once "manage-product.php";
-                                    break;
-                                case 'manage-customer':
-                                    include_once "manage-customer.php";
-                                    break;
-                                case 'statistic':
-                                    include_once "statistic.php";
-                                    break;
-                                case 'bill':
-                                    include_once "bill.php";
-                                    break;
-                                default:
-                                    include_once "dashboard.php";
-                                    break;
-                            }
-                        }else {
-                            include_once "dashboard.php";
-                        }
-                    ?>
-                </div>
+                <?php 
+                    include_once "pages.php";
+                ?>
             </div>
         </div>
-        
     </body>
     <script src="https://kit.fontawesome.com/644376ed9d.js" crossorigin="anonymous"></script>
     <script src="./script/home.js"></script>

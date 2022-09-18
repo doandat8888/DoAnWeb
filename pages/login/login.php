@@ -13,13 +13,14 @@
                 $_SESSION['firstName'] = $row['firstName'];
                 $_SESSION['lastName'] = $row['lastName'];
                 $_SESSION['role'] = $row['role'];
+                $_SESSION['image'] = $row['image'];
             }
             if(isset($_SESSION['role'])) {
                 $role = $_SESSION['role'];
                 if($role === 'R1') {
                     header("Location: ../../index.php");
                 }else if($role === 'R2') {
-                    header("Location: ../admin/");
+                    header("Location: ../admin/index.php");
                 }
             }
         }else{

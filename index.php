@@ -1,3 +1,15 @@
+<?php 
+    session_start();
+    if(isset($_GET['msg'])) {
+        if($_GET['msg'] === 'login-out') {
+            if(isset($_SESSION['role']) && isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
+                unset($_SESSION['role']);
+                unset($_SESSION['firstName']);
+                unset($_SESSION['lastName']);
+            }
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,7 +30,6 @@
     </head>
     <body>
         <div class="container">
-            
             <?php 
                 include_once "./components/header.php";
             ?>

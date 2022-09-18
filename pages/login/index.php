@@ -15,12 +15,22 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-        <title>Home</title>
+        <title>Login</title>
     </head>
     <body>
         <div class="container">
             <?php 
+                session_start();
                 include_once "../../components/header.php";
+                if(isset($_GET['msg'])) {
+                    if($_GET['msg'] == 'login-out') {
+                        if(isset($_SESSION['role']) && isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
+                            unset($_SESSION['role']);
+                            unset($_SESSION['firstName']);
+                            unset($_SESSION['lastName']);
+                        }
+                    }
+                }
             ?>
             <form action="login.php" method="post">
                 <div class="login-body row">

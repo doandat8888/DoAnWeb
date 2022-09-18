@@ -36,9 +36,6 @@ html, body {
     background-size: cover;
 }
 
-.logo {
-    width: 20%;
-}
 
 #navigation-bar {
     font-size: 2.4rem;
@@ -49,7 +46,7 @@ html, body {
 
 
 .image {
-    width: 100%;
+    width: 50%;
 }
 
 .list {
@@ -117,7 +114,7 @@ html, body {
 }
 
 .logo {
-    width: 14%;
+    width: 30%;
 }
 
 #header .list {
@@ -150,9 +147,10 @@ html, body {
 }
 
 .nav-icon {
-    width: 20%;
+    width: 30%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .user-info {
@@ -351,6 +349,12 @@ html, body {
     border: 1px solid var(--black);
 }
 
+@media only screen and (max-width: 1000px) {
+    .logo .image{
+        width: 100%;
+    }
+}
+
 
 @media only screen and (max-width: 600px) {
     html, body {
@@ -359,6 +363,10 @@ html, body {
         font-family: 'Roboto', sans-serif;
         color: #222222;
         box-sizing: border-box;
+    }
+
+    .logo .image{
+        width: 100%;
     }
     .nav-list {
         display: none;
@@ -376,9 +384,6 @@ html, body {
     }
     .bar-icon {
         font-size: 2rem;
-    }
-    .nav-icon .search {
-       
     }
     .nav-icon .user-icon {
         display: none;
@@ -406,6 +411,10 @@ html, body {
         /* font-family: 'Roboto', sans-serif; */
         color: #222222;
     }
+
+    .nav-list{
+        display: none;
+    }
     .list {
         display: none;
     }
@@ -417,6 +426,8 @@ html, body {
     .nav-icon {
         width: 85%;
         font-size: 1rem;
+        display: flex;
+        justify-content: flex-end;
     }
     .logo {
         width: 20%;
@@ -426,9 +437,6 @@ html, body {
     }
     .bar-icon {
         font-size: 2rem;
-    }
-    .nav-icon .search {
-        
     }
     .nav-icon .user {
         display: none;

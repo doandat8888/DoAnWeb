@@ -22,6 +22,7 @@ html, body {
     height: 100vh;
     background-color: var(--gray);
     transition: all 0.5s ease;
+    z-index: 1000;
 }
 
 .menu-logo {
@@ -102,14 +103,38 @@ html, body {
     transition: transform 0.5s ease;
 }
 
+
 .left-0 {
     left: 0;
     transition: all 0.5s ease;
 }
 
 
-@media screen and (max-width: 1020px) {
+
+
+@media screen and (max-width: 1000px) {
+    .menu-logo img {
+        width: 8rem;
+    }
+    .menu-logo {
+        padding: 1rem 2rem;
+    }
     .pages {
         left: 0;
+    }
+    .menu {
+        /* transform: translateX(-100%); */
+        transition: transform 0.3s ease;
+        width: 50%;
+        top: 2rem;
+    }
+    .menu-item-link {
+        font-size: 0.8rem;
+    }
+    .user-info {
+        font-size: 1rem;
+    }
+    .pages-header-search-input {
+        display: none;
     }
 }

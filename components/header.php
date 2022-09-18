@@ -1,6 +1,6 @@
 <div class="search-section d-flex justify-content-center align-items-center">
     <input type="text" placeholder="TÌM KIẾM SẢN PHẨM" class="search-input">
-    <a href="../pages/search/index.php" class="search-link" style="color: none !important;">
+    <a href="../../pages/search/index.php" class="search-link" style="color: none !important;">
         <span class="material-symbols-outlined header-icon search-icon-1">
             search
         </span>
@@ -49,25 +49,33 @@
        
         <div class="nav-icon">
             <?php 
-                session_start();
                 if(isset($_SESSION['role'])) {
                     if($_SESSION['role'] === 'R1') {
                         if(isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
                             $firstName = $_SESSION['firstName'];
                             $lastName = $_SESSION['lastName'];
-                            echo "<span class='user-info'>$firstName $lastName</span>";
+                            echo "<div class='user-info'>$firstName $lastName</div>
+                                <a href='../../index.php?msg=login-out' class='header-icon'>
+                                    <span class='material-symbols-outlined'>
+                                        door_open
+                                    </span>
+                                </a>
+                            ";
+                            
                         }
                     }
                 }else {
-                    echo '<a href="./pages/login/index.php" class="header-icon user-icon">
+                    echo '<a href="../../pages/login/index.php" class="header-icon user-icon">
                         <span class="material-symbols-outlined">
                             person
                         </span>
-                    </a>';
+                    </a>'
+                    ;
+
                 }
             ?>
-            <div class="header-icon">
-                <span class="material-symbols-outlined cart-icon">
+            <div class="header-icon cart-icon">
+                <span class="material-symbols-outlined">
                     shopping_cart
                 </span>
                 <span class="cart-number"></span>
