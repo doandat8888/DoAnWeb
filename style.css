@@ -789,7 +789,31 @@ html, body {
     font-size: 2rem;
     font-weight: 200;
 }
-
+/* ------------- */
+.pro-btn {
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    left: 10%;
+    bottom: -10%;
+    transition: all ease 0.4s;
+}
+.product-img:hover > .pro-btn a,
+.pro-btn a:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+.product-img:hover .pro-btn {
+    z-index: 2;
+    visibility: visible;
+    opacity: 0.7;
+    left: 10%;
+    bottom: 10%;
+    width: 100%;
+}
+/* ----------------- */
 .type-button {
     margin-top: 2.4rem;
     margin-bottom: 4.8rem;

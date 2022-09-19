@@ -113,6 +113,11 @@
                             </span>
                             <img src="../../src/img/products/women/product-women-1-2 (2).jpg" class="product-img-content product-img2"/>
                             <img src="../../src/img/products/women/product-women-1-1 (3).jpg" class="product-img-content product-img1"/>
+                            <div class='pro-btn d-flex'>
+                                <a href='#' class='hidden-btn'>
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title product-info">
@@ -160,6 +165,11 @@
                                 <img src="../../src/img/products/women/product-women-2-2.jpg" class="product-img-content product-img2"/>
                             </a>
                             <img src="../../src/img/products/women/product-women-2-1.jpg" class="product-img-content product-img1"/>
+                            <div class='pro-btn d-flex'>
+                                <a href='../../pages/detailProduct/indexpd.php' class='hidden-btn'>
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title product-info">
@@ -205,6 +215,11 @@
                             </span>
                             <img src="../../src/img/products/women/product-women-3-2.jpg" class="product-img-content product-img2"/>
                             <img src="../../src/img/products/women/product-women-3-1.jpg" class="product-img-content product-img1"/>
+                            <div class='pro-btn d-flex'>
+                                <a href='#' class='hidden-btn'>
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title product-info">
@@ -250,6 +265,11 @@
                             </span>
                             <img src="../../src/img/products/women/product-women-4-2.jpg" class="product-img-content product-img2"/>
                             <img src="../../src/img/products/women/product-women-4-1.jpg" class="product-img-content product-img1"/>
+                            <div class='pro-btn d-flex'>
+                                <a href='#' class='hidden-btn'>
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title product-info">
@@ -292,9 +312,6 @@
     <footer>
         <?php 
             include_once "../../components/footer.php";
-        ?>
-        <?php
-            include_once "../../components/scrollToTop.php"
         ?>
     </footer>
    </div>

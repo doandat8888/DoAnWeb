@@ -365,13 +365,51 @@ h2{
     width: 100%;
     position: relative;
 }
-
+/* -------------- */
+.pro-btn {
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    left: 10%;
+    bottom: -10%;
+    transition: all ease 0.4s;
+}
+.product-img:hover > .pro-btn a,
+.pro-btn a:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+.product-img:hover .pro-btn {
+    z-index: 2;
+    visibility: visible;
+    opacity: 0.7;
+    left: 10%;
+    bottom: 10%;
+    width: 100%;
+}
+.product-cart-buy {
+    color: #FFFFFF;
+}
+.hidden-btn {
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 11px;
+    border: 0;
+    background: #495057;;
+    color: #FFFFFF;
+    width: auto;
+    padding: 9px 10px;
+    outline: none;
+    transition: all 0.5s;
+}
+/* -------------- */
 .product-img-content{
     width: 100%;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
-
 .img{
     vertical-align: middle;
     border-style: none;
