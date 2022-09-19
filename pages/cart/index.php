@@ -171,11 +171,11 @@
                 </div>
                 <?php include_once "../../components/footer.php"?>
             </div>
-            
-        </div>
-        
+
+            <?php include_once "../../components/scrollToTop.php"?>
+        </div>      
     </body>
     <script src="./script.js"></script>
+    <script src="./pages/deatailProduct/script.js"></script>
     <script src="https://kit.fontawesome.com/644376ed9d.js" crossorigin="anonymous"></script>
-    
 </html>

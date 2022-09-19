@@ -293,6 +293,9 @@
         <?php 
             include_once "../../components/footer.php";
         ?>
+        <?php
+            include_once "../../components/scrollToTop.php"
+        ?>
     </footer>
    </div>
     <script src="./script.js"></script>

@@ -62,7 +62,7 @@ function scrollFunction() {
 function scrollToTop() {
   
 	window.scrollTo(0, 0);
-  }
+}
 
 // quantity action
 function increaseCount(a,b) {
@@ -184,4 +184,10 @@ loadMoreBtn.onclick = () => {
 	if(currentItem >= boxes.length) {
 		loadMoreBtn.style.display = 'none';
 	}
+}
+//Add cart
+const btn = document.querySelectorAll('.add-cart')
+for (var i = 0; i < array.length; index++) {
+	const element = array[index];
+	
 }

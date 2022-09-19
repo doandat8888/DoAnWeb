@@ -62,15 +62,6 @@
 .imgpro {
     box-sizing: border-box;
 }
-#ProductImg {
-    display: block;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--main-color);
-    text-align: left;
-    background-color: var(--white);
-}
 .img-icon {
     text-align: center;
     margin-bottom: 20px;
@@ -447,7 +438,7 @@
 /* END CONTENT */
 
 /* FOOTER */
-#back-to-top {
+/* #back-to-top {
     display: none;
     position: fixed;
     bottom: 100px;
@@ -463,8 +454,8 @@
     fill: grey;
 }
 .up-icon:hover {
-    fill: #00CED1;
-}
+    fill: var(--black);
+} */
 /* ANIMATION */
 @keyframes fadeInUp {
     from {

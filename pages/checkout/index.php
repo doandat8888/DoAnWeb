@@ -220,6 +220,9 @@
                 <?php 
                     include_once "../../components/footer.php";
                 ?>
+                <?php
+                    include_once "../../components/scrollToTop.php"
+                ?>
             </div>
             
         </div>
