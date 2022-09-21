@@ -122,6 +122,10 @@ html, body {
     .pages {
         left: 0;
     }
+
+    .pages {
+        padding: 0.2rem;
+    }
     .menu {
         /* transform: translateX(-100%); */
         transition: transform 0.3s ease;

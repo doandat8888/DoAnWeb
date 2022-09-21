@@ -1,0 +1,78 @@
+:root {
+    --main-color: #373737;
+    --white: #fff;
+    --text-color: #6C6D70;
+    --badget-bg: #fff;
+    --green: #98a882;
+    --pink: #fb6e7c;
+    --brown: #c4b095;
+    --yellow: #f4ed95;
+    --gray: #A8A9AD;
+    --black: #212529;
+    --border-color: #221F20;
+}
+
+.manage-product .title {
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 1.2rem;
+    letter-spacing: 0.1rem;
+    color: var(--text-color);
+}
+
+.manage-product-table {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.manage-product-table th {
+    font-size: 1rem;
+}
+
+.manage-product-table td {
+    font-size: 1rem;
+}
+
+.manage-product-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.manage-product-action .action-btn {
+    border: none;
+    outline: none;
+    margin: 0.4rem;
+    padding: 0.2rem 0.8rem;
+}
+
+.manage-product-action .edit {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.manage-product-action .delete {
+    background-color: var(--gray);
+    color: var(--white);
+}
+
+@media screen and (max-width: 1000px) {
+    .manage-product-table th {
+        font-size: 0.8rem;
+    }
+    
+    .manage-product-table td {
+        font-size: 0.8rem;
+    }
+
+    .manage-product .title {
+        font-size: 1.4rem;
+    }
+}
+
+.product-img-container {
+}
