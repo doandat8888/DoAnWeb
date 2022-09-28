@@ -8,27 +8,38 @@
                 <input type="text" placeholder="Bạn tìm gì..." class="pages-header-search-input">
             </div>
             <?php 
-                if(isset($_SESSION['role'])) {
-                    if($_SESSION['role'] === 'R2') {
-                        if(isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['image'])) {
-                            $firstName = $_SESSION['firstName'];
-                            $lastName = $_SESSION['lastName'];
-                            $role = $_SESSION['role'];
-                            $image = $_SESSION['image'];
-                            echo "
-                                <div class='admin-info col-4 d-flex'>
-                                    <div class='admin-img-container'>
-                                        <img src='$image' alt='' class='admin-img'>
-                                    </div>
-                                    <div class='welcome'>
-                                        <div class='user-info'>$firstName $lastName</div>
-                                    </div>
-                                </div>
-                            ";
-                        }
-                        
-                    }
-                }
+                // if(isset($_SESSION['role'])) {
+                //     if($_SESSION['role'] === 'R2') {
+                        // if(isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['image'])) {
+                        //     $firstName = $_SESSION['firstName'];
+                        //     $lastName = $_SESSION['lastName'];
+                        //     $role = $_SESSION['role'];
+                        //     $image = $_SESSION['image'];
+                        //     echo "
+                        //         <div class='admin-info col-4 d-flex'>
+                        //             <div class='admin-img-container'>
+                        //                 <img src='$image' alt='' class='admin-img'>
+                        //             </div>
+                        //             <div class='welcome'>
+                        //                 <div class='user-info'>$firstName $lastName</div>
+                        //             </div>
+                        //         </div>
+                        //     ";
+                        // }
+                        // foreach($data as $user) {
+                        //     echo "
+                        //         <div class='admin-info col-4 d-flex'>
+                        //             <div class='admin-img-container'>
+                        //                 <img src='".$user->getImage()."' alt='' class='admin-img'>
+                        //             </div>
+                        //             <div class='welcome'>
+                        //                 <div class='user-info'>".$user->getFirstName()." ".$user->getLastName()."</div>
+                        //             </div>
+                        //         </div>
+                        //     ";
+                        // }
+                    // }
+                //}
             ?>
             
         </div>

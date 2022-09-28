@@ -21,7 +21,8 @@
         <div class="container">
             <?php 
                 session_start();
-                include_once "../../components/header.php";
+                //include_once "../../components/header.php";
+                include_once "../../controllers/userController.php";
                 if(isset($_GET['msg'])) {
                     if($_GET['msg'] == 'login-out') {
                         if(isset($_SESSION['role']) && isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
@@ -31,8 +32,12 @@
                         }
                     }
                 }
+                if(isset($_POST['submit'])) {
+                    $userController = new UserController();
+                    $userController->getUser();
+                }
             ?>
-            <form action="login.php" method="post">
+            <form action="./index.php" method="post">
                 <div class="login-body row">
                     <div class="col-sm-8 col-md-6 col-lg-4 col-12 login-form">
                         <div class="login-form-logo">
@@ -66,7 +71,7 @@
                                     Quên mật khẩu?
                                 </a>
                             </div>
-                            <button class="login-form-btn" type="submit">
+                            <button class="login-form-btn" name="submit" type="submit">
                                 Đăng nhập
                             </button>
                             <div class="login-form-sign-up">

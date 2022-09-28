@@ -21,7 +21,7 @@
         <li class="category-item">Sản phẩm</li>
         <li class="category-item">Nam</li>
         <li class="category-item">Nữ</li>
-        <li class="category-item">Liên hệ</li>
+        <li class="category-item">Trẻ em</li>
     </ul>
 </div>
 
@@ -43,7 +43,7 @@
                 <li class="nav-item">Sản phẩm</li>
                 <li class="nav-item">Nam</li>
                 <li class="nav-item">Nữ</li>
-                <li class="nav-item">Liên hệ</li>
+                <li class="nav-item">Trẻ em</li>
             </ul>
         </div>
        
@@ -65,7 +65,7 @@
                         }
                     }
                 }else {
-                    echo '<a href="../../pages/login/index.php" class="header-icon user-icon">
+                    echo '<a href="../../views/login/index.php" class="header-icon user-icon">
                         <span class="material-symbols-outlined">
                             person
                         </span>
