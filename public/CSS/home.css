@@ -1,0 +1,144 @@
+:root {
+    --main-color: #373737;
+    --white: #fff;
+    --text-color: #6C6D70;
+    --badget-bg: #fff;
+    --green: #98a882;
+    --pink: #fb6e7c;
+    --brown: #c4b095;
+    --yellow: #f4ed95;
+    --gray: #A8A9AD;
+    --black: #212529;
+    --border-color: #221F20;
+}
+
+html, body {
+    font-family: "Roboto", "Sanserif";
+}
+
+.menu {
+    padding: 0 !important;
+    position: fixed !important;
+    height: 100vh;
+    background-color: var(--gray);
+    transition: all 0.5s ease;
+    z-index: 1000;
+}
+
+.menu-logo {
+    padding: 2rem;
+}
+
+.menu-list {
+    width: 100%;
+}
+
+.menu-item-link {
+    padding: 1.2rem 0 1.2rem 2rem;
+    display: flex;
+    color: var(--black);
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.menu-item-link:hover {
+    background-color: var(--black);
+    color: var(--white);
+    text-decoration: none;
+}
+
+.menu-item .menu-item-link .content {
+    margin-left: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.pages {
+    position: relative !important;
+    left: 25%;
+    transition: all 0.5s ease;
+    padding: 0.4rem 2rem;
+}
+
+.pages-header-icon {
+    cursor: pointer;
+}
+
+.pages-header-icon:hover {color: var(--gray);}
+
+.pages-header-search-input {
+    padding: 0.4rem 1rem;
+    border-radius: 3rem;
+    border: 1px solid var(--gray);
+    outline: none;
+    width: 100%;
+}
+
+.admin-info {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.admin-img-container {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    margin-right: 0.4rem;
+}
+
+.admin-img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.welcome {
+    display: flex;
+    align-items: center;
+}
+
+.translateX {
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+
+.left-0 {
+    left: 0;
+    transition: all 0.5s ease;
+}
+
+
+
+
+@media screen and (max-width: 1000px) {
+    .menu-logo img {
+        width: 8rem;
+    }
+    .menu-logo {
+        padding: 1rem 2rem;
+    }
+    .pages {
+        left: 0;
+    }
+
+    .pages {
+        padding: 0.2rem;
+    }
+    .menu {
+        /* transform: translateX(-100%); */
+        transition: transform 0.3s ease;
+        width: 50%;
+        top: 2rem;
+    }
+    .menu-item-link {
+        font-size: 0.8rem;
+    }
+    .user-info {
+        font-size: 1rem;
+    }
+    .pages-header-search-input {
+        display: none;
+    }
+}

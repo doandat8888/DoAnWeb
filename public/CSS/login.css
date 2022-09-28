@@ -1,0 +1,117 @@
+:root {
+    --main-color: #373737;
+    --white: #fff;
+    --text-color: #6C6D70;
+    --badget-bg: #fff;
+    --green: #98a882;
+    --pink: #fb6e7c;
+    --brown: #c4b095;
+    --yellow: #f4ed95;
+    --gray: #A8A9AD;
+    --black: #212529;
+    --border-color: #221F20;
+}
+
+.login-body {
+    position: relative;
+    top: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.2rem
+}
+
+.login-form {
+    padding: 2rem;
+    border: 1px solid var(--gray);
+    box-shadow: 0 0.8rem 1.8rem hsl(210deg 8% 62% / 20%);
+}
+
+.login-form-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-logo-img{
+    width: 50%;
+}
+
+.login-form-body {
+    margin-top: 2rem;
+}
+
+.login-form-input-item {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 1.4rem 1.2rem;
+    border: 1px solid var(--gray);
+    box-shadow: 0 0.8rem 1.8rem hsl(210deg 8% 62% / 20%);
+    font-size: 1.2rem;
+}
+
+.login-form-auth {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-form-auto {
+    display: flex;
+}
+
+.login-form-auto .auto-content {
+    margin-left: 1.2rem;
+    font-size: 1.2rem;
+}
+
+.login-form-forget {
+    font-size: 1.2rem;
+    color: var(--black);
+    font-weight: bold;
+    text-decoration: none !important;
+}
+
+.login-form-forget:hover {
+    color: var(--gray);
+}
+
+.login-form-sign-up {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.login-form-sign-up-link {
+    color: var(--black);
+    font-weight: bold;
+    text-decoration: none !important;
+}
+
+.login-form-sign-up-link:hover {
+    color: var(--gray);
+}
+
+.login-form-btn {
+    padding: 1.2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    background-color: var(--black);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin: 2rem 0;
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.login-form-btn:hover {
+    color: var(--black);
+    background-color: var(--white);
+    border: 1px solid var(--black);
+}
+
+
