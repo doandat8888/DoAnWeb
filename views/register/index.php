@@ -21,10 +21,22 @@
         <div class="container">
             <?php 
                 include_once "../../components/header.php";
+                include_once "../../controllers/userController.php";
+                if (isset($_POST['submit'])) {
+                    $firstName = $_POST['firstName'];
+                    $lastName = $_POST['lastName'];
+                    $phoneNumber = $_POST['phoneNumber'];
+                    $email = $_POST['email'];
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+                    $gender = $_POST['gender'];
+                    $controller = new UserController();
+                    $controller->setUser($firstName, $lastName, $phoneNumber, $email, $username, $password, $gender);
+                }
             ?>
 
             <div class="register-body row">
-                <form class="col-sm-8 col-md-6 col-lg-4 col-12 register-form" method="post" action="register.php">
+                <form class="col-sm-8 col-md-6 col-lg-4 col-12 register-form" method="post" action="./index.php">
                     <div class="register-form-logo">
                         <img src="../../src/img/logo.png" class="register-logo-img">
                     </div>
@@ -53,7 +65,7 @@
                                 }
                             ?>
                         </div>
-                        <button class="register-form-btn" type="submit">
+                        <button class="register-form-btn" type="submit" name="submit">
                             Đăng ký
                         </button>
                         <div class="register-form-sign-up">
