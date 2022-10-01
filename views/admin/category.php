@@ -46,9 +46,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="submit" value="Thêm Danh Mục">
             <input type="reset" value="Làm mới">
             <?php
-            if(isset($addcategory)) {
-                echo $addcategory;
-            }
             ?>
         </form>
         <h3>Thêm sản phẩm vào danh mục</h3>
@@ -56,7 +53,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="categoryid">Chọn Danh Mục:</label>
             <select name="categoryid">
                 <?php
-                    
+                    //code
+
                 ?>
             </select>
         </form>

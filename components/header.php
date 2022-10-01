@@ -1,6 +1,6 @@
 <div class="search-section d-flex justify-content-center align-items-center">
     <input type="text" placeholder="TÌM KIẾM SẢN PHẨM" class="search-input">
-    <a href="../../pages/search/index.php" class="search-link" style="color: none !important;">
+    <a href="../../views/search/index.php" class="search-link" style="color: none !important;">
         <span class="material-symbols-outlined header-icon search-icon-1">
             search
         </span>
