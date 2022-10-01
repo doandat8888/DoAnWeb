@@ -1,7 +1,6 @@
 <?php 
     include_once "../../models\categoryProductModel.php";
 ?>
-
 <?php 
     class CategoryProductController {
         public $model;
@@ -25,10 +24,13 @@
                 $result = $this->model->addCategory($categoryname);
                 if($result == true) {
                     header("Location: ../../category.php?msg=done");
+                    echo "<span class"
                 }else if($result == false) {
                     header("Location: ../../category.php?msg=error");
                 }
             }
-        }   
+        }
+        
+        
     }
 ?>

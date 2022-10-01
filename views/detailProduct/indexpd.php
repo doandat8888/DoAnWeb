@@ -9,9 +9,9 @@
     <!-- Reset CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <!-- Link CSS -->
-    <link rel="stylesheet" href="./basepd.css">
-    <link rel="stylesheet" href="./stylespd.css">
-    <link rel="stylesheet" href="./responsivepd.css">
+    <link rel="stylesheet" href="../../public/CSS/basepd.css">
+    <link rel="stylesheet" href="../../public/CSS/stylespd.css">
+    <link rel="stylesheet" href="../../public/CSS/responsivepd.css">
     <link rel="stylesheet" href="../../style.css"> 
     <!-- Link icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
@@ -45,7 +45,7 @@
             <!-- Product -->
             <div class='col-lg-7 col-md-12 col-12'>
                 <div class='imgpro'>
-                    <img class="ProductImg" width='100%' src='../../src/img/products/women/product-women-2-1.jpg' alt=''>
+                    <img id="ProductImg" width='100%' src='../../src/img/products/women/product-women-2-1.jpg' alt=''>
                     <div class='img-icon'>
                         <img src='../../src/img/products/women/product-women-2-1.jpg' alt='' class='small-img'>
                         <img src='../../src/img/products/women/product-women-2-2.jpg' alt='' class='small-img'>
@@ -199,7 +199,7 @@
         <div class='row introduction'>
             <div class='col-lg-12 col-12 sizechart'>
                 <h3>Size chart</h3>
-                <img class="sizechart-img" src='./sizechart.jpg'>
+                <img class="sizechart-img" src='../../src/img/sizechart.jpg'>
                 <div class='heading'>
                     <h2>Có thể bạn sẽ thích</h2>
                 </div>
@@ -251,14 +251,14 @@
                                 <span class="material-symbols-outlined product-cart-icon">
                                     local_mall
                                 </span>
-                                <p class="product-cart-buy add-cart">Thêm vào giỏ</p>
+                                <p class="product-cart-buy">Mua ngay</p>
                             </div>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-12">
-                <a href="#pro-load" id = "pro-load-more">Load More</a>
+                <a href="#pro-load" id = "pro-load-more">Xem thêm</a>
             </div>
         </div>
         <!-- FOOTER -->
@@ -275,7 +275,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
-    <script src="./script.js"></script>
+    <script src="../../public/JS/detailProduct.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
