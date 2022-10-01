@@ -76,3 +76,62 @@
 
 .product-img-container {
 }
+
+.search-add {
+    margin-top: 1.2rem;
+    padding: 0;
+    justify-content: space-between;
+}
+
+.search {
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: relative;
+    right: 2rem;
+    cursor: pointer;
+}
+
+.search-icon:hover {
+    opacity: 0.8;
+}
+
+.search-input {
+    padding: 0.6rem 0.8rem;
+    width: 100%;
+}
+
+.add-btn {
+    border: none;
+    outline: none;
+    background-color: var(--black);
+    color: var(--white);
+    display: flex;
+    padding: 0;
+    align-items: center;
+    transition: all 0.3s ease;
+    justify-content: center;
+}
+
+.add-btn:hover {
+    border: 1px solid var(--black);
+    color: var(--black);
+    background-color: var(--white);
+}
+
+.modal-body {
+    padding: 0 !important;
+    font-size: 0.8rem;
+}
+
+.product-name {
+    padding: 0.4rem !important;
+}
+
+.product-name-input {
+    padding: 0.4rem 0.4rem;
+    width: 100%;
+}

@@ -49,6 +49,32 @@
        
         <div class="nav-icon">
             <?php 
+                // include "./controllers/userController.php";
+                // $controler = new UserController();
+                // if(isset($_SESSION['role'])) {
+                //     if($_SESSION['role'] === 'R1') {
+                //         $username = $_SESSION['username'];
+                //         $password = $_SESSION['password'];
+                //         $data = $controler->getInfoUser($username, $password);
+                //         foreach($data as $user) {
+                //             echo "<div class='user-info'>".$user->getFirstName()." ".$user->getLastName()."</div>
+                //                 <a href='../../index.php?msg=login-out' class='header-icon'>
+                //                     <span class='material-symbols-outlined'>
+                //                         door_open
+                //                     </span>
+                //                 </a>
+                //             ";
+                //         }
+                //     }
+                // }else {
+                //     echo '<a href="../../views/login/index.php" class="header-icon user-icon">
+                //         <span class="material-symbols-outlined">
+                //             person
+                //         </span>
+                //     </a>'
+                //     ;
+                // }
+                
                 if(isset($_SESSION['role'])) {
                     if($_SESSION['role'] === 'R1') {
                         if(isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
