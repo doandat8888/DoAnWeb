@@ -1,43 +1,47 @@
 <?php 
+    include_once "../../modules/db_module.php";
+    include_once "../../validate_module.php";
+
     class CategoryProductModel {
-        private $category_id;
-        private $category_name;
-        private $category_status;
-        
-        public function getCategotyId() {return $this->category_id;}
-        public function getCategoryName() {return $this->category_name;}
-        public function getCategoryStatus() {return $this->category_status;}
-
-        public function __construct($category_id, $category_name, $category_status) {
-            $this->category_id = $category_id;
-            $this->category_name = $category_name;
-            $this->category_status = $category_status;
-        }
-
-        public function __toString()
-        {
-            return "CategoryProduct($this->category_id, $this->category_name, $this->category_status)";
-        }
 
         public function getCategoryList()
         {
             $link = null;
             taoKetNoi($link);
-            $result = chayTruyVanTraVeDL($link,"select * from categories");
+            $result = chayTruyVanTraVeDL($link,"SELECT *FROM categories");
             $data = $result;
             giaiPhongBoNho($link,$result);
             return $data;
         }
 
-        public function getCategory($id)
+        public function getCategory($categoryname)
         {   
             $allCategory = $this->getCategoryList();
             foreach($allCategory as $cate){
-                if ($cate->getId()===$id) {
+                if ($cate->getName()===$categoryname) {
                     return $cate;
                 }
             }
             return null;
+        }
+
+        public function addCategory($categoryname)
+        {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            if(existsCategoryProduct($link, $categoryname)) {
+                giaiPhongBoNho($link, true);
+                $result = false;
+            }else {
+                $categoryname = mysqli_real_escape_string($link, $categoryname);
+                $query = "INSERT INTO `categories` (NULL, `name`, `status`) VALUES (, '$categoryname', 1)";
+                $addcate = chayTruyVanKhongTraVeDL($link, $query);
+                if($addcate) {
+                    $result = true;
+                }
+            }
+            return $result;
         }
     }
 ?>
