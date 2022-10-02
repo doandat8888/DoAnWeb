@@ -20,7 +20,8 @@
             $ncategory = [NULL, 'name', 'status'];
             for($i = 0; $i < count($ncategory); $i++) {
                 if($_POST[$ncategory[$i]] == '') {
-                    header("Location: ../../category.php?msg=missing-info");
+                    header('Location: ../../category.php?msg=missing-info');
+                    echo "<span class='warning'>Bạn chưa điền đầy đủ thông tin</span>";
                     break;
                 }else {
                     $count++;
@@ -29,13 +30,18 @@
             if($count == count($ncategory)) {
                 $result = $this->model->addCategory($categoryname);
                 if($result == true) {
-                    header("Location: ../../category.php?msg=done");
-                    echo "<span class='success'>Thêm danh mục thành công</span>";
+                    header('Location: ../../category.php?msg=done');
+                    echo "<span class='success'>Thêm danh mục sản phẩm thành công</span>";
                 }else if($result == false) {
-                    header("Location: ../../category.php?msg=error");
-                    echo "<span class='error'>Danh mục đã tồn tại, thêm danh mục thất bại!</span>";
+                    header('Location: ../../category.php?msg=categoryname-existed');
+                    echo "<span class='success'>Danh mục sản phẩm đã tồn tại</span>";
                 }
             }
-        }  
+        }
+        //Lấy ra danh mục theo tên danh mục
+        public function getCategoryByName($categoryname) {
+            $data = $this->model->getCategoryByName($categoryname);
+            return $data;
+        } 
     }
 ?>
