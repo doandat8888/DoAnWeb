@@ -90,9 +90,9 @@
 }
 
 .search-icon {
-    position: relative;
+    /* position: relative;
     right: 2rem;
-    cursor: pointer;
+    cursor: pointer; */
 }
 
 .search-icon:hover {
@@ -127,11 +127,25 @@
     font-size: 0.8rem;
 }
 
-.product-name {
+.product-info-list {
+    flex-wrap: wrap;
+}
+
+.product-info-item {
     padding: 0.4rem !important;
 }
 
-.product-name-input {
+.product-info-item-input {
     padding: 0.4rem 0.4rem;
     width: 100%;
+}
+
+.search-btn {
+    position: relative;
+    right: 3rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
 }

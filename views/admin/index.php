@@ -20,6 +20,19 @@
         <title>Admin page</title>
     </head>
     <body>
+        <?php 
+            if(isset($_GET['msg'])) {
+                if($_GET['msg'] == 'missing-info') {
+                    echo "<script type='text/javascript'>alert('Vui lòng nhập đủ thông tin sản phẩm');</script>";
+                }
+                if($_GET['msg'] == 'productname-existed') {
+                    echo "<script type='text/javascript'>alert('Tên sản phẩm đã tồn tại');</script>";
+                }
+                if($_GET['msg'] == 'done') {
+                    echo "<script type='text/javascript'>alert('Thêm sản phẩm thành công');</script>";
+                }
+            }
+        ?>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 d-lg-block menu">
