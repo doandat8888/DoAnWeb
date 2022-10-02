@@ -1,6 +1,5 @@
 <?php 
     session_start();
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +20,7 @@
     </head>
     <body>
         <?php 
+            include_once "../../controllers/productController.php";
             if(isset($_GET['msg'])) {
                 if($_GET['msg'] == 'missing-info') {
                     echo "<script type='text/javascript'>alert('Vui lòng nhập đủ thông tin sản phẩm');</script>";
