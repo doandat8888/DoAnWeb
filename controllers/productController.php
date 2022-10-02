@@ -33,6 +33,10 @@
                 }
             }
         }
+        public function getProductByName($name) {
+            $data = $this->model->getProductByName($name);
+            return $data;
+        }
         
     }
 ?>

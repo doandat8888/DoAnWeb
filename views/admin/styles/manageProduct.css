@@ -90,9 +90,9 @@
 }
 
 .search-icon {
-    position: relative;
+    /* position: relative;
     right: 2rem;
-    cursor: pointer;
+    cursor: pointer; */
 }
 
 .search-icon:hover {
@@ -138,4 +138,14 @@
 .product-info-item-input {
     padding: 0.4rem 0.4rem;
     width: 100%;
+}
+
+.search-btn {
+    position: relative;
+    right: 3rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
 }

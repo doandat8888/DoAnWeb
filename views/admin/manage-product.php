@@ -80,12 +80,14 @@
 
     <div class="title">Quản lí sản phẩm</div>
     <div class="search-add col-12 d-flex">
-        <div class="search col-8">
+        <form class="search col-8" method="post" action="./manage-product.php">
             <input type="text" class="search-input" placeholder="Nhập từ khóa..." name="keyword" />
-            <span class="material-symbols-outlined search-icon">
-                search
-            </span>
-        </div>
+            <button type="submit" class="search-btn" name="search-submit">
+                <span class="material-symbols-outlined search-icon">
+                    search
+                </span>
+            </button>
+        </form>
         <button class="add-btn col-2" data-toggle="modal" data-target="#exampleModal">
             <span class="material-symbols-outlined add-icon">
                 add
@@ -122,6 +124,12 @@
                     $image02 = $_POST['pro-img-02'];
                     $controller = new ProductController();
                     $data = $controller->setProduct($name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
+                }
+                if(isset($_POST['search-submit'])) {
+                    if($_POST['keyword'] != '') {
+                        $name = $_POST['keyword'];
+                        $data = $controller->getProductByName($name);
+                    }
                 }
                 foreach ($data as $product) {
                     if($product->getStatus() == 1) {
