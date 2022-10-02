@@ -1,6 +1,6 @@
 <div class="manage-product">
     <!-- Modal -->
-    <form method="post" action="../../views/admin/index.php">
+    <form method="post" action="./index.php?page=manage-product">
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -71,7 +71,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        
                         <button type="submit" class="btn btn-primary" name="add-submit">Thêm</button>
                     </div>
                 </div>
@@ -111,47 +110,70 @@
             </thead>
             <tbody>
                 <?php
-                include_once "../../controllers/productController.php";
-                $controller = new ProductController();
-                $data = $controller->getAllProduct();
-                if(isset($_POST['add-submit'])) {
-                    $name = $_POST['pro-name'];
-                    $color = $_POST['pro-color'];
-                    $size = $_POST['pro-size'];
-                    $price = $_POST['pro-price'];
-                    $quantity = $_POST['pro-quantity'];
-                    $type = $_POST['pro-type'];
-                    $description = $_POST['pro-description'];
-                    $categoryId = $_POST['pro-category'];
-                    $image01 = $_POST['pro-img-01'];
-                    $image02 = $_POST['pro-img-02'];
+                    include_once "../../controllers/productController.php";
                     $controller = new ProductController();
-                    $data = $controller->setProduct($name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
-                }
-                if(isset($_POST['search-submit'])) {
-                    if($_POST['keyword'] != '') {
-                        $name = $_POST['keyword'];
-                        $data = $controller->getProductByName($name);
+                    $data = $controller->getAllProduct();
+                    if(isset($_POST['add-submit'])) {
+                        $name = $_POST['pro-name'];
+                        $color = $_POST['pro-color'];
+                        $size = $_POST['pro-size'];
+                        $price = $_POST['pro-price'];
+                        $quantity = $_POST['pro-quantity'];
+                        $type = $_POST['pro-type'];
+                        $description = $_POST['pro-description'];
+                        $categoryId = $_POST['pro-category'];
+                        $image01 = $_POST['pro-img-01'];
+                        $image02 = $_POST['pro-img-02'];
+                        $controller = new ProductController();
+                        $result = $controller->setProduct($name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
+                        if($result === -1) {
+                            echo "<script type='text/javascript'>alert('Vui lòng nhập đủ thông tin sản phẩm');</script>";
+                        }else if($result == 1) {
+                            echo "<script type='text/javascript'>alert('Tên sản phẩm đã tồn tại');</script>";
+                        }else if($result == 0) {
+                            echo "<script type='text/javascript'>alert('Thêm sản phẩm thành công');</script>";
+                        }
                     }
-                }
-                foreach ($data as $product) {
-                    if($product->getStatus() == 1) {
-                        echo "
-                            <tr>
-                                <th scope='row'>" . $product->getId() . "</th>
-                                <td class='product-img-container col-2'><img src='" . $product->getImage01() . "' class='manage-product-img col-lg-6 col-12'></td>
-                                <td>" . $product->getName() . "</td>
-                                <td>" . $product->getPrice() . "</td>
-                                <td class='manage-product-action'>
-                                    <button class='edit action-btn'>
-                                        Sửa
-                                    </button>
-                                    <button class='delete action-btn'>Xóa</button>
-                                </td>
-                            </tr>   
-                        ";
+                    if(isset($_POST['search-submit'])) {
+                        if($_POST['keyword'] != '') {
+                            $name = $_POST['keyword'];
+                            $data = $controller->getProductByName($name);
+                        }
                     }
-                }
+                    if(isset($_GET['action'])) {
+                        if($_GET['action'] == 'delete') {
+                            if(isset($_GET['id'])) {
+                                $id = $_GET['id'];
+                                $controller = new ProductController();
+                                $result = $controller->deleteProduct($id);
+                                if($result == true) {
+                                    echo "<script type='text/javascript'>alert('Xóa sản phẩm thành công');</script>";
+                                }else if($result == false) {
+                                    echo "<script type='text/javascript'>alert('Có lỗi xảy ra');</script>";
+                                }
+                            }
+                        }
+                    }
+                    foreach ($data as $product) {
+                        if($product->getStatus() == 1) {
+                            echo "
+                                <tr>
+                                    <th scope='row'>" . $product->getId() . "</th>
+                                    <td class='product-img-container col-2'><img src='" . $product->getImage01() . "' class='manage-product-img col-lg-6 col-12'></td>
+                                    <td>" . $product->getName() . "</td>
+                                    <td>" . $product->getPrice() . "</td>
+                                    <td class='manage-product-action'>
+                                        <button class='edit action-btn'>
+                                            Sửa
+                                        </button>
+                                        <a href='./index.php?page=manage-product&action=delete&id=".$product->getId()."'>
+                                            <button class='delete action-btn' type='submit'>Xóa</button>
+                                        </a>
+                                    </td>
+                                </tr>   
+                            ";
+                        }
+                    }
                 ?>
             </tbody>
         </table>

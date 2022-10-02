@@ -57,6 +57,19 @@
             }
             return $data;
         } 
+        public function deleteProduct($id) {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            $query = "UPDATE products SET `status`= 0 WHERE `id` = $id";
+            $deleteuser = chayTruyVanKhongTraVeDL($link, $query);
+            if($deleteuser) {
+                $result = true;
+            }else {
+                $result = false;
+            }
+            return $result;
+        }
     }    
 ?>
 

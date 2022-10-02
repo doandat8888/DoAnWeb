@@ -14,7 +14,13 @@
         return $row[0] > 0;
     }
     function existsNameProduct($link, $productname) {
-        $result = chayTruyVanTraVeDL($link, "select count(*) from categories where name='".$productname."'");
+        $result = chayTruyVanTraVeDL($link, "select count(*) from products where name='".$productname."'");
+        $row = mysqli_fetch_row($result);
+        mysqli_free_result($result);
+        return $row[0] > 0;
+    }
+    function existsProductId($link, $productId) {
+        $result = chayTruyVanTraVeDL($link, "select count(*) from products where id='".$productId."'");
         $row = mysqli_fetch_row($result);
         mysqli_free_result($result);
         return $row[0] > 0;
