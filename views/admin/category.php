@@ -27,11 +27,6 @@ if(isset($_GET['msg'])) {
 ?>
 <?php
 include_once "../../controllers/categoryProductController.php";
-$category = new CategoryProductController();
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $categoryname = $_POST['categoryname'];
-    $addcategory = $category->addNewCategory($categoryname);
-}
 ?>
 <div class="manage-category">
     <!-- Modal -->
@@ -49,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="category-info-list col-12 d-flex">
                             <div class="category-info-item col-6">
                                 <div class="category-info-item-title">Danh mục</div>
-                                <input type="text" name="cat-name" placeholder="Vui lòng nhập danh mục sản phẩm..."></br>
+                                <input type="text" name="cat-name" class="category-info-item-input" placeholder="Vui lòng nhập danh mục sản phẩm..."></br>
                             </div>
                         </div>
                     </div>
