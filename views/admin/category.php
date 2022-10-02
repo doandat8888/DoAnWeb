@@ -42,10 +42,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h3>Thêm danh mục</h3>
         <form action="#" method="post">
             <label for="categoryname">Danh mục</label>
-            <input type="text" name="categoryname"></br>
+            <input type="text" name="categoryname" placeholder="Vui lòng nhập danh mục sản phẩm..."></br>
             <input type="submit" value="Thêm Danh Mục">
             <input type="reset" value="Làm mới">
             <?php
+                //code
             ?>
         </form>
         <h3>Thêm sản phẩm vào danh mục</h3>
@@ -68,7 +69,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             </thead>
             <tbody>
                 <?php
-                    //code
+                    include_once "../../controllers/categoryProductController.php";
+                    $controller = new CategoryProductController();
+                    $data = $controller->getCategoryList();
+                    foreach ($data as $category) {
+                        echo "
+                                <tr>
+                                    <th scope='row'>" . $category->getCategoryId() . "</th>
+                                    <td>" . $category->getCategoryName() . "</td>
+                                    <td>" . $category->getCategoryStatus() . "</td>
+                                </tr>   
+                            ";
+                    }
                 ?>
             </tbody>
         </table>

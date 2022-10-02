@@ -4,25 +4,23 @@
 
     class CategoryProductModel {
 
-        public function getCategoryList()
-        {
-            $link = null;
+        public function getCategoryList() {
+            $result = NULL;
+            $link = NULL;
             taoKetNoi($link);
-            $result = chayTruyVanTraVeDL($link,"SELECT *FROM categories");
-            $data = $result;
-            giaiPhongBoNho($link,$result);
-            return $data;
-        }
-
-        public function getCategory($categoryname)
-        {   
-            $allCategory = $this->getCategoryList();
-            foreach($allCategory as $cate){
-                if ($cate->getName()===$categoryname) {
-                    return $cate;
+            $data = array();
+            $query = "SELECT * from categories";
+            $result = chayTruyVanTraVeDL($link, $query);
+            if(mysqli_num_rows($result) > 0) {
+                while($rows = mysqli_fetch_assoc($result)) {
+                    $ncategory = new CategoryProduct($rows["id"], $rows["name"], $rows["status"]);
+                    array_push($data, $ncategory);
                 }
+                giaiPhongBoNho($link, $result);
+            }else{
+                $data = NULL;
             }
-            return null;
+            return $data;
         }
 
         public function addCategory($categoryname)
