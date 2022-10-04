@@ -50,5 +50,10 @@
             $data = $this->model->getProductByName($name);
             return $data;
         }
+
+        public function getProductById($id) {
+            $data = $this->model->getProductById($id);
+            return $data;
+        }
     }
 ?>

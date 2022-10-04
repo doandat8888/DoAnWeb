@@ -1,7 +1,7 @@
 <div class="manage-product">
     <!-- Modal -->
     <form method="post" action="./index.php?page=manage-product">
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -78,6 +78,7 @@
         </div>
     </form>
 
+
     <div class="title">Quản lí sản phẩm</div>
     <div class="search-add col-12 d-flex">
         <form class="search col-8" method="post" action="./index.php?page=manage-product">
@@ -90,7 +91,7 @@
                 </button>
             <!-- </a> -->
         </form>
-        <button class="add-btn col-2" data-toggle="modal" data-target="#exampleModal">
+        <button class="add-btn col-2" data-toggle="modal" data-target="#addModal">
             <span class="material-symbols-outlined add-icon">
                 add
             </span>
@@ -163,9 +164,11 @@
                                     <td>" . $product->getName() . "</td>
                                     <td>" . $product->getPrice() . "</td>
                                     <td class='manage-product-action'>
-                                        <button class='edit action-btn'>
-                                            Sửa
-                                        </button>
+                                        <a href='./index.php?page=update-product&id=".$product->getId()."'>
+                                            <button class='edit action-btn' data-toggle='modal' data-target='#editModal'>
+                                                Sửa
+                                            </button>
+                                        </a>
                                         <a href='./index.php?page=manage-product&action=delete&id=".$product->getId()."'>
                                             <button class='delete action-btn' type='submit'>Xóa</button>
                                         </a>

@@ -51,6 +51,9 @@
                 case 'bill':
                     include_once "bill.php";
                     break;
+                case 'update-product':
+                    include_once "updateProduct.php";
+                    break;
                 default:
                     include_once "dashboard.php";
                     break;
