@@ -15,33 +15,40 @@
         }
 
         //Thêm một danh mục mới
-        public function addNewCategory($categoryname) {
+        public function setCategory($categoryname) {
             $count = 0;
-            $ncategory = [NULL, 'name', 'status'];
-            for($i = 0; $i < count($ncategory); $i++) {
-                if($_POST[$ncategory[$i]] == '') {
-                    header('Location: ../../category.php?msg=missing-info');
-                    echo "<span class='warning'>Bạn chưa điền đầy đủ thông tin</span>";
-                    break;
-                }else {
-                    $count++;
-                }
+            $result = NULL;
+            if($_POST['cat-name'] == '') {
+                $result = -1;
+            }else {
+                $resultAddNew = $this->model->setCategory($categoryname);
+                    if($resultAddNew == true) {
+                        $result = 0;
+                    }else if($resultAddNew == false) {
+                        $result = 1;
+                    }
             }
-            if($count == count($ncategory)) {
-                $result = $this->model->addCategory($categoryname);
-                if($result == true) {
-                    header('Location: ../../category.php?msg=done');
-                    echo "<span class='success'>Thêm danh mục sản phẩm thành công</span>";
-                }else if($result == false) {
-                    header('Location: ../../category.php?msg=categoryname-existed');
-                    echo "<span class='success'>Danh mục sản phẩm đã tồn tại</span>";
-                }
-            }
+            return $result;
         }
         //Lấy ra danh mục theo tên danh mục
         public function getCategoryByName($categoryname) {
             $data = $this->model->getCategoryByName($categoryname);
             return $data;
-        } 
+        }
+        //Lấy ra danh mục sản phẩm theo id danh mục
+        public function getCategoryById($id) {
+            $data = $this->model->getCategoryById($id);
+            return $data;
+        }
+        //xóa danh mục sản phẩm
+        public function deleteCategory($id) {
+            $result = $this->model->deleteCategory($id);
+            return $result;
+        }
+        //cập nhật danh mục sản phẩm
+        public function editCategory($id, $name) {
+            $result = $this->model->editCategory($id, $name);
+            return $result;
+        }
     }
 ?>

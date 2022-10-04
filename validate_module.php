@@ -31,4 +31,10 @@
         mysqli_free_result($result);
         return $row[0] > 0;
     }
+    function existsCategoryProductId($link, $categoryid) {
+        $result = chayTruyVanTraVeDL($link, "select count(*) from categories where id='".$categoryid."'");
+        $row = mysqli_fetch_row($result);
+        mysqli_free_result($result);
+        return $row[0] > 0;
+    }
 ?>
