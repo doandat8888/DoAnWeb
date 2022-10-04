@@ -1,0 +1,31 @@
+:root {
+    --main-color: #373737;
+    --white: #fff;
+    --text-color: #6C6D70;
+    --badget-bg: #fff;
+    --green: #98a882;
+    --pink: #fb6e7c;
+    --brown: #c4b095;
+    --yellow: #f4ed95;
+    --gray: #A8A9AD;
+    --black: #212529;
+    --border-color: #221F20;
+}
+
+.action-btn {
+    border: none;
+    outline: none;
+    background-color: var(--black);
+    padding: 0.4rem 1.2rem;
+    color: var(--white);
+    margin-top: 2rem;
+    float: right;
+    margin-right: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: var(--white);
+    border: 1px solid var(--black);
+    color: var(--black);
+}

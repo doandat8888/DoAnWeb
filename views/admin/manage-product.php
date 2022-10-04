@@ -125,7 +125,6 @@
                         $categoryId = $_POST['pro-category'];
                         $image01 = $_POST['pro-img-01'];
                         $image02 = $_POST['pro-img-02'];
-                        $controller = new ProductController();
                         $result = $controller->setProduct($name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
                         if($result === -1) {
                             echo "<script type='text/javascript'>alert('Vui lòng nhập đủ thông tin sản phẩm');</script>";
@@ -141,6 +140,32 @@
                             $data = $controller->getProductByName($name);
                         }
                     }
+                    
+                        if(isset($_POST['edit-submit'])) {
+                            if(isset($_GET['id'])) {
+                                $id = $_GET['id'];
+                                $name = $_POST['pro-name'];
+                                $color = $_POST['pro-color'];
+                                $size = $_POST['pro-size'];
+                                $price = $_POST['pro-price'];
+                                $quantity = $_POST['pro-quantity'];
+                                $type = $_POST['pro-type'];
+                                $description = $_POST['pro-description'];
+                                $categoryId = $_POST['pro-category'];
+                                $image01 = $_POST['pro-img-01'];
+                                $image02 = $_POST['pro-img-02'];
+                                $result = $controller->updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
+                                if($result === -1) {
+                                    echo "<script type='text/javascript'>alert('Vui lòng nhập đủ thông tin sản phẩm');</script>";
+                                }else if($result == 1) {
+                                    echo "<script type='text/javascript'>alert('Có lỗi xảy ra');</script>";
+                                }else if($result == 0) {
+                                    echo "<script type='text/javascript'>alert('Cập nhật sản phẩm thành công');</script>";
+                                }
+                            }
+                        }
+                    
+
                     if(isset($_GET['action'])) {
                         if($_GET['action'] == 'delete') {
                             if(isset($_GET['id'])) {

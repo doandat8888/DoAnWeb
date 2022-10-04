@@ -1,5 +1,6 @@
 <?php 
     //session_start();
+    //include_once "./models/productModel.php";
     include "../../models/productModel.php";
 ?>
 
@@ -51,9 +52,42 @@
             return $data;
         }
 
+        public function getProductByType($type) {
+            $data = $this->model->getProductByName($type);
+            return $data;
+        }
+
         public function getProductById($id) {
             $data = $this->model->getProductById($id);
             return $data;
+        }
+
+        public function updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02) {
+            $count = 0;
+            $result = NULL;
+            $productInfo = ['pro-name', 'pro-color', 'pro-size', 'pro-price', 'pro-quantity', 'pro-type', 'pro-description', 'pro-category', 'pro-img-01', 'pro-img-02'];
+            for($i = 0; $i < count($productInfo); $i++) {
+                if($_POST[$productInfo[$i]] == '') {
+                    $result = -1;
+                    break;
+                }else {
+                    $count++;
+                }
+            }
+            if($count == count($productInfo)) {
+                $resultEdit = $this->model->updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
+                // if($result == true) {
+                //     header('Location: ../../views/admin/index.php?msg=done');
+                // }else if($result == false) {
+                //     header('Location: ../../views/admin/index.php?msg=productname-existed');
+                // }
+                if($resultEdit == true) {
+                    $result = 0;
+                }else if($resultEdit == false) {
+                    $result = 1;
+                }
+            }
+            return $result;
         }
     }
 ?>

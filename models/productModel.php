@@ -1,8 +1,11 @@
 <?php 
     // session_start();
     include_once "../../modules/db_module.php";
+    //include_once "./modules/db_module.php";
     include_once "../../models/product.php";
+    //include_once "./models/product.php";
     include_once "../../validate_module.php";
+    //include_once "./validate_module.php";
 
     class ProductModel {
         public function getAllProduct() {
@@ -39,12 +42,12 @@
             }
             return $result;
         }  
-        public function getProductByName($name) {
+        public function getProductByName($type) {
             $result = NULL;
             $link = NULL;
             taoKetNoi($link);
             $data = array();
-            $query = "SELECT * from products WHERE `name` LIKE '%$name%'";
+            $query = "SELECT * from products WHERE `type` = '$type'";
             $result = chayTruyVanTraVeDL($link, $query);
             if(mysqli_num_rows($result) > 0) {
                 while($rows = mysqli_fetch_assoc($result)) {
@@ -63,7 +66,7 @@
             $link = NULL;
             taoKetNoi($link);
             $data = array();
-            $query = "SELECT * from products WHERE `id` = '$id'";
+            $query = "SELECT * from products WHERE `id` = $id";
             $result = chayTruyVanTraVeDL($link, $query);
             if(mysqli_num_rows($result) > 0) {
                 while($rows = mysqli_fetch_assoc($result)) {
@@ -84,6 +87,20 @@
             $query = "UPDATE products SET `status`= 0 WHERE `id` = $id";
             $deleteuser = chayTruyVanKhongTraVeDL($link, $query);
             if($deleteuser) {
+                $result = true;
+            }else {
+                $result = false;
+            }
+            return $result;
+        }
+
+        public function updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02) {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            $query = "UPDATE products SET `name`= '$name', `color` = '$color', `size` = '$size', `price` = '$price', `quantity` = $quantity, `type` = $type, `description` = '$description', category_id = $categoryId, image01 = '$image01', image02 = '$image02' WHERE `id` = $id";
+            $updateProduct = chayTruyVanKhongTraVeDL($link, $query);
+            if($updateProduct) {
                 $result = true;
             }else {
                 $result = false;
