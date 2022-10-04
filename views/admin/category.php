@@ -121,18 +121,16 @@ include_once "../../controllers/categoryProductController.php";
                     }
                 }
                 if(isset($_POST['edit-submit'])) {
-                    if (isset($_GET['id'])) {
-                        $id = $_GET['id'];
-                        $name = $_POST['cat-name'];
-                        $controller = new CategoryProductController();
-                        $result = $controller->editCategory($id, $name);
-                        if($result === -1) {
-                            echo "<script type='text/javascript'>alert('Vui lòng nhập tên danh mục sản phẩm');</script>";
-                        }else if($result == 1) {
-                            echo "<script type='text/javascript'>alert('Danh mục sản phẩm đã tồn tại');</script>";
-                        }else if($result == 0) {
-                            echo "<script type='text/javascript'>alert('Cập nhật danh mục sản phẩm thành công');</script>";
-                        }
+                    $name = $_POST['cat-name'];
+                    $controller = new CategoryProductController();
+                    // $id = $controller->getCategoryByName('cat-name');
+                    $result = $controller->editCategory($id, $name);
+                    if($result === -1) {
+                        echo "<script type='text/javascript'>alert('Vui lòng nhập tên danh mục sản phẩm');</script>";
+                    }else if($result == 1) {
+                        echo "<script type='text/javascript'>alert('Danh mục sản phẩm đã tồn tại');</script>";
+                    }else if($result == 0) {
+                        echo "<script type='text/javascript'>alert('Cập nhật danh mục sản phẩm thành công');</script>";
                     }
                 }
                 
@@ -143,6 +141,9 @@ include_once "../../controllers/categoryProductController.php";
                                 <th scope='row'>" . $category->getId() . "</th>
                                 <td>" . $category->getName() . "</td>
                                 <td class='manage-product-action'>
+                                    <button class='edit' data-toggle='modal' data-target='#editModal'>
+                                        Sửa
+                                    </button>
                                     <a href='./index.php?page=category&action=edit&id=".$category->getId()."'>
                                         <button class='edit' data-toggle='modal' data-target='#editModal'>
                                             Sửa
