@@ -1,7 +1,7 @@
 <?php 
     //session_start();
-    include_once "./models/productModel.php";
-    //include "../../models/productModel.php";
+    //include_once "./models/productModel.php";
+    include "../../models/productModel.php";
 ?>
 
 <?php 
@@ -76,6 +76,11 @@
             }
             if($count == count($productInfo)) {
                 $resultEdit = $this->model->updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
+                // if($result == true) {
+                //     header('Location: ../../views/admin/index.php?msg=done');
+                // }else if($result == false) {
+                //     header('Location: ../../views/admin/index.php?msg=productname-existed');
+                // }
                 if($resultEdit == true) {
                     $result = 0;
                 }else if($resultEdit == false) {

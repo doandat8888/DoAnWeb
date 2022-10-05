@@ -75,73 +75,68 @@
                         </div>
 
                         <div class="type-content">
-                            <div class='type-content-list block'>
-                                <div class='row'>
-                                    <?php 
-                                        include "./controllers/productController.php";
-                                        $controller = new ProductController();
-                                        $data = $controller->getProductByType(1);
-                                        foreach ($data as $product) {
-                                            echo"
-                                                
-                                                    <div class='col-lg-3 col-md-6 col-6 product'>
-                                                        <div class='card'>
-                                                            <div class='product-img'>
-                                                                <span class='badget'>
-                                                                    -50%
-                                                                </span>
-                                                                <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
-                                                                <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
-                                                                <div class='pro-btn d-flex'>
-                                                                    <a href='#' class='hidden-btn'>
-                                                                        <i class='fa-solid fa-eye'></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class='card-body'>
-                                                                <h5 class='card-title product-info'>
-                                                                    <div class='list-color d-flex'>
-                                                                        <div class='dot-list d-flex'>
-                                                                            <div class='dot green'></div>
-                                                                            <div class='dot pink'></div>
-                                                                            <div class='dot yellow'></div>
-                                                                        </div>
-                                                                        <div class='favorite'>
-                                                                            <span class='material-symbols-outlined favorite-icon'>
-                                                                                favorite
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class='product-name'>
-                                                                        ".$product->getName()."
-                                                                    </div>
-                                                                </h5>
-                                                                <p class='card-text'>
-                                                                    <div class='product-price d-flex'>
-                                                                        <div class='product-price__new'>".$product->getPrice()."</div>
-                                                                        <strike><div class='product-price__old'>1.150.000đ</div></strike>
-                                                                    </div>
-                                                                </p>
-                                                                <a href='#' class='btn btn-primary' style='background-color: transparent; border: none;'>
-                                                                    <div class='product-cart'>
-                                                                        <span class='material-symbols-outlined product-cart-icon'>
-                                                                            local_mall
-                                                                        </span>
-                                                                        <p class='product-cart-buy'>Mua ngay</p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                            <?php 
+                                include "./controllers/productController.php";
+                                $controller = new ProductController();
+                                $data = $controller->getProductByType(1);
+                                foreach ($data as $product) {
+                                    echo"
+                                    <div class='type-content-list block'>
+                                        <div class='row'>
+                                            <div class='col-lg-3 col-md-6 col-6 product'>
+                                                <div class='card'>
+                                                    <div class='product-img'>
+                                                        <span class='badget'>
+                                                            -50%
+                                                        </span>
+                                                        <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
+                                                        <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
+                                                        <div class='pro-btn d-flex'>
+                                                            <a href='#' class='hidden-btn'>
+                                                                <i class='fa-solid fa-eye'></i>
+                                                            </a>
                                                         </div>
                                                     </div>
-                                                
-                                            ";
-                                        }
-                                    ?>
-                                </div>
-                                
-                            </div>
-
-                            
+                                                    <div class='card-body'>
+                                                        <h5 class='card-title product-info'>
+                                                            <div class='list-color d-flex'>
+                                                                <div class='dot-list d-flex'>
+                                                                    <div class='dot green'></div>
+                                                                    <div class='dot pink'></div>
+                                                                    <div class='dot yellow'></div>
+                                                                </div>
+                                                                <div class='favorite'>
+                                                                    <span class='material-symbols-outlined favorite-icon'>
+                                                                        favorite
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class='product-name'>
+                                                                Đầm Lụa Cố Đô
+                                                            </div>
+                                                        </h5>
+                                                        <p class='card-text'>
+                                                            <div class='product-price d-flex'>
+                                                                <div class='product-price__new'>750.000đ</div>
+                                                                <strike><div class='product-price__old'>1.150.000đ</div></strike>
+                                                            </div>
+                                                        </p>
+                                                        <a href='#' class='btn btn-primary' style='background-color: transparent; border: none;'>
+                                                            <div class='product-cart'>
+                                                                <span class='material-symbols-outlined product-cart-icon'>
+                                                                    local_mall
+                                                                </span>
+                                                                <p class='product-cart-buy'>Mua ngay</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ";
+                                }
+                            ?>
                             <!-- <div class="type-content-list block">
                                 <div class="row">
                                     <div class="col-lg-3 col-md-6 col-6 product">
