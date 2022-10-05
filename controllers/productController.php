@@ -1,7 +1,7 @@
 <?php 
     //session_start();
-    //include_once "./models/productModel.php";
-    include "../../models/productModel.php";
+    include_once "./models/productModel.php";
+    //include "../../models/productModel.php";
 ?>
 
 <?php 
