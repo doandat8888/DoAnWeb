@@ -1,10 +1,13 @@
 <div class="search-section d-flex justify-content-center align-items-center">
-    <input type="text" placeholder="TÌM KIẾM SẢN PHẨM" class="search-input">
-    <a href="../../views/search/index.php" class="search-link" style="color: none !important;">
-        <span class="material-symbols-outlined header-icon search-icon-1">
+    <form class="search-form" action="../../views/search/index.php" method="get">
+        <input name="searchstr" type="text" placeholder="TÌM KIẾM SẢN PHẨM" class="search-input">
+        <input type="submit" class="search-link" style="color:none!important;">
+    </form>  
+    <!-- <a href="../../views/search/index.php" class="search-link" style="color: none !important;"> -->
+        <!-- <span class="material-symbols-outlined header-icon search-icon-1">
             search
         </span>
-    </a>
+    </a> -->
 
     <i class="fa-solid fa-xmark cancel-icon"></i>
 </div>

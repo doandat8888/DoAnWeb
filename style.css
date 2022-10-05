@@ -16,6 +16,13 @@
     --border-color: #221F20;
 }
 
+.search-form{
+    width: 40%;
+    border: none;
+    outline: none;
+    font-size: 1.4rem;
+    /* border: 1px solid var(--text-color); */
+}
 
 html {
     font-size: 62.5%;

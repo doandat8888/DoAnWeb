@@ -111,8 +111,8 @@
                             <span class="badget">
                                 -50%
                             </span>
-                            <img src="../../src/img/products/women/product-women-1-2 (2).jpg" class="product-img-content product-img2"/>
-                            <img src="../../src/img/products/women/product-women-1-1 (3).jpg" class="product-img-content product-img1"/>
+                            <img src="../../src/img/products/women/product-women-1-2.jpg" class="product-img-content product-img2"/>
+                            <img src="../../src/img/products/women/product-women-1-1.jpg" class="product-img-content product-img1"/>
                             <div class='pro-btn d-flex'>
                                 <a href='#' class='hidden-btn'>
                                     <i class="fa-solid fa-eye"></i>
