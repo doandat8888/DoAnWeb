@@ -613,6 +613,10 @@ html, body {
     justify-content: center;
 }
 
+.type-list .type-list-link {
+    text-decoration: none;
+}
+
 .type .type-list .type-item {
     margin: 0 2.8rem;
     font-size: 2rem;
