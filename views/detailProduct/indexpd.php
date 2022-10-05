@@ -1,3 +1,12 @@
+<?php
+    session_start();
+?>
+<?
+    include_once "../../modules/db_module.php";
+    include_once "../../validate_module.php";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +39,10 @@
             ?>
         </div>
         <!-- NAV BreadCrumb-->
-        <nav class ="row d-sm-none d-md-block" aria-label ="breadcrumb">
+        <?php 
+                include_once "../../components/breadcrumb.php";
+        ?>
+        <!-- <nav class ="row d-sm-none d-md-block" aria-label ="breadcrumb">
             <ol class ="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a>
@@ -39,7 +51,7 @@
                     Áo Lụa Cách Điệu Phối Nơ Lệch
                 </li>
             </ol>
-        </nav>
+        </nav> -->
         <!-- CONTENT -->
         <div class='row'>
             <!-- Product -->
@@ -119,9 +131,7 @@
                 </div>
                 <div class="info">
                     <div class="info-list d-flex">
-                        <div class="info-item border-active">Giới thiệu</div>
-                        <div class="info-item">Chi tiết sản phẩm</div>
-                        <div class="info-item">Bảo quản</div>
+                        <div class="info-item">Giới thiệu</div>
                     </div>
                     <div class="info-content">
                         <div class="info-content-item block">
@@ -129,68 +139,6 @@
                             <br>
                             <br>
                             Nếu nàng theo đuổi phong cách sang chảnh, quý phái dành với nét đẹp cổ điển thì thiết kế áo sơ mi này chính là lựa chọn hoàn hảo dành cho bạn. Nàng có thể kết hợp mẫu áo này cùng chân váy bút chì hoặc quần âu diện đi làm, đi chơi.
-                        </div>
-                        <div class="info-content-item">
-                            <div class="container">
-                                <div class="info-content-item-left">
-                                    <div class="info-content-item-left-list">
-                                        <div class="info-content-item-left-item">Dòng sản phẩm</div>
-                                        <div class="info-content-item-left-item">Nhóm sản phẩm</div>
-                                        <div class="info-content-item-left-item">Cổ áo</div>
-                                        <div class="info-content-item-left-item">Tay áo</div>
-                                        <div class="info-content-item-left-item">Kiểu dáng</div>
-                                        <div class="info-content-item-left-item">Độ dài</div>
-                                        <div class="info-content-item-left-item">Họa tiết</div>
-                                        <div class="info-content-item-left-item">Chất liệu</div>
-                                    </div>
-                                </div>
-                                <div class="info-content-item-right">
-                                    <div class="info-content-item-right-list">
-                                        <div class="info-content-item-right-item">Ladies</div>
-                                        <div class="info-content-item-right-item">Áo</div>
-                                        <div class="info-content-item-right-item">Có cách điệu</div>
-                                        <div class="info-content-item-right-item">Tay liền</div>
-                                        <div class="info-content-item-right-item">Xuông</div>
-                                        <div class="info-content-item-right-item">Dài thường</div>
-                                        <div class="info-content-item-right-item">Trơn</div>
-                                        <div class="info-content-item-right-item">Lụa</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="info-content-item">
-                            Chi tiết bảo quản sản phẩm : 
-                            <br>
-                            <br>
-                            * Vải dệt kim : sau khi giặt sản phẩm phải được phơi ngang tránh bai dãn.
-                            <br>
-                            <br>
-                            * Vải voan , lụa , chiffon nên giặt bằng tay.
-                            <br>
-                            <br>
-                            * Vải thô , tuytsy , kaki không có phối hay trang trí đá cườm thì có thể giặt máy.
-                            <br>
-                            <br>
-                            * Vải thô , tuytsy, kaki có phối màu tường phản hay trang trí voan , lụa , đá cườm thì cần giặt tay.
-                            <br>
-                            <br>
-                            * Đồ Jeans nên hạn chế giặt bằng máy giặt vì sẽ làm phai màu jeans.Nếu giặt thì nên lộn trái sản phẩm khi giặt , đóng khuy , kéo khóa, không nên giặt chung cùng đồ sáng màu , tránh dính màu vào các sản phẩm khác. 
-                            <br>
-                            <br>
-                            * Các sản phẩm cần được giặt ngay không ngâm tránh bị loang màu , phân biệt màu và loại vải để tránh trường hợp vải phai. Không nên giặt sản phẩm với xà phòng có chất tẩy mạnh , nên giặt cùng xà phòng pha loãng.
-                            <br>
-                            <br>
-                            * Các sản phẩm có thể giặt bằng máy thì chỉ nên để chế độ giặt nhẹ , vắt mức trung bình và nên phân các loại sản phẩm cùng màu và cùng loại vải khi giặt.
-                            <br>
-                            <br>
-                            * Nên phơi sản phẩm tại chỗ thoáng mát , tránh ánh nắng trực tiếp sẽ dễ bị phai bạc màu , nên làm khô quần áo bằng cách phơi ở những điểm gió sẽ giữ màu vải tốt hơn.
-                            <br>
-                            <br>
-                            * Những chất vải 100% cotton , không nên phơi sản phẩm bằng mắc áo mà nên vắt ngang sản phẩm lên dây phơi để tránh tình trạng rạn vải.
-                            <br>
-                            <br>
-                            * Khi ủi sản phẩm bằng bàn là và sử dụng chế độ hơi nước sẽ làm cho sản phẩm dễ ủi phẳng , mát và không bị cháy , giữ màu sản phẩm được đẹp và bền lâu hơn. Nhiệt độ của bàn là tùy theo từng loại vải. 
                         </div>
                     </div>
                 </div>
