@@ -43,7 +43,7 @@
                         </div>
                         <div class='product-info-item col-6'>
                             <div class='product-info-item-title'>Mô tả</div>
-                            <textarea class='product-info-item-input' name='pro-description' value=" .$product->getDescription(). "></textarea>
+                            <textarea class='product-info-item-input' name='pro-description' value=".$product->getDescription()."></textarea>
                         </div>
                         <div class='product-info-item col-6'>
                             <div class='product-info-item-title'>Loại</div>
