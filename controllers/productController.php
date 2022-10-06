@@ -53,7 +53,7 @@
         }
 
         public function getProductByType($type) {
-            $data = $this->model->getProductByName($type);
+            $data = $this->model->getProductByType($type);
             return $data;
         }
 

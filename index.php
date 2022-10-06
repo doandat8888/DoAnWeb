@@ -72,14 +72,12 @@
                             <a href="./index.php?type=1" class="type-list-link">
                                 <div class="type-item">IVY Women</div>
                             </a>
-                            <a href="./index.php?type=1" class="type-list-link">
-                                <div class="type-item">IVY Women</div>
+                            <a href="./index.php?type=0" class="type-list-link">
+                                <div class="type-item">IVY Men</div>
                             </a>
-                            <a href="./index.php?type=1" class="type-list-link">
-                                <div class="type-item">IVY Women</div>
+                            <a href="./index.php?type=2" class="type-list-link">
+                                <div class="type-item">IVY Kid</div>
                             </a>
-                            <!-- <div class="type-item">IVY Men</div>
-                            <div class="type-item">IVY Kids</div> -->
                         </div>
 
                         <div class="type-content">

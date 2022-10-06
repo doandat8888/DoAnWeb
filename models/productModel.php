@@ -42,7 +42,7 @@
             }
             return $result;
         }  
-        public function getProductByName($type) {
+        public function getProductByType($type) {
             $result = NULL;
             $link = NULL;
             taoKetNoi($link);
