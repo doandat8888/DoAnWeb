@@ -6,6 +6,17 @@
     include_once "../../validate_module.php";
 ?>
 
+<?php
+    if (!function_exists('currency_format')) {
+
+        function currency_format($number, $suffix = 'đ') {
+            if (!empty($number)) {
+                return number_format($number, 0, ',', '.') . "{$suffix}";
+            }
+        }
+
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +79,93 @@
             </div>
             <!-- Detail Product -->
             <div class='col-lg-5 col-md-12 col-12'>
-                <div class="pro-title">
+                <?php
+                    include_once "../../controllers/productController.php";
+                    $controller = new ProductController();
+                    $data = $controller->getAllProduct();
+                    if(isset($_GET['id'])) {
+                        $id = $_GET['id'];
+                        $data = $controller->getProductById($id);
+                        foreach ($data as $product) {
+                            echo '<div class="pro-title">
+                                    <h3>'.$product->getName().'</h3>
+                                </div>
+                                <div class="detail-pro-price">
+                                    <span class="detail-pro-sale">-30%</span>
+                                    <span class="detail-pro-price">'.currency_format($product->getPrice()).'</span>
+                                    <del>'.currency_format(2000000).'</del>
+                                </div>
+                                <form action="./indexpd.php?to=cart&id_product='.$product->getId().'&action=them&size='.$product->getSize().'&color='.$product->getColor().' method="GET">
+                                    <input type="hidden" name="to" value="cart">
+                                    <input type="hidden" name="id_product" value="'.$product->getId().'">
+                                    <input type="hidden" name="action" value="them">
+                                    <div class="size-select">
+                                        <input type="radio" class="size-selector" name="size" id="S" value="S" autocomplete="off" checked="">
+                                        <label class="size-btn" for="S">S</label>
+                                        <input type="radio" class="size-selector" name="size" id="M" value="M" autocomplete="off" checked="">
+                                        <label class="size-btn" for="M">M</label>
+                                        <input type="radio" class="size-selector" name="size" id="L" value="L" autocomplete="off" checked="">
+                                        <label class="size-btn" for="L">L</label>
+                                        <input type="radio" class="size-selector" name="size" id="XL" value="XL"autocomplete="off" checked="">
+                                        <label class="size-btn" for="XL">XL</label>
+                                    </div>
+                                    <div class="color-select">
+                                        <input type="radio" class="color-selector" name="color" id="green" value="green" autocomplete="off" checked="">
+                                        <label class="color-btn" for="green"></label>
+                                        <input type="radio" class="color-selector" name="color" id="pink" value="pink" autocomplete="off" checked="">
+                                        <label class="color-btn" for="pink"></label>
+                                        <input type="radio" class="color-selector" name="color" id="yellow" value="yellow" autocomplete="off" checked="">
+                                        <label class="color-btn" for="yellow"></label>
+                                    </div>
+
+                                    <div class="selector-actions">
+                                        <div class="quantity" style="clear: both">
+                                            <button class="minusdecrease" onclick="creaseCount(event, this)">-</button>
+                                            <input type="text" value="1" min="0" max="10" class="detail-number">
+                                            <button class="plusincrease" onclick="increaseCount(event, this)">+</button>
+                                        </div>
+                    
+                                        <br style="clear: both"></br>
+                    
+                                        <div class="d-flex">
+                                            <button type="submit" name="from" value="themvaogio" class="detail-btn add-btn add-cart">Thêm vào giỏ</button>
+                                            <button type="submit" name="from" value="muangay" class="detail-btn buy-btn">Mua ngay</button>
+                                        </div>
+                                    </div>                       
+                                </form>
+                                <div class="info">
+                                    <div class="info-list d-flex">
+                                        <div class="info-item">Giới thiệu</div>
+                                    </div>
+                                    <div class="info-content">
+                                        <div class="info-content-item block">
+                                            Áo kiểu dáng suông, cổ 3 phân, kết hợp thiết nơ lệch phần cổ, nút cài 1 bên vai. Chất liệu lụa trơn có độ bắt sáng tạo cảm giác mềm mại, sang chảnh. 
+                                            <br>
+                                            <br>
+                                            Nếu nàng theo đuổi phong cách sang chảnh, quý phái dành với nét đẹp cổ điển thì thiết kế áo sơ mi này chính là lựa chọn hoàn hảo dành cho bạn. Nàng có thể kết hợp mẫu áo này cùng chân váy bút chì hoặc quần âu diện đi làm, đi chơi.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desc">
+                                    <p class="desc-policy">
+                                        <i class="fa-solid fa-truck-fast"></i>
+                                        Giao hàng toàn quốc
+                                    </p>
+                                    <p class="desc-policy"> 
+                                        <i class="fa-solid fa-thumbs-up"></i>
+                                        Cam kết chính hãng
+                                    </p>
+                                    <p class="desc-policy">
+                                        <i class="fa-solid fa-chess-queen"></i>
+                                        Bảo hành trọn đời
+                                    </p>
+                                </div>
+                               
+                            ';
+                        }
+                    }
+                ?>
+                <!-- <div class="pro-title">
                     <h3>Áo lụa cách điệu phối nơ lệch</h3>
                 </div>
                 <div class='detail-pro-price'>
@@ -76,7 +173,6 @@
                     <span class='detail-pro-price'>895.000₫</span>
                     <del>1.270.000₫</del>
                 </div>
-
                 <form action='./' method='GET'>
                     <input type='hidden' name='to' value='cart'>
                     <input type='hidden' name='id_product' value='1'>
@@ -141,7 +237,7 @@
                             Nếu nàng theo đuổi phong cách sang chảnh, quý phái dành với nét đẹp cổ điển thì thiết kế áo sơ mi này chính là lựa chọn hoàn hảo dành cho bạn. Nàng có thể kết hợp mẫu áo này cùng chân váy bút chì hoặc quần âu diện đi làm, đi chơi.
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>   
         </div>
         <div class='row introduction'>
@@ -166,7 +262,7 @@
                                                 <span class="badget">
                                                     -50%
                                                 </span>
-                                                <a href="'.$product->getId().'">
+                                                <a href="./indexpd.php?page=detailproduct&id='.$product->getId().'">
                                                     <img class="pro-img pro-img-1 ProductImg" src="'.$product->getImage01().'">
                                                     <img class="pro-img" src="'.$product->getImage02().'">
                                                 </a>
@@ -197,7 +293,7 @@
                                                 <p class="card-text">
                                                     </p><div class="product-price d-flex">
                                                         <div class="product-price__new">750.000đ</div>
-                                                        <strike><div class="product-price__old">'.$product->getPrice().'đ</div></strike>
+                                                        <strike><div class="product-price__old">'.currency_format($product->getPrice()).'</div></strike>
                                                     </div>
                                                 <p></p>
                                                 <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;">
