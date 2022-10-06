@@ -1,7 +1,10 @@
 <?php 
     //session_start();
-    include_once "./models/productModel.php";
+    // include_once "./models/productModel.php";
     //include "../../models/productModel.php";
+
+    //Kiều load chạy trang chi tiết
+    include_once "../../models/productModel.php";
 ?>
 
 <?php 
@@ -47,10 +50,10 @@
             return $result;
         }
 
-        public function getProductByName($name) {
-            $data = $this->model->getProductByName($name);
-            return $data;
-        }
+        // public function getProductByName($name) {
+        //     $data = $this->model->getProductByName($name);
+        //     return $data;
+        // }
 
         public function getProductByType($type) {
             $data = $this->model->getProductByType($type);

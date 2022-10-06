@@ -1,5 +1,5 @@
 <?php 
-    include_once "../../models\categoryProductModel.php";
+    include_once "../../models/categoryProductModel.php";
 ?>
 <?php 
     class CategoryProductController {

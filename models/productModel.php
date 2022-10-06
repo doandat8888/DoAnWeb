@@ -1,12 +1,18 @@
 <?php 
     // session_start();
-    //include_once "../../modules/db_module.php";
-    include_once "./modules/db_module.php";
-    //include_once "../../models/product.php";
-    include_once "./models/product.php";
-    //include_once "../../validate_module.php";
-    include_once "./validate_module.php";
+    // //include_once "../../modules/db_module.php";
+    // include_once "./modules/db_module.php";
+    // //include_once "../../models/product.php";
+    // include_once "./models/product.php";
+    // //include_once "../../validate_module.php";
+    // include_once "./validate_module.php";
 
+
+    //Kiều - load chạy trên chi tiết
+    include_once "../../modules/db_module.php";
+    include_once "../../models/product.php";
+    include_once "../../validate_module.php";
+    
     class ProductModel {
         public function getAllProduct() {
             $result = NULL;
