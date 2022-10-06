@@ -62,6 +62,11 @@
             return $data;
         }
 
+        public function searchforProduct($searchstr){
+            $data = $this->model->searchforProduct($searchstr);
+            return $data;
+        }
+
         public function updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02) {
             $count = 0;
             $result = NULL;

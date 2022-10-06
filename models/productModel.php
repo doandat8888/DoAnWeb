@@ -61,6 +61,26 @@
             return $data;
         } 
 
+        public function searchforProduct($searchstr){
+            $result = null;
+            $link = null;
+            taoKetNoi($link);
+            $data = array();
+            $query = "SELECT * from products WHERE `name` LIKE N'%"."$searchstr"."%'";
+            $result = chayTruyVanTraVeDL($link, $query);
+            if (mysqli_num_rows($result) > 0){
+                while ($rows = mysqli_fetch_assoc($result)){
+                    $product = new Product($rows["id"], $rows["name"], $rows["color"], $rows["size"], $rows["price"], $rows["quantity"], $rows["type"], $rows["description"], $rows["category_id"], $rows["image01"], $rows["image02"], $rows["status"]);
+                    array_push($data, $product);
+                }
+                giaiPhongBoNho($link, $result);
+            }
+            else {
+                $data = null;
+            }
+            return $data;
+        }
+
         public function getProductById($id) {
             $result = NULL;
             $link = NULL;

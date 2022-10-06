@@ -89,7 +89,9 @@
             <!--Sort dropdown-->
             <div class="row">
                 <div class="col-12 col-lg-7 cold-md-7">
-                    <div style="font-size: 2rem; margin-top: 1.5rem; margin-left: -0.5rem; padding-top: 2rem;">Kết quả tìm theo " "</div>
+                    <div style="font-size: 2rem; margin-top: 1.5rem; margin-left: -0.5rem; padding-top: 2rem;">
+                        Kết quả tìm kiếm theo "<?php echo $_GET['searchstr'] ?>"
+                    </div>
                 </div>
                 <div class="col-12 col-lg-5 col-md-5" style="z-index: 10000000; margin-top: 2rem;">
                     <select title="Sắp xếp theo" class="selectpicker" name="sorter" id="sorter" required>
@@ -104,209 +106,275 @@
                 </div>
             </div>
             <!--The product-->
-            <div class="row" id="product-body">
-                <div class="col-lg-3 col-md-6 col-6 product-search-result">
-                    <div class="card">
-                        <div class="product-img">
-                            <span class="badget">
-                                -50%
-                            </span>
-                            <img src="../../src/img/products/women/product-women-1-2.jpg" class="product-img-content product-img2"/>
-                            <img src="../../src/img/products/women/product-women-1-1.jpg" class="product-img-content product-img1"/>
-                            <div class='pro-btn d-flex'>
-                                <a href='#' class='hidden-btn'>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title product-info">
-                                <div class="list-color d-flex">
-                                    <div class="dot-list d-flex">
-                                        <div class="dot green"></div>
-                                        <div class="dot pink"></div>
-                                        <div class="dot yellow"></div>
-                                    </div>
-                                    <div class="favorite">
-                                        <span class="material-symbols-outlined favorite-icon">
-                                            favorite
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="product-name">
-                                    Đầm Lụa Cố Đô
-                                </div>
-                            </h5>
-                            <p class="card-text">
-                                <div class="product-price d-flex">
-                                    <div class="product-price__new">750.000đ</div>
-                                    <strike><div class="product-price__old">1.150.000đ</div></strike>
-                                </div>
-                            </p>
-                            <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;">
-                                <div class="product-cart">
-                                    <span class="material-symbols-outlined product-cart-icon">
-                                        local_mall
-                                    </span>
-                                    <p class="product-cart-buy">Mua ngay</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <?php 
+                include_once "../../controllers/productController.php";
+                $controller = new ProductController();
+                if (isset($_GET["searchstr"])){
+                    $searchstr = $_GET["searchstr"];
+                    $data = $controller->searchforProduct($searchstr);
 
-                <div class="col-lg-3 col-md-6 col-6 product-search-result">
-                    <div class="card">
-                        <div class="product-img">
-                            <span class="badget">
-                                -50%
-                            </span>
-                            <a href="../../pages/detailProduct/indexpd.php">
-                                <img src="../../src/img/products/women/product-women-2-2.jpg" class="product-img-content product-img2"/>
-                            </a>
-                            <img src="../../src/img/products/women/product-women-2-1.jpg" class="product-img-content product-img1"/>
-                            <div class='pro-btn d-flex'>
-                                <a href='../../pages/detailProduct/indexpd.php' class='hidden-btn'>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
+                    foreach($data as $product){
+                        echo "
+                        <div class='row' id='product-body'>
+                        <div class='col-lg-3 col-md-6 col-6 product-search-result'>
+                            <div class='card'>
+                                <div class='product-img'>
+                                    <span class='badget'>
+                                        -50%
+                                    </span>
+                                    <img src='".$product->getImage02()."' class='product-img-content product-img2'/>
+                                    <img src='".$product->getImage01()."' class='product-img-content product-img1'/>
+                                    <div class='pro-btn d-flex'>
+                                        <a href='#' class='hidden-btn'>
+                                            <i class='fa-solid fa-eye'></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class='card-body'>
+                                    <h5 class='card-title product-info'>
+                                        <div class='list-color d-flex'>
+                                            <div class='dot-list d-flex'>
+                                                <div class='dot green'></div>
+                                                <div class='dot pink'></div>
+                                                <div class='dot yellow'></div>
+                                            </div>
+                                            <div class='favorite'>
+                                                <span class='material-symbols-outlined favorite-icon'>
+                                                    favorite
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class='product-name'>
+                                            ".$product->getName()."
+                                        </div>
+                                    </h5>
+                                    <p class='card-text'>
+                                        <div class='product-price d-flex'>
+                                            <div class='product-price__new'>".$product.getPrice()."</div>
+                                            <strike><div class='product-price__old'>1.150.000đ</div></strike>
+                                        </div>
+                                    </p>
+                                    <a href='#' class='btn btn-primary' style='background-color: transparent; border: none;'>
+                                        <div class='product-cart'>
+                                            <span class='material-symbols-outlined product-cart-icon'>
+                                                local_mall
+                                            </span>
+                                            <p class='product-cart-buy'>Mua ngay</p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title product-info">
-                                <div class="list-color d-flex">
-                                    <div class="dot-list d-flex">
-                                        <div class="dot green"></div>
-                                        <div class="dot pink"></div>
-                                        <div class="dot yellow"></div>
-                                    </div>
-                                    <div class="favorite">
-                                        <span class="material-symbols-outlined favorite-icon">
-                                            favorite
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="product-name">
-                                    Đầm Lụa Cách Điệu Phối Nơ Lệch
-                                </div>
-                            </h5>
-                            <p class="card-text">
-                                <div class="product-price d-flex">
-                                    <div class="product-price__new">750.000đ</div>
-                                    <strike><div class="product-price__old">1.150.000đ</div></strike>
-                                </div>
-                            </p>
-                            <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;">
-                                <div class="product-cart">
-                                    <span class="material-symbols-outlined product-cart-icon">
-                                        local_mall
-                                    </span>
-                                    <p class="product-cart-buy">Mua ngay</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                        ";
+                    }
+                }
+                else{
+                    echo "No results found";
+                }    
+            ?>
+            <!-- <div class="row" id="product-body">
+            //     <div class="col-lg-3 col-md-6 col-6 product-search-result">
+            //         <div class="card">
+            //             <div class="product-img">
+            //                 <span class="badget">
+            //                     -50%
+            //                 </span>
+            //                 <img src="../../src/img/products/women/product-women-1-2.jpg" class="product-img-content product-img2"/>
+            //                 <img src="../../src/img/products/women/product-women-1-1.jpg" class="product-img-content product-img1"/>
+            //                 <div class='pro-btn d-flex'>
+            //                     <a href='#' class='hidden-btn'>
+            //                         <i class="fa-solid fa-eye"></i>
+            //                     </a>
+            //                 </div>
+            //             </div>
+            //             <div class="card-body">
+            //                 <h5 class="card-title product-info">
+            //                     <div class="list-color d-flex">
+            //                         <div class="dot-list d-flex">
+            //                             <div class="dot green"></div>
+            //                             <div class="dot pink"></div>
+            //                             <div class="dot yellow"></div>
+            //                         </div>
+            //                         <div class="favorite">
+            //                             <span class="material-symbols-outlined favorite-icon">
+            //                                 favorite
+            //                             </span>
+            //                         </div>
+            //                     </div>
+            //                     <div class="product-name">
+            //                         Đầm Lụa Cố Đô
+            //                     </div>
+            //                 </h5>
+            //                 <p class="card-text">
+            //                     <div class="product-price d-flex">
+            //                         <div class="product-price__new">750.000đ</div>
+            //                         <strike><div class="product-price__old">1.150.000đ</div></strike>
+            //                     </div>
+            //                 </p>
+            //                 <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;">
+            //                     <div class="product-cart">
+            //                         <span class="material-symbols-outlined product-cart-icon">
+            //                             local_mall
+            //                         </span>
+            //                         <p class="product-cart-buy">Mua ngay</p>
+            //                     </div>
+            //                 </a>
+            //             </div>
+            //         </div>
+            //     </div>
 
-                <div class="col-lg-3 col-md-6 col-6 product-search-result">
-                    <div class="card">
-                        <div class="product-img">
-                            <span class="badget">
-                                -50%
-                            </span>
-                            <img src="../../src/img/products/women/product-women-3-2.jpg" class="product-img-content product-img2"/>
-                            <img src="../../src/img/products/women/product-women-3-1.jpg" class="product-img-content product-img1"/>
-                            <div class='pro-btn d-flex'>
-                                <a href='#' class='hidden-btn'>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title product-info">
-                                <div class="list-color d-flex">
-                                    <div class="dot-list d-flex">
-                                        <div class="dot green"></div>
-                                        <div class="dot pink"></div>
-                                        <div class="dot yellow"></div>
-                                    </div>
-                                    <div class="favorite">
-                                        <span class="material-symbols-outlined favorite-icon">
-                                            favorite
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="product-name">
-                                    Đầm Ôm Cánh Tiên
-                                </div>
-                            </h5>
-                            <p class="card-text">
-                                <div class="product-price d-flex">
-                                    <div class="product-price__new">650.000đ</div>
-                                    <strike><div class="product-price__old">850.000đ</div></strike>
-                                </div>
-                            </p>
-                            <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;">
-                                <div class="product-cart">
-                                    <span class="material-symbols-outlined product-cart-icon">
-                                        local_mall
-                                    </span>
-                                    <p class="product-cart-buy">Mua ngay</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            //     <div class="col-lg-3 col-md-6 col-6 product-search-result">
+            //         <div class="card">
+            //             <div class="product-img">
+            //                 <span class="badget">
+            //                     -50%
+            //                 </span>
+            //                 <a href="../../pages/detailProduct/indexpd.php">
+            //                     <img src="../../src/img/products/women/product-women-2-2.jpg" class="product-img-content product-img2"/>
+            //                 </a>
+            //                 <img src="../../src/img/products/women/product-women-2-1.jpg" class="product-img-content product-img1"/>
+            //                 <div class='pro-btn d-flex'>
+            //                     <a href='../../pages/detailProduct/indexpd.php' class='hidden-btn'>
+            //                         <i class="fa-solid fa-eye"></i>
+            //                     </a>
+            //                 </div>
+            //             </div>
+            //             <div class="card-body">
+            //                 <h5 class="card-title product-info">
+            //                     <div class="list-color d-flex">
+            //                         <div class="dot-list d-flex">
+            //                             <div class="dot green"></div>
+            //                             <div class="dot pink"></div>
+            //                             <div class="dot yellow"></div>
+            //                         </div>
+            //                         <div class="favorite">
+            //                             <span class="material-symbols-outlined favorite-icon">
+            //                                 favorite
+            //                             </span>
+            //                         </div>
+            //                     </div>
+            //                     <div class="product-name">
+            //                         Đầm Lụa Cách Điệu Phối Nơ Lệch
+            //                     </div>
+            //                 </h5>
+            //                 <p class="card-text">
+            //                     <div class="product-price d-flex">
+            //                         <div class="product-price__new">750.000đ</div>
+            //                         <strike><div class="product-price__old">1.150.000đ</div></strike>
+            //                     </div>
+            //                 </p>
+            //                 <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;">
+            //                     <div class="product-cart">
+            //                         <span class="material-symbols-outlined product-cart-icon">
+            //                             local_mall
+            //                         </span>
+            //                         <p class="product-cart-buy">Mua ngay</p>
+            //                     </div>
+            //                 </a>
+            //             </div>
+            //         </div>
+            //     </div>
 
-                <div class="col-lg-3 col-md-6 col-6 product-search-result">
-                    <div class="card">
-                        <div class="product-img">
-                            <span class="badget">
-                                -50%
-                            </span>
-                            <img src="../../src/img/products/women/product-women-4-2.jpg" class="product-img-content product-img2"/>
-                            <img src="../../src/img/products/women/product-women-4-1.jpg" class="product-img-content product-img1"/>
-                            <div class='pro-btn d-flex'>
-                                <a href='#' class='hidden-btn'>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title product-info">
-                                <div class="list-color d-flex">
-                                    <div class="dot-list d-flex">
-                                        <div class="dot green"></div>
-                                        <div class="dot pink"></div>
-                                        <div class="dot yellow"></div>
-                                    </div>
-                                    <div class="favorite">
-                                        <span class="material-symbols-outlined favorite-icon">
-                                            favorite
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="product-name">
-                                    Đầm Thỏ Cut-Out
-                                </div>
-                            </h5>
-                            <p class="card-text">
-                                <div class="product-price d-flex">
-                                    <div class="product-price__new">750.000đ</div>
-                                    <strike><div class="product-price__old">1.150.000đ</div></strike>
-                                </div>
-                            </p>
-                            <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;">
-                                <div class="product-cart">
-                                    <span class="material-symbols-outlined product-cart-icon">
-                                        local_mall
-                                    </span>
-                                    <p class="product-cart-buy">Mua ngay</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            //     <div class="col-lg-3 col-md-6 col-6 product-search-result">
+            //         <div class="card">
+            //             <div class="product-img">
+            //                 <span class="badget">
+            //                     -50%
+            //                 </span>
+            //                 <img src="../../src/img/products/women/product-women-3-2.jpg" class="product-img-content product-img2"/>
+            //                 <img src="../../src/img/products/women/product-women-3-1.jpg" class="product-img-content product-img1"/>
+            //                 <div class='pro-btn d-flex'>
+            //                     <a href='#' class='hidden-btn'>
+            //                         <i class="fa-solid fa-eye"></i>
+            //                     </a>
+            //                 </div>
+            //             </div>
+            //             <div class="card-body">
+            //                 <h5 class="card-title product-info">
+            //                     <div class="list-color d-flex">
+            //                         <div class="dot-list d-flex">
+            //                             <div class="dot green"></div>
+            //                             <div class="dot pink"></div>
+            //                             <div class="dot yellow"></div>
+            //                         </div>
+            //                         <div class="favorite">
+            //                             <span class="material-symbols-outlined favorite-icon">
+            //                                 favorite
+            //                             </span>
+            //                         </div>
+            //                     </div>
+            //                     <div class="product-name">
+            //                         Đầm Ôm Cánh Tiên
+            //                     </div>
+            //                 </h5>
+            //                 <p class="card-text">
+            //                     <div class="product-price d-flex">
+            //                         <div class="product-price__new">650.000đ</div>
+            //                         <strike><div class="product-price__old">850.000đ</div></strike>
+            //                     </div>
+            //                 </p>
+            //                 <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;">
+            //                     <div class="product-cart">
+            //                         <span class="material-symbols-outlined product-cart-icon">
+            //                             local_mall
+            //                         </span>
+            //                         <p class="product-cart-buy">Mua ngay</p>
+            //                     </div>
+            //                 </a>
+            //             </div>
+            //         </div>
+            //     </div>
+
+            //     <div class="col-lg-3 col-md-6 col-6 product-search-result">
+            //         <div class="card">
+            //             <div class="product-img">
+            //                 <span class="badget">
+            //                     -50%
+            //                 </span>
+            //                 <img src="../../src/img/products/women/product-women-4-2.jpg" class="product-img-content product-img2"/>
+            //                 <img src="../../src/img/products/women/product-women-4-1.jpg" class="product-img-content product-img1"/>
+            //                 <div class='pro-btn d-flex'>
+            //                     <a href='#' class='hidden-btn'>
+            //                         <i class="fa-solid fa-eye"></i>
+            //                     </a>
+            //                 </div>
+            //             </div>
+            //             <div class="card-body">
+            //                 <h5 class="card-title product-info">
+            //                     <div class="list-color d-flex">
+            //                         <div class="dot-list d-flex">
+            //                             <div class="dot green"></div>
+            //                             <div class="dot pink"></div>
+            //                             <div class="dot yellow"></div>
+            //                         </div>
+            //                         <div class="favorite">
+            //                             <span class="material-symbols-outlined favorite-icon">
+            //                                 favorite
+            //                             </span>
+            //                         </div>
+            //                     </div>
+            //                     <div class="product-name">
+            //                         Đầm Thỏ Cut-Out
+            //                     </div>
+            //                 </h5>
+            //                 <p class="card-text">
+            //                     <div class="product-price d-flex">
+            //                         <div class="product-price__new">750.000đ</div>
+            //                         <strike><div class="product-price__old">1.150.000đ</div></strike>
+            //                     </div>
+            //                 </p>
+            //                 <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;">
+            //                     <div class="product-cart">
+            //                         <span class="material-symbols-outlined product-cart-icon">
+            //                             local_mall
+            //                         </span>
+            //                         <p class="product-cart-buy">Mua ngay</p>
+            //                     </div>
+            //                 </a>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div> -->
         </div>
     </div>
     <footer>
