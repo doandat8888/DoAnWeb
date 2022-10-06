@@ -1,17 +1,9 @@
 <?php 
-    // session_start();
-    // //include_once "../../modules/db_module.php";
-    // include_once "./modules/db_module.php";
-    // //include_once "../../models/product.php";
-    // include_once "./models/product.php";
-    // //include_once "../../validate_module.php";
-    // include_once "./validate_module.php";
-
-
-    //Kiều - load chạy trên chi tiết
-    include_once "../../modules/db_module.php";
-    include_once "../../models/product.php";
-    include_once "../../validate_module.php";
+    
+    $filepath = realpath(dirname(__FILE__));
+    include ($filepath. '/../modules/db_module.php');
+    include ($filepath. '/./product.php');
+    include ($filepath. '/../validate_module.php');
     
     class ProductModel {
         public function getAllProduct() {
@@ -67,12 +59,12 @@
             return $data;
         } 
 
-        public function searchforProduct($searchstr){
+        public function getProductByName($searchstr){
             $result = null;
             $link = null;
             taoKetNoi($link);
             $data = array();
-            $query = "SELECT * from products WHERE `name` LIKE N'%.$searchstr.%'";
+            $query = "SELECT * FROM products WHERE `name` LIKE '%$searchstr%'";
             $result = chayTruyVanTraVeDL($link, $query);
             if (mysqli_num_rows($result) > 0){
                 while ($rows = mysqli_fetch_assoc($result)){

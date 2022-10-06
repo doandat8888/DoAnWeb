@@ -1,10 +1,7 @@
 <?php 
-    //session_start();
-    // include_once "./models/productModel.php";
-    //include "../../models/productModel.php";
 
-    //Kiều load chạy trang chi tiết
-    include_once "../../models/productModel.php";
+    $filepath = realpath(dirname(__FILE__));
+    include ($filepath. '/../models/productModel.php');
 ?>
 
 <?php 
@@ -50,10 +47,10 @@
             return $result;
         }
 
-        // public function getProductByName($name) {
-        //     $data = $this->model->getProductByName($name);
-        //     return $data;
-        // }
+        public function getProductByName($name) {
+            $data = $this->model->getProductByName($name);
+            return $data;
+        }
 
         public function getProductByType($type) {
             $data = $this->model->getProductByType($type);
@@ -65,10 +62,10 @@
             return $data;
         }
 
-        public function searchforProduct($searchstr){
-            $data = $this->model->searchforProduct($searchstr);
-            return $data;
-        }
+        // public function searchforProduct($searchstr){
+        //     $data = $this->model->searchforProduct($searchstr);
+        //     return $data;
+        // }
 
         public function updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02) {
             $count = 0;
