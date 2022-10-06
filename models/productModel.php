@@ -66,7 +66,7 @@
             $link = null;
             taoKetNoi($link);
             $data = array();
-            $query = "SELECT * from products WHERE `name` LIKE N'%"."$searchstr"."%'";
+            $query = "SELECT * from products WHERE `name` LIKE N'%.$searchstr.%'";
             $result = chayTruyVanTraVeDL($link, $query);
             if (mysqli_num_rows($result) > 0){
                 while ($rows = mysqli_fetch_assoc($result)){

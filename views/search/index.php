@@ -150,7 +150,7 @@
                                     </h5>
                                     <p class='card-text'>
                                         <div class='product-price d-flex'>
-                                            <div class='product-price__new'>".$product.getPrice()."</div>
+                                            <div class='product-price__new'>".$product->getPrice()."</div>
                                             <strike><div class='product-price__old'>1.150.000đ</div></strike>
                                         </div>
                                     </p>
