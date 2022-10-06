@@ -15,7 +15,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <title>Search Result</title>
+    <title>
+        <?php 
+            if(isset($_GET['type'])) {
+                $type = $_GET['type'];
+                if($type == 0)  {
+                    echo "Nam";
+                }else if($type == 1) {
+                    echo "Nữ";
+                }else if($type == 2) {
+                    echo "Trẻ em";
+                }
+            }else {
+                echo "Sản phẩm";
+            }
+        ?>
+    </title>
 </head>
 <body>
    <div class="container">
@@ -28,7 +43,22 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="../../index.php">Trang chủ</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Tìm kiếm</li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <?php 
+                        if(isset($_GET['type'])) {
+                            $type = $_GET['type'];
+                            if($type == 0)  {
+                                echo "Nam";
+                            }else if($type == 1) {
+                                echo "Nữ";
+                            }else if($type == 2) {
+                                echo "Trẻ em";
+                            }
+                        }else {
+                            echo "Sản phẩm";
+                        }
+                    ?>
+                </li>
             </ol>
         </div>
     </nav>
@@ -88,11 +118,6 @@
         <div class="col-12 col-lg-9">
             <!--Sort dropdown-->
             <div class="row">
-                <div class="col-12 col-lg-7 cold-md-7">
-                    <div style="font-size: 2rem; margin-top: 1.5rem; margin-left: -0.5rem; padding-top: 2rem;">
-                        Kết quả tìm kiếm theo "<?php echo $_GET['searchstr'] ?>"
-                    </div>
-                </div>
                 <div class="col-12 col-lg-5 col-md-5" style="z-index: 10000000; margin-top: 2rem;">
                     <select title="Sắp xếp theo" class="selectpicker" name="sorter" id="sorter" required>
                         <option value="default">Mặc định</option>
@@ -110,10 +135,9 @@
                 <?php 
                     include_once "../../controllers/productController.php";
                     $controller = new ProductController();
-                    if (isset($_GET["searchstr"])){
-                        $searchstr = $_GET["searchstr"];
-                        $data = $controller->getProductByName($searchstr);
-
+                    if (isset($_GET["type"])){
+                        $type = $_GET["type"];
+                        $data = $controller->getProductByType($type);
                         foreach($data as $product){
                             echo "
                             
@@ -170,7 +194,61 @@
                         }
                     }
                     else{
-                        echo "No results found";
+                        $data = $controller->getAllProduct();
+                        foreach($data as $product){
+                            echo "
+                            
+                            <div class='col-lg-3 col-md-6 col-6 product-search-result'>
+                                <div class='card'>
+                                    <div class='product-img'>
+                                        <span class='badget'>
+                                            -50%
+                                        </span>
+                                        <img src='".$product->getImage02()."' class='product-img-content product-img2'/>
+                                        <img src='".$product->getImage01()."' class='product-img-content product-img1'/>
+                                        <div class='pro-btn d-flex'>
+                                            <a href='#' class='hidden-btn'>
+                                                <i class='fa-solid fa-eye'></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class='card-body'>
+                                        <h5 class='card-title product-info'>
+                                            <div class='list-color d-flex'>
+                                                <div class='dot-list d-flex'>
+                                                    <div class='dot green'></div>
+                                                    <div class='dot pink'></div>
+                                                    <div class='dot yellow'></div>
+                                                </div>
+                                                <div class='favorite'>
+                                                    <span class='material-symbols-outlined favorite-icon'>
+                                                        favorite
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class='product-name'>
+                                                ".$product->getName()."
+                                            </div>
+                                        </h5>
+                                        <p class='card-text'>
+                                            <div class='product-price d-flex'>
+                                                <div class='product-price__new'>".$product->getPrice()."</div>
+                                                <strike><div class='product-price__old'>1.150.000đ</div></strike>
+                                            </div>
+                                        </p>
+                                        <a href='#' class='btn btn-primary' style='background-color: transparent; border: none;'>
+                                            <div class='product-cart'>
+                                                <span class='material-symbols-outlined product-cart-icon'>
+                                                    local_mall
+                                                </span>
+                                                <p class='product-cart-buy'>Mua ngay</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            ";
+                        }
                     }    
                 ?>
             </div>

@@ -72,12 +72,17 @@ html, body {
     cursor: pointer;
     text-transform: uppercase;
     font-weight: bold;
-    color: var(--text-color);
     letter-spacing: 0.1rem;
 }
 
-.nav-item:hover {
+.nav-item-link {
+    text-decoration: none !important;
+    color: var(--text-color);
+}
+
+.nav-item-link:hover {
     opacity: 0.8;
+    color: var(--gray);
 }
 
 .header-icon {
@@ -826,8 +831,6 @@ html, body {
 }
 /* ----------------- */
 .type-button {
-    margin-top: 2.4rem;
-    margin-bottom: 4.8rem;
     padding: 1.2rem 1.2rem;
     font-size: 1.4rem;
     border: 1px solid var(--border-color);
@@ -838,6 +841,7 @@ html, body {
     transition: all 0.5s linear;
     letter-spacing: 0.1rem;
     background-color: transparent;
+    margin: 2.4rem auto 4.8rem auto;
 }
 
 .type-button:hover {

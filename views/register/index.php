@@ -20,7 +20,6 @@
     <body>
         <div class="container">
             <?php 
-                include_once "../../components/header.php";
                 include_once "../../controllers/userController.php";
                 if (isset($_POST['submit'])) {
                     $firstName = $_POST['firstName'];

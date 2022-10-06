@@ -20,11 +20,31 @@
         </button>
     </a>
     <ul class="category-list">
-        <li class="category-item">Trang chủ</li>
-        <li class="category-item">Sản phẩm</li>
-        <li class="category-item">Nam</li>
-        <li class="category-item">Nữ</li>
-        <li class="category-item">Trẻ em</li>
+        <li class="category-item">
+            <a href="../index.php">
+                Trang chủ
+            </a>
+        </li>
+        <li class="category-item">
+            <a href="../views/product/index.php">
+                Sản phẩm
+            </a>
+        </li>
+        <li class="category-item">
+            <a href="../views/product/index.php?type=0">
+                Nam
+            </a>
+        </li>
+        <li class="category-item">
+            <a href="../views/product/index.php?type=1">
+                Nữ
+            </a>
+        </li>
+        <li class="category-item">
+            <a href="../views/product/index.php?type=2">
+                Trẻ em
+            </a>
+        </li>
     </ul>
 </div>
 
@@ -42,11 +62,31 @@
         </div>
         <div class="list d-md-none d-lg-flex align-items-center justify-content-center">
             <ul class="nav-list hide-on-mobile-tablet">
-                <li class="nav-item">Trang chủ</li>
-                <li class="nav-item">Sản phẩm</li>
-                <li class="nav-item">Nam</li>
-                <li class="nav-item">Nữ</li>
-                <li class="nav-item">Trẻ em</li>
+                <li class="nav-item">
+                    <a href="../../index.php" class="nav-item-link">
+                        Trang chủ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../../views/product/index.php" class="nav-item-link">
+                        Sản phẩm
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../../views/product/index.php?type=0" class="nav-item-link">
+                        Nam
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../../views/product/index.php?type=1" class="nav-item-link">
+                        Nữ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../../views/product/index.php?type=2" class="nav-item-link">
+                        Trẻ em
+                    </a>
+                </li>
             </ul>
         </div>
        
@@ -90,7 +130,6 @@
                                     </span>
                                 </a>
                             ";
-                            
                         }
                     }
                 }else {
