@@ -131,6 +131,13 @@
                                 </a>
                             ";
                         }
+                    }else {
+                        echo '<a href="../../views/login/index.php" class="header-icon user-icon">
+                            <span class="material-symbols-outlined">
+                                person
+                            </span>
+                        </a>'
+                        ;
                     }
                 }else {
                     echo '<a href="../../views/login/index.php" class="header-icon user-icon">
@@ -139,9 +146,9 @@
                         </span>
                     </a>'
                     ;
-
                 }
             ?>
+
             <div class="header-icon cart-icon">
                 <span class="material-symbols-outlined">
                     shopping_cart
