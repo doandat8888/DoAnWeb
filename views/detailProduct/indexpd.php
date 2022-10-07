@@ -6,6 +6,7 @@
     include_once "../../validate_module.php";
 ?>
 
+<!-- format đơn vị tiền tệ -->
 <?php
     if (!function_exists('currency_format')) {
         function currency_format($number, $suffix = 'đ') {
@@ -14,6 +15,29 @@
             }
         }
     }
+?>
+<!-- format màu -->
+<?php
+if (!function_exists('color_format')) {
+    function color_format($color) {
+        $arraycolor = array(
+            "blue" => "C6E9EC",
+            "white" => "FFFFFF",
+            "pink" => "FB6E7C",
+            "orange" => "F3A45F",
+            "yellow" => "F4ED95",
+            "red" => "EC3333",
+            "black" => "212529",
+            "green" => "98A882",
+            "gray" => "A8A9AD",
+        );
+        foreach($arraycolor as $icolor) {
+            if($icolor == $color) {
+                echo $icolor;
+            }
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,29 +73,35 @@
         </div>
         <!-- NAV BreadCrumb-->
         <?php 
-                //include_once "../../components/breadcrumb.php";
+                include_once "../../components/breadcrumb.php";
         ?>
-        <?php 
-            include_once "../../controllers/productController.php";
-            $controller = new ProductController();
-            if(isset($_GET['id'])) {
-                $id = $_GET['id'];
-                $data = $controller->getProductById($id);
-                foreach ($data as $product) {
-                    echo '
-                        <nav class ="row d-sm-none d-md-block" aria-label ="breadcrumb">
-                            <ol class ="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    '.$product->getName().'
-                                </li>
-                            </ol>
-                        </nav>
-                    ';
-                }
-            }
+        <?php
+            //Load components breadcrumb
+            //Trang chủ/Sản phẩm / <chi tiết của sp đã chọn>
+            //Chọn trang chủ: nếu muốn quay về trang chủ
+            //Chọn Sản Phẩm để vào trang tìm kiếm (hiển thị tất cả sản phẩm).
+            //Tương tự với trang cart, checkout,...
+            //
+            // include_once "../../controllers/productController.php";
+            // $controller = new ProductController();
+            // if(isset($_GET['id'])) {
+            //     $id = $_GET['id'];
+            //     $data = $controller->getProductById($id);
+            //     foreach ($data as $product) {
+            //         echo '
+            //             <nav class ="row d-sm-none d-md-block" aria-label ="breadcrumb">
+            //                 <ol class ="breadcrumb">
+            //                     <li class="breadcrumb-item">
+            //                         <a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a>
+            //                     </li>
+            //                     <li class="breadcrumb-item active" aria-current="page">
+            //                         '.$product->getName().'
+            //                     </li>
+            //                 </ol>
+            //             </nav>
+            //         ';
+            //     }
+            // }
         ?>
         <!-- CONTENT -->
         <div class='row'>
@@ -96,10 +126,7 @@
                                 ";
                             }
                         }
-                    ?>
-                
-                    
-                    
+                    ?>        
                 </div>
             </div>
             <!-- Detail Product -->
@@ -112,78 +139,86 @@
                         $id = $_GET['id'];
                         $data = $controller->getProductById($id);
                         foreach ($data as $product) {
-                            echo '<div class="pro-title">
-                                    <h3>'.$product->getName().'</h3>
-                                </div>
-                                <div class="detail-pro-price">
-                                    <span class="detail-pro-sale">-30%</span>
-                                    <span class="detail-pro-price">'.currency_format($product->getPrice()).'</span>
-                                    <del>'.currency_format(2000000).'</del>
-                                </div>
-                                <form action="./indexpd.php?to=cart&id_product='.$product->getId().'&action=them&size='.$product->getSize().'&color='.$product->getColor().' method="GET">
-                                    <input type="hidden" name="to" value="cart">
-                                    <input type="hidden" name="id_product" value="'.$product->getId().'">
-                                    <input type="hidden" name="action" value="them">
-                                    <div class="size-select">
-                                        <input type="radio" class="size-selector" name="size" id="S" value="S" autocomplete="off" checked="">
-                                        <label class="size-btn" for="S">S</label>
-                                        <input type="radio" class="size-selector" name="size" id="M" value="M" autocomplete="off" checked="">
-                                        <label class="size-btn" for="M">M</label>
-                                        <input type="radio" class="size-selector" name="size" id="L" value="L" autocomplete="off" checked="">
-                                        <label class="size-btn" for="L">L</label>
-                                        <input type="radio" class="size-selector" name="size" id="XL" value="XL"autocomplete="off" checked="">
-                                        <label class="size-btn" for="XL">XL</label>
-                                    </div>
-                                    <div class="color-select">
-                                        <input type="radio" class="color-selector" name="color" id="green" value="green" autocomplete="off" checked="">
-                                        <label class="color-btn" for="green"></label>
-                                        <input type="radio" class="color-selector" name="color" id="pink" value="pink" autocomplete="off" checked="">
-                                        <label class="color-btn" for="pink"></label>
-                                        <input type="radio" class="color-selector" name="color" id="yellow" value="yellow" autocomplete="off" checked="">
-                                        <label class="color-btn" for="yellow"></label>
-                                    </div>
-
-                                    <div class="selector-actions">
-                                        <div class="quantity" style="clear: both">
-                                            <button class="minusdecrease" onclick="creaseCount(event, this)">-</button>
-                                            <input type="text" value="1" min="0" max="10" class="detail-number">
-                                            <button class="plusincrease" onclick="increaseCount(event, this)">+</button>
+                            $arraysize = explode(", ",$product->getSize());
+                            $arraycolor = explode(", ",$product->getColor());
+                            echo '  <div class="pro-title">
+                                            <h3>'.$product->getName().'</h3>
                                         </div>
-                    
-                                        <br style="clear: both"></br>
-                    
-                                        <div class="d-flex">
-                                            <button type="submit" name="from" value="themvaogio" class="detail-btn add-btn add-cart">Thêm vào giỏ</button>
-                                            <button type="submit" name="from" value="muangay" class="detail-btn buy-btn">Mua ngay</button>
+                                        <div class="detail-pro-price">
+                                            <span class="detail-pro-sale">-30%</span>
+                                            <span class="detail-pro-price">'.currency_format($product->getPrice()).'</span>
+                                            <del>'.currency_format(2000000).'</del>
                                         </div>
-                                    </div>                       
-                                </form>
-                                <div class="info">
-                                    <div class="info-list d-flex">
-                                        <div class="info-item">Giới thiệu</div>
-                                    </div>
-                                    <div class="info-content">
-                                        <div class="info-content-item block">
-                                            '.$product->getDescription().'
+                                        <form action="./indexpd.php?to=cart&id_product='.$product->getId().'&action=them&size='.$product->getSize().'&color='.$product->getColor().' method="GET">
+                                            <input type="hidden" name="to" value="cart">
+                                            <input type="hidden" name="id_product" value="'.$product->getId().'">
+                                            <input type="hidden" name="action" value="them">
+                                            <div class="size-select"> 
+                                                ';?>
+                                                <?php
+                                                        foreach ($arraysize as $spro) { 
+                                                        echo '
+                                                            <input type="radio" class="size-selector" name="size" id="'.strtoupper($spro).'" value="'.strtoupper($spro).'" autocomplete="off" checked="">
+                                                            <label class="size-btn" for="'.strtoupper($spro).'">'.strtoupper($spro).'</label>
+                                                        ';  
+                                                }
+                                                ?>
+                                            <?php
+                                            echo '
+                                            </div>
+                                            <div class="color-select">
+                                                ';?>
+                                                <?php
+                                                    foreach ($arraycolor as $cpro) {
+                                                        echo '
+                                                            <input type="radio" class="color-selector" name="color" id="'.strtolower($cpro).'" value="'.strtolower($cpro).'" autocomplete="off" checked="">
+                                                            <label class="color-btn" style="background-color:#'.color_format($cpro).';" for="'.strtolower($cpro).'"></label>
+                                                        ';
+                                                    }
+                                                ?>
+                                            <?php
+                                            echo '
+                                            </div>
+                                            <div class="selector-actions">
+                                                <div class="quantity" style="clear: both">
+                                                    <button class="minusdecrease" onclick="creaseCount(event, this)">-</button>
+                                                    <input type="text" value="1" min="0" max="10" class="detail-number">
+                                                    <button class="plusincrease" onclick="increaseCount(event, this)">+</button>
+                                                </div>
+                            
+                                                <br style="clear: both"></br>
+                            
+                                                <div class="d-flex">
+                                                    <button type="submit" name="from" value="themvaogio" class="detail-btn add-btn add-cart">Thêm vào giỏ</button>
+                                                    <button type="submit" name="from" value="muangay" class="detail-btn buy-btn">Mua ngay</button>
+                                                </div>
+                                            </div>                       
+                                        </form>
+                                        <div class="info">
+                                            <div class="info-list d-flex">
+                                                <div class="info-item">Giới thiệu</div>
+                                            </div>
+                                            <div class="info-content">
+                                                <div class="info-content-item block">
+                                                    '.$product->getDescription().'
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="desc">
-                                    <p class="desc-policy">
-                                        <i class="fa-solid fa-truck-fast"></i>
-                                        Giao hàng toàn quốc
-                                    </p>
-                                    <p class="desc-policy"> 
-                                        <i class="fa-solid fa-thumbs-up"></i>
-                                        Cam kết chính hãng
-                                    </p>
-                                    <p class="desc-policy">
-                                        <i class="fa-solid fa-chess-queen"></i>
-                                        Bảo hành trọn đời
-                                    </p>
-                                </div>
-                               
-                            ';
+                                        <div class="desc">
+                                            <p class="desc-policy">
+                                                <i class="fa-solid fa-truck-fast"></i>
+                                                Giao hàng toàn quốc
+                                            </p>
+                                            <p class="desc-policy"> 
+                                                <i class="fa-solid fa-thumbs-up"></i>
+                                                Cam kết chính hãng
+                                            </p>
+                                            <p class="desc-policy">
+                                                <i class="fa-solid fa-chess-queen"></i>
+                                                Bảo hành trọn đời
+                                            </p>
+                                        </div>
+                                        ';
                         }
                     }
                 ?>
