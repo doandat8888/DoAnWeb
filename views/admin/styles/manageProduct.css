@@ -160,7 +160,9 @@
     list-style: none;
     margin-right: 2rem;
     color: var(--text-color);
-    font-size: 1.6rem;
-    margin-top: 2rem;
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+    border: none;
+    outline: none;
 }
 

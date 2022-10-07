@@ -180,6 +180,19 @@
                             }
                         }
                     }
+
+                    if(isset($_POST['page-submit'])) {
+                        $currentPage = $_POST['page-submit'];
+                        $limit = 4;
+                        $offset = ($currentPage - 1) * $limit;
+                        $data = $controller->getAllProductByLimit($limit, $offset);
+
+                    }else {
+                        $currentPage = 1;
+                        $limit = 4;
+                        $offset = ($currentPage - 1) * $limit;
+                        $data = $controller->getAllProductByLimit($limit, $offset);
+                    }
                     foreach ($data as $product) {
                         if($product->getStatus() == 1) {
                             echo "
@@ -221,9 +234,9 @@
                 $totalPages = ceil($totalProducts / $limit);
                 for($i = 1; $i <= $totalPages; $i++) {
                     echo "
-                        <a href='./index.php?page=manage-product'>
-                            <li class='page-item'>$i</li>
-                        </a>
+                        <form method='post' action='./index.php?page=manage-product'>
+                            <button class='page-item' name='page-submit' type='submit' value='".$i."'>$i</button>
+                        </form>
                     ";
                 }  
             ?>
