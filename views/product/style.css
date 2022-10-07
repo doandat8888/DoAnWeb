@@ -167,6 +167,8 @@ html, body {
 
     #product-body{
         margin-top: 8rem !important;
+        display: flex;
+        justify-content: center;
     }
 
     .dropdown{
@@ -586,4 +588,12 @@ h2{
 }
 .up-icon:hover {
     fill: var(--black);
+}
+
+.page-item {
+    list-style: none;
+    margin-right: 2rem;
+    color: var(--text-color);
+    font-size: 0.8rem;
+    margin-top: 1rem;
 }

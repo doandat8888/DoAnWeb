@@ -8,13 +8,11 @@
 
 <?php
     if (!function_exists('currency_format')) {
-
         function currency_format($number, $suffix = 'đ') {
             if (!empty($number)) {
                 return number_format($number, 0, ',', '.') . "{$suffix}";
             }
         }
-
     }
 ?>
 
@@ -51,30 +49,57 @@
         </div>
         <!-- NAV BreadCrumb-->
         <?php 
-                include_once "../../components/breadcrumb.php";
+                //include_once "../../components/breadcrumb.php";
         ?>
-        <!-- <nav class ="row d-sm-none d-md-block" aria-label ="breadcrumb">
-            <ol class ="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    Áo Lụa Cách Điệu Phối Nơ Lệch
-                </li>
-            </ol>
-        </nav> -->
+        <?php 
+            include_once "../../controllers/productController.php";
+            $controller = new ProductController();
+            if(isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $data = $controller->getProductById($id);
+                foreach ($data as $product) {
+                    echo '
+                        <nav class ="row d-sm-none d-md-block" aria-label ="breadcrumb">
+                            <ol class ="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    '.$product->getName().'
+                                </li>
+                            </ol>
+                        </nav>
+                    ';
+                }
+            }
+        ?>
         <!-- CONTENT -->
         <div class='row'>
             <!-- Product -->
             <div class='col-lg-7 col-md-12 col-12'>
                 <div class='imgpro'>
-                    <img id="ProductImg" width='100%' src='../../src/img/products/women/product-women-2-1.jpg' alt=''>
-                    <div class='img-icon'>
-                        <img src='../../src/img/products/women/product-women-2-1.jpg' alt='' class='small-img'>
-                        <img src='../../src/img/products/women/product-women-2-2.jpg' alt='' class='small-img'>
-                        <img src='../../src/img/products/women/product-women-2-3 (2).jpg' alt='' class='small-img'>
-                        <img src='../../src/img/products/women/product-women-2-4 (3).jpg' alt='' class='small-img'>
-                    </div>
+                    <?php 
+                        include_once "../../controllers/productController.php";
+                        $controller = new ProductController();
+                        if(isset($_GET['id'])) {
+                            $id = $_GET['id'];
+                            $data = $controller->getProductById($id);
+                            foreach ($data as $product) {
+                                echo "
+                                    <img id='ProductImg' width='100%' src='".$product->getImage01()."' alt=''>
+                                    <div class='img-icon'>
+                                        <img src='".$product->getImage01()."' alt='' class='small-img'>
+                                        <img src='".$product->getImage02()."' alt='' class='small-img'>
+                                        <img src='".$product->getImage01()."' alt='' class='small-img'>
+                                        <img src='".$product->getImage02()."' alt='' class='small-img'>
+                                    </div>
+                                ";
+                            }
+                        }
+                    ?>
+                
+                    
+                    
                 </div>
             </div>
             <!-- Detail Product -->
@@ -139,10 +164,7 @@
                                     </div>
                                     <div class="info-content">
                                         <div class="info-content-item block">
-                                            Áo kiểu dáng suông, cổ 3 phân, kết hợp thiết nơ lệch phần cổ, nút cài 1 bên vai. Chất liệu lụa trơn có độ bắt sáng tạo cảm giác mềm mại, sang chảnh. 
-                                            <br>
-                                            <br>
-                                            Nếu nàng theo đuổi phong cách sang chảnh, quý phái dành với nét đẹp cổ điển thì thiết kế áo sơ mi này chính là lựa chọn hoàn hảo dành cho bạn. Nàng có thể kết hợp mẫu áo này cùng chân váy bút chì hoặc quần âu diện đi làm, đi chơi.
+                                            '.$product->getDescription().'
                                         </div>
                                     </div>
                                 </div>

@@ -10,6 +10,13 @@
             }
         }
     }
+    if (!function_exists('currency_format')) {
+        function currency_format($number, $suffix = 'đ') {
+            if (!empty($number)) {
+                return number_format($number, 0, ',', '.') . "{$suffix}";
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,6 +86,7 @@
                             <a href="./index.php?type=2" class="type-list-link">
                                 <div class="type-item">IVY Kid</div>
                             </a>
+                            
                         </div>
 
                         <div class="type-content">
@@ -89,7 +97,7 @@
                                         $controller = new ProductController();
                                         if(isset($_GET['type'])) {
                                             $type = $_GET['type'];
-                                            $data = $controller->getProductByType($type);
+                                            $data = $controller->getProductByTypeLimit($type, 4, 0);
                                             foreach ($data as $product) {
                                                 echo"
                                                     
@@ -99,8 +107,10 @@
                                                                 <span class='badget'>
                                                                     -50%
                                                                 </span>
-                                                                <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
-                                                                <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
+                                                                <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."'>
+                                                                    <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
+                                                                    <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
+                                                                </a>
                                                                 <div class='pro-btn d-flex'>
                                                                     <a href='#' class='hidden-btn'>
                                                                         <i class='fa-solid fa-eye'></i>
@@ -127,7 +137,7 @@
                                                                 </h5>
                                                                 <p class='card-text'>
                                                                     <div class='product-price d-flex'>
-                                                                        <div class='product-price__new'>".$product->getPrice()."</div>
+                                                                        <div class='product-price__new'>".currency_format($product->getPrice())."</div>
                                                                         <strike><div class='product-price__old'>1.150.000đ</div></strike>
                                                                     </div>
                                                                 </p>
@@ -153,7 +163,7 @@
                                                 </button>
                                             ";
                                         }else {
-                                            $data = $controller->getProductByType(1);
+                                            $data = $controller->getProductByTypeLimit(1, 4, 0);
                                             foreach ($data as $product) {
                                                 echo"
                                                     
@@ -163,8 +173,10 @@
                                                                 <span class='badget'>
                                                                     -50%
                                                                 </span>
-                                                                <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
-                                                                <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
+                                                                <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."'>
+                                                                    <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
+                                                                    <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
+                                                                </a>
                                                                 <div class='pro-btn d-flex'>
                                                                     <a href='#' class='hidden-btn'>
                                                                         <i class='fa-solid fa-eye'></i>
@@ -191,7 +203,7 @@
                                                                 </h5>
                                                                 <p class='card-text'>
                                                                     <div class='product-price d-flex'>
-                                                                        <div class='product-price__new'>".$product->getPrice()."</div>
+                                                                        <div class='product-price__new'>".currency_format($product->getPrice())."</div>
                                                                         <strike><div class='product-price__old'>1.150.000đ</div></strike>
                                                                     </div>
                                                                 </p>

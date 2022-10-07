@@ -135,12 +135,22 @@
                 <?php 
                     include_once "../../controllers/productController.php";
                     $controller = new ProductController();
+                    $currentPage = 1;
+                    if(isset($_GET['current-page'])) {
+                        $currentPage = $_GET['current-page'];
+                    }
+                    $limit = 4;
+                    $offset = ($currentPage - 1) * $limit;
+                    $totalPages = 0;
+                    
                     if (isset($_GET["type"])){
                         $type = $_GET["type"];
-                        $data = $controller->getProductByType($type);
+                        $products = $controller->getProductByType($type);
+                        $totalProducts = count($products);
+                        $totalPages = ceil($totalProducts / $limit);
+                        $data = $controller->getProductByTypeLimit($type, $limit, $offset);
                         foreach($data as $product){
                             echo "
-                            
                             <div class='col-lg-3 col-md-6 col-6 product-search-result'>
                                 <div class='card'>
                                     <div class='product-img'>
@@ -194,10 +204,12 @@
                         }
                     }
                     else{
-                        $data = $controller->getAllProduct();
+                        $products = $controller->getAllProduct();
+                        $totalProducts = count($products);
+                        $totalPages = ceil($totalProducts / $limit);
+                        $data = $controller->getAllProductByLimit($limit, $offset);
                         foreach($data as $product){
                             echo "
-                            
                             <div class='col-lg-3 col-md-6 col-6 product-search-result'>
                                 <div class='card'>
                                     <div class='product-img'>
@@ -249,7 +261,26 @@
                             </div>
                             ";
                         }
-                    }    
+                    }  
+                    if(isset($_GET['type'])) {
+                        $type = $_GET['type'];
+                        for($i = 1; $i <= $totalPages; $i++) {
+                            echo "
+                                <a href='./index.php?type=".$type."&current-page=".$i."'>
+                                    <li class='page-item'>$i</li>
+                                </a>
+                            ";
+                        }  
+                    }else {
+                        for($i = 1; $i <= $totalPages; $i++) {
+                            echo "
+                                <a href='./index.php?&current-page=".$i."'>
+                                    <li class='page-item'>$i</li>
+                                </a>
+                            ";
+                        }  
+                    }
+                    
                 ?>
             </div>
         </div>

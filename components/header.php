@@ -14,34 +14,34 @@
 <div class="category">
     <i class="fa-solid fa-xmark cancel-icon"></i>
     <br>
-    <a href="./pages/login/index.php">
+    <a href="../../views/login/index.php">
         <button class="login-btn">
             Đăng nhập
         </button>
     </a>
     <ul class="category-list">
         <li class="category-item">
-            <a href="../index.php">
+            <a href="../../index.php" class="nav-item-link">
                 Trang chủ
             </a>
         </li>
         <li class="category-item">
-            <a href="../views/product/index.php">
+            <a href="../../views/product/index.php" class="nav-item-link">
                 Sản phẩm
             </a>
         </li>
         <li class="category-item">
-            <a href="../views/product/index.php?type=0">
+            <a href="../../views/product/index.php?type=0" class="nav-item-link">
                 Nam
             </a>
         </li>
         <li class="category-item">
-            <a href="../views/product/index.php?type=1">
+            <a href="../../views/product/index.php?type=1" class="nav-item-link">
                 Nữ
             </a>
         </li>
         <li class="category-item">
-            <a href="../views/product/index.php?type=2">
+            <a href="../../views/product/index.php?type=2" class="nav-item-link">
                 Trẻ em
             </a>
         </li>

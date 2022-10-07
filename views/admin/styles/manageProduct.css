@@ -150,3 +150,17 @@
     align-items: center;
 }
 
+.page-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.page-item {
+    list-style: none;
+    margin-right: 2rem;
+    color: var(--text-color);
+    font-size: 1.6rem;
+    margin-top: 2rem;
+}
+

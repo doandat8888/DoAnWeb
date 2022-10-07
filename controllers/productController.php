@@ -14,6 +14,12 @@
             $data = $this->model->getAllProduct();
             return $data;
         }
+
+        public function getAllProductByLimit($limit, $offset) {
+            $data = $this->model->getAllProductByLimit($limit, $offset);
+            return $data;
+        }
+
         public function setProduct($name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02) {
             $count = 0;
             $result = NULL;
@@ -54,6 +60,11 @@
 
         public function getProductByType($type) {
             $data = $this->model->getProductByType($type);
+            return $data;
+        }
+
+        public function getProductByTypeLimit($type, $limit, $offset) {
+            $data = $this->model->getProductByTypeLimit($type, $limit, $offset);
             return $data;
         }
 

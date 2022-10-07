@@ -205,5 +205,28 @@
                 ?>
             </tbody>
         </table>
+        <div class="page-list">
+            <?php 
+                include_once "../../controllers/productController.php";
+                $controller = new ProductController();
+                $products = $controller->getAllProduct();
+                $currentPage = 1;
+                if(isset($_GET['current-page'])) {
+                    $currentPage = $_GET['current-page'];
+                }
+                $limit = 4;
+                $offset = ($currentPage - 1) * $limit;
+                $totalPages = 0;
+                $totalProducts = count($products);
+                $totalPages = ceil($totalProducts / $limit);
+                for($i = 1; $i <= $totalPages; $i++) {
+                    echo "
+                        <a href='./index.php?page=manage-product'>
+                            <li class='page-item'>$i</li>
+                        </a>
+                    ";
+                }  
+            ?>
+        </div>
     </div>
 </div>

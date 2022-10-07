@@ -24,6 +24,25 @@
             }
             return $data;
         }
+
+        public function getAllProductByLimit($limit, $offset) {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            $data = array();
+            $query = "SELECT * from products ORDER BY `id` ASC limit $limit OFFSET $offset";
+            $result = chayTruyVanTraVeDL($link, $query);
+            if(mysqli_num_rows($result) > 0) {
+                while($rows = mysqli_fetch_assoc($result)) {
+                    $product = new Product($rows["id"], $rows["name"], $rows["color"], $rows["size"], $rows["price"], $rows["quantity"], $rows["type"], $rows["description"], $rows["category_id"], $rows["image01"], $rows["image02"], $rows["status"]);
+                    array_push($data, $product);
+                }
+                giaiPhongBoNho($link, $result);
+            }else{
+                $data = NULL;
+            }
+            return $data;
+        }
         public function setProduct($name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02) {
             $result = NULL;
             $link = NULL;
@@ -40,12 +59,32 @@
             }
             return $result;
         }  
+
         public function getProductByType($type) {
             $result = NULL;
             $link = NULL;
             taoKetNoi($link);
             $data = array();
             $query = "SELECT * from products WHERE `type` = '$type'";
+            $result = chayTruyVanTraVeDL($link, $query);
+            if(mysqli_num_rows($result) > 0) {
+                while($rows = mysqli_fetch_assoc($result)) {
+                    $product = new Product($rows["id"], $rows["name"], $rows["color"], $rows["size"], $rows["price"], $rows["quantity"], $rows["type"], $rows["description"], $rows["category_id"], $rows["image01"], $rows["image02"], $rows["status"]);
+                    array_push($data, $product);
+                }
+                giaiPhongBoNho($link, $result);
+            }else{
+                $data = NULL;
+            }
+            return $data;
+        } 
+
+        public function getProductByTypeLimit($type, $limit, $offset) {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            $data = array();
+            $query = "SELECT * from products WHERE `type` = '$type' ORDER BY `id` ASC limit $limit OFFSET $offset";
             $result = chayTruyVanTraVeDL($link, $query);
             if(mysqli_num_rows($result) > 0) {
                 while($rows = mysqli_fetch_assoc($result)) {
