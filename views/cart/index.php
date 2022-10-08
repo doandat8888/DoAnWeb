@@ -1,3 +1,32 @@
+<?php
+    session_start();
+?>
+<?
+    include_once "../../modules/db_module.php";
+    include_once "../../validate_module.php";
+    include_once "../../controllers/userController.php";
+    include_once "../../controllers/productController.php";
+
+    // if(isset($_SESSION['role']) && isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
+    //     if(isset($_POST['scope'])) {
+    //         $scope = $_POST['scope'];
+    //         switch($scope) {
+    //             case "add":
+    //                 $prod_id = $_POST['pro_id'];
+    //                 $prod_size = $_POST['pro_size'];
+    //                 $prod_color = $_POST['pro_color'];
+    //                 $prod_qty = $_POST['pro-quantity'];
+
+    //                 $user_id = $_SESSION['username']['id'];
+    //                 //thêm database Cart
+    //                 break;
+    //             default:
+    //                 echo 500;
+    //         }
+    //     }
+    // }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>

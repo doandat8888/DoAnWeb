@@ -64,23 +64,56 @@ function scrollToTop() {
 	window.scrollTo(0, 0);
 }
 
-// quantity action
-function increaseCount(a,b) {
-	var input = b.previousElementSibling;
-	var value = parseInt(input.value, 10);
-	value = isNaN(value) ? 0 : value;
-	value++;
-	input.value = value;
-}
-function decreaseCount(a,b) {
-	var input = b.nextElementSibling;
-	var value = parseInt(input.value, 10);
-	if(value > 1) {
+//JQuery btn-qty
+$(document).ready(function() {
+	//increament-btn
+	$('.plusincrease').click(function (e) {
+		e.preventDefault();
+		var qty = $(this).closest('.product-data').find('.detail-number').val();
+		
+		var value = parseInt(qty, 10);
 		value = isNaN(value) ? 0 : value;
-		value--;
-		input.value = value;
-	}
-}
+		if(value < 10) {
+			value++;
+			$(this).closest('.product-data').find('.detail-number').val(value);
+		}
+	});
+	//decrement-btn
+	$('.minusdecrease').click(function (e) {
+		e.preventDefault();
+		var qty = $(this).closest('.product-data').find('.detail-number').val();
+		
+		var value = parseInt(qty, 10);
+		value = isNaN(value) ? 0 : value;
+		if(value > 1) {
+			value--;
+			$(this).closest('.product-data').find('.detail-number').val(value);
+		}
+	});
+	//Add cart ----- Đang làm
+	// $('.addToCartBtn').click(function(e) {
+	// 	e.preventDefault();
+	// 	var qty = $(this).closest('.product-data').find('.detail-number').val();
+	// 	var pro_id = $(this).val();
+
+	// 	$.ajax({
+	// 		method: "POST",
+	// 		url: "views/cart/index.php",
+	// 		data: {
+	// 			"pro_id": pro_id,
+	// 			"pro_size": pro_size,
+	// 			"pro_color": pro_color,
+	// 			"pro_qty": qty,
+	// 			"scope": "add"
+	// 		},
+	// 		successs: function (response) {
+	// 			if(response === 401) {
+	// 				alert("Login to continue");
+	// 			}
+	// 		}
+	// 	});
+	// });
+});
 
 //Heart active
 var isActiveBorder = true;
@@ -184,10 +217,4 @@ loadMoreBtn.onclick = () => {
 	if(currentItem >= boxes.length) {
 		loadMoreBtn.style.display = 'none';
 	}
-}
-//Add cart
-const btn = document.querySelectorAll('.add-cart')
-for (var i = 0; i < array.length; index++) {
-	const element = array[index];
-	
 }

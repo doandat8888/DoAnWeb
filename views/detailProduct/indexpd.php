@@ -135,7 +135,7 @@ if (!function_exists('color_format')) {
                 </div>
             </div>
             <!-- Detail Product -->
-            <div class='col-lg-5 col-md-12 col-12'>
+            <div class='col-lg-5 col-md-12 col-12 product-data'>
                 <?php
                     include_once "../../controllers/productController.php";
                     $controller = new ProductController();
@@ -186,16 +186,16 @@ if (!function_exists('color_format')) {
                                             echo '
                                             </div>
                                             <div class="selector-actions">
-                                                <div class="quantity" style="clear: both">
-                                                    <button class="minusdecrease" onclick="creaseCount(event, this)">-</button>
-                                                    <input type="text" value="1" min="0" max="10" class="detail-number">
-                                                    <button class="plusincrease" onclick="increaseCount(event, this)">+</button>
+                                                <div class="quantity mb-3" style="clear: both;">
+                                                    <button class="minusdecrease">-</button>
+                                                    <input type="text" value="1" min="0" max="'.$product->getQuantity().'" class="detail-number" disabled>
+                                                    <button class="plusincrease">+</button>
                                                 </div>
                             
                                                 <br style="clear: both"></br>
                             
                                                 <div class="d-flex">
-                                                    <button type="submit" name="from" value="themvaogio" class="detail-btn add-btn add-cart">Thêm vào giỏ</button>
+                                                    <button type="submit" name="from" value="themvaogio" class="detail-btn add-btn addToCartBtn" value="'.$product->getId().'">Thêm vào giỏ</button>
                                                     <button type="submit" name="from" value="muangay" class="detail-btn buy-btn">Mua ngay</button>
                                                 </div>
                                             </div>                       
@@ -319,6 +319,7 @@ if (!function_exists('color_format')) {
                 $data = $controller->getAllProduct();
                 foreach ($data as $product) {
                     if($product->getStatus() == 1) {
+                        $arraycolor = explode(", ",$product->getColor());
                         echo ' <div class="col-lg-3 col-md-6 col-6 products">
                                     <div class="card">
                                             <div class="pro-img">
@@ -339,9 +340,17 @@ if (!function_exists('color_format')) {
                                                 <h5 class="card-title product-info">
                                                     <div class="list-color d-flex">
                                                         <div class="dot-list d-flex">
-                                                            <div class="dot green"></div>
-                                                            <div class="dot pink"></div>
-                                                            <div class="dot yellow"></div>
+                                                        ';?>
+                                                        <?php 
+                                                        foreach($arraycolor as $cpro) {
+                                                            $colorHex = color_format($cpro);
+                                                            echo '
+                                                                <label class="color-button" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>
+                                                            ';
+                                                        }
+                                                        ?>
+                                                        <?php 
+                                                        echo '
                                                         </div>
                                                         <div class="favorite">
                                                             <span class="material-symbols-outlined favorite-icon">
@@ -355,7 +364,7 @@ if (!function_exists('color_format')) {
                                                 </h5>
                                                 <p class="card-text">
                                                     </p><div class="product-price d-flex">
-                                                        <div class="product-price__new">750.000đ</div>
+                                                        <div class="product-price__new">'.currency_format(750000).'</div>
                                                         <strike><div class="product-price__old">'.currency_format($product->getPrice()).'</div></strike>
                                                     </div>
                                                 <p></p>

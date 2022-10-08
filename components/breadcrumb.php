@@ -9,8 +9,6 @@
                     break;
                 case 'indexpd.php':
                     echo '<li class="breadcrumb-item"><a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a></li>
-                            <li>/</li>
-                            <li class="breadcrumb-item"><a href="../../views/search/indexsearch.php" class="breadcrumb-item-link">Sản phẩm</a></li>
                             <li>/</li>';
                             include_once "../../controllers/productController.php";
                             $controller = new ProductController();
