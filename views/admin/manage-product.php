@@ -1,3 +1,13 @@
+<?php 
+    if (!function_exists('currency_format')) {
+        function currency_format($number, $suffix = 'đ') {
+            if (!empty($number)) {
+                return number_format($number, 0, ',', '.') . "{$suffix}";
+            }
+        }
+    }
+?>
+
 <div class="manage-product">
     <!-- Modal -->
     <form method="post" action="./index.php?page=manage-product">
@@ -235,7 +245,7 @@
                                     <th scope='row'>" . $product->getId() . "</th>
                                     <td class='product-img-container col-2'><img src='" . $product->getImage01() . "' class='manage-product-img col-lg-6 col-12'></td>
                                     <td>" . $product->getName() . "</td>
-                                    <td>" . $product->getPrice() . "</td>
+                                    <td>" . currency_format($product->getPrice()) . "</td>
                                     <td class='manage-product-action'>
                                         <a href='./index.php?page=update-product&id=".$product->getId()."'>
                                             <button class='edit action-btn' data-toggle='modal' data-target='#editModal'>

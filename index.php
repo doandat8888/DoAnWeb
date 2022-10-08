@@ -125,7 +125,6 @@
                                             foreach ($data as $product) {
                                                 $arraycolor = explode(", ",$product->getColor());
                                                 echo"
-                                                    
                                                     <div class='col-lg-3 col-md-6 col-6 product'>
                                                         <div class='card'>
                                                             <div class='product-img'>

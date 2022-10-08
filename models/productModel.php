@@ -11,7 +11,7 @@
             $link = NULL;
             taoKetNoi($link);
             $data = array();
-            $query = "SELECT * from products";
+            $query = "SELECT * from products WHERE `status` = 1";
             $result = chayTruyVanTraVeDL($link, $query);
             if(mysqli_num_rows($result) > 0) {
                 while($rows = mysqli_fetch_assoc($result)) {
