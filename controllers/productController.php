@@ -58,6 +58,11 @@
             return $data;
         }
 
+        public function getProductByNameLimit($name, $limit, $offset) {
+            $data = $this->model->getProductByNameLimit($name, $limit, $offset);
+            return $data;
+        }
+
         public function getProductByType($type) {
             $data = $this->model->getProductByType($type);
             return $data;

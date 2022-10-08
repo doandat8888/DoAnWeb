@@ -114,6 +114,7 @@
                     include_once "../../controllers/productController.php";
                     $controller = new ProductController();
                     $data = $controller->getAllProduct();
+                    
                     if(isset($_POST['add-submit'])) {
                         $name = $_POST['pro-name'];
                         $color = $_POST['pro-color'];
@@ -134,36 +135,30 @@
                             echo "<script type='text/javascript'>alert('Thêm sản phẩm thành công');</script>";
                         }
                     }
-                    if(isset($_POST['search-submit'])) {
-                        if($_POST['keyword'] != '') {
-                            $name = $_POST['keyword'];
-                            $data = $controller->getProductByName($name);
-                        }
-                    }
                     
-                        if(isset($_POST['edit-submit'])) {
-                            if(isset($_GET['id'])) {
-                                $id = $_GET['id'];
-                                $name = $_POST['pro-name'];
-                                $color = $_POST['pro-color'];
-                                $size = $_POST['pro-size'];
-                                $price = $_POST['pro-price'];
-                                $quantity = $_POST['pro-quantity'];
-                                $type = $_POST['pro-type'];
-                                $description = $_POST['pro-description'];
-                                $categoryId = $_POST['pro-category'];
-                                $image01 = $_POST['pro-img-01'];
-                                $image02 = $_POST['pro-img-02'];
-                                $result = $controller->updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
-                                if($result === -1) {
-                                    echo "<script type='text/javascript'>alert('Vui lòng nhập đủ thông tin sản phẩm');</script>";
-                                }else if($result == 1) {
-                                    echo "<script type='text/javascript'>alert('Có lỗi xảy ra');</script>";
-                                }else if($result == 0) {
-                                    echo "<script type='text/javascript'>alert('Cập nhật sản phẩm thành công');</script>";
-                                }
+                    if(isset($_POST['edit-submit'])) {
+                        if(isset($_GET['id'])) {
+                            $id = $_GET['id'];
+                            $name = $_POST['pro-name'];
+                            $color = $_POST['pro-color'];
+                            $size = $_POST['pro-size'];
+                            $price = $_POST['pro-price'];
+                            $quantity = $_POST['pro-quantity'];
+                            $type = $_POST['pro-type'];
+                            $description = $_POST['pro-description'];
+                            $categoryId = $_POST['pro-category'];
+                            $image01 = $_POST['pro-img-01'];
+                            $image02 = $_POST['pro-img-02'];
+                            $result = $controller->updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
+                            if($result === -1) {
+                                echo "<script type='text/javascript'>alert('Vui lòng nhập đủ thông tin sản phẩm');</script>";
+                            }else if($result == 1) {
+                                echo "<script type='text/javascript'>alert('Có lỗi xảy ra');</script>";
+                            }else if($result == 0) {
+                                echo "<script type='text/javascript'>alert('Cập nhật sản phẩm thành công');</script>";
                             }
                         }
+                    }
                     
 
                     if(isset($_GET['action'])) {
@@ -181,17 +176,57 @@
                         }
                     }
 
+                    $currentPage = 0;
                     if(isset($_POST['page-submit'])) {
                         $currentPage = $_POST['page-submit'];
-                        $limit = 4;
-                        $offset = ($currentPage - 1) * $limit;
-                        $data = $controller->getAllProductByLimit($limit, $offset);
-
                     }else {
                         $currentPage = 1;
-                        $limit = 4;
-                        $offset = ($currentPage - 1) * $limit;
-                        $data = $controller->getAllProductByLimit($limit, $offset);
+                    }
+                    $limit = 4;
+                    $offset = ($currentPage - 1) * $limit;
+                    $keyword = "";
+                    $data = NULL;
+                    if(isset($_POST['search-submit'])) {
+                        if(isset($_SESSION['keyword'])) {
+                            if(isset($_POST['keyword'])) {
+                                $keyword = $_POST['keyword'];
+                                unset($_SESSION['keyword']);
+                                $_SESSION['keyword'] = $keyword;
+                            }else {
+                                $keyword = $_SESSION['keyword'];
+                            }
+                        }else {
+                            if(isset($_POST['keyword'])) {
+                                $keyword = $_POST['keyword'];
+                                $_SESSION['keyword'] = $keyword;
+                            }
+                        }
+                        $data = $controller->getProductByNameLimit($keyword, $limit, $offset);
+                    }else {
+                        if(isset($_SESSION['keyword'])) {
+                            if(isset($_POST['keyword'])) {
+                                $keyword = $_POST['keyword'];
+                                unset($_SESSION['keyword']);
+                                $_SESSION['keyword'] = $keyword;
+                                $data = $controller->getProductByNameLimit($keyword, $limit, $offset);
+                            }else {
+                                if(isset($_POST['page-submit'])) {
+                                    $keyword = $_SESSION['keyword'];
+                                    $data = $controller->getProductByNameLimit($keyword, $limit, $offset);
+                                }else {
+                                    unset($_SESSION['keyword']);
+                                    $data = $controller->getAllProductByLimit($limit, $offset);
+                                }
+                            }
+                        }else {
+                            if(isset($_POST['keyword'])) {
+                                $keyword = $_POST['keyword'];
+                                $_SESSION['keyword'] = $keyword;
+                                $data = $controller->getProductByNameLimit($keyword, $limit, $offset);
+                            }else {
+                                $data = $controller->getAllProductByLimit($limit, $offset);
+                            }
+                        }
                     }
                     foreach ($data as $product) {
                         if($product->getStatus() == 1) {
@@ -222,7 +257,21 @@
             <?php 
                 include_once "../../controllers/productController.php";
                 $controller = new ProductController();
-                $products = $controller->getAllProduct();
+                $products = NULL;
+                $name = "";
+                if(isset($_POST['search-submit'])) {
+                    if(isset($_POST['keyword'])) {
+                        $name = $_POST['keyword'];
+                        $products = $controller->getProductByName($name);
+                    }
+                }else {
+                    if(isset($_SESSION['keyword'])) {
+                        $name = $_SESSION['keyword'];
+                        $products = $controller->getProductByName($name);
+                    }else {
+                        $products = $controller->getAllProduct();
+                    }
+                }
                 $currentPage = 1;
                 if(isset($_GET['current-page'])) {
                     $currentPage = $_GET['current-page'];
