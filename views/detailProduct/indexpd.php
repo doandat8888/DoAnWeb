@@ -20,6 +20,7 @@
 <?php
 if (!function_exists('color_format')) {
     function color_format($color) {
+        $colorHex = "";
         $arraycolor = array(
             "blue" => "C6E9EC",
             "white" => "FFFFFF",
@@ -31,11 +32,15 @@ if (!function_exists('color_format')) {
             "green" => "98A882",
             "gray" => "A8A9AD",
         );
-        foreach($arraycolor as $icolor) {
-            if($icolor == $color) {
-                echo $icolor;
+        while($element = current($arraycolor)) {
+            if(key($arraycolor) == $color) {
+                $colorHex = $arraycolor[key($arraycolor)];
             }
+            next($arraycolor);
         }
+            
+        
+        return $colorHex;
     }
 }
 ?>
@@ -170,9 +175,10 @@ if (!function_exists('color_format')) {
                                                 ';?>
                                                 <?php
                                                     foreach ($arraycolor as $cpro) {
+                                                        $colorHex = color_format($cpro);
                                                         echo '
                                                             <input type="radio" class="color-selector" name="color" id="'.strtolower($cpro).'" value="'.strtolower($cpro).'" autocomplete="off" checked="">
-                                                            <label class="color-btn" style="background-color:#'.color_format($cpro).';" for="'.strtolower($cpro).'"></label>
+                                                            <label class="color-btn" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>
                                                         ';
                                                     }
                                                 ?>

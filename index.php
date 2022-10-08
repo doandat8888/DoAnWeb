@@ -17,6 +17,29 @@
             }
         }
     }
+    if (!function_exists('color_format')) {
+        function color_format($color) {
+            $colorHex = "";
+            $arraycolor = array(
+                "blue" => "C6E9EC",
+                "white" => "FFFFFF",
+                "pink" => "FB6E7C",
+                "orange" => "F3A45F",
+                "yellow" => "F4ED95",
+                "red" => "EC3333",
+                "black" => "212529",
+                "green" => "98A882",
+                "gray" => "A8A9AD",
+            );
+            while($element = current($arraycolor)) {
+                if(key($arraycolor) == $color) {
+                    $colorHex = $arraycolor[key($arraycolor)];
+                }
+                next($arraycolor);
+            }
+            return $colorHex;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,10 +118,12 @@
                                     <?php 
                                         include "./controllers/productController.php";
                                         $controller = new ProductController();
+                                       
                                         if(isset($_GET['type'])) {
                                             $type = $_GET['type'];
                                             $data = $controller->getProductByTypeLimit($type, 4, 0);
                                             foreach ($data as $product) {
+                                                $arraycolor = explode(", ",$product->getColor());
                                                 echo"
                                                     
                                                     <div class='col-lg-3 col-md-6 col-6 product'>
@@ -121,9 +146,17 @@
                                                                 <h5 class='card-title product-info'>
                                                                     <div class='list-color d-flex'>
                                                                         <div class='dot-list d-flex'>
-                                                                            <div class='dot green'></div>
-                                                                            <div class='dot pink'></div>
-                                                                            <div class='dot yellow'></div>
+                                                                            ";?>
+                                                                            <?php 
+                                                                            foreach($arraycolor as $cpro) {
+                                                                                $colorHex = color_format($cpro);
+                                                                                echo '
+                                                                                    <label class="color-button" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>
+                                                                                ';
+                                                                            }
+                                                                            ?>
+                                                                            <?php 
+                                                                            echo "
                                                                         </div>
                                                                         <div class='favorite'>
                                                                             <span class='material-symbols-outlined favorite-icon'>
@@ -141,7 +174,7 @@
                                                                         <strike><div class='product-price__old'>1.150.000đ</div></strike>
                                                                     </div>
                                                                 </p>
-                                                                <a href='#' class='btn btn-primary' style='background-color: transparent; border: none;'>
+                                                                <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>
                                                                     <div class='product-cart'>
                                                                         <span class='material-symbols-outlined product-cart-icon'>
                                                                             local_mall
@@ -165,6 +198,7 @@
                                         }else {
                                             $data = $controller->getProductByTypeLimit(1, 4, 0);
                                             foreach ($data as $product) {
+                                                $arraycolor = explode(", ",$product->getColor());
                                                 echo"
                                                     
                                                     <div class='col-lg-3 col-md-6 col-6 product'>
@@ -187,9 +221,17 @@
                                                                 <h5 class='card-title product-info'>
                                                                     <div class='list-color d-flex'>
                                                                         <div class='dot-list d-flex'>
-                                                                            <div class='dot green'></div>
-                                                                            <div class='dot pink'></div>
-                                                                            <div class='dot yellow'></div>
+                                                                            ";?>
+                                                                            <?php 
+                                                                            foreach($arraycolor as $cpro) {
+                                                                                $colorHex = color_format($cpro);
+                                                                                echo '
+                                                                                    <label class="color-button" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>
+                                                                                ';
+                                                                            }
+                                                                            ?>
+                                                                            <?php 
+                                                                            echo "
                                                                         </div>
                                                                         <div class='favorite'>
                                                                             <span class='material-symbols-outlined favorite-icon'>
@@ -207,7 +249,7 @@
                                                                         <strike><div class='product-price__old'>1.150.000đ</div></strike>
                                                                     </div>
                                                                 </p>
-                                                                <a href='#' class='btn btn-primary' style='background-color: transparent; border: none;'>
+                                                                <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>
                                                                     <div class='product-cart'>
                                                                         <span class='material-symbols-outlined product-cart-icon'>
                                                                             local_mall
