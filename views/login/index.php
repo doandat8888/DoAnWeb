@@ -78,6 +78,8 @@
                             Bạn chưa có tài khoản? <a href="../register/index.php" class="login-form-sign-up-link">Đăng kí tại đây</a>
                         </div>
                     </div>
+                </div>
+            </div>
         </form>
     </div>
 
