@@ -9,7 +9,7 @@
                 addToCart($item);
                 break;
             case "Update":
-                updateCart($_POST['id'], $_POST['quanity']);
+                updateCart($_POST['id'], $_POST['quantity']);
                 break;
             case "Remove":
                 removeFromCart($_POST['id']);

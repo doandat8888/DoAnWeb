@@ -24,7 +24,7 @@
     function updateCart($key, $quantity){
         if (isset($_SESSION['cart'])){
             $cart = $_SESSION['cart'];
-            $cart[$key][''] = $quantity;
+            $cart[$key]['quantity'] = $quantity;
             $_SESSION['cart'] = $cart;
         }
     }
