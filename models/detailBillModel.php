@@ -23,7 +23,7 @@
             return $data;
         }
 
-        public function setDetailBill($bill_id, $pro_id, $pro_name, $pro_qty, $pro_color, $pro_size, $pro_price) {
+        public function setDetailBill($bill_id, $pro_id, $pro_name, $pro_qty, $pro_color, $pro_size, $pro_price, $status) {
             $result = NULL;
             $link = NULL;
             taoKetNoi($link);

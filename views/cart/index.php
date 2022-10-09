@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -47,6 +50,9 @@
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-12 col-12 cart-products">
+                        <?php
+                            var_dump($_SESSION['cart']);
+                        ?>
                         <div class="cart-item">
                             <div class="row">
                                 <div class="col-3">

@@ -151,10 +151,10 @@ if (!function_exists('color_format')) {
                                         </div>
                                         <div class="detail-pro-price">
                                             <span class="detail-pro-sale">-30%</span>
-                                            <span class="detail-pro-price">'.currency_format($product->getPrice()).'</span>
+                                            <span class="detail-pro-price" name="price">'.currency_format($product->getPrice()).'</span>
                                             <del>'.currency_format(2000000).'</del>
                                         </div>
-                                        <form action="./indexpd.php?to=cart&id_product='.$product->getId().'&action=them&size='.$product->getSize().'&color='.$product->getColor().' method="GET">
+                                        <form action="./indexpd.php?to=cart&id_product='.$product->getId().'&action=them&size='.$product->getSize().'&color='.$product->getColor().' method="POST">
                                             <input type="hidden" name="to" value="cart">
                                             <input type="hidden" name="id_product" value="'.$product->getId().'">
                                             <input type="hidden" name="action" value="them">
@@ -188,18 +188,37 @@ if (!function_exists('color_format')) {
                                             <div class="selector-actions">
                                                 <div class="quantity mb-3" style="clear: both;">
                                                     <button class="minusdecrease">-</button>
-                                                    <input type="text" value="1" min="0" max="'.$product->getQuantity().'" class="detail-number" disabled>
+                                                    <input type="text" value="1" min="0" max="'.$product->getQuantity().'" name="quantity" class="detail-number" disabled>
                                                     <button class="plusincrease">+</button>
                                                 </div>
                             
                                                 <br style="clear: both"></br>
                             
                                                 <div class="d-flex">
-                                                    <button type="submit" name="from" value="themvaogio" class="detail-btn add-btn" value="'.$product->getId().'">Thêm vào giỏ</button>
+                                                    <button type="submit" name="from" value="themvaogio" name="addtocart" class="detail-btn add-btn" value="'.$product->getId().'">Thêm vào giỏ</button>
                                                     <button type="submit" name="from" value="muangay" class="detail-btn buy-btn">Mua ngay</button>
                                                 </div>
-                                            </div>                       
-                                        </form>
+                                            </div>                   
+                                        </form>';?>
+                                        <?php
+                                        if(isset($_POST['addtocart'])) {
+                                            if(isset($_SESSION['cart'])) {
+            
+                                            }else {
+                                                $session_arr = array(
+                                                    'id'=>$_POST['id'],
+                                                    'name'=> $_POST['name'],
+                                                    'price'=> $_POST['price'],
+                                                    'size'=> $_POST['size'],
+                                                    'color'=> $_POST['color'],
+                                                    'quantity'=> $_POST['quantity']
+                                                );
+                                                $_SESSION['cart'][] = $session_arr;
+                                            }
+                                        }
+                                        ?>
+                                        <?php
+                                        echo'
                                         <div class="info">
                                             <div class="info-list d-flex">
                                                 <div class="info-item">Giới thiệu</div>
