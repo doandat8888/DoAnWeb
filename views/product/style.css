@@ -590,11 +590,16 @@ h2{
     fill: var(--black);
 }
 
+.page-list {
+    display: flex;
+    justify-content: center;
+}
+
 .page-item {
     list-style: none;
     margin-right: 2rem;
     color: var(--text-color);
-    font-size: 0.8rem;
+    font-size: 1.6rem;
     margin-top: 1rem;
     border: none;
     outline: none;

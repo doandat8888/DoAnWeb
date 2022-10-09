@@ -136,7 +136,7 @@
                                                                     <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
                                                                 </a>
                                                                 <div class='pro-btn d-flex'>
-                                                                    <a href='#' class='hidden-btn'>
+                                                                    <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."' class='hidden-btn'>
                                                                         <i class='fa-solid fa-eye'></i>
                                                                     </a>
                                                                 </div>
@@ -211,7 +211,7 @@
                                                                     <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
                                                                 </a>
                                                                 <div class='pro-btn d-flex'>
-                                                                    <a href='#' class='hidden-btn'>
+                                                                    <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."' class='hidden-btn'>
                                                                         <i class='fa-solid fa-eye'></i>
                                                                     </a>
                                                                 </div>
