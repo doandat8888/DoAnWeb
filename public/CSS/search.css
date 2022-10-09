@@ -237,6 +237,7 @@ html, body {
 
 /*Breadcrumb*/
 .breadcrumb {
+    margin-top: 55px;
     font-size: 1.3rem;
     display: flex;
     flex-wrap: wrap;
