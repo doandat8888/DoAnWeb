@@ -21,25 +21,25 @@
 <body>
     <div class="container">
         <?php
-        session_start();
-        include_once "../../controllers/userController.php";
-        if (isset($_GET['msg'])) {
-            if ($_GET['msg'] == 'login-out') {
-                if (isset($_SESSION['role']) && isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
-                    unset($_SESSION['role']);
-                    unset($_SESSION['firstName']);
-                    unset($_SESSION['lastName']);
+            session_start();
+            include_once "../../controllers/userController.php";
+            if (isset($_GET['msg'])) {
+                if ($_GET['msg'] == 'login-out') {
+                    if (isset($_SESSION['role']) && isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
+                        unset($_SESSION['role']);
+                        unset($_SESSION['firstName']);
+                        unset($_SESSION['lastName']);
+                    }
                 }
             }
-        }
-        if (isset($_POST['submit'])) {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
-            $userController = new UserController();
-            $userController->getUser($username, $password);
-        }
+            if (isset($_POST['submit'])) {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $_SESSION['username'] = $username;
+                $_SESSION['password'] = $password;
+                $userController = new UserController();
+                $userController->getUser($username, $password);
+            }
         ?>
         <form action="./index.php" method="post">
             <div class="login-body row">
@@ -83,6 +83,6 @@
 
 </body>
 <script src="https://kit.fontawesome.com/644376ed9d.js" crossorigin="anonymous"></script>
-<script src="./script.js"></script>
+<!-- <script src="./script.js"></script> -->
 
 </html>

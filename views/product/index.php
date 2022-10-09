@@ -29,6 +29,8 @@
             return $colorHex;
         }
     }
+    $products = NULL;
+    $limit = 4;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -315,7 +317,13 @@
                             </div>
                             ";
                         }
-                    }  
+                    }
+                ?>
+            </div>
+            <div class="page-list">
+                <?php 
+                    $totalProducts = count($products);
+                    $totalPages = ceil($totalProducts / $limit);
                     if(isset($_GET['type'])) {
                         $type = $_GET['type'];
                         for($i = 1; $i <= $totalPages; $i++) {
@@ -334,7 +342,6 @@
                             ";
                         }  
                     }
-                    
                 ?>
             </div>
         </div>
