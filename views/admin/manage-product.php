@@ -125,6 +125,7 @@
                     $controller = new ProductController();
                     $data = $controller->getAllProduct();
                     
+                    
                     if(isset($_POST['add-submit'])) {
                         $name = $_POST['pro-name'];
                         $color = $_POST['pro-color'];
@@ -238,28 +239,33 @@
                             }
                         }
                     }
-                    foreach ($data as $product) {
-                        if($product->getStatus() == 1) {
-                            echo "
-                                <tr>
-                                    <th scope='row'>" . $product->getId() . "</th>
-                                    <td class='product-img-container col-2'><img src='" . $product->getImage01() . "' class='manage-product-img col-lg-6 col-12'></td>
-                                    <td>" . $product->getName() . "</td>
-                                    <td>" . currency_format($product->getPrice()) . "</td>
-                                    <td class='manage-product-action'>
-                                        <a href='./index.php?page=update-product&id=".$product->getId()."'>
-                                            <button class='edit action-btn' data-toggle='modal' data-target='#editModal'>
-                                                Sửa
-                                            </button>
-                                        </a>
-                                        <a href='./index.php?page=manage-product&action=delete&id=".$product->getId()."'>
-                                            <button class='delete action-btn' type='submit'>Xóa</button>
-                                        </a>
-                                    </td>
-                                </tr>   
-                            ";
+                    if($data != NULL) {
+                        foreach ($data as $product) {
+                            if($product->getStatus() == 1) {
+                                echo "
+                                    <tr>
+                                        <th scope='row'>" . $product->getId() . "</th>
+                                        <td class='product-img-container col-2'><img src='" . $product->getImage01() . "' class='manage-product-img col-lg-6 col-12'></td>
+                                        <td>" . $product->getName() . "</td>
+                                        <td>" . currency_format($product->getPrice()) . "</td>
+                                        <td class='manage-product-action'>
+                                            <a href='./index.php?page=update-product&id=".$product->getId()."'>
+                                                <button class='edit action-btn' data-toggle='modal' data-target='#editModal'>
+                                                    Sửa
+                                                </button>
+                                            </a>
+                                            <a href='./index.php?page=manage-product&action=delete&id=".$product->getId()."'>
+                                                <button class='delete action-btn' type='submit'>Xóa</button>
+                                            </a>
+                                        </td>
+                                    </tr>   
+                                ";
+                            }
                         }
+                    }else {
+                        echo "Không có sản phẩm nào được tìm thấy. Vui lòng thử lại";
                     }
+                    
                 ?>
             </tbody>
         </table>
@@ -289,15 +295,18 @@
                 $limit = 4;
                 $offset = ($currentPage - 1) * $limit;
                 $totalPages = 0;
-                $totalProducts = count($products);
-                $totalPages = ceil($totalProducts / $limit);
-                for($i = 1; $i <= $totalPages; $i++) {
-                    echo "
-                        <form method='post' action='./index.php?page=manage-product'>
-                            <button class='page-item' name='page-submit' type='submit' value='".$i."'>$i</button>
-                        </form>
-                    ";
-                }  
+                if($products != NULL) {
+                    $totalProducts = count($products);
+                    $totalPages = ceil($totalProducts / $limit);
+                    for($i = 1; $i <= $totalPages; $i++) {
+                        echo "
+                            <form method='post' action='./index.php?page=manage-product'>
+                                <button class='page-item' name='page-submit' type='submit' value='".$i."'>$i</button>
+                            </form>
+                        ";
+                    }
+                }
+                  
             ?>
         </div>
     </div>
