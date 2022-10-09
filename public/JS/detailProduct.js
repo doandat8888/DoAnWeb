@@ -90,29 +90,6 @@ $(document).ready(function() {
 			$(this).closest('.product-data').find('.detail-number').val(value);
 		}
 	});
-	//Add cart ----- Đang làm
-	// $('.addToCartBtn').click(function(e) {
-	// 	e.preventDefault();
-	// 	var qty = $(this).closest('.product-data').find('.detail-number').val();
-	// 	var pro_id = $(this).val();
-
-	// 	$.ajax({
-	// 		method: "POST",
-	// 		url: "views/cart/index.php",
-	// 		data: {
-	// 			"pro_id": pro_id,
-	// 			"pro_size": pro_size,
-	// 			"pro_color": pro_color,
-	// 			"pro_qty": qty,
-	// 			"scope": "add"
-	// 		},
-	// 		successs: function (response) {
-	// 			if(response === 401) {
-	// 				alert("Login to continue");
-	// 			}
-	// 		}
-	// 	});
-	// });
 });
 
 //Heart active
