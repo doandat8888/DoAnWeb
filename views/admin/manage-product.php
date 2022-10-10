@@ -8,6 +8,8 @@
     }
 ?>
 
+
+
 <div class="manage-product">
     <!-- Modal -->
     <form method="post" action="./index.php?page=manage-product">
@@ -28,7 +30,30 @@
                             </div>
                             <div class="product-info-item col-6">
                                 <div class="product-info-item-title">Màu sắc</div>
-                                <input type="text" placeholder="Nhập màu sắc" class="product-info-item-input" name="pro-color">
+                                <!-- <input type="text" placeholder="Nhập màu sắc" class="product-info-item-input" name="pro-color"> -->
+                                <select title="Màu sắc" class="selectpicker" name="pro-color" id="color" multiple required>
+                                    <option value="yellow" style="color: var(--yellow);">Vàng</option>
+                                    <option value="green" style="color: var(--green);">Xanh lá</option>
+                                    <option value="pink" style="color: var(--pink);">Hồng</option>
+                                    <option value="red" style="color: var(--red);">Đỏ</option>
+                                    <option value="white" style="color: var(--white);">Trắng</option>
+                                    <option value="brown" style="color: var(--brown);">Nâu</option>
+                                    <option value="black" style="color: var(--black);">Đen</option>
+                                    <option value="orange" style="color: var(--orange);">Cam</option>
+                                    <option value="violet" style="color: var(--violet);">Tím</option>
+                                </select>
+                                <!-- <div class="product-info-item-title">Màu sắc</div>
+                                <select class="product-info-item-input" multiple required class="selectpicker" name="pro-color" id="color">
+                                    <option value="-1">Chọn màu sắc</option>
+                                    <option value="0">Đầm Thun</option>
+                                    <option value="1">Đầm Dạ Hội</option>
+                                    <option value="2">Áo Set</option>
+                                    <option value="3">Áo Thun</option>
+                                    <option value="4">Áo Polo</option>
+                                    <option value="5">Áo Ngắn Tay</option>
+                                    <option value="6">Quần Sooc</option>
+                                    <option value="7">Áo Sơmi</option>
+                                </select> -->
                             </div>
                             <div class="product-info-item col-6">
                                 <div class="product-info-item-title">Kích thước</div>
