@@ -1,9 +1,8 @@
-<?php
-    session_start();
-?>
 <?
+    session_start();
     include_once "../../modules/db_module.php";
     include_once "../../validate_module.php";
+    require_once "../../modules/cart_module.php";
 ?>
 
 <!-- format đơn vị tiền tệ -->
@@ -201,6 +200,7 @@ if (!function_exists('color_format')) {
                                             </div>                   
                                         </form>';?>
                                         <?php
+                                        
                                         if(isset($_POST['addtocart'])) {
                                             if(isset($_SESSION['cart'])) {
             
