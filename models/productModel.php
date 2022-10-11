@@ -183,6 +183,58 @@
             }
             return $result;
         }
+
+        public function filterProduct() {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            $data = array();
+            $query = "SELECT * from products WHERE `id` = 1 ";
+            if(isset($_POST['size'])) {
+                $size = $_POST['size'];
+                $size_filter = implode("','", $size);
+                $query .= "AND `size` IN ('".$size_filter."') ";
+            }
+
+            $result = chayTruyVanTraVeDL($link, $query);
+            if(mysqli_num_rows($result) > 0) {
+                while($rows = mysqli_fetch_assoc($result)) {
+                    $product = new Product($rows["id"], $rows["name"], $rows["color"], $rows["size"], $rows["price"], $rows["quantity"], $rows["type"], $rows["description"], $rows["category_id"], $rows["image01"], $rows["image02"], $rows["status"]);
+                    array_push($data, $product);
+                }
+                giaiPhongBoNho($link, $result);
+            }else{
+                $data = NULL;
+            }
+            return $data;
+        }
+
+        public function filterProductLimit($limit, $offset) {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            $data = array();
+            $query = "SELECT * from products ";
+            if(isset($_POST['size'])) {
+                $size = $_POST['size'];
+                $size_filter = implode("','", $size);
+                $query .= "AND `size` IN ('".$size_filter."') ";
+            }
+
+            $query .= "ORDER BY `id` ASC limit $limit OFFSET $offset";
+
+            $result = chayTruyVanTraVeDL($link, $query);
+            if(mysqli_num_rows($result) > 0) {
+                while($rows = mysqli_fetch_assoc($result)) {
+                    $product = new Product($rows["id"], $rows["name"], $rows["color"], $rows["size"], $rows["price"], $rows["quantity"], $rows["type"], $rows["description"], $rows["category_id"], $rows["image01"], $rows["image02"], $rows["status"]);
+                    array_push($data, $product);
+                }
+                giaiPhongBoNho($link, $result);
+            }else{
+                $data = NULL;
+            }
+            return $data;
+        }
     }    
 ?>
 

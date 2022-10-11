@@ -110,5 +110,12 @@
             }
             return $result;
         }
+
+        public function filterProduct() {
+            if(isset($_POST['action'])) {
+                $data = $this->model->filterProduct();
+                return $data;
+            }
+        }
     }
 ?>

@@ -1,4 +1,64 @@
-const cartNumber = document.querySelector('.cart-number');
+//Navigation menu collapse + open
+var navBtn = document.getElementById('navigation-bar');
+var category = document.querySelector('.category');
+   
+navBtn.onclick = function() {
+    category.classList.add('active');
+}
+var cancelBtn = document.querySelector('.category .cancel-icon');
+cancelBtn.onclick = function() {
+    category.classList.remove('active');
+}
+
+//Favorite Icon turn red
+var heartIconList = document.querySelectorAll('.favorite-icon');
+    console.log(heartIconList);
+    for(let i = 0; i < heartIconList.length; i++) {
+        heartIconList[i].onclick = function() {
+            heartIconList[i].classList.toggle('active-favorite')
+        }
+    }
+
+//Open filter on mobile
+var filter = document.querySelector('.filter');
+var filterControl = document.getElementById('filter-control');
+var filterArrow = document.getElementById('filter-arrow');
+
+filterControl.onclick = function() {
+                
+    if (filter.classList.contains('active')){
+        filter.classList.remove('active');
+        filterArrow.classList.replace('fa-angle-up', 'fa-angle-down');
+        return;
+    }
+
+    if (!filter.classList.contains('active')){
+        filter.classList.add('active');
+        filterArrow.classList.replace('fa-angle-down', 'fa-angle-up');
+        return;
+    }
+}
+
+//Filters' dropdown open + collapse
+var selected = document.querySelectorAll('.selected');
+var optionContainer = document.querySelectorAll('.option-container');
+
+for (let i = 0; i < selected.length; i++){
+    selected[i].onclick = function() {
+        optionContainer[i].classList.toggle('active');
+    }
+}
+
+for (let i = 0; i < optionContainer.length; i++){
+    let optionList = optionContainer[i].querySelectorAll('.option');
+        optionList.forEach(o => {
+            o.addEventListener("click", () => {
+                selected[i].innerHTML = o.querySelector('label').innerHTML;
+                optionContainer[i].classList.remove('active');
+            })
+        });
+}
+
 //Hàm biến đổi đơn vị tiền tệ thành số nguyên. VD: 20.000đ -> 20000
 const formatNumber = (number) => {
     return Number(number.replace(/[^0-9,-]+/g,""));
@@ -7,39 +67,16 @@ const formatNumber = (number) => {
 const numberWithCommat = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 }
+
 var navBtn = document.getElementById('navigation-bar');
 var category = document.querySelector('.category');
 
 navBtn.onclick = function() {
     category.classList.add('translateX');
 }
-var cancelBtnCategory = document.querySelector('.category .cancel-icon');
-cancelBtnCategory.onclick = function() {
+var cancelBtn = document.querySelector('.category .cancel-icon');
+cancelBtn.onclick = function() {
     category.classList.remove('translateX');
-}
-var typeList = document.getElementsByClassName('type-item');
-var listType = document.querySelectorAll('.type-content-list');
-for(let i = 0; i < typeList.length; i++) {
-    typeList[i].onclick = function() {
-        for(let j = 0; j < typeList.length; j++) {
-            if(typeList[j].classList.contains('border-active')) {
-                if(i !== j) {
-                    typeList[j].classList.remove('border-active');
-                    typeList[i].classList.add('border-active');
-                    listType[j].classList.remove('block');
-                    listType[i].classList.add('block');
-                }
-            }
-        }
-    }
-}
-var isActiveBorder = true;
-var heartIconList = document.querySelectorAll('.favorite-icon');
-console.log(heartIconList);
-for(let i = 0; i < heartIconList.length; i++) {
-    heartIconList[i].onclick = function() {
-        heartIconList[i].classList.toggle('active2')
-    }
 }
 const searchIcon = document.querySelector('.search-icon');
 console.log(searchIcon);
@@ -53,6 +90,7 @@ console.log(cancleBtnSearch);
 cancleBtnSearch.onclick = function() {
     searchSection.classList.remove('translateY');
 }
+
 const cartBtn = document.querySelector('.nav-icon .cart-icon');
 console.log(cartBtn);
 const cartMenu = document.querySelector('.cart');
@@ -64,6 +102,7 @@ cancleBtnCart.onclick = function() {
     cartMenu.classList.remove('translateX');
 }
 const cartItems = document.querySelectorAll('.cart-item');
+//Tính tổng số lượng hàng & tính tổng tiền
 var count = 0;
 
 const cartQuantity = document.querySelector('.cart-title .quantity');
@@ -79,24 +118,25 @@ for(let i = 0; i < cartItems.length; i++) {
     totalPrice += productPrice * productQuantity;
 }
 cartQuantity.innerHTML = count;
+const cartNumber = document.querySelector('.cart-number');
 cartNumber.innerHTML = count;
 const totalMoney = document.querySelector('.cart-total-money');
 totalMoney.innerHTML = numberWithCommat(totalPrice) + 'đ';
 
-// BACK_TO_TOP
-// mybutton = document.getElementById("back-to-top");
+//scrollToTop
+mybutton = document.getElementById("back-to-top");
 
-// window.onscroll = function() {scrollFunction()};
+window.onscroll = function() {scrollFunction()};
 
-// function scrollFunction() {
-//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-//     mybutton.style.display = "block";
-//   } else {
-//     mybutton.style.display = "none";
-//   }
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
   
-// }
-// function scrollToTop() {
+}
+function scrollToTop() {
   
-// 	window.scrollTo(0, 0);
-// }
+	window.scrollTo(0, 0);
+}

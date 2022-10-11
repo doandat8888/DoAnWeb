@@ -117,22 +117,22 @@
                     <option value="xxl">XXL</option>
                 </select> -->
 
-                <div class="size filter">
+                <div class="size-container filter">
                     <div class="filter-title">Size</div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check size" value="s" />  S
+                        <input type="checkbox" class="filter-item-check pro-size" value="s" />  S
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check size" value="m" />  M
+                        <input type="checkbox" class="filter-item-check pro-size" value="m" />  M
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check size" value="l" />  L
+                        <input type="checkbox" class="filter-item-check pro-size" value="l" />  L
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check size" value="xl" />  XL
+                        <input type="checkbox" class="filter-item-check pro-size" value="xl" />  XL
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check size" value="xxl" />  XXL
+                        <input type="checkbox" class="filter-item-check pro-size" value="xxl" />  XXL
                     </div>
                 </div>
 
@@ -148,34 +148,62 @@
                     <option value="violet" style="color: var(--violet);">Tím</option>
                 </select> -->
 
-                <div class="color filter">
+                <div class="color-container filter">
                     <div class="filter-title">Màu sắc</div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check color" value="yellow" />  Vàng
+                        <input type="checkbox" class="filter-item-check pro-color" value="yellow" />  Vàng
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check color" value="green" />  Xanh lá
+                        <input type="checkbox" class="filter-item-check pro-color" value="green" />  Xanh lá
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check color" value="pink" />  Hồng
+                        <input type="checkbox" class="filter-item-check pro-color" value="pink" />  Hồng
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check color" value="red" />  Đỏ
+                        <input type="checkbox" class="filter-item-check pro-color" value="red" />  Đỏ
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check color" value="white" />  Trắng
+                        <input type="checkbox" class="filter-item-check pro-color" value="white" />  Trắng
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check color" value="white" />  Nâu
+                        <input type="checkbox" class="filter-item-check pro-color" value="brown" />  Nâu
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check color" value="white" />  Đen
+                        <input type="checkbox" class="filter-item-check pro-color" value="black" />  Đen
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check color" value="white" />  Cam
+                        <input type="checkbox" class="filter-item-check pro-color" value="orange" />  Cam
                     </div>
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check color" value="white" />  Tím
+                        <input type="checkbox" class="filter-item-check pro-color" value="gray" />  Xám
+                    </div>
+                </div>
+
+                <div class="category-container filter">
+                    <div class="filter-title">Danh mục</div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-item-check pro-category" value="0" />  Đầm thun
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-item-check pro-category" value="1" />  Đầm dạ hội
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-item-check pro-category" value="2" />  Áo Set
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-item-check pro-category" value="3" />  Áo thun
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-item-check pro-category" value="4" />  Áo Polo
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-item-check pro-category" value="5" />  Áo ngắn tay
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-item-check pro-category" value="6" />  Quần sooc
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-item-check pro-category" value="7" />  Áo somi
                     </div>
                 </div>
 
@@ -210,20 +238,6 @@
         </div>
         <!--Products-->
         <div class="col-12 col-lg-9">
-            <!--Sort dropdown-->
-            <div class="row">
-                <div class="col-12 col-lg-5 col-md-5" style="z-index: 10000000; margin-top: 2rem;">
-                    <select title="Sắp xếp theo" class="selectpicker" name="sorter" id="sorter" required>
-                        <option value="default">Mặc định</option>
-                        <option value="newest">Mới nhất</option>
-                        <option value="most_purchased">Được mua nhiều nhất</option>
-                        <option value="most_liked">Được yêu thích nhất</option>
-                        <option value="hi_to_low">Giá: cao đến thấp</option>
-                        <option value="low_to_hi">Giá: thấp đến cao</option>
-                    </select>
-
-                </div>
-            </div>
             <!--The product-->
             <div class='row' id='product-body'>
                 <?php 
@@ -236,148 +250,110 @@
                     $limit = 4;
                     $offset = ($currentPage - 1) * $limit;
                     $totalPages = 0;
+                    $data = NULL;
+
+                    /* if(isset($_GET['method'])) {
+                        if($_GET['method'] == 'filter') {
+                            if (isset($_GET["type"])){
+                                $type = $_GET["type"];
+                                $products = $controller->getProductByType($type);
+                                $totalProducts = count($products);
+                                $totalPages = ceil($totalProducts / $limit);
+                                $data = $controller->getProductByTypeLimit($type, $limit, $offset);
+                                
+                            }
+                            else{
+                                $products = $controller->filterProduct();
+                                $totalProducts = count($products);
+                                $totalPages = ceil($totalProducts / $limit);
+                                $data = $controller->getAllProductByLimit($limit, $offset);
+                                
+                            }
+                        }
+                    }else { */
+                        if (isset($_GET["type"])){
+                            $type = $_GET["type"];
+                            $products = $controller->getProductByType($type);
+                            $totalProducts = count($products);
+                            $totalPages = ceil($totalProducts / $limit);
+                            $data = $controller->getProductByTypeLimit($type, $limit, $offset);
+                            
+                        }
+                        else{
+                            $products = $controller->getAllProduct();
+                            $totalProducts = count($products);
+                            $totalPages = ceil($totalProducts / $limit);
+                            $data = $controller->getAllProductByLimit($limit, $offset);
+                            
+                        }
+                    /* } */
+
+                    foreach($data as $product){
+                        $arraycolor = explode(", ",$product->getColor());
+                        echo "
+                        <div class='col-lg-3 col-md-6 col-6'>
+                            <div class='card'>
+                                <div class='product-img'>
+                                    <span class='badget'>
+                                        -50%
+                                    </span>
+                                    <a href='../detailProduct/indexpd.php?id=".$product->getId()."'>
+                                        <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
+                                        <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
+                                    </a>
+                                    <div class='pro-btn d-flex'>
+                                        <a href='../detailProduct/indexpd.php?id=".$product->getId()."' class='hidden-btn'>
+                                            <i class='fa-solid fa-eye'></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class='card-body'>
+                                    <h5 class='card-title product-info'>
+                                        <div class='list-color d-flex'>
+                                            <div class='dot-list d-flex'>
+                                                ";?>
+                                                <?php 
+                                                foreach($arraycolor as $cpro) {
+                                                    $colorHex = color_format($cpro);
+                                                    echo '
+                                                        <label class="color-button" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>
+                                                    ';
+                                                }
+                                                ?>
+                                                <?php 
+                                                echo "
+                                            </div>
+                                            <div class='favorite'>
+                                                <span class='material-symbols-outlined favorite-icon'>
+                                                    favorite
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class='product-name'>
+                                            ".$product->getName()."
+                                        </div>
+                                    </h5>
+                                    <p class='card-text'>
+                                        <div class='product-price d-flex'>
+                                            <div class='product-price__new'>".currency_format($product->getPrice())."</div>
+                                            <strike><div class='product-price__old'>1.150.000đ</div></strike>
+                                        </div>
+                                    </p>
+                                    <a href='../detailProduct/indexpd.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>
+                                        <div class='product-cart'>
+                                            <span class='material-symbols-outlined product-cart-icon'>
+                                                local_mall
+                                            </span>
+                                            <p class='product-cart-buy'>Mua ngay</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        ";
+                    }
                     
-                    if (isset($_GET["type"])){
-                        $type = $_GET["type"];
-                        $products = $controller->getProductByType($type);
-                        $totalProducts = count($products);
-                        $totalPages = ceil($totalProducts / $limit);
-                        $data = $controller->getProductByTypeLimit($type, $limit, $offset);
-                        foreach($data as $product){
-                            $arraycolor = explode(", ",$product->getColor());
-                            echo "
-                            <div class='col-lg-3 col-md-6 col-6 product-search-result'>
-                                <div class='card'>
-                                    <div class='product-img'>
-                                        <span class='badget'>
-                                            -50%
-                                        </span>
-                                        <a href='../detailProduct/indexpd.php?id=".$product->getId()."'>
-                                            <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
-                                            <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
-                                        </a>
-                                        <div class='pro-btn d-flex'>
-                                            <a href='../detailProduct/indexpd.php?id=".$product->getId()."' class='hidden-btn'>
-                                                <i class='fa-solid fa-eye'></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class='card-body'>
-                                        <h5 class='card-title product-info'>
-                                            <div class='list-color d-flex'>
-                                                <div class='dot-list d-flex'>
-                                                    ";?>
-                                                    <?php 
-                                                    foreach($arraycolor as $cpro) {
-                                                        $colorHex = color_format($cpro);
-                                                        echo '
-                                                            <label class="color-button" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>
-                                                        ';
-                                                    }
-                                                    ?>
-                                                    <?php 
-                                                    echo "
-                                                </div>
-                                                <div class='favorite'>
-                                                    <span class='material-symbols-outlined favorite-icon'>
-                                                        favorite
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class='product-name'>
-                                                ".$product->getName()."
-                                            </div>
-                                        </h5>
-                                        <p class='card-text'>
-                                            <div class='product-price d-flex'>
-                                                <div class='product-price__new'>".currency_format($product->getPrice())."</div>
-                                                <strike><div class='product-price__old'>1.150.000đ</div></strike>
-                                            </div>
-                                        </p>
-                                        <a href='../detailProduct/indexpd.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>
-                                            <div class='product-cart'>
-                                                <span class='material-symbols-outlined product-cart-icon'>
-                                                    local_mall
-                                                </span>
-                                                <p class='product-cart-buy'>Mua ngay</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            ";
-                        }
-                    }
-                    else{
-                        $products = $controller->getAllProduct();
-                        $totalProducts = count($products);
-                        $totalPages = ceil($totalProducts / $limit);
-                        $data = $controller->getAllProductByLimit($limit, $offset);
-                        foreach($data as $product){
-                            $arraycolor = explode(", ",$product->getColor());
-                            echo "
-                            <div class='col-lg-3 col-md-6 col-6 product-search-result'>
-                                <div class='card'>
-                                    <div class='product-img'>
-                                        <span class='badget'>
-                                            -50%
-                                        </span>
-                                        <a href='../detailProduct/indexpd.php?id=".$product->getId()."'>
-                                            <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
-                                            <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
-                                        </a>
-                                        <div class='pro-btn d-flex'>
-                                            <a href='../detailProduct/indexpd.php?id=".$product->getId()."' class='hidden-btn'>
-                                                <i class='fa-solid fa-eye'></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class='card-body'>
-                                        <h5 class='card-title product-info'>
-                                            <div class='list-color d-flex'>
-                                                <div class='dot-list d-flex'>
-                                                    ";?>
-                                                    <?php 
-                                                    foreach($arraycolor as $cpro) {
-                                                        $colorHex = color_format($cpro);
-                                                        echo '
-                                                            <label class="color-button" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>
-                                                        ';
-                                                    }
-                                                    ?>
-                                                    <?php 
-                                                    echo "
-                                                </div>
-                                                <div class='favorite'>
-                                                    <span class='material-symbols-outlined favorite-icon'>
-                                                        favorite
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class='product-name'>
-                                                ".$product->getName()."
-                                            </div>
-                                        </h5>
-                                        <p class='card-text'>
-                                            <div class='product-price d-flex'>
-                                                <div class='product-price__new'>".currency_format($product->getPrice())."</div>
-                                                <strike><div class='product-price__old'>1.150.000đ</div></strike>
-                                            </div>
-                                        </p>
-                                        <a href='../detailProduct/indexpd.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>
-                                            <div class='product-cart'>
-                                                <span class='material-symbols-outlined product-cart-icon'>
-                                                    local_mall
-                                                </span>
-                                                <p class='product-cart-buy'>Mua ngay</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            ";
-                        }
-                    }
+                    
                 ?>
             </div>
             <div class="page-list">
@@ -422,38 +398,60 @@
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
         }
 
-        $(document).ready(function() {
+        // $(document).ready(function() {
 
-            filterData();
+        //     filterData();
 
-            function filterData() {
-                var action = 'get-product';
-                var minimumPrice = $('hidden-minimum-price').val();
-                var maximumPrice = $('hidden-maximum-price').val();
-                var size = getFilter('size');
-            }
+        //     function filterData() {
+        //         var action = 'get-product';
+        //         var minimumPrice = $('hidden-minimum-price').val();
+        //         var maximumPrice = $('hidden-maximum-price').val();
+        //         var size = getFilter('pro-size');
+        //         var color = getFilter('pro-color');
+        //         var category = getFilter('pro-category');
 
-            function getFilter(className) {
-                var filter = [];
-                $('.'+ className + ':checked').each(function() {
-                    filter.push($(this).val());
-                });
-            }
+        //         $.ajax({
+        //             url: '../../controllers/productController.php',
+        //             method: 'POST',
+        //             data: {
+        //                 action: action,
+        //                 minimumPrice: minimumPrice,
+        //                 maximumPrice: maximumPrice,
+        //                 size: size,
+        //                 color: color,
+        //                 category: category
+        //             },
+        //             success: function(data) {
+        //                 $('.product-body').html(data);
+        //             }
+        //         });
+        //     }
 
-            $('#price-show').html("Từ " + numberWithComat(100000) + 'đ' + " - " + numberWithComat(10000000) + 'đ');
-            $('#price-range').slider({
-                range: true,
-                min: 100000,
-                max: 10000000,
-                values: [100000, 10000000],
-                step: 100000,
-                stop: function (event, ui) {
-                    $('#price-show').html("Từ " + numberWithComat(ui.values[0]) + 'đ' + " - " + numberWithComat(ui.values[1]) + 'đ');
-                    $('#hidden-minimum-price').val(ui.values[0]);
-                    $('#hidden-maximum-price').val(ui.values[1]);
-                }
-            })
-        })
+        //     function getFilter(className) {
+        //         var filter = [];
+        //         $('.' + className + ':checked').each(function() {
+        //             filter.push($(this).val());
+        //         });
+        //     }
+
+        //     $('.filter-item-check').click(function() {
+        //         filterData();
+        //     })
+
+        //     $('#price-show').html("Từ " + numberWithComat(100000) + 'đ' + " - " + numberWithComat(10000000) + 'đ');
+        //     $('#price-range').slider({
+        //         range: true,
+        //         min: 100000,
+        //         max: 10000000,
+        //         values: [100000, 10000000],
+        //         step: 100000,
+        //         stop: function (event, ui) {
+        //             $('#price-show').html("Từ " + numberWithComat(ui.values[0]) + 'đ' + " - " + numberWithComat(ui.values[1]) + 'đ');
+        //             $('#hidden-minimum-price').val(ui.values[0]);
+        //             $('#hidden-maximum-price').val(ui.values[1]);
+        //         }
+        //     })
+        // })
     </script>
 </body>
 </html>

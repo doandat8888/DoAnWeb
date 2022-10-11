@@ -117,7 +117,7 @@
     <div class="title">Quản lí sản phẩm</div>
     <div class="search-add col-12 d-flex">
         <form class="search col-8" method="post" action="./index.php?page=manage-product">
-            <input type="text" class="search-input" placeholder="Nhập từ khóa..." name="keyword" />
+            <input type="text" class="search-input" placeholder="Nhập từ khóa..." name="keyword"/>
             <!-- <a href="../../views/admin/index.php?page=manage-product"> -->
                 <button type="submit" class="search-btn" name="search-submit">
                     <span class="material-symbols-outlined search-icon">
