@@ -18,7 +18,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <link rel="stylesheet" href="./styles/manageProduct.css">
         <link rel="stylesheet" href="./styles/home.css">
-
+        
+        
         <title>Admin page</title>
     </head>
     <body>
@@ -100,5 +101,4 @@
     <script src="https://kit.fontawesome.com/644376ed9d.js" crossorigin="anonymous"></script>
     <script src="../search/script.js"></script>
     <script src="./script/home.js"></script>
-    
 </html>

@@ -25,6 +25,7 @@ html, body {
     --orange: #fa800eef;
     --red: #eb1212;
     --violet: #ea6ff5;
+    --gray-01: #999;
 }
 
 /*Category on the header*/
@@ -603,4 +604,44 @@ h2{
     margin-top: 1rem;
     border: none;
     outline: none;
+}
+
+.filter {
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+.filter-item, .filter-title {
+    font-size: 1.5rem;
+    color: var(--gray-01);
+    width: 100%;
+    text-align: left;
+}
+
+.filter-item {
+    margin-left: 1.6rem;
+    margin-top: 0.4rem;
+}
+
+.fitler-item-check {
+    border-color: var(--gray-01);
+}
+
+#price-show {
+    font-size: 1.4rem;
+    color: var(--gray-01);
+    width: 100%;
+    text-align: left;
+    margin-top: 0.4rem;
+}
+
+.price-title {
+    font-size: 1.4rem;
+    color: var(--gray-01);
+    width: 100%;
+    text-align: left;
+}
+
+#price-range {
+    margin-top: 1.2rem;
 }
