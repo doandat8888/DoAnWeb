@@ -2,11 +2,6 @@
     <ol class ="breadcrumb">
         <?php
             switch (basename($_SERVER['PHP_SELF'])) {
-                case 'index.php':
-                    echo '<li class="breadcrumb-item"><a href="../index.php" class="breadcrumb-item-link">Trang chủ</a></li>
-                            <li> / </li>
-                            <li>Sản phẩm</li>';
-                    break;
                 case 'indexpd.php':
                     echo '<li class="breadcrumb-item"><a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a></li>
                             <li>/</li>';
@@ -19,20 +14,25 @@
                                     echo ' <li class="breadcrumb-item active" aria-current="page">'.$product->getName().'</li>';
                                 }
                             }        
+                            break;
+                case '../../views/product/index.php':
+                    echo '<li class="breadcrumb-item"><a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a></li>
+                        <li> / </li>
+                        <li>Sản phẩm</li>';
                     break;
-                case 'indexcart.php':
+                case '../../views/cart/index.php':
                     echo '<li class="breadcrumb-item"><a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a></li>
                             <li> / </li>
                             <li>Giỏ hàng</li>';
                     break;
-                case 'indexcheckout.php':
+                case '../../views/checkout/index.php':
                     echo '<li class="breadcrumb-item"><a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a></li>
                             <li> / </li>
-                            <li class="breadcrumb-item"><a href="../../views/cart/indexcart.php" class="breadcrumb-item-link">Giỏ hàng</a></li>
+                            <li class="breadcrumb-item"><a href="../../views/cart/index.php" class="breadcrumb-item-link">Giỏ hàng</a></li>
                             <li> / </li>
                             <li>Checkout</li>';
                     break;
-                case 'indexsearch.php':
+                case '../../views/search/index.php':
                     echo '<li class="breadcrumb-item"><a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a></li>
                             <li> / </li>
                             <li>Tìm kiếm</li>';
