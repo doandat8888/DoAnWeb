@@ -1,8 +1,18 @@
+<?php
+    session_start();
+?>
 <div class="search-section d-flex justify-content-center align-items-center">
     <form class="search-form" action="../../views/search/index.php" method="get">
         <input name="searchstr" type="text" placeholder="TÌM KIẾM SẢN PHẨM" class="search-input">
-        <input type="submit" class="search-link" style="color:none!important;">
-    </form>  
+        <input type="submit" name="search" value="Tìm kiếm" class="search-link" style="color:none!important;">
+    </form> 
+
+    <?php 
+        if(isset($_GET['searchstr'])){
+            $_SESSION['search'] = $_GET['searchstr'];
+        }
+    ?>
+
     <!-- <a href="../../views/search/index.php" class="search-link" style="color: none !important;"> -->
         <!-- <span class="material-symbols-outlined header-icon search-icon-1">
             search

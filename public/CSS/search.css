@@ -534,7 +534,7 @@ h2{
     font-size: 1.6rem;
     color: var(--white);
     font-weight: bold;
-    z-index: 10000;
+    z-index: 1000;
 }
 
 /*Footer*/

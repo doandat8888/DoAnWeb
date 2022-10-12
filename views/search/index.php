@@ -123,11 +123,11 @@
             <!--Sort dropdown-->
             <div class="row">
                 <div class="col-12 col-lg-7 cold-md-7">
-                    <div style="font-size: 2rem; margin-top: 1.5rem; margin-left: -0.5rem; padding-top: 2rem;">
-                        Kết quả tìm kiếm theo "<?php echo $_GET['searchstr'] ?>"
+                    <div style="font-size: 2rem; margin-left: -0.5rem; padding-top: 2rem;">
+                        Kết quả tìm kiếm theo "<?php echo $_SESSION['search'] ?>"
                     </div>
                 </div>
-                <div class="col-12 col-lg-5 col-md-5" style="z-index: 10000000; margin-top: 2rem;">
+                <div class="col-12 col-lg-5 col-md-5" style="z-index: 100000;">
                     <select title="Sắp xếp theo" class="selectpicker" name="sorter" id="sorter" required>
                         <option value="default">Mặc định</option>
                         <option value="newest">Mới nhất</option>
@@ -144,8 +144,11 @@
                 <?php 
                     include_once "../../controllers/productController.php";
                     $controller = new ProductController();
-                    if (isset($_GET["searchstr"])){
-                        $searchstr = $_GET["searchstr"];
+                    if(isset($_POST['add'])){
+                        echo "<h1 style='margin-left:1rem;'>".$_POST['product_id']."</h1>";
+                    }                
+                    if (isset($_SESSION['search'])){
+                        $searchstr = $_SESSION['search'];
                         $data = $controller->getProductByName($searchstr);
 
                         if (empty($data)){
@@ -202,12 +205,15 @@
                                                 </div>
                                             </p>
                                             <a href='#' class='btn btn-primary' style='background-color: transparent; border: none;'>
-                                                <div class='product-cart'>
-                                                    <span class='material-symbols-outlined product-cart-icon'>
-                                                        local_mall
-                                                    </span>
-                                                    <p class='product-cart-buy'>Mua ngay</p>
-                                                </div>
+                                                <form action='./index.php' method='post'>
+                                                    <button type='submit' name='add' class='product-cart'>
+                                                        <span class='material-symbols-outlined product-cart-icon'>
+                                                            local_mall
+                                                        </span>
+                                                        <p class='product-cart-buy'>Mua ngay</p>
+                                                    </button>
+                                                    <input type='hidden' name='product_id' value=".$product->getId().">
+                                                </form>
                                             </a>
                                         </div>
                                     </div>
@@ -217,9 +223,8 @@
                         }
                     }
                     else{
-                        echo "Không tìm thấy kết quả nào";
+                        echo "<h1 style='margin-left:1rem;'>Không tìm thấy kết quả nào</h1>";
                     }
-                    
                 ?>
             </div>
         </div>
