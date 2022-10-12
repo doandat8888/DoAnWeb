@@ -266,71 +266,6 @@
                     $offset = ($currentPage - 1) * $limit;
                     $totalPages = 0;
                     $data = NULL;
-
-                    /* if(isset($_GET['method'])) {
-                        if($_GET['method'] == 'filter') {
-                            if (isset($_GET["type"])){
-                                $type = $_GET["type"];
-                                $products = $controller->getProductByType($type);
-                                $totalProducts = count($products);
-                                $totalPages = ceil($totalProducts / $limit);
-                                $data = $controller->getProductByTypeLimit($type, $limit, $offset);
-                                
-                            }
-                            else{
-                                $products = $controller->filterProduct();
-                                $totalProducts = count($products);
-                                $totalPages = ceil($totalProducts / $limit);
-                                $data = $controller->getAllProductByLimit($limit, $offset);
-                                
-                            }
-                        }
-                    }else { */
-                        if (isset($_GET["type"])){
-                            $type = $_GET["type"];
-                            $products = $controller->getProductByType($type);
-                            $totalProducts = count($products);
-                            $totalPages = ceil($totalProducts / $limit);
-                            $data = $controller->getProductByTypeLimit($type, $limit, $offset);
-                            
-                        }
-                        else{
-                            $products = $controller->getAllProduct();
-                            $totalProducts = count($products);
-                            $totalPages = ceil($totalProducts / $limit);
-                            $data = $controller->getAllProductByLimit($limit, $offset);
-                        }
-                    /* } */
-                    
-                    
-                ?>
-            </div>
-            <div class="page-list">
-                <?php 
-                    if(isset($_GET['type'])) {
-                        $type = $_GET['type'];
-                        $products = $controller->getProductByType($type);
-                        $totalProducts = count($products);
-                        $totalPages = ceil($totalProducts / $limit);
-                        for($i = 1; $i <= $totalPages; $i++) {
-                            echo "
-                                <a href='./index.php?type=".$type."&current-page=".$i."'>
-                                    <li class='page-item'>$i</li>
-                                </a>
-                            ";
-                        }  
-                    }else {
-                        $products = $controller->getAllProduct();
-                        $totalProducts = count($products);
-                        $totalPages = ceil($totalProducts / $limit);
-                        for($i = 1; $i <= $totalPages; $i++) {
-                            echo "
-                                <a href='./index.php?&current-page=".$i."'>
-                                    <li class='page-item'>$i</li>
-                                </a>
-                            ";
-                        }  
-                    }
                 ?>
             </div>
         </div>
@@ -366,7 +301,8 @@
                 var currentPage = $('#current-page').val();
 
                 $.ajax({
-                    url: `./filterProduct.php?type=${type}&current-page=${currentPage}`,
+                    url: `./filterProduct.php?type=${type}`,
+                    //url: `./index.php`,
                     method: 'POST',
                     data: {
                         action: action,

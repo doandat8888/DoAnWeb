@@ -118,6 +118,13 @@
             }
         }
 
+        public function filterProductByType($type) {
+            if(isset($_POST['action'])) {
+                $data = $this->model->filterProductByType($type);
+                return $data;
+            }
+        }
+
         public function filterProductByLimit($limit, $offset) {
             $data = $this->model->filterProductByLimit($limit, $offset);
             return $data;
