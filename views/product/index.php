@@ -239,6 +239,21 @@
         <!--Products-->
         <div class="col-12 col-lg-9">
             <!--The product-->
+            <?php 
+                if (isset($_GET["type"])){
+                    $type = $_GET["type"];
+                    echo "<input type='hidden' id='type' value='".$type."'></input>";
+                }else {
+                    echo "<input type='hidden' id='type' value='-1'></input>";
+                }
+
+                if(isset($_GET["current-page"])) {
+                    $currentPage = $_GET["current-page"];
+                    echo "<input type='hidden' id='current-page' value='".$currentPage."'></input>";
+                }else {
+                    echo "<input type='hidden' id='current-page' value='1'></input>";
+                }
+            ?>
             <div class='row' id='product-body'>
                 <?php 
                     include_once "../../controllers/productController.php";
@@ -284,84 +299,19 @@
                             $totalProducts = count($products);
                             $totalPages = ceil($totalProducts / $limit);
                             $data = $controller->getAllProductByLimit($limit, $offset);
-                            
                         }
                     /* } */
-
-                    foreach($data as $product){
-                        $arraycolor = explode(", ",$product->getColor());
-                        echo "
-                        <div class='col-lg-3 col-md-6 col-6'>
-                            <div class='card'>
-                                <div class='product-img'>
-                                    <span class='badget'>
-                                        -50%
-                                    </span>
-                                    <a href='../detailProduct/indexpd.php?id=".$product->getId()."'>
-                                        <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
-                                        <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
-                                    </a>
-                                    <div class='pro-btn d-flex'>
-                                        <a href='../detailProduct/indexpd.php?id=".$product->getId()."' class='hidden-btn'>
-                                            <i class='fa-solid fa-eye'></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class='card-body'>
-                                    <h5 class='card-title product-info'>
-                                        <div class='list-color d-flex'>
-                                            <div class='dot-list d-flex'>
-                                                ";?>
-                                                <?php 
-                                                foreach($arraycolor as $cpro) {
-                                                    $colorHex = color_format($cpro);
-                                                    echo '
-                                                        <label class="color-button" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>
-                                                    ';
-                                                }
-                                                ?>
-                                                <?php 
-                                                echo "
-                                            </div>
-                                            <div class='favorite'>
-                                                <span class='material-symbols-outlined favorite-icon'>
-                                                    favorite
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class='product-name'>
-                                            ".$product->getName()."
-                                        </div>
-                                    </h5>
-                                    <p class='card-text'>
-                                        <div class='product-price d-flex'>
-                                            <div class='product-price__new'>".currency_format($product->getPrice())."</div>
-                                            <strike><div class='product-price__old'>1.150.000đ</div></strike>
-                                        </div>
-                                    </p>
-                                    <a href='../detailProduct/indexpd.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>
-                                        <div class='product-cart'>
-                                            <span class='material-symbols-outlined product-cart-icon'>
-                                                local_mall
-                                            </span>
-                                            <p class='product-cart-buy'>Mua ngay</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        ";
-                    }
                     
                     
                 ?>
             </div>
             <div class="page-list">
                 <?php 
-                    $totalProducts = count($products);
-                    $totalPages = ceil($totalProducts / $limit);
                     if(isset($_GET['type'])) {
                         $type = $_GET['type'];
+                        $products = $controller->getProductByType($type);
+                        $totalProducts = count($products);
+                        $totalPages = ceil($totalProducts / $limit);
                         for($i = 1; $i <= $totalPages; $i++) {
                             echo "
                                 <a href='./index.php?type=".$type."&current-page=".$i."'>
@@ -370,6 +320,9 @@
                             ";
                         }  
                     }else {
+                        $products = $controller->getAllProduct();
+                        $totalProducts = count($products);
+                        $totalPages = ceil($totalProducts / $limit);
                         for($i = 1; $i <= $totalPages; $i++) {
                             echo "
                                 <a href='./index.php?&current-page=".$i."'>
@@ -409,9 +362,11 @@
                 var size = getFilter('pro-size');
                 var color = getFilter('pro-color');
                 var category = getFilter('pro-category');
+                var type = $('#type').val();
+                var currentPage = $('#current-page').val();
 
                 $.ajax({
-                    url: "./filterProduct.php",
+                    url: `./filterProduct.php?type=${type}&current-page=${currentPage}`,
                     method: 'POST',
                     data: {
                         action: action,

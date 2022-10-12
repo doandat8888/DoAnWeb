@@ -117,5 +117,15 @@
                 return $data;
             }
         }
+
+        public function filterProductByLimit($limit, $offset) {
+            $data = $this->model->filterProductByLimit($limit, $offset);
+            return $data;
+        }
+
+        public function filterProductByTypeLimit($type, $limit, $offset) {
+            $data = $this->model->filterProductByTypeLimit($type, $limit, $offset);
+            return $data;
+        }
     }
 ?>

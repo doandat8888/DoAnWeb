@@ -31,12 +31,35 @@
     }
     include_once "../../controllers/productController.php";
     $controller = new ProductController();
+    $currentPage = 1;
+    if(isset($_GET['current-page'])) {
+        $currentPage = $_GET['current-page'];
+    }
+    $limit = 4;
+    $offset = ($currentPage - 1) * $limit;
+    $totalPages = 0;
     $data = NULL;
+    if (isset($_GET["type"])){
+        $type = $_GET["type"];
+        if($type != -1) {
+            $products = $controller->getProductByType($type);
+            $totalProducts = count($products);
+            $totalPages = ceil($totalProducts / $limit);
+            $data = $controller->filterProductByTypeLimit($type, $limit, $offset);
+        }
+        else{
+            $products = $controller->getAllProduct();
+            $totalProducts = count($products);
+            $totalPages = ceil($totalProducts / $limit);
+            $data = $controller->filterProductByLimit($limit, $offset);
+        }
+    }
+
     if(isset($_POST['action'])) {
-        $data = $controller->filterProduct();
         if($data == NULL) {
             echo "Không có sản phẩm nào được tìm thấy";
         }else {
+            
             foreach($data as $product){
                 $arraycolor = explode(", ",$product->getColor());
                 echo "
