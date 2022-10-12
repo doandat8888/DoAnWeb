@@ -117,13 +117,13 @@
     <div class="title">Quản lí sản phẩm</div>
     <div class="search-add col-12 d-flex">
         <form class="search col-8" method="post" action="./index.php?page=manage-product">
-            <input type="text" class="search-input" placeholder="Nhập từ khóa..." name="keyword"/>
+            <input type="text" class="search-input" placeholder="Nhập từ khóa..." name="keyword" onchange="searchProduct(this.value)"/>
             <!-- <a href="../../views/admin/index.php?page=manage-product"> -->
-                <button type="submit" class="search-btn" name="search-submit">
-                    <span class="material-symbols-outlined search-icon">
-                        search
-                    </span>
-                </button>
+            <button type="submit" class="search-btn" name="search-submit">
+                <span class="material-symbols-outlined search-icon">
+                    search
+                </span>
+            </button>
             <!-- </a> -->
         </form>
         <button class="add-btn col-2" data-toggle="modal" data-target="#addModal">
@@ -338,7 +338,16 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        
-    })
+    function searchProduct(keyword) {
+        if(keyword != '') {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    document.getElementById("manage-product-body").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "./product-search.php?keyword=" + keyword, true);
+            xmlhttp.send();
+        }
+    }
 </script>
