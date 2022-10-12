@@ -189,11 +189,28 @@
             $link = NULL;
             taoKetNoi($link);
             $data = array();
-            $query = "SELECT * from products WHERE `id` = 1 ";
+            $query = "SELECT * from products WHERE `status` = 1 ";
+            if(isset($_POST['minimumPrice']) && isset($_POST['maximumPrice'])) {
+                $minimumPrice = $_POST['minimumPrice'];
+                $maximumPrice = $_POST['maximumPrice'];
+                $query .= "AND price BETWEEN $minimumPrice AND $maximumPrice ";
+            }
             if(isset($_POST['size'])) {
                 $size = $_POST['size'];
-                $size_filter = implode("','", $size);
-                $query .= "AND `size` IN ('".$size_filter."') ";
+                $size_filter = implode(", ", $size);
+                $query .= "AND size LIKE '%$size_filter%' ";
+            }
+
+            if(isset($_POST['color'])) {
+                $color = $_POST['color'];
+                $color_filter = implode(", ", $color);
+                $query .= "AND color LIKE '%$color_filter%' ";
+            }
+
+            if(isset($_POST['category'])) {
+                $categoryId = $_POST['category'];
+                $category_filter = implode("','", $categoryId);
+                $query .= "AND category_id IN ('".$category_filter."') ";
             }
 
             $result = chayTruyVanTraVeDL($link, $query);

@@ -218,7 +218,7 @@
                 <div class="price">
                     <div class="price-title">Khoảng giá</div>
                     <input type="hidden" id="hidden-minimum-price" value="0"></input>
-                    <input type="hidden" id="hidden-maximum-price" value="100000000"></input>
+                    <input type="hidden" id="hidden-maximum-price" value="10000000"></input>
                     <div id="price-show"></div>
                     <div id="price-range"></div>
                 </div>
@@ -398,60 +398,62 @@
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
         }
 
-        // $(document).ready(function() {
+        $(document).ready(function() {
 
-        //     filterData();
+            filterData();
 
-        //     function filterData() {
-        //         var action = 'get-product';
-        //         var minimumPrice = $('hidden-minimum-price').val();
-        //         var maximumPrice = $('hidden-maximum-price').val();
-        //         var size = getFilter('pro-size');
-        //         var color = getFilter('pro-color');
-        //         var category = getFilter('pro-category');
+            function filterData() {
+                var action = 'get-product';
+                var minimumPrice = $('#hidden-minimum-price').val();
+                var maximumPrice = $('#hidden-maximum-price').val();
+                var size = getFilter('pro-size');
+                var color = getFilter('pro-color');
+                var category = getFilter('pro-category');
 
-        //         $.ajax({
-        //             url: '../../controllers/productController.php',
-        //             method: 'POST',
-        //             data: {
-        //                 action: action,
-        //                 minimumPrice: minimumPrice,
-        //                 maximumPrice: maximumPrice,
-        //                 size: size,
-        //                 color: color,
-        //                 category: category
-        //             },
-        //             success: function(data) {
-        //                 $('.product-body').html(data);
-        //             }
-        //         });
-        //     }
+                $.ajax({
+                    url: "./filterProduct.php",
+                    method: 'POST',
+                    data: {
+                        action: action,
+                        minimumPrice: minimumPrice,
+                        maximumPrice: maximumPrice,
+                        size: size,
+                        color: color,
+                        category: category,
+                    },
+                    success: function(data) {
+                        $('#product-body').html(data);
+                    }
+                });
+            }
 
-        //     function getFilter(className) {
-        //         var filter = [];
-        //         $('.' + className + ':checked').each(function() {
-        //             filter.push($(this).val());
-        //         });
-        //     }
+            function getFilter(className) {
+                var filter = [];
+                $('.' + className + ':checked').each(function() {
+                    filter.push($(this).val());
+                });
+                return filter;
+            }
 
-        //     $('.filter-item-check').click(function() {
-        //         filterData();
-        //     })
+            $('.filter-item-check').click(function() {
+                filterData();
+            })
 
-        //     $('#price-show').html("Từ " + numberWithComat(100000) + 'đ' + " - " + numberWithComat(10000000) + 'đ');
-        //     $('#price-range').slider({
-        //         range: true,
-        //         min: 100000,
-        //         max: 10000000,
-        //         values: [100000, 10000000],
-        //         step: 100000,
-        //         stop: function (event, ui) {
-        //             $('#price-show').html("Từ " + numberWithComat(ui.values[0]) + 'đ' + " - " + numberWithComat(ui.values[1]) + 'đ');
-        //             $('#hidden-minimum-price').val(ui.values[0]);
-        //             $('#hidden-maximum-price').val(ui.values[1]);
-        //         }
-        //     })
-        // })
+            //$('#price-show').html("Từ " + numberWithComat(100000) + 'đ' + " - " + numberWithComat(10000000) + 'đ');
+            $('#price-range').slider({
+                range: true,
+                min: 100000,
+                max: 10000000,
+                values: [100000, 10000000],
+                step: 100000,
+                stop: function (event, ui) {
+                    $('#price-show').html("Từ " + numberWithComat(ui.values[0]) + 'đ' + " - " + numberWithComat(ui.values[1]) + 'đ');
+                    $('#hidden-minimum-price').val(ui.values[0]);
+                    $('#hidden-maximum-price').val(ui.values[1]);
+                    filterData();
+                }
+            })
+        })
     </script>
 </body>
 </html>
