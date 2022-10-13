@@ -27,7 +27,6 @@ if (!function_exists('color_format')) {
             "orange" => "F3A45F",
             "yellow" => "F4ED95",
             "red" => "EC3333",
-            
             "black" => "212529",
             "green" => "98A882",
             "gray" => "A8A9AD",
@@ -154,10 +153,14 @@ if (!function_exists('color_format')) {
                                             <span class="detail-pro-price" name="price">'.currency_format($product->getPrice()).'</span>
                                             <del>'.currency_format(2000000).'</del>
                                         </div>
-                                        <form action="./indexpd.php?to=cart&id_product='.$product->getId().'&action=them&size='.$product->getSize().'&color='.$product->getColor().' method="POST">
+                                        <form action="../../views/cart/indexcopy.php?to=cart&id='.$product->getId().'&action=them&size='.$product->getSize().'&color='.$product->getColor().'&quantity='.$product->getQuantity().' method="POST">
                                             <input type="hidden" name="to" value="cart">
-                                            <input type="hidden" name="id_product" value="'.$product->getId().'">
                                             <input type="hidden" name="action" value="them">
+                                            <input type="hidden" name="id" value="'.$product->getId().'">
+                                            <input type="hidden" name="name" value="'.$product->getName().'">
+                                            <input type="hidden" name="price" value="'.$product->getPrice().'">
+                                            <input type="hidden" name="image" value="'.$product->getImage01().'">
+
                                             <div class="size-select"> 
                                                 ';?>
                                                 <?php
@@ -188,35 +191,20 @@ if (!function_exists('color_format')) {
                                             <div class="selector-actions">
                                                 <div class="quantity mb-3" style="clear: both;">
                                                     <button class="minusdecrease">-</button>
-                                                    <input type="text" value="1" min="0" max="'.$product->getQuantity().'" name="quantity" class="detail-number" disabled>
+                                                    <input type="text" value="1" min="0" max="'.$product->getQuantity().'" name="quantity" class="detail-number">
                                                     <button class="plusincrease">+</button>
                                                 </div>
                             
                                                 <br style="clear: both"></br>
                             
                                                 <div class="d-flex">
-                                                    <button type="submit" name="from" value="themvaogio" name="addtocart" class="detail-btn add-btn" value="'.$product->getId().'">Thêm vào giỏ</button>
-                                                    <button type="submit" name="from" value="muangay" class="detail-btn buy-btn">Mua ngay</button>
+                                                    <button type="submit" name="from" value="addtocart" class="detail-btn add-btn">Thêm vào giỏ</button>
+                                                    <button type="submit" name="from" value="buynow" class="detail-btn buy-btn">Mua ngay</button>
                                                 </div>
                                             </div>                   
                                         </form>';?>
                                         <?php
-                                        
-                                        if(isset($_POST['addtocart'])) {
-                                            if(isset($_SESSION['cart'])) {
-            
-                                            }else {
-                                                $session_arr = array(
-                                                    'id'=>$_POST['id'],
-                                                    'name'=> $_POST['name'],
-                                                    'price'=> $_POST['price'],
-                                                    'size'=> $_POST['size'],
-                                                    'color'=> $_POST['color'],
-                                                    'quantity'=> $_POST['quantity']
-                                                );
-                                                $_SESSION['cart'][] = $session_arr;
-                                            }
-                                        }
+                                            //code
                                         ?>
                                         <?php
                                         echo'
