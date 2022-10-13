@@ -151,9 +151,9 @@
             $category = $_POST['category'];
             $category_filter = implode("','", $category);
         }
-        if(isset($_POST['minimum-price']) && isset($_POST['maximum-price'])) {
-            $minPrice = $_POST['minimum-price'];
-            $maxPrice = $_POST['maximum-price'];
+        if(isset($_POST['minimumPrice']) && isset($_POST['maximumPrice'])) {
+            $minPrice = $_POST['minimumPrice'];
+            $maxPrice = $_POST['maximumPrice'];
             //array_push($arrInfo, $minPrice);
         }
         
@@ -165,26 +165,31 @@
                 }else {
                     $products = $controller->getProductByType($type);
                 }
-                $totalProducts = count($products);
-                $totalPages = ceil($totalProducts / $limit);
-                
-                for($i = 1; $i <= $totalPages; $i++) {
-                    echo "
-                        <a href='./index.php?type=".$type."&current-page=".$i."' class='page-item'>$i</a>
-                    ";
+                if($products != NULL) {
+                    $totalProducts = count($products);
+                    $totalPages = ceil($totalProducts / $limit);
+                    
+                    for($i = 1; $i <= $totalPages; $i++) {
+                        echo "
+                            <a href='./index.php?&type=".$type."&current-page=".$i."&category=".$category_filter."&min-price=".$minPrice."&max-price=".$maxPrice."' class='page-item'>$i</a>
+                        ";
+                    }
                 }
+                
             }else {
                 if(isset($_POST['action'])) {
                     $products = $controller->filterProduct();
                 }else {
                     $products = $controller->getAllProduct();
                 }
-                $totalProducts = count($products);
-                $totalPages = ceil($totalProducts / $limit);
-                for($i = 1; $i <= $totalPages; $i++) {
-                    echo "
-                        <a href='./index.php?&current-page=".$i."&size=".$size_filter."&category=".$category_filter."&color=".$color_filter."' class='page-item'>$i</a>
-                    ";
+                if($products != NULL) {
+                    $totalProducts = count($products);
+                    $totalPages = ceil($totalProducts / $limit);
+                    for($i = 1; $i <= $totalPages; $i++) {
+                        echo "
+                            <a href='./index.php?&current-page=".$i."&category=".$category_filter."&min-price=".$minPrice."&max-price=".$maxPrice."' class='page-item'>$i</a>
+                        ";
+                    }
                 }
             }
         }
