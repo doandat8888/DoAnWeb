@@ -117,7 +117,7 @@
                     <option value="xxl">XXL</option>
                 </select> -->
 
-                <div class="size-container filter">
+                <!-- <div class="size-container filter">
                     <div class="filter-title">Size</div>
                     <div class="filter-item">
                         <input type="checkbox" class="filter-item-check pro-size" value="s" />  S
@@ -135,7 +135,7 @@
                         <input type="checkbox" class="filter-item-check pro-size" value="xxl" />  XXL
                     </div>
                 </div>
-
+ -->
                 <!-- <select title="Màu sắc" class="selectpicker" name="color" id="color" multiple required>
                     <option value="yellow" style="color: var(--yellow);">Vàng</option>
                     <option value="green" style="color: var(--green);">Xanh lá</option>
@@ -148,7 +148,7 @@
                     <option value="violet" style="color: var(--violet);">Tím</option>
                 </select> -->
 
-                <div class="color-container filter">
+                <!-- <div class="color-container filter">
                     <div class="filter-title">Màu sắc</div>
                     <div class="filter-item">
                         <input type="checkbox" class="filter-item-check pro-color" value="yellow" />  Vàng
@@ -177,7 +177,7 @@
                     <div class="filter-item">
                         <input type="checkbox" class="filter-item-check pro-color" value="gray" />  Xám
                     </div>
-                </div>
+                </div> -->
 
                 <div class="category-container filter">
                     <div class="filter-title">Danh mục</div>
@@ -277,13 +277,15 @@
                     if($category != '') {
                         echo "<input type='hidden' id='category' value='".$category."'></input>";
                     }else {
-                        echo "<input type='hidden' id='category' value=''></input>";
+                        echo "<input type='hidden' id='category' value='-1'></input>";
                     }
+                }else {
+                    echo "<input type='hidden' id='category' value='-1'></input>";
                 }
 
-                if(isset($_GET["minimum-price"]) && $_GET["maximum-price"]) {
-                    $minPrice = $_GET["minimum-price"];
-                    $maxPrice = $_GET["maximum-price"];
+                if(isset($_GET["min-price"]) && $_GET["max-price"]) {
+                    $minPrice = $_GET["min-price"];
+                    $maxPrice = $_GET["max-price"];
                     if($minPrice != -1 && $maxPrice != -1) {
                         echo "<input type='hidden' id='minimum-price' value='".$minPrice."'></input>";
                         echo "<input type='hidden' id='maximum-price' value='".$maxPrice."'></input>";
@@ -291,6 +293,9 @@
                         echo "<input type='hidden' id='minimum-price' value='-1'></input>";
                         echo "<input type='hidden' id='maximum-price' value='-1'></input>";
                     }
+                }else {
+                    echo "<input type='hidden' id='minimum-price' value='-1'></input>";
+                    echo "<input type='hidden' id='maximum-price' value='-1'></input>";
                 }
             ?>
             <div class='row' id='product-body'>
@@ -335,12 +340,27 @@
                 var maximumPrice = $('#maximum-price').val();
                 var size = $('#size').val();
                 var color = $('#color').val();
-                var category = $('#category').val();
-                maximumPrice = $('#hidden-maximum-price').val();
-                minimumPrice = $('#hidden-minimum-price').val();
+                var categoryId = $('#category').val();
+                var category = -2;
                 var size = getFilter('pro-size');
                 var color = getFilter('pro-color');
-                var category = getFilter('pro-category');
+                if(categoryId == -1) {
+                    category = getFilter('pro-category');
+                }else {
+                    category = getFilter1('category');
+                }
+                if(minimumPrice == -1) {
+                    minimumPrice = $('#hidden-minimum-price').val();
+                }else {
+                    minimumPrice = $('#minimum-price').val();
+                }
+
+                if(maximumPrice == -1) {
+                    maximumPrice = $('#hidden-maximum-price').val();
+                }else {
+                    maximumPrice = $('#maximum-price').val();
+                }
+                
                 var type = $('#type').val();
                 var currentPage = $('#current-page').val();
 
@@ -352,8 +372,8 @@
                         action: action,
                         minimumPrice: minimumPrice,
                         maximumPrice: maximumPrice,
-                        size: size,
-                        color: color,
+                        // size: size,
+                        // color: color,
                         category: category,
                     },
                     success: function(data) {
@@ -367,6 +387,12 @@
                 $('.' + className + ':checked').each(function() {
                     filter.push($(this).val());
                 });
+                return filter;
+            }
+
+            function getFilter1(id) {
+                var filter = [];
+                filter.push($(`#${id}`).val());
                 return filter;
             }
 
