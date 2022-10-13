@@ -253,6 +253,45 @@
                 }else {
                     echo "<input type='hidden' id='current-page' value='1'></input>";
                 }
+
+                if(isset($_GET["size"])) {
+                    $size = $_GET["size"];
+                    if($size != '') {
+                        echo "<input type='hidden' id='size' value='".$size."'></input>";
+                    }else {
+                        echo "<input type='hidden' id='size' value=''></input>";
+                    }
+                }
+
+                if(isset($_GET["color"])) {
+                    $color = $_GET["color"];
+                    if($color != '') {
+                        echo "<input type='hidden' id='color' value='".$color."'></input>";
+                    }else {
+                        echo "<input type='hidden' id='color' value=''></input>";
+                    }
+                }
+
+                if(isset($_GET["category"])) {
+                    $category = $_GET["category"];
+                    if($category != '') {
+                        echo "<input type='hidden' id='category' value='".$category."'></input>";
+                    }else {
+                        echo "<input type='hidden' id='category' value=''></input>";
+                    }
+                }
+
+                if(isset($_GET["minimum-price"]) && $_GET["maximum-price"]) {
+                    $minPrice = $_GET["minimum-price"];
+                    $maxPrice = $_GET["maximum-price"];
+                    if($minPrice != -1 && $maxPrice != -1) {
+                        echo "<input type='hidden' id='minimum-price' value='".$minPrice."'></input>";
+                        echo "<input type='hidden' id='maximum-price' value='".$maxPrice."'></input>";
+                    }else {
+                        echo "<input type='hidden' id='minimum-price' value='-1'></input>";
+                        echo "<input type='hidden' id='maximum-price' value='-1'></input>";
+                    }
+                }
             ?>
             <div class='row' id='product-body'>
                 <?php 
@@ -292,8 +331,13 @@
 
             function filterData() {
                 var action = 'get-product';
-                var minimumPrice = $('#hidden-minimum-price').val();
-                var maximumPrice = $('#hidden-maximum-price').val();
+                var minimumPrice = $('#minimum-price').val();
+                var maximumPrice = $('#maximum-price').val();
+                var size = $('#size').val();
+                var color = $('#color').val();
+                var category = $('#category').val();
+                maximumPrice = $('#hidden-maximum-price').val();
+                minimumPrice = $('#hidden-minimum-price').val();
                 var size = getFilter('pro-size');
                 var color = getFilter('pro-color');
                 var category = getFilter('pro-category');
@@ -301,7 +345,7 @@
                 var currentPage = $('#current-page').val();
 
                 $.ajax({
-                    url: `./filterProduct.php?type=${type}`,
+                    url: `./filterProduct.php?type=${type}&current-page=${currentPage}`,
                     //url: `./index.php`,
                     method: 'POST',
                     data: {
