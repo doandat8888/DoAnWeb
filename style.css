@@ -977,3 +977,21 @@ html, body {
     cursor: pointer;
     list-style: none;
 }
+
+#product-body {
+    height: auto;
+}
+
+.page-list {
+    width: 100%;
+}
+
+.page-item {
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
+
+.product-filter {
+    width: 100%;
+    display: flex;
+}
