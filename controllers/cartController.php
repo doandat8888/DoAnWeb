@@ -4,10 +4,10 @@
     if (isset($_POST['action'])){
         switch($_POST['action']){
             case 'add':
-                //$item = array('id'=>$_POST['product_id'], 'name'=>$_POST['product_name'], 'price'=>$_POST['product_price'], 'image'=>$_POST['product_img'], 'image'=>$_POST['product_color'], 'quantity'=>1);
-                $item = array(
-                    'id'=>$_POST['product_id']
-                ); 
+                $item = array('id'=>$_POST['product_id'], 'name'=>$_POST['product_name'], 'price'=>$_POST['product_price'], 'image'=>$_POST['product_img'], 'image'=>$_POST['product_color'], 'quantity'=>1);
+                // $item = array(
+                //     'id'=>$_POST['product_id']
+                // ); 
                 addToCart($item);
                 break;
             case 'update':
