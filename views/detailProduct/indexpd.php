@@ -27,6 +27,7 @@ if (!function_exists('color_format')) {
             "orange" => "F3A45F",
             "yellow" => "F4ED95",
             "red" => "EC3333",
+            
             "black" => "212529",
             "green" => "98A882",
             "gray" => "A8A9AD",

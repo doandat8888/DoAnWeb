@@ -1,15 +1,16 @@
-<?php 
+<?php
     function addToCart($item){
         if (isset($_SESSION['cart'])){
-            $cart = $_SESSION['cart'];
-            if (!array_key_exists($cart["id"], $cart)){
-                $cart[$item["id"]] = $item;
-            }
-            $_SESSION['cart'] = $cart;
+            // $cart = $_SESSION['cart'];
+            // if (!array_key_exists($cart["product_id"], $cart)){
+            //     $cart[$item["product_id"]] = $item;
+            // }
+            // $_SESSION['cart'] = $cart;
+            print_r($_SESSION['cart']);
         }
         else{
-            $cart[$item["id"]] = $item;
-            $_SESSION['cart'] = $cart;
+            $_SESSION['cart'][0] = $item;
+            print_r($_SESSION['cart']);
         }
     }
 

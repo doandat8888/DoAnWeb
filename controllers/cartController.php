@@ -1,18 +1,20 @@
-<?php 
-    session_start();
+<?php
     require_once "../../modules/cart_module.php";
 
-    if (isset($_POST['addtocart'])){
-        switch($_POST['addtocart']){
-            case "Add":
-                $item = array("id"=>$_POST['id'], "name"=>$_POST['name'], "price"=>$_POST['price'], "quantity"=>1);
+    if (isset($_POST['action'])){
+        switch($_POST['action']){
+            case 'add':
+                //$item = array('id'=>$_POST['product_id'], 'name'=>$_POST['product_name'], 'price'=>$_POST['product_price'], 'image'=>$_POST['product_img'], 'image'=>$_POST['product_color'], 'quantity'=>1);
+                $item = array(
+                    'id'=>$_POST['product_id']
+                ); 
                 addToCart($item);
                 break;
-            case "Update":
-                updateCart($_POST['id'], $_POST['quantity']);
+            case 'update':
+                updateCart($_POST['product_id'], $_POST['quantity']);
                 break;
-            case "Remove":
-                removeFromCart($_POST['id']);
+            case 'remove':
+                removeFromCart($_POST['product_id']);
                 break;
             default:
                 break;

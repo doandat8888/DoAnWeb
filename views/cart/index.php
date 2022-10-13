@@ -1,5 +1,6 @@
 <?php
-session_start();
+    session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,8 +51,8 @@ session_start();
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-12 col-12 cart-products">
-                        <?php
-                            var_dump($_SESSION['cart']);
+                        <?php 
+
                         ?>
                         <div class="cart-item">
                             <div class="row">
@@ -88,8 +89,7 @@ session_start();
                                         <span class="material-symbols-outlined del-icon">
                                             delete
                                         </span>
-                                    </div>
-                                    
+                                    </div>    
                                 </div>
                             </div>
                         </div>

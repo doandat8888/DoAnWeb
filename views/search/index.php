@@ -143,10 +143,16 @@
             <div class='row' id='product-body'>
                 <?php 
                     include_once "../../controllers/productController.php";
+                    include_once "../../controllers/cartController.php";
                     $controller = new ProductController();
-                    if(isset($_POST['add'])){
-                        echo "<h1 style='margin-left:1rem;'>".$_POST['product_id']."</h1>";
-                    }                
+
+                    //if(isset($_POST['add'])){
+                        // echo "<h1 style='margin-left:1rem;'>".$_POST['product_id']."</h1>";
+                    //}
+                    //else{
+
+                    //}
+
                     if (isset($_SESSION['search'])){
                         $searchstr = $_SESSION['search'];
                         $data = $controller->getProductByName($searchstr);
@@ -206,13 +212,17 @@
                                             </p>
                                             <a href='#' class='btn btn-primary' style='background-color: transparent; border: none;'>
                                                 <form action='./index.php' method='post'>
-                                                    <button type='submit' name='add' class='product-cart'>
+                                                    <button type='submit' name='action' value='add' class='product-cart'>
                                                         <span class='material-symbols-outlined product-cart-icon'>
                                                             local_mall
                                                         </span>
                                                         <p class='product-cart-buy'>Mua ngay</p>
                                                     </button>
                                                     <input type='hidden' name='product_id' value=".$product->getId().">
+                                                    <input type='hidden' name='product_img' value=".$product->getImage02().">
+                                                    <input type='hidden' name='product_name' value=".$product->getName().">
+                                                    <input type='hidden' name='product_price' value=".currency_format($product->getPrice()).">
+                                                    <input type='hidden' name='product_color' value=".$product->getColor().">
                                                 </form>
                                             </a>
                                         </div>
