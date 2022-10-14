@@ -44,6 +44,10 @@
     font-size: 1rem;
 }
 
+td {
+    padding: 15px 0 !important;
+}
+
 .manage-product-action {
     display: flex;
     align-items: center;
@@ -66,6 +70,10 @@
 .manage-product-action .delete {
     background-color: var(--gray);
     color: var(--white);
+}
+
+.table .thead-dark th {
+    padding: 12px 0;
 }
 
 @media screen and (max-width: 1000px) {

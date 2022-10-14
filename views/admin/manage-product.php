@@ -31,7 +31,7 @@
                             <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Màu sắc</div>
                                 <!-- <input type="text" placeholder="Nhập màu sắc" class="product-info-item-input" name="pro-color"> -->
-                                <select title="Màu sắc" class="selectpicker" name="pro-color" id="color" multiple required>
+                                <select title="Màu sắc" class="selectpicker" name="color" id="color" multiple required>
                                     <option value="yellow" style="color: var(--yellow);">Vàng</option>
                                     <option value="green" style="color: var(--green);">Xanh lá</option>
                                     <option value="pink" style="color: var(--pink);">Hồng</option>
@@ -270,7 +270,7 @@
                                 echo "
                                     <tr>
                                         <th scope='row'>" . $product->getId() . "</th>
-                                        <td class='product-img-container col-2'><img src='" . $product->getImage01() . "' class='manage-product-img col-lg-6 col-12'></td>
+                                        <td class='product-img-container col-2'><img src='" . $product->getImage01() . "' class='manage-product-img col-lg-6'></td>
                                         <td>" . $product->getName() . "</td>
                                         <td>" . currency_format($product->getPrice()) . "</td>
                                         <td class='manage-product-action'>
