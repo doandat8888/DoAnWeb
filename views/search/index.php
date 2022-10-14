@@ -218,11 +218,11 @@
                                                         </span>
                                                         <p class='product-cart-buy'>Mua ngay</p>
                                                     </button>
-                                                    <input type='hidden' name='product_id' value=".$product->getId().">
-                                                    <input type='hidden' name='product_img' value=".$product->getImage02().">
-                                                    <input type='hidden' name='product_name' value=".$product->getName().">
-                                                    <input type='hidden' name='product_price' value=".currency_format($product->getPrice()).">
-                                                    <input type='hidden' name='product_color' value=".$product->getColor().">
+                                                    <input type='hidden' name='product_id' value='".$product->getId()."'>
+                                                    <input type='hidden' name='product_img' value='".$product->getImage02()."'>
+                                                    <input type='hidden' name='product_name' value='".$product->getName()."'>
+                                                    <input type='hidden' name='product_price' value='".currency_format($product->getPrice())."'>
+                                                    <input type='hidden' name='product_color' value='".$product->getColor()."'>
                                                 </form>
                                             </a>
                                         </div>

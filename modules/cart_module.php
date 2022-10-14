@@ -1,10 +1,12 @@
 <?php
     function addToCart($item){
         if (isset($_SESSION['cart'])){
-            if(array_key_exists($item['id'], $_SESSION['cart'])){
-                // echo "<script>alert('Sản phẩm này đã có trong giỏ hàng')</script>";
-                // echo "<script>window.location = 'index.php'</script>";
-                echo "<h1 style='margin-left:1rem;'>Item in cart</h1>";
+
+            $cart_id = array_column($_SESSION['cart'], 'id');
+            
+            if(in_array($item['id'], $cart_id)){
+                echo "<script>alert('Sản phẩm này đã có trong giỏ hàng')</script>";
+                echo "<script>window.location = 'index.php'</script>";
                 print_r($_SESSION['cart']);
             }
             else{
