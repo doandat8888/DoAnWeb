@@ -12,6 +12,15 @@
     --border-color: #221F20;
 }
 
+.modal-dialog {
+    max-width: 100%;
+}
+
+.modal-content {
+    width: 50% !important;
+    margin: 0 auto;
+}
+
 .manage-product .title {
     width: 100%;
     text-align: center;
