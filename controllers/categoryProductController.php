@@ -16,7 +16,6 @@
 
         //Thêm một danh mục mới
         public function setCategory($categoryname) {
-            $count = 0;
             $result = NULL;
             if($_POST['cat-name'] == '') {
                 $result = -1;
@@ -49,6 +48,16 @@
         public function editCategory($id, $name) {
             $result = $this->model->editCategory($id, $name);
             return $result;
+        }
+
+        public function getAllCategoryByLimit($limit, $offset) {
+            $data = $this->model->getAllCategoryByLimit($limit, $offset);
+            return $data;
+        }
+
+        public function getCategoryByNameLimit($name, $limit, $offset) {
+            $data = $this->model->getCategoryByNameLimit($name, $limit, $offset);
+            return $data;
         }
     }
 ?>

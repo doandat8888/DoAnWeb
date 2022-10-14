@@ -75,7 +75,7 @@
 
                                 //test thôi, mở ra là kh load đc giao diện cart đó hê hê
                                 // unset($_SESSION['cart']); exit;
-                                // var_dump(($_SESSION['cart'])); exit;
+                                // var_dump($_SESSION['cart']); exit;
                             }
                             break;
                         case "buynow":
@@ -164,7 +164,7 @@
                                                     Đặt hàng
                                                 </div>
                                             </a>
-                                            <a href=".indexcopy.php?delid=1" class="cart-btn-link">
+                                            <a href="./indexcopy.php?delid=1" class="cart-btn-link">
                                                 <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
                                                     Xóa giỏ hàng
                                                 </div>

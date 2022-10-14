@@ -153,13 +153,14 @@ if (!function_exists('color_format')) {
                                             <span class="detail-pro-price" name="price">'.currency_format($product->getPrice()).'</span>
                                             <del>'.currency_format(2000000).'</del>
                                         </div>
-                                        <form action="../../views/cart/indexcopy.php?to=cart&id='.$product->getId().'&action=them&size='.$product->getSize().'&color='.$product->getColor().'&quantity='.$product->getQuantity().' method="POST">
+                                        <form action="../../views/cart/indexcopy.php?to=cart&id='.$product->getId().'&action=them&size='.$product->getSize().'&color='.$product->getColor().'&quantity='.$product->getQuantity().' method="post">
                                             <input type="hidden" name="to" value="cart">
                                             <input type="hidden" name="action" value="them">
                                             <input type="hidden" name="id" value="'.$product->getId().'">
-                                             <input type="hidden" name="name" value="'.$product->getName().'">
+                                            <input type="hidden" name="name" value="'.$product->getName().'">
                                             <input type="hidden" name="price" value="'.$product->getPrice().'">
                                             <input type="hidden" name="image" value="'.$product->getImage01().'">
+                                            
 
                                             <div class="size-select"> 
                                                 ';?>

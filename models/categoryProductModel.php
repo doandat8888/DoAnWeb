@@ -107,5 +107,42 @@
             }
             return $result;
         }
+
+        public function getAllCategoryByLimit($limit, $offset) {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            $data = array();
+            $query = "SELECT * from categories ORDER BY `id` ASC limit $limit OFFSET $offset";
+            $result = chayTruyVanTraVeDL($link, $query);
+            if(mysqli_num_rows($result) > 0) {
+                while($rows = mysqli_fetch_assoc($result)) {
+                    $category = new CategoryProduct($rows["id"], $rows["name"], $rows["status"]);
+                    array_push($data, $category);
+                }
+                giaiPhongBoNho($link, $result);
+            }else{
+                $data = NULL;
+            }
+            return $data;
+        }
+        public function getCategoryByNameLimit($name, $limit, $offset) {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            $data = array();
+            $query = "SELECT * from categories WHERE `name` LIKE '%$name%' ORDER BY `id` ASC limit $limit OFFSET $offset";
+            $result = chayTruyVanTraVeDL($link, $query);
+            if(mysqli_num_rows($result) > 0) {
+                while($rows = mysqli_fetch_assoc($result)) {
+                    $category = new CategoryProduct($rows["id"], $rows["name"], $rows["status"]);
+                    array_push($data, $category);
+                }
+                giaiPhongBoNho($link, $result);
+            }else{
+                $data = NULL;
+            }
+            return $data;
+        }
     }    
 ?>
