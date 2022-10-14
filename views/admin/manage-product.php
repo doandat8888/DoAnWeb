@@ -14,8 +14,8 @@
     <!-- Modal -->
     <form method="post" action="./index.php?page=manage-product">
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
+            <div class="modal-dialog col-12" role="document">
+                <div class="modal-content col-12 col-sm-12 col-lg-6">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Thêm sản phẩm</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -24,11 +24,11 @@
                     </div>
                     <div class="modal-body">
                         <div class="product-info-list col-12 d-flex">
-                            <div class="product-info-item col-6">
+                            <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Tên sản phẩm</div>
                                 <input type="text" placeholder="Nhập tên sản phẩm" class="product-info-item-input" name="pro-name">
                             </div>
-                            <div class="product-info-item col-6">
+                            <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Màu sắc</div>
                                 <!-- <input type="text" placeholder="Nhập màu sắc" class="product-info-item-input" name="pro-color"> -->
                                 <select title="Màu sắc" class="selectpicker" name="pro-color" id="color" multiple required>
@@ -55,23 +55,23 @@
                                     <option value="7">Áo Sơmi</option>
                                 </select> -->
                             </div>
-                            <div class="product-info-item col-6">
+                            <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Kích thước</div>
                                 <input type="text" placeholder="Nhập kích thước" class="product-info-item-input" name="pro-size">
                             </div>
-                            <div class="product-info-item col-6">
+                            <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Nhập giá</div>
                                 <input type="text" placeholder="Nhập giá" class="product-info-item-input" name="pro-price">
                             </div>
-                            <div class="product-info-item col-6">
+                            <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Nhập số lượng</div>
                                 <input type="text" placeholder="Nhập số lượng" class="product-info-item-input" name="pro-quantity">
                             </div>
-                            <div class="product-info-item col-6">
+                            <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Mô tả</div>
                                 <input type="text" placeholder="Nhập mô tả" class="product-info-item-input" name="pro-description">
                             </div>
-                            <div class="product-info-item col-6">
+                            <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Loại</div>
                                 <select class="product-info-item-input" name="pro-type">
                                     <option value="-1">Chọn loại</option>
@@ -80,7 +80,7 @@
                                     <option value="2">Trẻ em</option>
                                 </select>
                             </div>
-                            <div class="product-info-item col-6">
+                            <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Danh mục</div>
                                 <select class="product-info-item-input" name="pro-category">
                                     <option value="-1">Chọn danh mục</option>
