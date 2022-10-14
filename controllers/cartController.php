@@ -7,6 +7,7 @@
                 $item = array('id'=>$_POST['product_id'], 'name'=>$_POST['product_name'], 'price'=>$_POST['product_price'], 'image'=>$_POST['product_img'], 'image'=>$_POST['product_color'], 'quantity'=>1);
                 //unset($_SESSION['cart']);
                 addToCart($item);
+                //header("Location: ../views/search/index.php");
                 break;
             case 'update':
                 updateCart($_POST['product_id'], $_POST['quantity']);

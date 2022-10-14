@@ -146,13 +146,6 @@
                     include_once "../../controllers/cartController.php";
                     $controller = new ProductController();
 
-                    //if(isset($_POST['add'])){
-                        // echo "<h1 style='margin-left:1rem;'>".$_POST['product_id']."</h1>";
-                    //}
-                    //else{
-
-                    //}
-
                     if (isset($_SESSION['search'])){
                         $searchstr = $_SESSION['search'];
                         $data = $controller->getProductByName($searchstr);
@@ -211,7 +204,7 @@
                                                 </div>
                                             </p>
                                             <a href='#' class='btn btn-primary' style='background-color: transparent; border: none;'>
-                                                <form action='./index.php' method='post'>
+                                                <form action='#' method='post'>
                                                     <button type='submit' name='action' value='add' class='product-cart'>
                                                         <span class='material-symbols-outlined product-cart-icon'>
                                                             local_mall

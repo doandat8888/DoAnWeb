@@ -5,9 +5,10 @@
             $cart_id = array_column($_SESSION['cart'], 'id');
             
             if(in_array($item['id'], $cart_id)){
-                echo "<script>alert('Sản phẩm này đã có trong giỏ hàng')</script>";
-                echo "<script>window.location = 'index.php'</script>";
                 print_r($_SESSION['cart']);
+                echo "In cart";
+                // echo "<script>alert('Sản phẩm này đã có trong giỏ hàng')</script>";
+                // echo "<script>window.location = 'index.php'</script>";
             }
             else{
                 $count = count($_SESSION['cart']);
