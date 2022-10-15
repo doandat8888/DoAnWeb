@@ -31,7 +31,7 @@
                             <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Màu sắc</div>
                                 <!-- <input type="text" placeholder="Nhập màu sắc" class="product-info-item-input" name="pro-color"> -->
-                                <select title="Màu sắc" class="selectpicker" name="color" id="color" multiple required>
+                                <select title="Chọn màu sắc" class="selectpicker product-info-item-input" name="pro-color[]" id="color" multiple required>
                                     <option value="yellow" style="color: var(--yellow);">Vàng</option>
                                     <option value="green" style="color: var(--green);">Xanh lá</option>
                                     <option value="pink" style="color: var(--pink);">Hồng</option>
@@ -57,7 +57,13 @@
                             </div>
                             <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Kích thước</div>
-                                <input type="text" placeholder="Nhập kích thước" class="product-info-item-input" name="pro-size">
+                                <select title="Chọn kích thước" class="selectpicker product-info-item-input" name="pro-size[]" id="size" multiple required>
+                                    <option value="s">S</option>
+                                    <option value="m">M</option>
+                                    <option value="l">L</option>
+                                    <option value="xl">XL</option>
+                                    <option value="xxl">XXL</option>
+                                </select>
                             </div>
                             <div class="product-info-item col-12 col-sm-12 col-lg-6">
                                 <div class="product-info-item-title">Nhập giá</div>
@@ -159,8 +165,10 @@
                     
                     if(isset($_POST['add-submit'])) {
                         $name = $_POST['pro-name'];
-                        $color = $_POST['pro-color'];
-                        $size = $_POST['pro-size'];
+                        $colorArr = $_POST['pro-color'];
+                        $color = implode(', ', $colorArr);
+                        $sizeArr = $_POST['pro-size'];
+                        $size = implode(', ', $sizeArr);
                         $price = $_POST['pro-price'];
                         $quantity = $_POST['pro-quantity'];
                         $type = $_POST['pro-type'];
@@ -356,4 +364,14 @@
             xmlhttp.send();
         }
     }
+    
+    $('#color').on('change', function() {
+        var values = [];
+        var $selectedOptions = $(this).find('option:selected');
+        $selectedOptions.each(function(){
+            values.push($(this).val());
+        });
+        console.log(values);
+    })
+    
 </script>

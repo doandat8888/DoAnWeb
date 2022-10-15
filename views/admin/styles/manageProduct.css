@@ -48,13 +48,6 @@ td {
     padding: 15px 0 !important;
 }
 
-.manage-product-action {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
 .manage-product-action .action-btn {
     border: none;
     outline: none;
@@ -153,7 +146,8 @@ td {
 
 .product-info-item-input {
     padding: 0.4rem 0.4rem;
-    width: 100%;
+    width: 100% !important;
+    font-size: 1rem;
 }
 
 .search-btn {
@@ -180,5 +174,9 @@ td {
     margin-top: 1.2rem;
     border: none;
     outline: none;
+}
+
+.table td, .table th {
+    vertical-align: middle !important;
 }
 

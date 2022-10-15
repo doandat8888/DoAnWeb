@@ -101,4 +101,6 @@
     <script src="https://kit.fontawesome.com/644376ed9d.js" crossorigin="anonymous"></script>
     <script src="../search/script.js"></script>
     <script src="./script/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </html>
