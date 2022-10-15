@@ -12,12 +12,18 @@
 <body>
     <?php
     include_once "../../controllers/productController.php";
-    $controller = new ProductController();
+    include_once "../../controllers/categoryProductController.php";
+    $productController = new ProductController();
+    $categoryProductController = new CategoryProductController();
+    $categoryList = $categoryProductController->getCategoryList();
 
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-        $products = $controller->getProductById($id);
+        $products = $productController->getProductById($id);
+        
         foreach ($products as $product) {
+            $categories = $categoryProductController->getCategoryById($product->getCategoryId());
+            $description = $product->getDescription();
             echo "
                 <form method='post' action='./index.php?page=manage-product&id=".$product->getId()."'>
                     <div class='product-info-list col-12 d-flex'>
@@ -43,11 +49,12 @@
                         </div>
                         <div class='product-info-item col-6'>
                             <div class='product-info-item-title'>Mô tả</div>
-                            <textarea class='product-info-item-input' name='pro-description' value=".$product->getDescription()."></textarea>
+                            <textarea class='product-info-item-input' name='pro-description'>$description</textarea>
                         </div>
                         <div class='product-info-item col-6'>
                             <div class='product-info-item-title'>Loại</div>
                             <select class='product-info-item-input' name='pro-type'>
+                                
                                 <option value='" .$product->getType(). "'>
                                     " .$product->getType(). "
                                 </option>
@@ -60,17 +67,27 @@
                         <div class='product-info-item col-6'>
                             <div class='product-info-item-title'>Danh mục</div>
                             <select class='product-info-item-input' name='pro-category'>
-                                <option value='" . $product->getCategoryId() . "'>
-                                    " . $product->getCategoryId() . "
-                                </option>
-                                <option value='0'>Đầm Thun</option>
-                                <option value='1'>Đầm Dạ Hội</option>
-                                <option value='2'>Áo Set</option>
-                                <option value='3'>Áo Thun</option>
-                                <option value='4'>Áo Polo</option>
-                                <option value='5'>Áo Ngắn Tay</option>
-                                <option value='6'>Quần Sooc</option>
-                                <option value='7'>Áo Sơmi</option>
+                                ";?>
+                                    <?php 
+                                    $categoryNameSelected = $categories[0]->getName();
+                                    foreach($categoryList as $category) {
+                                        if($category->getStatus() == 1) {
+                                            $categoryName = $category->getName();
+                                            if($categoryName != $categories[0]->getName()) {
+                                                echo "
+                                                    <option value='".$category->getId()."'>$categoryName</option>
+                                                ";
+                                            }else {
+                                                echo "
+                                                    <option value='".$category->getId()."' selected>$categoryName</option>
+                                                ";
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
+                                <?php 
+                                echo "
                             </select>' 
                         </div>
                         <div class='product-info-item col-12'>
@@ -91,7 +108,7 @@
                         </a>
                     </div>
                 </form>
-                ";
+            ";
         }
     }
     ?>

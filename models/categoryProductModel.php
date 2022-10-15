@@ -70,7 +70,8 @@
             $result = chayTruyVanTraVeDL($link, $query);
             if(mysqli_num_rows($result) > 0) {
                 while($rows = mysqli_fetch_assoc($result)) {
-                    $product = new CategoryProduct($rows["id"], $rows["name"], $rows["status"]);
+                    $category = new CategoryProduct($rows["id"], $rows["name"], $rows["status"]);
+                    array_push($data, $category);
                 }
                 giaiPhongBoNho($link, $result);
             }else{

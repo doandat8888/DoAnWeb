@@ -19,51 +19,7 @@ var heartIconList = document.querySelectorAll('.favorite-icon');
         }
     }
 
-//Open filter on mobile
-var filter = document.querySelector('.filter');
-var filterControl = document.getElementById('filter-control');
-var filterArrow = document.getElementById('filter-arrow');
 
-filterControl.onclick = function() {
-                
-    if (filter.classList.contains('active')){
-        filter.classList.remove('active');
-        filterArrow.classList.replace('fa-angle-up', 'fa-angle-down');
-        return;
-    }
-
-    if (!filter.classList.contains('active')){
-        filter.classList.add('active');
-        filterArrow.classList.replace('fa-angle-down', 'fa-angle-up');
-        return;
-    }
-}
-
-//Filters' dropdown open + collapse
-var selected = document.querySelectorAll('.selected');
-var optionContainer = document.querySelectorAll('.option-container');
-
-for (let i = 0; i < selected.length; i++){
-    selected[i].onclick = function() {
-        optionContainer[i].classList.toggle('active');
-    }
-}
-
-for (let i = 0; i < optionContainer.length; i++){
-    let optionList = optionContainer[i].querySelectorAll('.option');
-        optionList.forEach(o => {
-            o.addEventListener("click", () => {
-                selected[i].innerHTML = o.querySelector('label').innerHTML;
-                optionContainer[i].classList.remove('active');
-            })
-        });
-}
-
-//Reset filters
-var reset = document.getElementById('resetbutton')
-reset.onclick = function() {
-    location.reload();
-}
 //Hàm biến đổi đơn vị tiền tệ thành số nguyên. VD: 20.000đ -> 20000
 const formatNumber = (number) => {
     return Number(number.replace(/[^0-9,-]+/g,""));

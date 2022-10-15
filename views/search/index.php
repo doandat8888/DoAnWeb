@@ -71,56 +71,9 @@
         <!--Filter + Products-->
     <div class="row">
         <!--Filter-->    
-        <div class="col-lg-3">
-            <div class="d-lg-none filter-heading" id="filter-control">
-                Bộ lọc sản phẩm
-                <i class="fas fa-angle-down" id="filter-arrow" style="margin-left: 0.5rem;"></i>
-            </div>
-
-            <div class="filter container" style="text-align: center;">
-
-                <select title="Size" class="selectpicker" name="size" id="size" multiple required>
-                    <option value="s">S</option>
-                    <option value="m">M</option>
-                    <option value="l">L</option>
-                    <option value="xl">XL</option>
-                    <option value="xxl">XXL</option>
-                </select>
-
-                <select title="Màu sắc" class="selectpicker" name="color" id="color" multiple required>
-                    <option value="yellow" style="color: var(--yellow);">Vàng</option>
-                    <option value="green" style="color: var(--green);">Xanh lá</option>
-                    <option value="pink" style="color: var(--pink);">Hồng</option>
-                    <option value="red" style="color: var(--red);">Đỏ</option>
-                    <option value="white" style="color: var(--white);">Trắng</option>
-                    <option value="brown" style="color: var(--brown);">Nâu</option>
-                    <option value="black" style="color: var(--black);">Đen</option>
-                    <option value="orange" style="color: var(--orange);">Cam</option>
-                    <option value="violet" style="color: var(--violet);">Tím</option>
-                </select>
-
-                <select title="Mức giá" class="selectpicker" name="price" id="price" required>
-                    <option value="less_1m">Dưới đ1.000.000</option>
-                    <option value="1m-2m">đ1.000.000 - đ2.000.000</option>
-                    <option value="2m-3.5m">đ2.000.000 - đ3.500.000</option>
-                    <option value="3.5m-5m">đ3.500.000 - đ5.000.000</option>
-                    <option value="more_5m">Trên đ5.000.000</option>
-                </select>
-
-                <select title="Mức chiết khấu" class="selectpicker" name="discount" id="discount" required>
-                    <option value="less_30">Dưới 30%</option>
-                    <option value="30-50">30% - 50%</option>
-                    <option value="50-70">50% - 70%</option>
-                    <option value="more_70">Trên 70%</option>
-                    <option value="special">Giá đặc biệt</option>
-                </select>
-
-                <div type="button" class="btn btnFilter" id="filterbutton">Filter</div>
-                <div type="button" class="btn btnFilter" id="resetbutton">Reset</div>
-            </div>
-        </div>
+        
         <!--Products-->
-        <div class="col-12 col-lg-9">
+        <div class="col-12 col-lg-12">
             <!--Sort dropdown-->
             <div class="row">
                 <div class="col-12 col-lg-7 cold-md-7">
