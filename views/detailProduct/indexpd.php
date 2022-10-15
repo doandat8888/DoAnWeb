@@ -178,7 +178,7 @@ if (!function_exists('color_format')) {
                                         <?php
                                         echo '
                                         </div>                                                    
-                                        <form action="../../views/cart/indexcopy.php?&id='.$product->getId().'" method="post">                  
+                                        <form action="../../views/cart/indexcopy.php" method="post">                  
                                             <div class="selector-actions">
                                                 <div class="quantity mb-3" style="clear: both;">
                                                     <button class="minusdecrease">-</button>

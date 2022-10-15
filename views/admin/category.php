@@ -170,7 +170,7 @@ include_once "../../controllers/categoryProductController.php";
                                 <tr>
                                     <th scope='row'>" . $category->getId() . "</th>
                                     <td>" . $category->getName() . "</td>
-                                    <td class='manage-product-action'>
+                                    <td class='manage-category-action'>
                                         <a href='./index.php?page=updatecategory&id=".$category->getId()."'>
                                             <button class='edit action-btn' data-toggle='modal' data-target='#editModal'>
                                                 Sửa
