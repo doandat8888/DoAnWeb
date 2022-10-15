@@ -44,28 +44,23 @@
                 if(isset($_GET['delid'])&&($_GET['delid']>=0)) {
                     array_splice($_SESSION['cart'], $_GET['delid'], 1);
                 }
-                if(isset($_GET['from'])) {
-                    switch($_GET['from']) {
+                if(isset($_POST['action'])) {
+                    switch($_POST['action']) {
                         case "addtocart":
-                            echo 'them vao gio nè';
-                            echo '----------------------------';
-                            
-                            //Thay GET bằng POST để lấy từ indexpd.php mới lấy đc nhiều sản phẩm đc T.T
-                            //Dùng GET chỉ lấy được 1 sp do cái đường dẫn chỉ là một cái sản phẩm
-                            $prod_name = $_GET['name'];
-                            $prod_image = $_GET['image'];
-                            $prod_price = $_GET['price'];
-                            $prod_size = $_GET['size'];
-                            $prod_color = $_GET['color'];
-                            $prod_quantity = $_GET['quantity'];
+                            $prod_name = $_POST['prod_name'];
+                            $prod_image = $_POST['prod_image'];
+                            $prod_price = $_POST['prod_price'];
+                            $prod_size = $_POST['prod_size'];
+                            $prod_color = $_POST['prod_color'];
+                            $prod_quantity = $_POST['prod_quantity'];
                             
                             //Product in cart?
                             $flag = 0;
                             for ($i=0 ; $i < sizeof($_SESSION['cart'])  ; $i++ ) { 
                                 if($_SESSION['cart'][$i] == $prod_name) {
                                     $flag = 1;
-                                    $nquantity = $prod_quantity + $_SESSION['cart'][$i][4];
-                                    $_SESSION['cart'][$i][4] = $nquantity;
+                                    $nquantity = $prod_quantity + $_SESSION['cart'][$i][5];
+                                    $_SESSION['cart'][$i][5] = $nquantity;
                                     break;
                                 }
                             }
@@ -81,6 +76,36 @@
                         case "buynow":
                             // làm xong cái add mới làm tiếp cái buy
                             echo 'mua ngay nè';
+                            break;
+                        case "addtocart2":
+                            // làm xong cái add mới làm tiếp cái buy
+                            echo 'test thêm vào giỏ 2';
+
+                            $prod_name = $_POST['product_name'];
+                            $prod_image = $_POST['product_img'];
+                            $prod_price = $_POST['product_price'];
+                            $prod_size = $_POST['product_size'];
+                            $prod_color = $_POST['product_color'];
+                            $prod_quantity = 1;
+                            
+                            //Product in cart?
+                            $flag = 0;
+                            for ($i=0 ; $i < sizeof($_SESSION['cart'])  ; $i++ ) { 
+                                if($_SESSION['cart'][$i] == $prod_name) {
+                                    $flag = 1;
+                                    $nquantity = $prod_quantity + $_SESSION['cart'][$i][5];
+                                    $_SESSION['cart'][$i][5] = $nquantity;
+                                    break;
+                                }
+                            }
+                            if($flag == 0) { //sp chưa tồn tại trong giỏ thì thêm mới
+                                $product=[$prod_name, $prod_image, $prod_price, $prod_size, $prod_color, $prod_quantity];
+                                $_SESSION['cart'][] = $product;
+
+                                //test thôi, mở ra là kh load đc giao diện cart đó hê hê
+                                // unset($_SESSION['cart']); exit;
+                                // var_dump($_SESSION['cart']); exit;
+                            }
                             break;
                     }
                 }
@@ -338,5 +363,11 @@
     </body>
     <script src="../../public/JS/cart.js"></script>
     <script src="../../public/JS/detailProduct.js"></script>
-    <script src="https://kit.fontawesome.com/644376ed9d.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/644376ed9d.js" crossorigin="anonymous"></script>\
+    <script>
+        function addCart(id) {
+            num = $("#num");
+            alert(id);
+        }
+    </script>
 </html>

@@ -78,35 +78,35 @@ if (!function_exists('color_format')) {
         </div>
         <!-- NAV BreadCrumb-->
         <?php 
-                include_once "../../components/breadcrumb.php";
+                // include_once "../../components/breadcrumb.php";
         ?>
         <?php
-            //Load components breadcrumb
-            //Trang chủ/Sản phẩm / <chi tiết của sp đã chọn>
-            //Chọn trang chủ: nếu muốn quay về trang chủ
-            //Chọn Sản Phẩm để vào trang tìm kiếm (hiển thị tất cả sản phẩm).
-            //Tương tự với trang cart, checkout,...
-            //
-            // include_once "../../controllers/productController.php";
-            // $controller = new ProductController();
-            // if(isset($_GET['id'])) {
-            //     $id = $_GET['id'];
-            //     $data = $controller->getProductById($id);
-            //     foreach ($data as $product) {
-            //         echo '
-            //             <nav class ="row d-sm-none d-md-block" aria-label ="breadcrumb">
-            //                 <ol class ="breadcrumb">
-            //                     <li class="breadcrumb-item">
-            //                         <a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a>
-            //                     </li>
-            //                     <li class="breadcrumb-item active" aria-current="page">
-            //                         '.$product->getName().'
-            //                     </li>
-            //                 </ol>
-            //             </nav>
-            //         ';
-            //     }
-            // }
+            // Load components breadcrumb
+            // Trang chủ/Sản phẩm / <chi tiết của sp đã chọn>
+            // Chọn trang chủ: nếu muốn quay về trang chủ
+            // Chọn Sản Phẩm để vào trang tìm kiếm (hiển thị tất cả sản phẩm).
+            // Tương tự với trang cart, checkout,...
+            
+            include_once "../../controllers/productController.php";
+            $controller = new ProductController();
+            if(isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $data = $controller->getProductById($id);
+                foreach ($data as $product) {
+                    echo '
+                        <nav class ="row d-sm-none d-md-block" aria-label ="breadcrumb">
+                            <ol class ="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="../../index.php" class="breadcrumb-item-link">Trang chủ</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    '.$product->getName().'
+                                </li>
+                            </ol>
+                        </nav>
+                    ';
+                }
+            }
         ?>
         <!-- CONTENT -->
         <div class='row'>
@@ -114,6 +114,7 @@ if (!function_exists('color_format')) {
             <div class='col-lg-7 col-md-12 col-12'>
                 <div class='imgpro'>
                     <?php 
+                        include_once "../../controllers/cartController.php";
                         include_once "../../controllers/productController.php";
                         $controller = new ProductController();
                         if(isset($_GET['id'])) {
@@ -146,7 +147,7 @@ if (!function_exists('color_format')) {
                         foreach ($data as $product) {
                             $arraysize = explode(", ",$product->getSize());
                             $arraycolor = explode(", ",$product->getColor());
-                            echo '  <div class="pro-title">
+                            echo '      <div class="pro-title">
                                             <h3>'.$product->getName().'</h3>
                                         </div>
                                         <div class="detail-pro-price">
@@ -154,61 +155,55 @@ if (!function_exists('color_format')) {
                                             <span class="detail-pro-price" name="price">'.currency_format($product->getPrice()).'</span>
                                             <del>'.currency_format(2000000).'</del>
                                         </div>
-                                        <form action="../../views/cart/indexcopy.php?to=cart&id='.$product->getId().'&action=them&size='.$product->getSize().'&color='.$product->getColor().'&quantity='.$product->getQuantity().' method="post">
-                                            <input type="hidden" name="to" value="cart">
-                                            <input type="hidden" name="action" value="them">
-                                            <input type="hidden" name="id" value="'.$product->getId().'">
-                                            <input type="hidden" name="name" value="'.$product->getName().'">
-                                            <input type="hidden" name="price" value="'.$product->getPrice().'">
-                                            <input type="hidden" name="image" value="'.$product->getImage01().'">
-                                            
-
-                                            <div class="size-select"> 
-                                                ';?>
-                                                <?php
-                                                        foreach ($arraysize as $spro) { 
-                                                        echo '
-                                                            <input type="radio" class="size-selector" name="size" id="'.strtoupper($spro).'" value="'.strtoupper($spro).'" autocomplete="off" checked="">
-                                                            <label class="size-btn" for="'.strtoupper($spro).'">'.strtoupper($spro).'</label>
-                                                        ';  
-                                                }
-                                                ?>
-                                            <?php
-                                            echo '
-                                            </div>
-                                            <div class="color-select">
-                                                ';?>
-                                                <?php
-                                                    foreach ($arraycolor as $cpro) {
-                                                        $colorHex = color_format($cpro);
-                                                        echo '
-                                                            <input type="radio" class="color-selector" name="color" id="'.strtolower($cpro).'" value="'.strtolower($cpro).'" autocomplete="off" checked="">
-                                                            <label class="color-btn" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>
-                                                        ';
-                                                    }
-                                                ?>
-                                            <?php
-                                            echo '
-                                            </div>
+                                        <div class="size-select">';?>
+                                        <?php
+                                            foreach ($arraysize as $spro) { 
+                                                echo '
+                                                    <input type="radio" class="size-selector" name="size" id="'.strtoupper($spro).'" value="'.strtoupper($spro).'" autocomplete="off" checked="">
+                                                    <label class="size-btn" for="'.strtoupper($spro).'">'.strtoupper($spro).'</label>';  
+                                        }?>
+                                        <?php
+                                        echo '
+                                        </div>
+                                        <div class="color-select">';
+                                        ?>
+                                        <?php
+                                            foreach ($arraycolor as $cpro) {
+                                                $colorHex = color_format($cpro);
+                                                echo '
+                                                    <input type="radio" class="color-selector" name="color" id="'.strtolower($cpro).'" value="'.strtolower($cpro).'" autocomplete="off" checked="">
+                                                    <label class="color-btn" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>';
+                                            }
+                                        ?>
+                                        <?php
+                                        echo '
+                                        </div>                                                    
+                                        <form action="../../views/cart/indexcopy.php?&id='.$product->getId().'" method="post">                  
                                             <div class="selector-actions">
                                                 <div class="quantity mb-3" style="clear: both;">
                                                     <button class="minusdecrease">-</button>
-                                                    <input type="text" value="1" min="0" max="'.$product->getQuantity().'" name="quantity" class="detail-number">
+                                                    <input type="text" value="1" min="0" max="'.$product->getQuantity().'" name="prod_quantity" class="detail-number">
                                                     <button class="plusincrease">+</button>
                                                 </div>
-                            
                                                 <br style="clear: both"></br>
                             
                                                 <div class="d-flex">
-                                                    <button type="submit" name="from" value="addtocart" class="detail-btn add-btn">Thêm vào giỏ</button>
-                                                    <button type="submit" name="from" value="buynow" class="detail-btn buy-btn">Mua ngay</button>
+                                                    <button type="submit" name="action" value="addtocart" class="detail-btn add-btn">Thêm vào giỏ</button>
+                                                    <button type="submit" name="action" value="buynow" class="detail-btn buy-btn">Mua ngay</button>
+                                                    <input type="hidden" name="prod_id" value="'.$product->getId().'">
+                                                    <input type="hidden" name="prod_name" value="'.$product->getName().'">
+                                                    <input type="hidden" name="prod_image" value="'.$product->getImage01().'">
+                                                    <input type="hidden" name="prod_price" value="'.$product->getPrice().'">
+                                                    <input type="hidden" name="prod_size" value="'.strtoupper($spro).'">  
+                                                    <input type="hidden" name="prod_color" value="'.strtolower($cpro).'">
                                                 </div>
-                                            </div>                   
+                                            </div>                 
                                         </form>';?>
+
+                                        
+
                                         <?php
-                                            //code
-                                        ?>
-                                        <?php
+                                        // information product
                                         echo'
                                         <div class="info">
                                             <div class="info-list d-flex">
@@ -238,81 +233,11 @@ if (!function_exists('color_format')) {
                         }
                     }
                 ?>
-                <!-- <div class="pro-title">
-                    <h3>Áo lụa cách điệu phối nơ lệch</h3>
-                </div>
-                <div class='detail-pro-price'>
-                    <span class='detail-pro-sale'>-30%</span>
-                    <span class='detail-pro-price'>895.000₫</span>
-                    <del>1.270.000₫</del>
-                </div>
-                <form action='./' method='GET'>
-                    <input type='hidden' name='to' value='cart'>
-                    <input type='hidden' name='id_product' value='1'>
-                    <input type='hidden' name='action' value='them'>
-                    <div class='size-select'>
-                        <input type='radio' class='size-selector' name='size' id='S' value='S' autocomplete='off' checked=''>
-                        <label class='size-btn' for='S'>S</label>
-                        <input type='radio' class='size-selector' name='size' id='M' value='M' autocomplete='off' checked=''>
-                        <label class='size-btn' for='M'>M</label>
-                        <input type='radio' class='size-selector' name='size' id='L' value='L' autocomplete='off' checked=''>
-                        <label class='size-btn' for='L'>L</label>
-                        <input type='radio' class='size-selector' name='size' id='XL' value='XL' autocomplete='off' checked=''>
-                        <label class='size-btn' for='XL'>XL</label>
-                    </div>
-                    <div class='color-select'>
-                        <input type='radio' class='color-selector' name='color' id='green' value='green' autocomplete='off' checked=''>
-                        <label class='color-btn' for='green'></label>
-                        <input type='radio' class='color-selector' name='color' id='pink' value='pink' autocomplete='off' checked=''>
-                        <label class='color-btn' for='pink'></label>
-                        <input type='radio' class='color-selector' name='color' id='yellow' value='yellow' autocomplete='off' checked=''>
-                        <label class='color-btn' for='yellow'></label>
-                    </div>
-
-                    <div class="selector-actions">
-                        <div class='quantity' style='clear: both'>
-                            <button class='minusdecrease' onclick="creaseCount(event, this)">-</button>
-                            <input type='text' value='1' min='0' max='10' class='detail-number'>
-                            <button class='plusincrease' onclick="increaseCount(event, this)">+</button>
-                        </div>
-    
-                        <br style='clear: both'></br>
-    
-                        <div class='d-flex'>
-                            <button type='submit' name='from' value='themvaogio' class='detail-btn add-btn add-cart'>Thêm vào giỏ</button>
-                            <button type='submit' name='from' value='muangay' class='detail-btn buy-btn'>Mua ngay</button>
-                        </div>
-                    </div>                       
-                </form>
-                <div class="desc">
-                    <p class="desc-policy">
-                        <i class="fa-solid fa-truck-fast"></i>
-                        Giao hàng toàn quốc
-                    </p>
-                    <p class="desc-policy"> 
-                        <i class="fa-solid fa-thumbs-up"></i>
-                        Cam kết chính hãng
-                    </p>
-                    <p class="desc-policy">
-                        <i class="fa-solid fa-chess-queen"></i>
-                        Bảo hành trọn đời
-                    </p>
-                </div>
-                <div class="info">
-                    <div class="info-list d-flex">
-                        <div class="info-item">Giới thiệu</div>
-                    </div>
-                    <div class="info-content">
-                        <div class="info-content-item block">
-                            Áo kiểu dáng suông, cổ 3 phân, kết hợp thiết nơ lệch phần cổ, nút cài 1 bên vai. Chất liệu lụa trơn có độ bắt sáng tạo cảm giác mềm mại, sang chảnh. 
-                            <br>
-                            <br>
-                            Nếu nàng theo đuổi phong cách sang chảnh, quý phái dành với nét đẹp cổ điển thì thiết kế áo sơ mi này chính là lựa chọn hoàn hảo dành cho bạn. Nàng có thể kết hợp mẫu áo này cùng chân váy bút chì hoặc quần âu diện đi làm, đi chơi.
-                        </div>
-                    </div>
-                </div> -->
             </div>   
         </div>
+        <!-- End detail product -->
+
+        <!-- Size chart -->
         <div class='row introduction'>
             <div class='col-lg-12 col-12 sizechart'>
                 <h3>Size chart</h3>
@@ -321,7 +246,10 @@ if (!function_exists('color_format')) {
                     <h2>Có thể bạn sẽ thích</h2>
                 </div>
             </div>
-        </div> 
+        </div>
+        <!-- End size chart -->
+        
+        <!-- Product List -->
         <div class='row pro-list'>
             <?php
                 include_once "../../controllers/productController.php";
@@ -330,126 +258,86 @@ if (!function_exists('color_format')) {
                 foreach ($data as $product) {
                     if($product->getStatus() == 1) {
                         $arraycolor = explode(", ",$product->getColor());
-                        echo ' <div class="col-lg-3 col-md-6 col-6 products">
-                                    <div class="card">
-                                            <div class="pro-img">
-                                                <span class="badget">
-                                                    -50%
-                                                </span>
-                                                <a href="./indexpd.php?page=detailproduct&id='.$product->getId().'">
-                                                    <img class="pro-img pro-img-1 ProductImg" src="'.$product->getImage01().'">
-                                                    <img class="pro-img" src="'.$product->getImage02().'">
-                                                </a>
-                                                <div class="pro-btn d-flex">
-                                                    <a href="#" class="hidden-btn">
-                                                        <i class="fa-solid fa-eye"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <h5 class="card-title product-info">
-                                                    <div class="list-color d-flex">
-                                                        <div class="dot-list d-flex">
-                                                        ';?>
-                                                        <?php 
-                                                        foreach($arraycolor as $cpro) {
-                                                            $colorHex = color_format($cpro);
-                                                            echo '
-                                                                <label class="color-button" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>
-                                                            ';
-                                                        }
-                                                        ?>
-                                                        <?php 
-                                                        echo '
-                                                        </div>
-                                                        <div class="favorite">
-                                                            <span class="material-symbols-outlined favorite-icon">
-                                                                favorite
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-name">
-                                                        '.$product->getName().'
-                                                    </div>
-                                                </h5>
-                                                <p class="card-text">
-                                                    </p><div class="product-price d-flex">
-                                                        <div class="product-price__new">'.currency_format(750000).'</div>
-                                                        <strike><div class="product-price__old">'.currency_format($product->getPrice()).'</div></strike>
-                                                    </div>
-                                                <p></p>
-                                                <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;">
-                                                    <div class="product-cart">
-                                                        <span class="material-symbols-outlined product-cart-icon">
-                                                            local_mall
-                                                        </span>
-                                                        <p class="product-cart-buy">Mua ngay</p>
-                                                    </div>
-                                                </a>
-                                            </div>
+                        echo ' 
+                        <div class="col-lg-3 col-md-6 col-6 products">
+                            <div class="card">
+                                <div class="pro-img">
+                                    <span class="badget">
+                                        -50%
+                                    </span>
+                                    <a href="./indexpd.php?page=detailproduct&id='.$product->getId().'">
+                                        <img class="pro-img pro-img-1 ProductImg" src="'.$product->getImage01().'">
+                                        <img class="pro-img" src="'.$product->getImage02().'">
+                                    </a>
+                                    <div class="pro-btn d-flex">
+                                        <a href="./indexpd.php?page=detailproduct&id='.$product->getId().'" class="hidden-btn">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
                                     </div>
-                                </div>';       
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title product-info">
+                                        <div class="list-color d-flex">
+                                            <div class="dot-list d-flex">
+                                            ';?>
+                                            <?php 
+                                            foreach($arraycolor as $cpro) {
+                                                $colorHex = color_format($cpro);
+                                                echo '
+                                                    <label class="color-button" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>
+                                                ';
+                                            }
+                                            ?>
+                                            <?php 
+                                            echo '
+                                            </div>
+                                            <div class="favorite">
+                                                <span class="material-symbols-outlined favorite-icon">
+                                                    favorite
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="product-name">
+                                            '.$product->getName().'
+                                        </div>
+                                    </h5>
+                                    <p class="card-text">
+                                        </p><div class="product-price d-flex">
+                                            <div class="product-price__new">'.currency_format(750000).'</div>
+                                            <strike><div class="product-price__old">'.currency_format($product->getPrice()).'</div></strike>
+                                        </div>
+                                    <p></p>
+                                    <a href="./indexpd.php?page=detailproduct&id='.$product->getId().'" class="btn btn-primary" style="background-color: transparent; border: none;">
+                                        <form action="./indexpd.php?page=detailproduct&id='.$product->getId().'" method="post">
+                                            <button type="submit" name="action" value="add" class="product-cart">
+                                                <span class="material-symbols-outlined product-cart-icon">
+                                                    local_mall
+                                                </span>
+                                                <p class="product-cart-buy">Mua ngay</p>
+                                            </button>
+                                            <input type="hidden" name="product_id" value="'.$product->getId().'">
+                                            <input type="hidden" name="product_name" value="'.$product->getName().'">
+                                            <input type="hidden" name="product_price" value="'.currency_format($product->getPrice()).'">
+                                            <input type="hidden" name="product_img" value="'.$product->getImage02().'">
+                                            <input type="hidden" name="product_size" value="'.$product->getSize().'">
+                                            <input type="hidden" name="product_color" value="'.$product->getColor().'">
+                                        </form>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>';       
                     }
                 }
             ?>
-            <!-- <div class='col-lg-3 col-md-6 col-6 products'>
-                <div class="card">
-                    <div class="pro-img">
-                        <span class="badget">
-                            -50%
-                        </span>
-                        <a href='#'>
-                            <img class="pro-img pro-img-1 ProductImg' src='../../src/img/products/women/product-women-1-2 (2).jpg'>
-                            <img class="pro-img' src='../../src/img/products/women/product-women-1-1 (3).jpg'>
-                        </a>
-                        <div class="pro-btn d-flex'>
-                            <a href='#' class='hidden-btn'>
-                                <i class="fa-solid fa-eye"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title product-info">
-                            <div class="list-color d-flex">
-                                <div class="dot-list d-flex">
-                                    <div class="dot green"></div>
-                                    <div class="dot pink"></div>
-                                    <div class="dot yellow"></div>
-                                </div>
-                                <div class="favorite">
-                                    <span class="material-symbols-outlined favorite-icon">
-                                        favorite
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="product-name">
-                                Đầm Lụa Cách Điệu Phối Nơ Lệch
-                            </div>
-                        </h5>
-                        <p class="card-text">
-                            </p><div class="product-price d-flex">
-                                <div class="product-price__new">750.000đ</div>
-                                <strike><div class="product-price__old">1.150.000đ</div></strike>
-                            </div>
-                        <p></p>
-                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;">
-                            <div class="product-cart">
-                                <span class="material-symbols-outlined product-cart-icon">
-                                    local_mall
-                                </span>
-                                <p class="product-cart-buy">Mua ngay</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div> -->
             <div class="col-lg-12 col-md-12 col-12">
                 <a href="#pro-load" id = "pro-load-more">Xem thêm</a>
             </div>
         </div>
+        <!-- End product list -->
+
         <!-- FOOTER -->
         <?php 
-            include_once "../../components/footer.php";
+            // include_once "../../components/footer.php";
         ?>
         <div class ="row" id="back-to-top">
             <span onclick="scrollToTop()">
@@ -457,7 +345,8 @@ if (!function_exists('color_format')) {
                     <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
                 </svg>
             </span>  
-        </div>    
+        </div>
+        <!-- End footer -->
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
