@@ -1,5 +1,6 @@
 <!-- format đơn vị tiền tệ -->
 <?php
+    session_start();
     if (!function_exists('currency_format')) {
         function currency_format($number, $suffix = 'đ') {
             if (!empty($number)) {
@@ -30,8 +31,7 @@
         <div class="container">
             
             <?php 
-                //Tắt đỡ để test
-                // include_once "../../components/header.php";
+                include_once "../../components/header.php";
             ?>
             <?php
                 include_once "../../controllers/cartController.php";
@@ -67,46 +67,10 @@
                             if($flag == 0) { //sp chưa tồn tại trong giỏ thì thêm mới
                                 $product=[$prod_name, $prod_image, $prod_price, $prod_size, $prod_color, $prod_quantity];
                                 $_SESSION['cart'][] = $product;
-
-                                //test thôi, mở ra là kh load đc giao diện cart đó hê hê
-                                // unset($_SESSION['cart']); exit;
-                                // var_dump($_SESSION['cart']); exit;
                             }
                             break;
                         case "buynow":
-                            // làm xong cái add mới làm tiếp cái buy
-                            echo 'mua ngay nè';
-                            break;
-                        case "addtocart2":
-                            // làm xong cái add mới làm tiếp cái buy
-                            echo 'test thêm vào giỏ 2';
-
-                            $prod_name = $_POST['product_name'];
-                            $prod_image = $_POST['product_img'];
-                            $prod_price = $_POST['product_price'];
-                            $prod_size = $_POST['product_size'];
-                            $prod_color = $_POST['product_color'];
-                            $prod_quantity = 1;
-                            
-                            //Product in cart?
-                            $flag = 0;
-                            for ($i=0 ; $i < sizeof($_SESSION['cart'])  ; $i++ ) { 
-                                if($_SESSION['cart'][$i] == $prod_name) {
-                                    $flag = 1;
-                                    $nquantity = $prod_quantity + $_SESSION['cart'][$i][5];
-                                    $_SESSION['cart'][$i][5] = $nquantity;
-                                    break;
-                                }
-                            }
-                            if($flag == 0) { //sp chưa tồn tại trong giỏ thì thêm mới
-                                $product=[$prod_name, $prod_image, $prod_price, $prod_size, $prod_color, $prod_quantity];
-                                $_SESSION['cart'][] = $product;
-
-                                //test thôi, mở ra là kh load đc giao diện cart đó hê hê
-                                // unset($_SESSION['cart']); exit;
-                                // var_dump($_SESSION['cart']); exit;
-                            }
-                            break;
+                            echo 'Mua hàng nè!!!';
                     }
                 }
             ?>
@@ -207,167 +171,11 @@
                     <?php include_once "../../components/footer.php"?>
                 </div>
             </form>
-
-
-            <!-- <div class="cart-body">
-                <div class="row">
-                    <div class="col-lg-5 col-md-12 col-12 cart-info">
-                        <div class="cart-info-content">
-                            <p class="cart-info-txt"></p>
-                            <div class="cart-info-content-price">
-                                <p class="cart-info-content-price-txt">Thành tiền</p>
-                                <p class="cart-info-content-price-money"></p>
-                            </div>
-                        </div>
-                        <div class="cart-info-btn">
-                            <a href="../checkout/index.php" class="cart-btn-link">
-                                <div class="cart-btn-view">
-                                    Đặt hàng
-                                </div>
-                            </a>
-                            <a href="../../index.php" class="cart-btn-link">
-                                <div class="cart-btn-view">
-                                    Về trang chủ
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-7 col-md-12 col-12 cart-products">
-                        <div class="cart-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="../../src/img/products/women/product-women-6-1.jpg" class="cart-item-img" alt="">
-                                </div>
-                                <div class="col-9">
-                                    <div class="cart-item-name">
-                                        Đầm Cut Out Đính Ngọc Trai
-                                    </div>
-                                    <div class="cart-item-color-size">
-                                        <div class="color">
-                                            Màu sắc: Trắng
-                                        </div>
-                                        <div class="size">
-                                            Size: S
-                                        </div>
-                                    </div>
-                                    <div class="cart-item-quantity-price">
-                                        <div class="cart-item-quantity">
-                                            <div class="cart-item-quantity-minus">
-                                                <span class="material-symbols-outlined minus-icon">
-                                                    remove
-                                                </span>
-                                            </div>
-                                            <input type='text' value='1' min='0' max='10' class='cart-item-quantity-input'>
-                                            <div class="cart-item-quantity-plus">
-                                                <span class="material-symbols-outlined plus-icon">
-                                                    add
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="cart-item-price">950.000đ</div>
-                                        <span class="material-symbols-outlined del-icon">
-                                            delete
-                                        </span>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cart-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="../../src/img/products/women/product-women-7-1.jpg" class="cart-item-img" alt="">
-                                </div>
-                                <div class="col-9">
-                                    <div class="cart-item-name">
-                                        Set Áo Và Chân Váy Họa Tiết Kẻ
-                                    </div>
-                                    <div class="cart-item-color-size">
-                                        <div class="color">
-                                            Màu sắc: Xanh
-                                        </div>
-                                        <div class="size">
-                                            Size: XL
-                                        </div>
-                                    </div>
-                                    <div class="cart-item-quantity-price">
-                                        <div class="cart-item-quantity">
-                                            <div class="cart-item-quantity-minus">
-                                                <span class="material-symbols-outlined minus-icon">
-                                                    remove
-                                                </span>
-                                            </div>
-                                            <input type="text" value='1' min='0' max='10' class='cart-item-quantity-input'>
-                                            <div class="cart-item-quantity-plus">
-                                                <span class="material-symbols-outlined plus-icon">
-                                                    add
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="cart-item-price">750.000đ</div>
-                                        <span class="material-symbols-outlined del-icon">
-                                            delete
-                                        </span>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cart-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="../../src/img/products/women/product-women-5-1.jpg" class="cart-item-img" alt="">
-                                </div>
-                                <div class="col-9">
-                                    <div class="cart-item-name">
-                                        Set Áo Blazer Và Quần Suông Dài
-                                    </div>
-                                    <div class="cart-item-color-size">
-                                        <div class="color">
-                                            Màu sắc: Vàng Cam
-                                        </div>
-                                        <div class="size">
-                                            Size: X
-                                        </div>
-                                    </div>
-                                    <div class="cart-item-quantity-price">
-                                        <div class="cart-item-quantity">
-                                            <div class="cart-item-quantity-minus">
-                                                <span class="material-symbols-outlined minus-icon">
-                                                    remove
-                                                </span>
-                                            </div>
-                                            <input type='text' value='2' min='0' max='10' class='cart-item-quantity-input'>
-                                            <div class="cart-item-quantity-plus">
-                                                <span class="material-symbols-outlined plus-icon">
-                                                    add
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="cart-item-price">1.250.000đ</div>
-                                        <span class="material-symbols-outlined del-icon">
-                                            delete
-                                        </span>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php include_once "../../components/footer.php"?>
-            </div> -->
-
             <?php include_once "../../components/scrollToTop.php"?>
         </div>      
     </body>
+
     <script src="../../public/JS/cart.js"></script>
     <script src="../../public/JS/detailProduct.js"></script>
-    <script src="https://kit.fontawesome.com/644376ed9d.js" crossorigin="anonymous"></script>\
-    <script>
-        function addCart(id) {
-            num = $("#num");
-            alert(id);
-        }
-    </script>
+    <script src="https://kit.fontawesome.com/644376ed9d.js" crossorigin="anonymous"></script>
 </html>
