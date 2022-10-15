@@ -84,14 +84,20 @@
                                 <div class="product-info-item-title">Danh mục</div>
                                 <select class="product-info-item-input" name="pro-category">
                                     <option value="-1">Chọn danh mục</option>
-                                    <option value="0">Đầm Thun</option>
-                                    <option value="1">Đầm Dạ Hội</option>
-                                    <option value="2">Áo Set</option>
-                                    <option value="3">Áo Thun</option>
-                                    <option value="4">Áo Polo</option>
-                                    <option value="5">Áo Ngắn Tay</option>
-                                    <option value="6">Quần Sooc</option>
-                                    <option value="7">Áo Sơmi</option>
+                                    <?php 
+                                        include "../../controllers/categoryProductController.php";
+                                        $controller = new CategoryProductController();
+                                        $data = $controller->getCategoryList();
+                                        foreach ($data as $category) {
+                                            if($category->getStatus() == 1) {
+                                                $categoryName = $category->getName();
+                                                echo "
+                                                    <option value='".$category->getId()."'>$categoryName</option>
+                                                ";
+                                            }
+                                        }
+                                    ?>
+                                    
                                 </select>
                             </div>
                             <div class="product-info-item col-12">
