@@ -27,44 +27,62 @@
             echo "
                 <form method='post' action='./index.php?page=manage-product&id=".$product->getId()."'>
                     <div class='product-info-list col-12 d-flex'>
-                        <div class='product-info-item col-6'>
+                        <div class='product-info-item col-12 col-sm-6 col-lg-6'>
                             <div class='product-info-item-title'>Tên sản phẩm</div>
                             <input type='text' class='product-info-item-input' name='pro-name' value = '" . $product->getName() . "' />
                         </div>
-                        <div class='product-info-item col-6'>
+                        <div class='product-info-item col-12 col-sm-6 col-lg-6'>
                             <div class='product-info-item-title'>Màu sắc</div>
                             <input type='text' class='product-info-item-input' name='pro-color' value='" . $product->getColor() . "'>
                         </div>
-                        <div class='product-info-item col-6'>
+                        <div class='product-info-item col-12 col-sm-6 col-lg-6'>
                             <div class='product-info-item-title'>Kích thước</div>
                             <input type='text' class='product-info-item-input' name='pro-size' value='" . $product->getSize() . "'>
                         </div>
-                        <div class='product-info-item col-6'>
+                        <div class='product-info-item col-12 col-sm-6 col-lg-6'>
                             <div class='product-info-item-title'>Nhập giá</div>
                             <input type='text' class='product-info-item-input' name='pro-price' value=" . $product->getPrice() . ">
                         </div>
-                        <div class='product-info-item col-6'>
+                        <div class='product-info-item col-12 col-sm-6 col-lg-6'>
                             <div class='product-info-item-title'>Nhập số lượng</div>
                             <input type='text' class='product-info-item-input' name='pro-quantity' value=" .$product->getQuantity() . ">
                         </div>
-                        <div class='product-info-item col-6'>
+                        <div class='product-info-item col-12 col-sm-12 col-lg-12'>
                             <div class='product-info-item-title'>Mô tả</div>
                             <textarea class='product-info-item-input' name='pro-description'>$description</textarea>
                         </div>
-                        <div class='product-info-item col-6'>
+                        <div class='product-info-item col-12 col-sm-6 col-lg-6'>
                             <div class='product-info-item-title'>Loại</div>
                             <select class='product-info-item-input' name='pro-type'>
-                                
-                                <option value='" .$product->getType(). "'>
-                                    " .$product->getType(). "
-                                </option>
-                                
-                                <option value='0'>Nam</option>
-                                <option value='1'>Nữ</option>
-                                <option value='2'>Trẻ em</option>
+                                ";?>
+                                    <?php 
+                                        $genderArr = array(
+                                            "0" => "Nam",
+                                            "1" => "Nữ",
+                                            "2" => "Trẻ em"
+                                        );
+                                        foreach ($genderArr as $key=>$gender) {
+                                            if($key == $product->getType()) {
+                                                echo "
+                                                    <option value='".$key."' selected>
+                                                        ".$gender."
+                                                    </option>
+                                                ";
+                                            }else {
+                                                echo "
+                                                    <option value='".$key."'>
+                                                        ".$gender."
+                                                    </option>
+                                                ";
+                                            }
+                                        }
+                                        
+                                    ?>
+                                <?php 
+                                echo "
                             </select>
                         </div>
-                        <div class='product-info-item col-6'>
+                        <div class='product-info-item col-12 col-sm-6 col-lg-6'>
                             <div class='product-info-item-title'>Danh mục</div>
                             <select class='product-info-item-input' name='pro-category'>
                                 ";?>
@@ -82,7 +100,6 @@
                                                     <option value='".$category->getId()."' selected>$categoryName</option>
                                                 ";
                                             }
-                                            
                                         }
                                     }
                                 ?>

@@ -81,17 +81,6 @@
                         Kết quả tìm kiếm theo "<?php echo $_SESSION['search'] ?>"
                     </div>
                 </div>
-                <div class="col-12 col-lg-5 col-md-5" style="z-index: 100000;">
-                    <select title="Sắp xếp theo" class="selectpicker" name="sorter" id="sorter" required>
-                        <option value="default">Mặc định</option>
-                        <option value="newest">Mới nhất</option>
-                        <option value="most_purchased">Được mua nhiều nhất</option>
-                        <option value="most_liked">Được yêu thích nhất</option>
-                        <option value="hi_to_low">Giá: cao đến thấp</option>
-                        <option value="low_to_hi">Giá: thấp đến cao</option>
-                    </select>
-
-                </div>
             </div>
             <!--The product-->
             <div class='row' id='product-body'>

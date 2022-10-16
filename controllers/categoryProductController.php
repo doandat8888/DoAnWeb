@@ -45,8 +45,36 @@
             return $result;
         }
         //cập nhật danh mục sản phẩm
-        public function editCategory($id, $name) {
+        public function editCategory1($id, $name) {
             $result = $this->model->editCategory($id, $name);
+            return $result;
+        }
+
+        public function editCategory($id, $name) {
+            $count = 0;
+            $result = NULL;
+            $categoryInfo = ['cat-name'];
+            for($i = 0; $i < count($categoryInfo); $i++) {
+                if($_POST[$categoryInfo[$i]] == '') {
+                    $result = -1;
+                    break;
+                }else {
+                    $count++;
+                }
+            }
+            if($count == count($categoryInfo)) {
+                $resultEdit = $this->model->editCategory($id, $name);
+                // if($result == true) {
+                //     header('Location: ../../views/admin/index.php?msg=done');
+                // }else if($result == false) {
+                //     header('Location: ../../views/admin/index.php?msg=productname-existed');
+                // }
+                if($resultEdit == true) {
+                    $result = 0;
+                }else if($resultEdit == false) {
+                    $result = 1;
+                }
+            }
             return $result;
         }
 

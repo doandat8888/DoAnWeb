@@ -57,6 +57,9 @@
                 case 'update-product':
                     include_once "updateProduct.php";
                     break;
+                case 'update-category':
+                    include_once "updatecategory.php";
+                    break;
                 default:
                     include_once "dashboard.php";
                     break;

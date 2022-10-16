@@ -23,7 +23,7 @@
                     <div class='category-info-list col-12 d-flex'>
                         <div class='category-info-item col-6'>
                             <div class='category-info-item-title'>Tên danh mục</div>
-                            <input type='text' class='category-info-item-input' name='cate-name' value = '" . $category->getName() . "' />
+                            <input type='text' class='category-info-item-input' name='cat-name' value = '" . $category->getName() . "' />
                         </div>
                     </div>
                     <div class='footer'>

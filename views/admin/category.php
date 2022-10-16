@@ -80,7 +80,7 @@ include_once "../../controllers/categoryProductController.php";
                         $controller = new CategoryProductController();
                         // $id = $controller->getCategoryByName('cat-name');
                         $result = $controller->editCategory($id, $name);
-                        if($result === -1) {
+                        if($result == -1) {
                             echo "<script type='text/javascript'>alert('Vui lòng nhập tên danh mục sản phẩm');</script>";
                         }else if($result == 1) {
                             echo "<script type='text/javascript'>alert('Danh mục sản phẩm đã tồn tại');</script>";
@@ -171,7 +171,7 @@ include_once "../../controllers/categoryProductController.php";
                                     <th scope='row'>" . $category->getId() . "</th>
                                     <td>" . $category->getName() . "</td>
                                     <td class='manage-category-action'>
-                                        <a href='./index.php?page=updatecategory&id=".$category->getId()."'>
+                                        <a href='./index.php?page=update-category&id=".$category->getId()."'>
                                             <button class='edit action-btn' data-toggle='modal' data-target='#editModal'>
                                                 Sửa
                                             </button>
