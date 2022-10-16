@@ -53,11 +53,13 @@
                             $prod_size = $_POST['prod_size'];
                             $prod_color = $_POST['prod_color'];
                             $prod_quantity = $_POST['prod_quantity'];
+                            $prod_id = $_POST['prod_id'];
                             
                             //Product in cart?
                             $flag = 0;
+                            $nquantity = 0;
                             for ($i=0 ; $i < sizeof($_SESSION['cart'])  ; $i++ ) { 
-                                if($_SESSION['cart'][$i] == $prod_name) {
+                                if($_SESSION['cart'][$i][6] == $prod_id) {
                                     $flag = 1;
                                     $nquantity = $prod_quantity + $_SESSION['cart'][$i][5];
                                     $_SESSION['cart'][$i][5] = $nquantity;
@@ -65,7 +67,7 @@
                                 }
                             }
                             if($flag == 0) { //sp chưa tồn tại trong giỏ thì thêm mới
-                                $product=[$prod_name, $prod_image, $prod_price, $prod_size, $prod_color, $prod_quantity];
+                                $product=[$prod_name, $prod_image, $prod_price, $prod_size, $prod_color, $prod_quantity, $prod_id];
                                 $_SESSION['cart'][] = $product;
                             }
                             break;
