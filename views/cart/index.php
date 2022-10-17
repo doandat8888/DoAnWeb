@@ -47,7 +47,9 @@
                 if(isset($_POST['action'])) {
                     switch($_POST['action']) {
                         case "addtocart":
-                            $prod_name = $_POST['prod_name'];
+                            break;
+                        case "buynow":
+                           $prod_name = $_POST['prod_name'];
                             $prod_image = $_POST['prod_image'];
                             $prod_price = $_POST['prod_price'];
                             $prod_size = $_POST['prod_size'];
@@ -71,8 +73,8 @@
                                 $_SESSION['cart'][] = $product;
                             }
                             break;
-                        case "buynow":
-                            echo 'Mua hàng nè!!!';
+                        default: "./index.php?page=detailproduct&id='.$product->getId().'";
+                            break;
                     }
                 }
             ?>

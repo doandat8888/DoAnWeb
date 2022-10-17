@@ -131,12 +131,12 @@
                                                                 <span class='badget'>
                                                                     -50%
                                                                 </span>
-                                                                <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."'>
+                                                                <a href='./views/detailProduct/index.php?id=".$product->getId()."'>
                                                                     <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
                                                                     <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
                                                                 </a>
                                                                 <div class='pro-btn d-flex'>
-                                                                    <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."' class='hidden-btn'>
+                                                                    <a href='./views/detailProduct/index.php?id=".$product->getId()."' class='hidden-btn'>
                                                                         <i class='fa-solid fa-eye'></i>
                                                                     </a>
                                                                 </div>
@@ -173,7 +173,7 @@
                                                                         <strike><div class='product-price__old'>1.150.000đ</div></strike>
                                                                     </div>
                                                                 </p>
-                                                                <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>
+                                                                <a href='./views/detailProduct/index.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>
                                                                     <div class='product-cart'>
                                                                         <span class='material-symbols-outlined product-cart-icon'>
                                                                             local_mall
@@ -206,12 +206,12 @@
                                                                 <span class='badget'>
                                                                     -50%
                                                                 </span>
-                                                                <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."'>
+                                                                <a href='./views/detailProduct/index.php?id=".$product->getId()."'>
                                                                     <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
                                                                     <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
                                                                 </a>
                                                                 <div class='pro-btn d-flex'>
-                                                                    <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."' class='hidden-btn'>
+                                                                    <a href='./views/detailProduct/index.php?id=".$product->getId()."' class='hidden-btn'>
                                                                         <i class='fa-solid fa-eye'></i>
                                                                     </a>
                                                                 </div>
@@ -248,7 +248,7 @@
                                                                         <strike><div class='product-price__old'>1.150.000đ</div></strike>
                                                                     </div>
                                                                 </p>
-                                                                <a href='./views/detailProduct/indexpd.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>
+                                                                <a href='./views/detailProduct/index.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>
                                                                     <div class='product-cart'>
                                                                         <span class='material-symbols-outlined product-cart-icon'>
                                                                             local_mall

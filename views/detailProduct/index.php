@@ -178,7 +178,7 @@ if (!function_exists('color_format')) {
                                         <?php
                                         echo '
                                         </div>                                                    
-                                        <form action="../../views/cart/index.php" method="post">                  
+                                        <form action="./index.php?page=detailproduct&id='.$product->getId().'" method="post">                  
                                             <div class="selector-actions">
                                                 <div class="quantity mb-3" style="clear: both;">
                                                     <button class="minusdecrease">-</button>
@@ -265,12 +265,12 @@ if (!function_exists('color_format')) {
                                     <span class="badget">
                                         -50%
                                     </span>
-                                    <a href="./indexpd.php?page=detailproduct&id='.$product->getId().'">
+                                    <a href="./index.php?page=detailproduct&id='.$product->getId().'">
                                         <img class="pro-img pro-img-1 ProductImg" src="'.$product->getImage01().'">
                                         <img class="pro-img" src="'.$product->getImage02().'">
                                     </a>
                                     <div class="pro-btn d-flex">
-                                        <a href="./indexpd.php?page=detailproduct&id='.$product->getId().'" class="hidden-btn">
+                                        <a href="./index.php?page=detailproduct&id='.$product->getId().'" class="hidden-btn">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
                                     </div>
@@ -307,8 +307,8 @@ if (!function_exists('color_format')) {
                                             <strike><div class="product-price__old">'.currency_format($product->getPrice()).'</div></strike>
                                         </div>
                                     <p></p>
-                                    <a href="./indexpd.php?page=detailproduct&id='.$product->getId().'" class="btn btn-primary" style="background-color: transparent; border: none;">
-                                        <form action="./indexpd.php?page=detailproduct&id='.$product->getId().'" method="post">
+                                    <a href="./index.php?page=detailproduct&id='.$product->getId().'" class="btn btn-primary" style="background-color: transparent; border: none;">
+                                        <form action="./index.php?page=detailproduct&id='.$product->getId().'" method="post">
                                             <button type="submit" name="action" value="add" class="product-cart">
                                                 <span class="material-symbols-outlined product-cart-icon">
                                                     local_mall

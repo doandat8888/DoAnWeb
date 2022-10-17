@@ -106,7 +106,7 @@
                                             <span class='badget'>
                                                 -50%
                                             </span>
-                                            <a href='../../views/detailProduct/indexpd.php?id=".$product->getId()."'>
+                                            <a href='../../views/detailProduct/index.php?id=".$product->getId()."'>
                                                 <img src='".$product->getImage02()."' class='product-img-content product-img-2'/>
                                                 <img src='".$product->getImage01()."' class='product-img-content product-img-1'/>
                                             </a>
