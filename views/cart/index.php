@@ -60,8 +60,8 @@
                             //Product in cart?
                             $flag = 0;
                             $nquantity = 0;
-                            for ($i=0 ; $i < sizeof($_SESSION['cart'])  ; $i++ ) { 
-                                if($_SESSION['cart'][$i][6] == $prod_id) {
+                            for ($i = 0 ; $i < sizeof($_SESSION['cart'])  ; $i++ ) { 
+                                if($_SESSION['cart'][$i][6] == $prod_id && $_SESSION['cart'][$i][3] == $prod_size && $_SESSION['cart'][$i][4] == $prod_color) { 
                                     $flag = 1;
                                     $nquantity = $prod_quantity + $_SESSION['cart'][$i][5];
                                     $_SESSION['cart'][$i][5] = $nquantity;
