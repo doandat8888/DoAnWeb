@@ -6,11 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/updateProduct.css">
-    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 </head>
 
 <body>
     <?php
+    // if(!function_exists('color_format')) {
+    //     function color_format($colorStr) {
+    //         $arrColorResult = [];
+    //         $arrColorSelected = explode(", ", $colorStr);
+    //         $arraycolor = array(
+    //             "yellow" => "Vàng",
+    //             "green" => "Xanh",
+    //             "pink" => "Hồng",
+    //             "red" => "Đỏ",
+    //             "white" => "Trắng",
+    //             "brown" => "Nâu",
+    //             "red" => "Đỏ",
+    //             "orange" => "Cam",
+    //             "gray" => "Xám",
+    //         );
+    //         foreach($arrColorSelected as $colorSelected) {
+    //             if(key($arraycolor) == $colorSelected) {
+    //                 array_push($arrColorResult, $arraycolor[key($arraycolor)]);
+    //             }
+    //         }
+    //         return $arrColorResult;
+    //     }
+    // }
     include_once "../../controllers/productController.php";
     include_once "../../controllers/categoryProductController.php";
     $productController = new ProductController();
@@ -33,7 +59,49 @@
                         </div>
                         <div class='product-info-item col-12 col-sm-6 col-lg-6'>
                             <div class='product-info-item-title'>Màu sắc</div>
-                            <input type='text' class='product-info-item-input' name='pro-color' value='" . $product->getColor() . "'>
+                            <select title='Chọn màu sắc' class='selectpicker product-info-item-input' name='pro-color[]' id='color' multiple required>
+                                ";?>
+                                    <?php 
+                                        $arraycolor = array(
+                                            "blue" => "Xanh",
+                                            "black" => "Đen",
+                                            "yellow" => "Vàng",
+                                            "green" => "Xanh",
+                                            "pink" => "Hồng",
+                                            "red" => "Đỏ",
+                                            "white" => "Trắng",
+                                            "brown" => "Nâu",
+                                            "orange" => "Cam",
+                                            "gray" => "Xám",
+                                        );
+                                        // foreach ($arraycolor as $key => $val) {
+                                        //     echo "<option value='".$key."' style='color: var(--$key);'>$val</option>";
+                                        // }
+                                        
+                                        $colorArr = explode(", ", $product->getColor());
+                                        
+                                        //foreach($colorArr as $color) {
+                                            // if(key($arraycolor) == $color) {
+                                            //     $key = key($arraycolor);
+                                            //     $val = $arraycolor[$key];
+                                            //     echo "<option value='".$key."' style='color: var(--$key);' selected>$val</option>";
+                                            // }else {
+                                            //     echo "<option value='".$key."' style='color: var(--$key);'>$val</option>";
+                                            // }
+                                            
+                                            foreach ($arraycolor as $key => $val) {
+                                                foreach($colorArr as $color) {
+                                                    if($color == $key) {
+                                                        echo "<option value='".$key."' style='color: var(--$key);' selected>$val</option>";
+                                                    }
+                                                }
+                                                echo "<option value='".$key."' style='color: var(--$key);'>$val</option>";
+                                            }
+                                        //}
+                                    ?>
+                                    <?php 
+                                echo "
+                            </select>
                         </div>
                         <div class='product-info-item col-12 col-sm-6 col-lg-6'>
                             <div class='product-info-item-title'>Kích thước</div>
