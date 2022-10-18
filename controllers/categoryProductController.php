@@ -64,11 +64,6 @@
             }
             if($count == count($categoryInfo)) {
                 $resultEdit = $this->model->editCategory($id, $name);
-                // if($result == true) {
-                //     header('Location: ../../views/admin/index.php?msg=done');
-                // }else if($result == false) {
-                //     header('Location: ../../views/admin/index.php?msg=productname-existed');
-                // }
                 if($resultEdit == true) {
                     $result = 0;
                 }else if($resultEdit == false) {
