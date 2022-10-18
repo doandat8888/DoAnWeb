@@ -1,6 +1,5 @@
 <?php
     session_start();
-    $_SESSION['cart'] = array();
 ?>
 <div class="search-section d-flex justify-content-center align-items-center">
     <form class="search-form" action="../../views/search/index.php" method="get">
