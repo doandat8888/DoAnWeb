@@ -162,7 +162,7 @@ if (!function_exists('color_format')) {
                                         $sizechoose = '';
                                         foreach ($arraysize as $spro) { 
                                             echo '
-                                                <input type="radio" class="size-selector" name="size" id="'.strtoupper($spro).'" value="'.strtoupper($spro).'">
+                                                <input type="radio" class="size-selector" name="size" id="'.strtoupper($spro).'" value="'.strtoupper($spro).' "autocomplete="off" checked="">
                                                 <label class="size-btn" for="'.strtoupper($spro).'">'.strtoupper($spro).'</label>';  
                                             $sizechoose = strtoupper($spro);
                                         }?>
@@ -176,7 +176,7 @@ if (!function_exists('color_format')) {
                                     foreach ($arraycolor as $cpro) {
                                         $colorHex = color_format($cpro);
                                         echo '
-                                            <input type="radio" class="color-selector" name="color" id="'.strtolower($cpro).'" value="'.strtolower($cpro).'">
+                                            <input type="radio" class="color-selector" name="color" id="'.strtolower($cpro).'" value="'.strtolower($cpro).'" autocomplete="off" checked="">
                                             <label class="color-btn" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>';
                                         $colorchoose = strtolower($cpro);
                                     }

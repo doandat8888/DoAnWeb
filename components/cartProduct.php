@@ -91,7 +91,7 @@ if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
                                 </div>
                                 <div class="cart-item-price">'.currency_format($totalpriceprod).'</div>
                                     <a href="index.php?delid='.$i.'">
-                                        <span class="material-symbols-outlined del-icon">
+                                        <span class="material-symbols-outlined del-icon" style="color: black; !important">
                                             delete
                                         </span>
                                     </a> 
@@ -110,7 +110,6 @@ if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
         </div>';
     }
 }?>
-<img src="../src/img/cart.png" class="top-img" alt="">
 
 <!-- <div class="cart-item">
     <div class="row">
