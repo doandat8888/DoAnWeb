@@ -105,7 +105,6 @@ if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
         echo'
         <div class="cart-item">
             <div class="col-12 mb-4">
-                <img src="../../" class="top-img" alt="">
             </div>
         </div>';
     }
