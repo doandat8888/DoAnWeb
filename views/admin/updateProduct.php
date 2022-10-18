@@ -63,10 +63,10 @@
                                 ";?>
                                     <?php 
                                         $arraycolor = array(
-                                            "blue" => "Xanh",
+                                            "blue" => "Xanh dương",
                                             "black" => "Đen",
                                             "yellow" => "Vàng",
-                                            "green" => "Xanh",
+                                            "green" => "Xanh lá",
                                             "pink" => "Hồng",
                                             "red" => "Đỏ",
                                             "white" => "Trắng",
@@ -74,30 +74,15 @@
                                             "orange" => "Cam",
                                             "gray" => "Xám",
                                         );
-                                        // foreach ($arraycolor as $key => $val) {
-                                        //     echo "<option value='".$key."' style='color: var(--$key);'>$val</option>";
-                                        // }
                                         
-                                        $colorArr = explode(", ", $product->getColor());
-                                        
-                                        //foreach($colorArr as $color) {
-                                            // if(key($arraycolor) == $color) {
-                                            //     $key = key($arraycolor);
-                                            //     $val = $arraycolor[$key];
-                                            //     echo "<option value='".$key."' style='color: var(--$key);' selected>$val</option>";
-                                            // }else {
-                                            //     echo "<option value='".$key."' style='color: var(--$key);'>$val</option>";
-                                            // }
-                                            
-                                            foreach ($arraycolor as $key => $val) {
-                                                foreach($colorArr as $color) {
-                                                    if($color == $key) {
-                                                        echo "<option value='".$key."' style='color: var(--$key);' selected>$val</option>";
-                                                    }
-                                                }
+                                        foreach ($arraycolor as $key => $val) {
+                                            $colorStr = $product->getColor();
+                                            if(str_contains($colorStr, $key)) {
+                                                echo "<option value='".$key."' style='color: var(--$key);' selected>$val</option>";
+                                            }else {
                                                 echo "<option value='".$key."' style='color: var(--$key);'>$val</option>";
                                             }
-                                        //}
+                                        }
                                     ?>
                                     <?php 
                                 echo "
@@ -105,7 +90,29 @@
                         </div>
                         <div class='product-info-item col-12 col-sm-6 col-lg-6'>
                             <div class='product-info-item-title'>Kích thước</div>
-                            <input type='text' class='product-info-item-input' name='pro-size' value='" . $product->getSize() . "'>
+                            <select title='Chọn màu sắc' class='selectpicker product-info-item-input' name='pro-size[]' id='size' multiple required>
+                                ";?>
+                                    <?php 
+                                        $arraysize = array(
+                                            "s" => "S",
+                                            "m" => "M",
+                                            "l" => "L",
+                                            "xl" => "XL",
+                                            "xxl" => "XXL",
+                                        );
+                                        
+                                        foreach ($arraysize as $key => $val) {
+                                            $sizeStr = $product->getSize();
+                                            if(str_contains($sizeStr, $key)) {
+                                                echo "<option value='".$key."'' selected>$val</option>";
+                                            }else {
+                                                echo "<option value='".$key."''>$val</option>";
+                                            }
+                                        }
+                                    ?>
+                                    <?php 
+                                echo "
+                            </select>
                         </div>
                         <div class='product-info-item col-12 col-sm-6 col-lg-6'>
                             <div class='product-info-item-title'>Nhập giá</div>

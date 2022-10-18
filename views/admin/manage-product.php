@@ -32,8 +32,8 @@
                                 <div class="product-info-item-title">Màu sắc</div>
                                 <!-- <input type="text" placeholder="Nhập màu sắc" class="product-info-item-input" name="pro-color"> -->
                                 <select title="Chọn màu sắc" class="selectpicker product-info-item-input" name="pro-color[]" id="color" multiple required>
-                                    <option value="yellow" style="color: var(--yellow);" selected>Vàng</option>
-                                    <option value="green" style="color: var(--green);" selected>Xanh lá</option>
+                                    <option value="yellow" style="color: var(--yellow);">Vàng</option>
+                                    <option value="green" style="color: var(--green);">Xanh lá</option>
                                     <option value="pink" style="color: var(--pink);">Hồng</option>
                                     <option value="red" style="color: var(--red);">Đỏ</option>
                                     <option value="white" style="color: var(--white);">Trắng</option>
@@ -178,8 +178,10 @@
                         if(isset($_GET['id'])) {
                             $id = $_GET['id'];
                             $name = $_POST['pro-name'];
-                            $color = $_POST['pro-color'];
-                            $size = $_POST['pro-size'];
+                            $colorArr = $_POST['pro-color'];
+                            $color = implode(', ', $colorArr);
+                            $sizeArr = $_POST['pro-size'];
+                            $size = implode(', ', $sizeArr);
                             $price = $_POST['pro-price'];
                             $quantity = $_POST['pro-quantity'];
                             $type = $_POST['pro-type'];
