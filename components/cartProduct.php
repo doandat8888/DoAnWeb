@@ -104,11 +104,13 @@ if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
     else {
         echo'
         <div class="cart-item">
-            Giỏ hàng rỗng!
+            <div class="col-12 mb-4">
+                <img src="../../" class="top-img" alt="">
+            </div>
         </div>';
     }
 }?>
-
+<img src="../src/img/cart.png" class="top-img" alt="">
 
 <!-- <div class="cart-item">
     <div class="row">

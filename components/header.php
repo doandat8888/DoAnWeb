@@ -138,7 +138,15 @@
                 <span class="material-symbols-outlined">
                     shopping_cart
                 </span>
-                <span class="cart-number">0</span>
+                <?php
+                    if(sizeof($_SESSION['cart'])>0) {
+                        echo'
+                        <span class="cart-number"></span>';
+
+                    } else {
+                        echo'
+                        <span class="cart-number" style="padding: 0px !important;"></span>';
+                    }?>
             </div>
             <span class="material-symbols-outlined header-icon search-icon">
                 search

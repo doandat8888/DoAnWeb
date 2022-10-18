@@ -67,6 +67,11 @@ p{
 .cart-btn-link {
     text-decoration: none !important;
 }
+.cart-img {
+    height: 100%;
+    width: 100%;
+    overflow: hidden !important;
+}
 #back-to-top {
     display: none;
     position: fixed;

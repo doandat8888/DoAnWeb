@@ -135,11 +135,9 @@
                                 }
                                 else {
                                     echo'
-                                        <div class="col-lg-7 col-md-12 col-12 cart-products">
-                                            <div class="cart-item">
-                                                Giỏ hàng rỗng!
-                                            </div>
-                                        </div>';
+                                    <div class="col-12 mb-4">
+                                        <img src="../../src/img/cart.png" class="cart-img" alt="">
+                                    </div>';
                                 }
                                 echo '
                                 </div>
@@ -147,8 +145,19 @@
                                     <div class="cart-info-content">
                                         <p class="cart-info-txt"></p>
                                         <div class="cart-info-content-price">
-                                            <p class="cart-info-content-price-txt">Thành tiền</p>
-                                            <p class="cart-info-content-price-money">'.currency_format($totalcartprice).'</p>
+                                            <p class="cart-info-content-price-txt">Thành tiền</p>'?>
+                                            <?php
+                                                if(sizeof($_SESSION['cart'])>0) {
+                                                    echo'
+                                                    <p class="cart-info-content-price-money">'.currency_format($totalcartprice).'</p>';
+                                                }
+                                                else {
+                                                    echo'
+                                                    <p class="cart-info-content-price-money">0</p>';
+                                                }
+                                            ?>
+                                <?php
+                                echo'
                                         </div>
                                     </div>
                                     <div class="cart-info-btn">
