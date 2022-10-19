@@ -992,7 +992,3 @@ html, body {
     color: var(--text-color);
 }
 
-.product-filter {
-    width: 100%;
-    display: flex;
-}

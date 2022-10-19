@@ -299,7 +299,8 @@
                     echo "<input type='hidden' id='maximum-price' value='-1'></input>";
                 }
             ?>
-            <div class='row' id='product-body'>
+            <div class='products' id='product-body'>
+                
                 <?php 
                     include_once "../../controllers/productController.php";
                     $controller = new ProductController();
@@ -312,6 +313,8 @@
                     $totalPages = 0;
                     $data = NULL;
                 ?>
+                
+                
             </div>
         </div>
     </div>

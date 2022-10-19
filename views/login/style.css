@@ -108,10 +108,24 @@
     border: none;
 }
 
-.login-form-btn:hover {
+
+
+.login:hover {
     color: var(--black);
     background-color: var(--white);
     border: 1px solid var(--black);
+} 
+
+
+.go-to-home {
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+}
+
+.go-to-home:hover {
+    background-color: var(--black);
+    color: var(--white);
 }
 
 

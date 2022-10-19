@@ -651,3 +651,14 @@ h2{
     display: flex;
     flex-wrap: wrap;
 }
+
+#product-body {
+    display: flex;
+    flex-wrap: wrap !important;
+}
+
+.product-filter {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap !important;
+}

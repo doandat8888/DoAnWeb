@@ -40,6 +40,10 @@
                 $userController = new UserController();
                 $userController->getUser($username, $password);
             }
+
+            if(isset($_POST['go-to-home'])) {
+                header('Location: ../../index.php');
+            }
         ?>
         <form action="./index.php" method="post">
             <div class="login-body row">
@@ -71,9 +75,13 @@
                                 Quên mật khẩu?
                             </a>
                         </div>
-                        <button class="login-form-btn" name="submit" type="submit">
+                        <button class="login-form-btn login" name="submit" type="submit">
                             Đăng nhập
                         </button>
+                        <button class="login-form-btn go-to-home" name="go-to-home" type="submit">
+                            Về trang chủ
+                        </button>
+                        
                         <div class="login-form-sign-up">
                             Bạn chưa có tài khoản? <a href="../register/index.php" class="login-form-sign-up-link">Đăng kí tại đây</a>
                         </div>

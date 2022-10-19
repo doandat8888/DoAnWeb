@@ -18,14 +18,9 @@
     </head>
     <body>
         <div class="container">
-            
             <?php 
                 include_once "../../components/header.php";
-                if(isset($_POST['checkout-complete'])) {
-                    include "../../controllers/emailController.php";
-                }
             ?>
-
             <div class="checkout-body">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-12 checkout-body-left">

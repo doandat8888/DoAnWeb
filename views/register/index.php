@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-        <title>Home</title>
+        <title>Đăng ký tài khoản</title>
     </head>
     <body>
         <div class="container">
@@ -31,6 +31,10 @@
                     $gender = $_POST['gender'];
                     $controller = new UserController();
                     $controller->setUser($firstName, $lastName, $phoneNumber, $email, $username, $password, $gender);
+                }
+
+                if(isset($_POST['go-to-home'])) {
+                    header('Location: ../../index.php');
                 }
             ?>
 
@@ -66,6 +70,9 @@
                         </div>
                         <button class="register-form-btn" type="submit" name="submit">
                             Đăng ký
+                        </button>
+                        <button class="register-form-btn go-to-home" name="go-to-home" type="submit">
+                            Về trang chủ
                         </button>
                         <div class="register-form-sign-up">
                             Bạn đã có tài khoản? <a href="../login/index.php" class="register-form-sign-up-link">Đăng nhập</a>
