@@ -147,6 +147,9 @@
                             echo'
                             <span class="cart-number" style="padding: 0px !important;"></span>';
                         }
+                    } else {
+                        echo'
+                        <span class="cart-number" style="padding: 0px !important;"></span>';
                     }
                     
                 ?>

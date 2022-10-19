@@ -72,6 +72,9 @@ p{
     width: 100%;
     overflow: hidden !important;
 }
+.cart-products  {
+    overflow: hidden;
+}
 #back-to-top {
     display: none;
     position: fixed;

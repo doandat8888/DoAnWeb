@@ -242,7 +242,7 @@ html, body {
 .cart-products {
     width: 100%;
     height: 70%;
-    /* overflow: scroll; */
+    overflow: scroll;
     /* -ms-overflow-style: none; */
 }
 
