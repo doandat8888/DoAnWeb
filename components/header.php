@@ -145,11 +145,11 @@
                             <span class="cart-number"></span>';
                         } else {
                             echo'
-                            <span class="cart-number" style="padding: 0px !important;"></span>';
+                            <span class="cart-number">0</span>';
                         }
                     } else {
                         echo'
-                        <span class="cart-number" style="padding: 0px !important;"></span>';
+                        <span class="cart-number">0</span>';
                     }
                     
                 ?>

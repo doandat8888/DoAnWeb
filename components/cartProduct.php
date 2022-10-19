@@ -11,9 +11,9 @@
     if(!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = array();
     }
-    //Empty cart
+    //Làm rỗng giỏ hàng
     if(isset($_GET['delcart'])&&($_GET['delcart']==1)) unset($_SESSION['cart']);
-    //Delete product from cart
+    //Xóa một sản phẩm ra khỏi giỏ hàng
     if(isset($_GET['delid'])&&($_GET['delid']>=0)) {
         array_splice($_SESSION['cart'], $_GET['delid'], 1);
     }
@@ -24,21 +24,39 @@
             $prod_price = $_POST['prod_price'];
             $prod_size = $_POST['prod_size'];
             $prod_color = $_POST['prod_color'];
+            // if(isset($_POST['prod_size'])) {
+            //     $prod_size = $_POST['prod_size'];
+            // } else {
+            //     echo '
+            //     <script>
+            //         alert("Bạn chưa chọn size sản phẩm");
+            //     </script>';
+            // }
+            // if(isset($_POST['prod_color'])) {
+            //     $prod_color = $_POST['prod_color'];             
+            // } else {
+            //     echo '
+            //     <script>
+            //         alert("Bạn chưa chọn màu sản phẩm");
+            //     </script>';
+            // }
             $prod_quantity = $_POST['prod_quantity'];
             $prod_id = $_POST['prod_id'];
             
-            //Product in cart?
+            //Kiểm tra sản phẩm đã có trong giỏ hàng hay chưa?
+            //Nếu đã có sản phẩm trong giỏ hàng thì cập nhật lại số lượng.
             $flag = 0;
             $nquantity = 0;
             for ($i=0 ; $i < sizeof($_SESSION['cart'])  ; $i++ ) { 
-                if($_SESSION['cart'][$i][6] == $prod_id) {
+                if($_SESSION['cart'][$i][6] == $prod_id && $_SESSION['cart'][$i][3] == $prod_size && $_SESSION['cart'][$i][4] == $prod_color) { 
                     $flag = 1;
                     $nquantity = $prod_quantity + $_SESSION['cart'][$i][5];
                     $_SESSION['cart'][$i][5] = $nquantity;
                     break;
                 }
             }
-            if($flag == 0) { //sp chưa tồn tại trong giỏ thì thêm mới
+            //Nếu sản phẩm chưa có trong giỏ hàng, ta thực hiện thêm mới.
+            if($flag == 0) {
                 $product=[$prod_name, $prod_image, $prod_price, $prod_size, $prod_color, $prod_quantity, $prod_id];
                 $_SESSION['cart'][] = $product;
             }
@@ -98,9 +116,9 @@
         }
         else {
             echo'
-            <div class="cart-item">
-                <div class="col-12 mb-4">
-                </div>
+            <div class="col-12 mb-4 overflow-hidden">
+                <img src="../../src/img/nocart.png" class="cart-img w-100 p-3" alt="">
+                <h3 class="text-center" >Giỏ hàng rỗng</h3>
             </div>';
         }
     }

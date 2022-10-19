@@ -148,7 +148,6 @@ if (!function_exists('color_format')) {
                             $arraysize = explode(", ",$product->getSize());
                             $arraycolor = explode(", ",$product->getColor());
                             echo '      
-                            <form action="./index.php?page=detailproduct&id='.$product->getId().'" method="post">
                                 <div class="pro-title">
                                     <h3>'.$product->getName().'</h3>
                                 </div>
@@ -193,17 +192,28 @@ if (!function_exists('color_format')) {
                                     <br style="clear: both"></br>
                 
                                     <div class="d-flex">
-                                        <button type="submit" name="action" value="addtocart" class="detail-btn add-btn">Thêm vào giỏ</button>
-                                        <button type="submit" name="action" value="buynow" class="detail-btn buy-btn">Mua ngay</button>
-                                        <input type="hidden" name="prod_id" value="'.$product->getId().'">
-                                        <input type="hidden" name="prod_name" value="'.$product->getName().'">
-                                        <input type="hidden" name="prod_image" value="'.$product->getImage01().'">
-                                        <input type="hidden" name="prod_price" value="'.$product->getPrice().'">
-                                        <input type="hidden" name="prod_size" value="'.$sizechoose.'">  
-                                        <input type="hidden" name="prod_color" value="'.$colorchoose.'">
+                                        <form action="./index.php?page=detailproduct&id='.$product->getId().'" method="post">
+                                            <input type="hidden" name="prod_id" value="'.$product->getId().'">
+                                            <input type="hidden" name="prod_name" value="'.$product->getName().'">
+                                            <input type="hidden" name="prod_image" value="'.$product->getImage01().'">
+                                            <input type="hidden" name="prod_price" value="'.$product->getPrice().'">
+                                            <input type="hidden" name="prod_size" value="'.$sizechoose.'">  
+                                            <input type="hidden" name="prod_color" value="'.$colorchoose.'">
+                                            <input type="hidden" value="1" min="0" max="'.$product->getQuantity().'" name="prod_quantity" class="detail-number">
+                                            <button type="submit" name="action" value="addtocart" class="detail-btn add-btn gap-2  mx-auto">Thêm vào giỏ</button>
+                                        </form>
+                                        <form action="../../views/cart/index.php?to=cart&id='.$product->getId().' method="POST">
+                                            <input type="hidden" name="prod_id" value="'.$product->getId().'">
+                                            <input type="hidden" name="prod_name" value="'.$product->getName().'">
+                                            <input type="hidden" name="prod_image" value="'.$product->getImage01().'">
+                                            <input type="hidden" name="prod_price" value="'.$product->getPrice().'">
+                                            <input type="hidden" name="prod_size" value="'.$sizechoose.'">  
+                                            <input type="hidden" name="prod_color" value="'.$colorchoose.'">
+                                            <input type="hidden" value="1" min="0" max="'.$product->getQuantity().'" name="prod_quantity" class="detail-number">
+                                            <button type="submit" name="action" value="buynow" class="detail-btn buy-btn gap-2">Mua ngay</button>
+                                        </form>
                                     </div>
-                                </div>                 
-                            </form>';?>
+                                </div>';?>
                             <?php
                                 // information product
                                 echo'
@@ -310,20 +320,12 @@ if (!function_exists('color_format')) {
                                         </div>
                                     <p></p>
                                     <a href="./index.php?page=detailproduct&id='.$product->getId().'" class="btn btn-primary" style="background-color: transparent; border: none;">
-                                        <form action="./index.php?page=detailproduct&id='.$product->getId().'" method="post">
-                                            <button type="submit" name="action" value="add" class="product-cart">
-                                                <span class="material-symbols-outlined product-cart-icon">
-                                                    local_mall
-                                                </span>
-                                                <p class="product-cart-buy">Mua ngay</p>
-                                            </button>
-                                            <input type="hidden" name="product_id" value="'.$product->getId().'">
-                                            <input type="hidden" name="product_name" value="'.$product->getName().'">
-                                            <input type="hidden" name="product_price" value="'.currency_format($product->getPrice()).'">
-                                            <input type="hidden" name="product_img" value="'.$product->getImage02().'">
-                                            <input type="hidden" name="product_size" value="'.$product->getSize().'">
-                                            <input type="hidden" name="product_color" value="'.$product->getColor().'">
-                                        </form>
+                                        <div class="product-cart">
+                                            <span class="material-symbols-outlined product-cart-icon">
+                                                local_mall
+                                            </span>
+                                            <p class="product-cart-buy">Mua ngay</p>
+                                        </div>
                                     </a>
                                 </div>
                             </div>

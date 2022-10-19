@@ -34,22 +34,20 @@
                 include_once "../../components/header.php";
             ?>
             <?php
-                include_once "../../controllers/cartController.php";
                 if(!isset($_SESSION['cart'])) {
                     $_SESSION['cart'] = array();
                 }
-                //Empty cart
-                if(isset($_GET['delcart'])&&($_GET['delcart']==1)) unset($_SESSION['cart']);
-                //Delete product from cart
+                //Làm rỗng giỏ hàng
+                if(isset($_GET['delcart'])&&($_GET['delcart']==1)) {
+                    unset($_SESSION['cart']);
+                }
+                //Xóa một sản phẩm ra khỏi giỏ hàng
                 if(isset($_GET['delid'])&&($_GET['delid']>=0)) {
                     array_splice($_SESSION['cart'], $_GET['delid'], 1);
                 }
                 if(isset($_POST['action'])) {
-                    switch($_POST['action']) {
-                        case "addtocart":
-                            break;
-                        case "buynow":
-                           $prod_name = $_POST['prod_name'];
+                    if ($_POST['action'] == "buynow") {
+                            $prod_name = $_POST['prod_name'];
                             $prod_image = $_POST['prod_image'];
                             $prod_price = $_POST['prod_price'];
                             $prod_size = $_POST['prod_size'];
@@ -57,24 +55,24 @@
                             $prod_quantity = $_POST['prod_quantity'];
                             $prod_id = $_POST['prod_id'];
                             
-                            //Product in cart?
+                            //Kiểm tra sản phẩm đã có trong giỏ hàng hay chưa?
+                            //Nếu đã có sản phẩm trong giỏ hàng thì cập nhật lại số lượng.
                             $flag = 0;
-                            $nquantity = 0;
-                            for ($i = 0 ; $i < sizeof($_SESSION['cart'])  ; $i++ ) { 
+                            $newqty = 0;
+                            for ($i = 0 ; $i < count($_SESSION['cart'])  ; $i++ ) { 
                                 if($_SESSION['cart'][$i][6] == $prod_id && $_SESSION['cart'][$i][3] == $prod_size && $_SESSION['cart'][$i][4] == $prod_color) { 
                                     $flag = 1;
-                                    $nquantity = $prod_quantity + $_SESSION['cart'][$i][5];
-                                    $_SESSION['cart'][$i][5] = $nquantity;
+                                    $newqty = $prod_quantity + $_SESSION['cart'][$i][5];
+                                    $_SESSION['cart'][$i][5] = $newqty;
                                     break;
                                 }
                             }
-                            if($flag == 0) { //sp chưa tồn tại trong giỏ thì thêm mới
+                            //Nếu sản phẩm chưa có trong giỏ hàng, ta thực hiện thêm mới.
+                            if($flag == 0) {
+                                $count = count($_SESSION['cart']);
                                 $product=[$prod_name, $prod_image, $prod_price, $prod_size, $prod_color, $prod_quantity, $prod_id];
-                                $_SESSION['cart'][] = $product;
+                                $_SESSION['cart'][$count] = $product;
                             }
-                            break;
-                        default: "./index.php?page=detailproduct&id='.$product->getId().'";
-                            break;
                     }
                 }
             ?>
@@ -84,9 +82,9 @@
                         <div class="col-lg-7 col-md-12 col-12 cart-products">
                         <?php
                             if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
-                                if(sizeof($_SESSION['cart'])>0) {
+                                if(count($_SESSION['cart'])>0) {
                                     $totalcartprice = 0;
-                                    for($i = 0; $i < sizeof($_SESSION['cart']); $i++) {
+                                    for($i = 0; $i < count($_SESSION['cart']); $i++) {
                                         $totalpriceprod = (int)$_SESSION['cart'][$i][2] * (int)$_SESSION['cart'][$i][5];
                                         $totalcartprice += $totalpriceprod;
                                         echo'
@@ -147,7 +145,7 @@
                                         <div class="cart-info-content-price">
                                             <p class="cart-info-content-price-txt">Thành tiền</p>'?>
                                             <?php
-                                                if(sizeof($_SESSION['cart'])>0) {
+                                                if(count($_SESSION['cart'])>0) {
                                                     echo'
                                                     <p class="cart-info-content-price-money">'.currency_format($totalcartprice).'</p>';
                                                 }
