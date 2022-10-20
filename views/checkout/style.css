@@ -172,6 +172,7 @@ html, body {
     text-align: center;
     margin-top: 2rem;
     font-weight: bold;
+    padding: 1rem;
 }
 
 .checkout-confirm-btn:hover {

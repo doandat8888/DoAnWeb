@@ -89,7 +89,7 @@ sumCheckout.innerHTML = numberWithCommat(totalPrice) + 'đ';
 
 const shipCheckout = formatNumber(document.querySelector('.checkout-ship').innerText);
 const totalCheckOut = document.querySelector('.checkout-total');
-totalCheckOut.innerHTML = numberWithCommat(totalPrice - shipCheckout) + 'đ';
+totalCheckOut.innerHTML = numberWithCommat(totalPrice + shipCheckout) + 'đ';
 //scrollToTop
 mybutton = document.getElementById("back-to-top");
 
