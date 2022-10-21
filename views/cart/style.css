@@ -73,7 +73,8 @@ p{
     overflow: hidden !important;
 }
 .cart-products  {
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow: scroll;
 }
 #back-to-top {
     display: none;

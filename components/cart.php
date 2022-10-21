@@ -6,11 +6,27 @@
         </div>
         <i class="fa-solid fa-xmark cancel-icon"></i>
     </div>
-    <div class="cart-products">
-        <?php 
-            include_once "cartProduct.php";
-        ?>
-    </div>
+    <?php if(isset($_SESSION['cart'])) {
+            if(sizeof($_SESSION['cart'])>0) {?>
+                <div class="cart-products ">
+                <?php 
+                    include_once "cartProduct.php";
+                ?>
+                </div>
+            <?php } else {?>
+                <div class="cart-products overflow-hidden">
+                <?php 
+                    include_once "cartProduct.php";
+                ?>
+                </div>
+            <?php } ?>
+        <?php } else {?>
+            <div class="cart-products overflow-hidden">
+                <?php 
+                    include_once "cartProduct.php";
+                ?>
+                </div>
+            <?php } ?>
     <div class="cart-total">
         <div class="cart-total-title">Tổng cộng:</div>
         <div class="cart-total-money"></div>

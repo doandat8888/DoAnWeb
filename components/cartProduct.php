@@ -15,7 +15,7 @@
     //                         window.location.href = "/views/detailProduct/index.php?page=detailproduct&id='.$_GET['id'].'";
     //                     </script>';   
     //                 break;
-    //             case '/views/detailProduct/index.php?delid=1':
+    //             case '/views/detailProduct/index.php?decart=1':
     //                 echo 
     //                     '<script>
     //                         window.location.href = "/views/detailProduct/index.php?page=detailproduct&id='.$_GET['id'].'";
