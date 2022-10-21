@@ -202,7 +202,7 @@ if (!function_exists('color_format')) {
                                             <input type="hidden" value="1" min="0" max="'.$product->getQuantity().'" name="prod_quantity" class="detail-number">
                                             <button type="submit" name="action" value="addtocart" class="detail-btn add-btn gap-2  mx-auto">Thêm vào giỏ</button>
                                         </form>
-                                        <form action="../../views/cart/index.php?to=cart&id='.$product->getId().' method="POST">
+                                        <form action="../../views/cart/index.php?action=buynow&id='.$product->getId().'" method="POST">
                                             <input type="hidden" name="prod_id" value="'.$product->getId().'">
                                             <input type="hidden" name="prod_name" value="'.$product->getName().'">
                                             <input type="hidden" name="prod_image" value="'.$product->getImage01().'">

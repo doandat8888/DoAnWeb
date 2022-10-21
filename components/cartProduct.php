@@ -6,16 +6,34 @@
             }
         }
     }
+    function url_format() {
+        if(isset($_GET['id'])) {
+            switch ($_SERVER['REQUEST_URI']) {
+                case '/views/detailProduct/index.php?delid=0':
+                    echo 
+                        '<script>
+                            window.location.href = "/views/detailProduct/index.php?page=detailproduct&id='.$_GET['id'].'";
+                        </script>';   
+                    break;
+                case '/views/detailProduct/index.php?delid=1':
+                    echo 
+                        '<script>
+                            window.location.href = "/views/detailProduct/index.php?page=detailproduct&id='.$_GET['id'].'";
+                        </script>';   
+                    break;
+            }
+        }
+    }
+
 ?>
 <?php
     if(!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = array();
     }
-    //Làm rỗng giỏ hàng
-    if(isset($_GET['delcart'])&&($_GET['delcart']==1)) unset($_SESSION['cart']);
     //Xóa một sản phẩm ra khỏi giỏ hàng
     if(isset($_GET['delid'])&&($_GET['delid']>=0)) {
         array_splice($_SESSION['cart'], $_GET['delid'], 1);
+        url_format();
     }
     if(isset($_POST['action'])) {
         if($_POST['action'] == "addtocart") {
@@ -64,6 +82,7 @@
     }
 ?>
 <?php
+echo $_SERVER["HTTP_REFERER"];
     if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
         if(sizeof($_SESSION['cart'])>0) {
             $totalcartprice = 0;
