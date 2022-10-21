@@ -6,24 +6,24 @@
             }
         }
     }
-    function url_format() {
-        if(isset($_GET['id'])) {
-            switch ($_SERVER['REQUEST_URI']) {
-                case '/views/detailProduct/index.php?delid=0':
-                    echo 
-                        '<script>
-                            window.location.href = "/views/detailProduct/index.php?page=detailproduct&id='.$_GET['id'].'";
-                        </script>';   
-                    break;
-                case '/views/detailProduct/index.php?delid=1':
-                    echo 
-                        '<script>
-                            window.location.href = "/views/detailProduct/index.php?page=detailproduct&id='.$_GET['id'].'";
-                        </script>';   
-                    break;
-            }
-        }
-    }
+    // function url_format() {
+    //     if(isset($_GET['id'])) {
+    //         switch ($_SERVER['REQUEST_URI']) {
+    //             case '/views/detailProduct/index.php?delid=0':
+    //                 echo 
+    //                     '<script>
+    //                         window.location.href = "/views/detailProduct/index.php?page=detailproduct&id='.$_GET['id'].'";
+    //                     </script>';   
+    //                 break;
+    //             case '/views/detailProduct/index.php?delid=1':
+    //                 echo 
+    //                     '<script>
+    //                         window.location.href = "/views/detailProduct/index.php?page=detailproduct&id='.$_GET['id'].'";
+    //                     </script>';   
+    //                 break;
+    //         }
+    //     }
+    // }
 
 ?>
 <?php
@@ -33,7 +33,7 @@
     //Xóa một sản phẩm ra khỏi giỏ hàng
     if(isset($_GET['delid'])&&($_GET['delid']>=0)) {
         array_splice($_SESSION['cart'], $_GET['delid'], 1);
-        url_format();
+        // url_format();
     }
     if(isset($_POST['action'])) {
         if($_POST['action'] == "addtocart") {
@@ -42,22 +42,6 @@
             $prod_price = $_POST['prod_price'];
             $prod_size = $_POST['prod_size'];
             $prod_color = $_POST['prod_color'];
-            // if(isset($_POST['prod_size'])) {
-            //     $prod_size = $_POST['prod_size'];
-            // } else {
-            //     echo '
-            //     <script>
-            //         alert("Bạn chưa chọn size sản phẩm");
-            //     </script>';
-            // }
-            // if(isset($_POST['prod_color'])) {
-            //     $prod_color = $_POST['prod_color'];             
-            // } else {
-            //     echo '
-            //     <script>
-            //         alert("Bạn chưa chọn màu sản phẩm");
-            //     </script>';
-            // }
             $prod_quantity = $_POST['prod_quantity'];
             $prod_id = $_POST['prod_id'];
             
@@ -75,14 +59,14 @@
             }
             //Nếu sản phẩm chưa có trong giỏ hàng, ta thực hiện thêm mới.
             if($flag == 0) {
+                $count = count($_SESSION['cart']);
                 $product=[$prod_name, $prod_image, $prod_price, $prod_size, $prod_color, $prod_quantity, $prod_id];
-                $_SESSION['cart'][] = $product;
+                $_SESSION['cart'][$count] = $product;
             }
         }
     }
 ?>
 <?php
-echo $_SERVER["HTTP_REFERER"];
     if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
         if(sizeof($_SESSION['cart'])>0) {
             $totalcartprice = 0;

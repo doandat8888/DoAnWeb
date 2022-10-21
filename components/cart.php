@@ -2,7 +2,7 @@
     <div class="cart-header">
         <div class="cart-title">
             <div class="content">Giỏ hàng</div>
-            <div class="quantity">0</div>
+            <div class="quantity"></div>
         </div>
         <i class="fa-solid fa-xmark cancel-icon"></i>
     </div>

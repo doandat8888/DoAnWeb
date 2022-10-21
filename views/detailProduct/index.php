@@ -192,7 +192,7 @@ if (!function_exists('color_format')) {
                                     <br style="clear: both"></br>
                 
                                     <div class="d-flex">
-                                        <form action="./index.php?page=detailproduct&id='.$product->getId().'" method="post">
+                                        <form action="./index.php?page=detailproduct?action=addtocart&id='.$product->getId().'" method="post">
                                             <input type="hidden" name="prod_id" value="'.$product->getId().'">
                                             <input type="hidden" name="prod_name" value="'.$product->getName().'">
                                             <input type="hidden" name="prod_image" value="'.$product->getImage01().'">
