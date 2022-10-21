@@ -32,6 +32,8 @@
             
             <?php 
                 include_once "../../components/header.php";
+                //Không có header thì xóa từng cái bình thường
+                //Fix xong delcart
             ?>
             <?php
                 if(!isset($_SESSION['cart'])) {
@@ -173,7 +175,7 @@
                                                     Đặt hàng
                                                 </div>
                                             </a>
-                                            <a href="./index.php?delid=1" class="cart-btn-link">
+                                            <a href="./index.php?delcart=1" class="cart-btn-link">
                                                 <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
                                                     Xóa giỏ hàng
                                                 </div>

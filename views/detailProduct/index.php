@@ -114,7 +114,6 @@ if (!function_exists('color_format')) {
             <div class='col-lg-7 col-md-12 col-12'>
                 <div class='imgpro'>
                     <?php 
-                        include_once "../../controllers/cartController.php";
                         include_once "../../controllers/productController.php";
                         $controller = new ProductController();
                         if(isset($_GET['id'])) {
@@ -192,7 +191,7 @@ if (!function_exists('color_format')) {
                                     <br style="clear: both"></br>
                 
                                     <div class="d-flex">
-                                        <form action="./index.php?page=detailproduct?action=addtocart&id='.$product->getId().'" method="post">
+                                        <form action="./index.php?page=detailproduct&id='.$product->getId().'" method="POST">
                                             <input type="hidden" name="prod_id" value="'.$product->getId().'">
                                             <input type="hidden" name="prod_name" value="'.$product->getName().'">
                                             <input type="hidden" name="prod_image" value="'.$product->getImage01().'">
