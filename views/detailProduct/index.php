@@ -341,7 +341,7 @@ if (!function_exists('color_format')) {
 
         <!-- FOOTER -->
         <?php 
-            // include_once "../../components/footer.php";
+            include_once "../../components/footer.php";
         ?>
         <div class ="row" id="back-to-top">
             <span onclick="scrollToTop()">

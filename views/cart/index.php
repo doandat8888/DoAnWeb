@@ -47,32 +47,32 @@
                 }
                 if(isset($_POST['action'])) {
                     if ($_POST['action'] == "buynow") {
-                            $prod_name = $_POST['prod_name'];
-                            $prod_image = $_POST['prod_image'];
-                            $prod_price = $_POST['prod_price'];
-                            $prod_size = $_POST['prod_size'];
-                            $prod_color = $_POST['prod_color'];
-                            $prod_quantity = $_POST['prod_quantity'];
-                            $prod_id = $_POST['prod_id'];
-                            
-                            //Kiểm tra sản phẩm đã có trong giỏ hàng hay chưa?
-                            //Nếu đã có sản phẩm trong giỏ hàng thì cập nhật lại số lượng.
-                            $flag = 0;
-                            $newqty = 0;
-                            for ($i = 0 ; $i < count($_SESSION['cart'])  ; $i++ ) { 
-                                if($_SESSION['cart'][$i][6] == $prod_id && $_SESSION['cart'][$i][3] == $prod_size && $_SESSION['cart'][$i][4] == $prod_color) { 
-                                    $flag = 1;
-                                    $newqty = $prod_quantity + $_SESSION['cart'][$i][5];
-                                    $_SESSION['cart'][$i][5] = $newqty;
-                                    break;
-                                }
+                        $prod_name = $_POST['prod_name'];
+                        $prod_image = $_POST['prod_image'];
+                        $prod_price = $_POST['prod_price'];
+                        $prod_size = $_POST['prod_size'];
+                        $prod_color = $_POST['prod_color'];
+                        $prod_quantity = $_POST['prod_quantity'];
+                        $prod_id = $_POST['prod_id'];
+                        
+                        //Kiểm tra sản phẩm đã có trong giỏ hàng hay chưa?
+                        //Nếu đã có sản phẩm trong giỏ hàng thì cập nhật lại số lượng.
+                        $flag = 0;
+                        $newqty = 0;
+                        for ($i = 0 ; $i < count($_SESSION['cart'])  ; $i++ ) { 
+                            if($_SESSION['cart'][$i][6] == $prod_id && $_SESSION['cart'][$i][3] == $prod_size && $_SESSION['cart'][$i][4] == $prod_color) { 
+                                $flag = 1;
+                                $newqty = $prod_quantity + $_SESSION['cart'][$i][5];
+                                $_SESSION['cart'][$i][5] = $newqty;
+                                break;
                             }
-                            //Nếu sản phẩm chưa có trong giỏ hàng, ta thực hiện thêm mới.
-                            if($flag == 0) {
-                                $count = count($_SESSION['cart']);
-                                $product=[$prod_name, $prod_image, $prod_price, $prod_size, $prod_color, $prod_quantity, $prod_id];
-                                $_SESSION['cart'][$count] = $product;
-                            }
+                        }
+                        //Nếu sản phẩm chưa có trong giỏ hàng, ta thực hiện thêm mới.
+                        if($flag == 0) {
+                            $count = count($_SESSION['cart']);
+                            $product=[$prod_name, $prod_image, $prod_price, $prod_size, $prod_color, $prod_quantity, $prod_id];
+                            $_SESSION['cart'][$count] = $product;
+                        }
                     }
                 }
             ?>
@@ -80,104 +80,105 @@
                 <div class="cart-body">
                     <div class="row">
                         <div class="col-lg-7 col-md-12 col-12 cart-products">
-                        <?php
-                            if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
-                                if(count($_SESSION['cart'])>0) {
-                                    $totalcartprice = 0;
-                                    for($i = 0; $i < count($_SESSION['cart']); $i++) {
-                                        $totalpriceprod = (int)$_SESSION['cart'][$i][2] * (int)$_SESSION['cart'][$i][5];
-                                        $totalcartprice += $totalpriceprod;
-                                        echo'
-                                            <div class="cart-item">
-                                                <div class="row">
-                                                    <div class="col-3">
-                                                        <img src="'.$_SESSION['cart'][$i][1].'" class="cart-item-img" alt="">
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <div class="cart-item-name">
-                                                            '.$_SESSION['cart'][$i][0].'
+                            <?php
+                                if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
+                                    if(sizeof($_SESSION['cart']) > 0) {
+                                        $totalcartprice = 0;
+                                        for($i = 0; $i < sizeof($_SESSION['cart']); $i++) {
+                                            $totalpriceprod = (int)$_SESSION['cart'][$i][2] * (int)$_SESSION['cart'][$i][5];
+                                            $totalcartprice += $totalpriceprod;
+                                            echo'
+                                                <div class="cart-item">
+                                                    <div class="row">
+                                                        <div class="col-3">
+                                                            <img src="'.$_SESSION['cart'][$i][1].'" class="cart-item-img" alt="">
                                                         </div>
-                                                        <div class="cart-item-color-size">
-                                                            <div class="color">
-                                                                Màu sắc: '.$_SESSION['cart'][$i][4].'
+                                                        <div class="col-9">
+                                                            <div class="cart-item-name">
+                                                                '.$_SESSION['cart'][$i][0].'
                                                             </div>
-                                                            <div class="size">
-                                                                Size: '.$_SESSION['cart'][$i][3].'
-                                                            </div>
-                                                        </div>
-                                                        <div class="cart-item-quantity-price">
-                                                            <div class="cart-item-quantity">
-                                                                <div class="cart-item-quantity-minus">
-                                                                    <span class="material-symbols-outlined minus-icon">
-                                                                        remove
-                                                                    </span>
+                                                            <div class="cart-item-color-size">
+                                                                <div class="color">
+                                                                    Màu sắc: '.$_SESSION['cart'][$i][4].'
                                                                 </div>
-                                                                <input type="text" value="'.$_SESSION['cart'][$i][5].'" min="0" max="10" class="cart-item-quantity-input" name="quantity">
-                                                                <div class="cart-item-quantity-plus">
-                                                                    <span class="material-symbols-outlined plus-icon">
-                                                                        add
-                                                                    </span>
+                                                                <div class="size">
+                                                                    Size: '.$_SESSION['cart'][$i][3].'
                                                                 </div>
                                                             </div>
-                                                            <div class="cart-item-price">'.currency_format($totalpriceprod).'</div>
-                                                                <a href="index.php?delid='.$i.'">
-                                                                    <span class="material-symbols-outlined del-icon">
-                                                                        delete
-                                                                    </span>
-                                                                </a> 
-                                                            </div>
+                                                            <div class="cart-item-quantity-price">
+                                                                <div class="cart-item-quantity">
+                                                                    <div class="cart-item-quantity-minus">
+                                                                        <span class="material-symbols-outlined minus-icon">
+                                                                            remove
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" value="'.$_SESSION['cart'][$i][5].'" min="0" max="10" class="cart-item-quantity-input" name="quantity">
+                                                                    <div class="cart-item-quantity-plus">
+                                                                        <span class="material-symbols-outlined plus-icon">
+                                                                            add
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cart-item-price">'.currency_format($totalpriceprod).'</div>
+                                                                    <a href="index.php?delid='.$i.'">
+                                                                        <span class="material-symbols-outlined del-icon">
+                                                                            delete
+                                                                        </span>
+                                                                    </a> 
+                                                                </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>';
+                                            ';
+                                        }
                                     }
-                                }
-                                else {
+                                    else {
+                                        echo'
+                                        <div class="col-12 mb-4">
+                                            <img src="../../src/img/cart.png" class="cart-img" alt="">
+                                        </div>';
+                                    }
+                                    echo '
+                                    </div>
+                                    <div class="col-lg-5 col-md-12 col-12 cart-info">
+                                        <div class="cart-info-content">
+                                            <p class="cart-info-txt"></p>
+                                            <div class="cart-info-content-price">
+                                                <p class="cart-info-content-price-txt">Thành tiền</p>'?>
+                                                <?php
+                                                    if(count($_SESSION['cart'])>0) {
+                                                        echo'
+                                                        <p class="cart-info-content-price-money">'.currency_format($totalcartprice).'</p>';
+                                                    }
+                                                    else {
+                                                        echo'
+                                                        <p class="cart-info-content-price-money">0</p>';
+                                                    }
+                                                ?>
+                                    <?php
                                     echo'
-                                    <div class="col-12 mb-4">
-                                        <img src="../../src/img/cart.png" class="cart-img" alt="">
-                                    </div>';
-                                }
-                                echo '
-                                </div>
-                                <div class="col-lg-5 col-md-12 col-12 cart-info">
-                                    <div class="cart-info-content">
-                                        <p class="cart-info-txt"></p>
-                                        <div class="cart-info-content-price">
-                                            <p class="cart-info-content-price-txt">Thành tiền</p>'?>
-                                            <?php
-                                                if(count($_SESSION['cart'])>0) {
-                                                    echo'
-                                                    <p class="cart-info-content-price-money">'.currency_format($totalcartprice).'</p>';
-                                                }
-                                                else {
-                                                    echo'
-                                                    <p class="cart-info-content-price-money">0</p>';
-                                                }
-                                            ?>
-                                <?php
-                                echo'
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="cart-info-btn">
-                                        <a href="../checkout/index.php" class="cart-btn-link">
-                                            <div class="cart-btn-view" style="border: 1px solid #000 !important;"">
-                                                Đặt hàng
-                                            </div>
-                                        </a>
-                                        <a href="./index.php?delid=1" class="cart-btn-link">
-                                            <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
-                                                Xóa giỏ hàng
-                                            </div>
-                                        </a>
-                                        <a href="../../index.php" class="cart-btn-link">
-                                            <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
-                                                Về trang chủ
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>';
-                            } 
-                        ?>
+                                        <div class="cart-info-btn">
+                                            <a href="../checkout/index.php" class="cart-btn-link">
+                                                <div class="cart-btn-view" style="border: 1px solid #000 !important;"">
+                                                    Đặt hàng
+                                                </div>
+                                            </a>
+                                            <a href="./index.php?delid=1" class="cart-btn-link">
+                                                <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
+                                                    Xóa giỏ hàng
+                                                </div>
+                                            </a>
+                                            <a href="../../index.php" class="cart-btn-link">
+                                                <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
+                                                    Về trang chủ
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>';
+                                } 
+                            ?>
                     </div>          
                     <?php include_once "../../components/footer.php"?>
                 </div>
