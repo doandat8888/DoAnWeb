@@ -13,7 +13,7 @@
         //Đăng nhập
         public function getUser($username, $password) {
             $data = $this->model->getUser($username, $password);
-            if($data!=NULL) {
+            if($data != NULL) {
                 foreach($data as $user) {
                     $_SESSION['role'] = $user->getRole();
                 }

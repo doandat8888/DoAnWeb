@@ -1,4 +1,4 @@
-<div class="login-body row">
+<<!-- div class="login-body row">
                 <div class="col-sm-8 col-md-6 col-lg-4 col-12 login-form">
                     <div class="login-form-logo">
                         <img src="../../src/img/logo.png" class="login-logo-img">
@@ -25,4 +25,4 @@
                         </div>
                     </div>
                 </div>     
-            </div>
+            </div> -->

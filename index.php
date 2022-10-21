@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     $filepath = realpath(dirname(__FILE__));
     if(isset($_GET['msg'])) {
         if($_GET['msg'] === 'login-out') {
