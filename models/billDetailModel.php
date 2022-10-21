@@ -8,7 +8,7 @@
         function setBillDetail($bill_id, $product_name, $product_quantity, $product_color, $product_size, $product_price){
             $link = NULL;
             taoKetNoi($link);
-            $query = "INSERT INTO `detail_bill` (`bill_id`, `product_name`, `product_quantity`, `product_color`, `product_size`, `product_price`, `status`) VALUES ('$bill_id', `$product_name`, `$product_quantity`, `$product_color`, `$product_size`, `$product_price`, 1)";
+            $query = "INSERT INTO `detail_bill` (`bill_id`, `product_name`, `product_quantity`, `product_color`, `product_size`, `product_price`, `status`) VALUES ('$bill_id', '$product_name', '$product_quantity', '$product_color', '$product_size', '$product_price', 1)";
             $result = chayTruyVanKhongTraVeDL($link, $query);
             return $result;
         }

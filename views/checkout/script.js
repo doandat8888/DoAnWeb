@@ -90,6 +90,17 @@ sumCheckout.innerHTML = numberWithCommat(totalPrice) + 'đ';
 const shipCheckout = formatNumber(document.querySelector('.checkout-ship').innerText);
 const totalCheckOut = document.querySelector('.checkout-total');
 totalCheckOut.innerHTML = numberWithCommat(totalPrice + shipCheckout) + 'đ';
+
+//Prevents form submission from Refresh and Back
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
+
+//Get the original totalcartprice value
+function getTotal(){
+    document.getElementById('hidden-total').value = totalCheckOut.innerHTML;
+}
+
 //scrollToTop
 mybutton = document.getElementById("back-to-top");
 

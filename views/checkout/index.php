@@ -34,7 +34,7 @@
             ?>
             <div class="checkout-body">
                 <div class="row">
-                    <form action="#" method="POST" style="display: flex;">
+                    <form action="#" method="POST" style="display: flex;" onsubmit="javascript: return getTotal();">
                         <div class="col-lg-6 col-md-12 col-12 checkout-body-left">           
                             <div class="checkout-info">
                                 <div class="checkout-info-title">
@@ -173,18 +173,30 @@
                                     <div class="checkout-confirm-item">
                                         <div class="checkout-confirm-item-left">Thành tiền</div>
                                         <div class="checkout-confirm-item-right checkout-total"></div>
+                                        <input id="hidden-total" type="hidden" name="total" value="">
                                     </div>
                                 </div>
-                                <button class="checkout-confirm-btn" type="submit" name="checkout-complete">
+                                <button class="checkout-confirm-btn" type="submit" name="checkout-complete" onclick="getTotal()">
                                     Hoàn tất đơn hàng
                                 </button>
                                 <?php
+                                    include_once "../../controllers/billController.php";
+                                    // include_once "../../controllers/billDetailController.php";
                                     if(isset($_POST['checkout-complete'])){
-                                        if(isset($_POST['checkout-method']) && isset($_POST['checkout-info-name']) && isset($_POST['checkout-info-email']) && isset($_POST['checkout-info-number']) && isset($_POST['checkout-info-address'])){
-                                            if($_POST['checkout-info-name']!=="" && $_POST['checkout-info-email']!=="" && $_POST['checkout-info-number']!=="" && $_POST['checkout-info-address']!==""){
+                                        if(isset($_POST['checkout-method']) && isset($_POST['checkout-info-name']) && isset($_POST['checkout-info-email']) && isset($_POST['checkout-info-number']) && isset($_POST['total']) && isset($_POST['checkout-info-address'])){
+                                            if($_POST['checkout-info-name']!=="" && $_POST['checkout-info-email']!=="" && $_POST['checkout-info-number']!=="" && isset($_POST['total'])!=="" && $_POST['checkout-info-address']!==""){
                                                 // Nếu khách hàng nhập đủ thông tin
-                                                echo "</br></br>";
-                                                echo "<h3>Thanh toán thành công!</h3>";
+                                                $billController = new BillController();
+                                                $nameArr = $billController->formatName($_POST['checkout-info-name']);                                              
+                                                $result = $billController->setBill($nameArr[0], $nameArr[1], $_POST['checkout-info-email'], $_POST['checkout-info-number'], $_POST['total'], $_POST['checkout-info-address']);
+                                                if ($result == 0){
+                                                    echo "</br></br>";
+                                                    echo "<h3>Thanh toán thành công!</h3>";
+                                                }
+                                                else{
+                                                    echo "</br></br>";
+                                                    echo "<h3>Đã có lỗi xảy ra, xin hãy thử lại</h3>";
+                                                }
                                             }
                                             else {
                                                 // Nếu khách hàng nhập còn thiếu thông tin
@@ -198,7 +210,6 @@
                                             echo "<script>window.location = 'index.php'</script>";
                                         }                         
                                     }
-                                    
                                 ?>
                             </div>
                         </div>   
