@@ -33,6 +33,7 @@
                 include_once "../../components/header.php";
             ?>
             <div class="checkout-body">
+<<<<<<< Updated upstream
                 <div class="row">
                     <form action="#" method="POST" style="display: flex;" onsubmit="javascript: return getTotal();">
                         <div class="col-lg-6 col-md-12 col-12 checkout-body-left">           
@@ -48,104 +49,126 @@
                                     <div class="checkout-info-input-txt">
                                         * là trường không được để trống
                                     </div>
-                                </div>
+=======
+                <form action="#" method="POST" class="checkout-body-form row ">
+                    
+                    <div class="col-lg-6 col-md-12 col-12 checkout-body-left">           
+                        <div class="checkout-info">
+                            <div class="checkout-info-title">
+                                Thông tin giao hàng
                             </div>
-            
-                            <div class="checkout-payment">
-                                <div class="checkout-payment-title">
-                                    Phương thức thanh toán
-                                </div>
-                                <div class="checkout-payment-input">
-                                    <div class="checkout-payment-input-item">
-                                        <input type="radio" name="checkout-method" value="credit-card" checked> 
-                                        <span class="material-symbols-outlined checkout-payment-input-item-icon">
-                                            credit_card
-                                        </span>
-                                        <div class="checkout-payment-input-item-txt">Thanh toán thẻ (ATM, Visa, Mastercard)</div>
-                                    </div>
-                                    <div class="checkout-payment-input-item">
-                                        <input type="radio" name="checkout-method" value="shoppee-pay">
-                                        <span class="material-symbols-outlined checkout-payment-input-item-icon">
-                                            shopping_bag
-                                        </span>
-                                        <div class="checkout-payment-input-item-txt">Thanh toán bằng ví Shopee Pay</div>
-                                    </div>
-                                    <div class="checkout-payment-input-item">
-                                        <input type="radio" name="checkout-method" value="cod">
-                                        <span class="material-symbols-outlined checkout-payment-input-item-icon">
-                                            local_shipping
-                                        </span>
-                                        <div class="checkout-payment-input-item-txt">Thanh toán ngay khi nhận hàng (COD)</div>
-                                    </div>
+                            <div class="checkout-info-input">
+                                <input name="checkout-info-name" type="text" class="checkout-info-input-item" placeholder="* Họ và tên">
+                                <input name="checkout-info-email" type="text" class="checkout-info-input-item" placeholder="* Email">
+                                <input name="checkout-info-number" type="text" class="checkout-info-input-item" placeholder="* Số điện thoại">
+                                <input name="checkout-info-address" type="text" class="checkout-info-input-item" placeholder="* Địa chỉ">
+                                <div class="checkout-info-input-txt">
+                                    * là trường không được để trống
+>>>>>>> Stashed changes
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="col-lg-6 col-md-12 col-12 checkout-body-right">
-                            <div class="cart-products checkout-products">
-                                <?php 
-                                    if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))){
-                                        if(count($_SESSION['cart']) > 0){
-                                            $totalcartprice = 0;
-                                            for($i = 0; $i < count($_SESSION['cart']); $i++ ){
-                                                $totalpriceprod = (int)$_SESSION['cart'][$i][2] * (int)$_SESSION['cart'][$i][5];
-                                                $totalcartprice += $totalpriceprod;
-                                                echo '
-                                                    <div class="cart-item">
-                                                        <div class="row">
-                                                            <div class="col-3">
-                                                                    <img src="'.$_SESSION['cart'][$i][1].'" class="cart-item-img" alt="">
+        
+                        <div class="checkout-payment">
+                            <div class="checkout-payment-title">
+                                Phương thức thanh toán
+                            </div>
+                            <div class="checkout-payment-input">
+                                <div class="checkout-payment-input-item">
+                                    <input type="radio" name="checkout-method" value="credit-card" checked> 
+                                    <span class="material-symbols-outlined checkout-payment-input-item-icon">
+                                        credit_card
+                                    </span>
+                                    <div class="checkout-payment-input-item-txt">Thanh toán thẻ (ATM, Visa, Mastercard)</div>
+                                </div>
+                                <div class="checkout-payment-input-item">
+                                    <input type="radio" name="checkout-method" value="shoppee-pay">
+                                    <span class="material-symbols-outlined checkout-payment-input-item-icon">
+                                        shopping_bag
+                                    </span>
+                                    <div class="checkout-payment-input-item-txt">Thanh toán bằng ví Shopee Pay</div>
+                                </div>
+                                <div class="checkout-payment-input-item">
+                                    <input type="radio" name="checkout-method" value="cod">
+                                    <span class="material-symbols-outlined checkout-payment-input-item-icon">
+                                        local_shipping
+                                    </span>
+                                    <div class="checkout-payment-input-item-txt">Thanh toán ngay khi nhận hàng (COD)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-md-12 col-12 checkout-body-right">
+                        <div class="cart-products checkout-products">
+                            <?php 
+                                if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))){
+                                    if(count($_SESSION['cart']) > 0){
+                                        $totalcartprice = 0;
+                                        for($i = 0; $i < count($_SESSION['cart']); $i++ ){
+                                            $totalpriceprod = (int)$_SESSION['cart'][$i][2] * (int)$_SESSION['cart'][$i][5];
+                                            $totalcartprice += $totalpriceprod;
+                                            echo '
+                                                <div class="cart-item">
+                                                    <div class="row">
+                                                        <div class="col-3">
+                                                                <img src="'.$_SESSION['cart'][$i][1].'" class="cart-item-img" alt="">
+                                                        </div>
+                                                        <div class="col-9">
+                                                            <div class="cart-item-name">
+                                                                '.$_SESSION['cart'][$i][0].'
                                                             </div>
-                                                            <div class="col-9">
-                                                                <div class="cart-item-name">
-                                                                    '.$_SESSION['cart'][$i][0].'
+                                                        <div class="cart-item-color-size">
+                                                            <div class="color">
+                                                                Màu sắc: '.$_SESSION['cart'][$i][4].'
+                                                            </div>
+                                                            <div class="size">
+                                                                Size: '.$_SESSION['cart'][$i][3].'
+                                                            </div>
+                                                        </div>
+                                                        <div class="cart-item-quantity-price">
+                                                            <div class="cart-item-quantity">
+                                                                <div class="cart-item-quantity-minus">
+                                                                    <span class="material-symbols-outlined minus-icon">
+                                                                        remove
+                                                                    </span>
                                                                 </div>
-                                                            <div class="cart-item-color-size">
-                                                                <div class="color">
-                                                                    Màu sắc: '.$_SESSION['cart'][$i][4].'
-                                                                </div>
-                                                                <div class="size">
-                                                                    Size: '.$_SESSION['cart'][$i][3].'
+                                                                <input type="text" value="'.$_SESSION['cart'][$i][5].'" min="0" max="10" class="cart-item-quantity-input" name="quantity">
+                                                                <div class="cart-item-quantity-plus">
+                                                                    <span class="material-symbols-outlined plus-icon">
+                                                                        add
+                                                                    </span>
                                                                 </div>
                                                             </div>
-                                                            <div class="cart-item-quantity-price">
-                                                                <div class="cart-item-quantity">
-                                                                    <div class="cart-item-quantity-minus">
-                                                                        <span class="material-symbols-outlined minus-icon">
-                                                                            remove
-                                                                        </span>
-                                                                    </div>
-                                                                    <input type="text" value="'.$_SESSION['cart'][$i][5].'" min="0" max="10" class="cart-item-quantity-input" name="quantity">
-                                                                    <div class="cart-item-quantity-plus">
-                                                                        <span class="material-symbols-outlined plus-icon">
-                                                                            add
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="cart-item-price">'.currency_format($totalpriceprod).'</div>
-                                                                    <a href="index.php?delid='.$i.'">
-                                                                        <span class="material-symbols-outlined del-icon">
-                                                                            delete
-                                                                        </span>
-                                                                    </a> 
-                                                                </div>
+                                                            <div class="cart-item-price">'.currency_format($totalpriceprod).'</div>
+                                                                <a href="index.php?delid='.$i.'">
+                                                                    <span class="material-symbols-outlined del-icon">
+                                                                        delete
+                                                                    </span>
+                                                                </a> 
                                                             </div>
                                                         </div>
                                                     </div>
-                                                ';
-                                            }
-                                        }
-                                        else{
-                                            echo'
-                                                <div class="col-12 mb-4">
-                                                    <img src="../../src/img/cart.png" class="cart-img" alt="">
                                                 </div>
                                             ';
                                         }
                                     }
-                                ?>
-                                
+                                    else{
+                                        echo'
+                                            <div class="col-12 mb-4">
+                                                <img src="../../src/img/cart.png" class="cart-img" alt="">
+                                            </div>
+                                        ';
+                                    }
+                                }
+                            ?>
+                            
+                        </div>
+                        <div class="checkout-confirm">
+                            <div class="checkout-confirm-title">
+                                Thông tin giỏ hàng
                             </div>
+<<<<<<< Updated upstream
                             <div class="checkout-confirm">
                                 <div class="checkout-confirm-title">
                                     Thông tin giỏ hàng
@@ -203,18 +226,69 @@
                                                 echo "</br></br>";
                                                 echo "<h3>Khách hàng xin vui lòng nhập đủ thông tin</h3>";
                                             }
+=======
+                            <div class="checkout-confirm-list">
+                                <div class="checkout-confirm-item">
+                                    <div class="checkout-confirm-item-left">Tổng tiền hàng</div>
+                                    <div class="checkout-confirm-item-right checkout-sum">
+                                    <?php
+                                        if(count($_SESSION['cart'])>0) {
+                                            echo'
+                                            <p class="cart-info-content-price-money">'.currency_format($totalcartprice).'</p>';
                                         }
-                                        else{
-                                            // Vì lý do nào đó trường POST bị thiếu
-                                            echo "<script>alert('Error')</script>";
-                                            echo "<script>window.location = 'index.php'</script>";
-                                        }                         
+                                        else {
+                                            echo'
+                                            <p class="cart-info-content-price-money">0</p>';
+                                        }
+                                    ?>
+                                    </div>
+                                </div>
+                                <div class="checkout-confirm-item">
+                                    <div class="checkout-confirm-item-left">Phí ship</div>
+                                    <div class="checkout-confirm-item-right checkout-ship">20.000đ</div>
+                                </div>
+                                <div class="checkout-confirm-item">
+                                    <div class="checkout-confirm-item-left">Thành tiền</div>
+                                    <div class="checkout-confirm-item-right checkout-total"></div>
+                                </div>
+                            </div>
+                            <button class="checkout-confirm-btn" type="submit" name="checkout-complete">
+                                Hoàn tất đơn hàng
+                            </button>
+                            <?php
+                                if(isset($_POST['checkout-complete'])){
+                                    if(isset($_POST['checkout-method']) && isset($_POST['checkout-info-name']) && isset($_POST['checkout-info-email']) && isset($_POST['checkout-info-number']) && isset($_POST['checkout-info-address'])){
+                                        if($_POST['checkout-info-name']!=="" && $_POST['checkout-info-email']!=="" && $_POST['checkout-info-number']!=="" && $_POST['checkout-info-address']!==""){
+                                            // Nếu khách hàng nhập đủ thông tin
+                                            echo "</br></br>";
+                                            echo "<h3>Thanh toán thành công!</h3>";
+                                        }
+                                        else {
+                                            // Nếu khách hàng nhập còn thiếu thông tin
+                                            echo "</br></br>";
+                                            echo "<h3>Khách hàng xin vui lòng nhập đủ thông tin</h3>";
+>>>>>>> Stashed changes
+                                        }
                                     }
+<<<<<<< Updated upstream
                                 ?>
                             </div>
                         </div>   
                     </form>
                 </div>
+=======
+                                    else{
+                                        // Vì lý do nào đó trường POST bị thiếu
+                                        echo "<script>alert('Error')</script>";
+                                        echo "<script>window.location = 'index.php'</script>";
+                                    }                         
+                                }
+                                
+                            ?>
+                        </div>
+                    </div>   
+                </form>
+>>>>>>> Stashed changes
                 <?php 
                     include_once "../../components/footer.php";
                 ?>

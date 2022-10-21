@@ -176,11 +176,15 @@
             return $result;
         }
 
-        public function updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02) {
+        public function updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, 
+            $categoryId, $image01, $image02) {
             $result = NULL;
             $link = NULL;
             taoKetNoi($link);
-            $query = "UPDATE products SET `name`= '$name', `color` = '$color', `size` = '$size', `price` = '$price', `quantity` = $quantity, `type` = $type, `description` = '$description', category_id = $categoryId, image01 = '$image01', image02 = '$image02' WHERE `id` = $id";
+            $query = "UPDATE products SET `name`= '$name', `color` = '$color', `size` = '$size', 
+            `price` = '$price', `quantity` = $quantity, `type` = $type, 
+            `description` = '$description', category_id = $categoryId, 
+            image01 = '$image01', image02 = '$image02' WHERE `id` = $id";
             $updateProduct = chayTruyVanKhongTraVeDL($link, $query);
             if($updateProduct) {
                 $result = true;

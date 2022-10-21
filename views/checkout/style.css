@@ -110,16 +110,27 @@ html, body {
     color: var(--text-color);
 }
 
-.checkout-body-left {
-    height: 100%;
+.checkout-body {
+    width: 100%;
 }
 
-.checkout-body-right{
+.checkout-body-form {
+    width: 100%;
+}
+
+/* .checkout-body-right{
     overflow: scroll;
     border: 1px solid var(--gray);
     box-shadow: 0 0.8rem 1.8rem hsl(210deg 8% 62% / 20%);
     padding: 3.2rem 2rem;
     margin-bottom: 4rem;
+} */
+
+.checkout-body-right{
+    border: 1px solid var(--gray);
+    box-shadow: 0 0.8rem 1.8rem hsl(210deg 8% 62% / 20%);
+    overflow: scroll;
+    
 }
 
 .checkout-products {
