@@ -190,20 +190,19 @@
                                                 $detailBillController = new BillDetailController();
                                                 $nameArr = $billController->formatName($_POST['checkout-info-name']);
                                                 $listBills = $billController->getAllBill();
-                                                if($listBills[1] != NULL) {
-                                                    $billId = count($listBills[1]) + 1;  
+                                                if($listBills != NULL) {
+                                                    $billId = count($listBills) + 1;  
                                                 }else {
                                                     $billId = 1;
                                                 }
                                                 
                                                 $countAddDetail = 0;                                            
-                                                $resultArr = $billController->setBill($billId, $nameArr[0], $nameArr[1], $_POST['checkout-info-email'], $_POST['checkout-info-number'], $_POST['total'], $_POST['checkout-info-address']);
-                                                //echo "link" .$resultArr[0];
-                                                if ($resultArr[1] == 1){
+                                                $result = $billController->setBill($billId, $nameArr[0], $nameArr[1], $_POST['checkout-info-email'], $_POST['checkout-info-number'], $_POST['total'], $_POST['checkout-info-address']);
+                                                if ($result == true){
                                                     if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))){
                                                         if(count($_SESSION['cart']) > 0){
                                                             for($i = 0; $i < count($_SESSION['cart']); $i++){
-                                                                $resultAddDetail = $detailBillController->setBillDetail($resultArr[0], $billId, $_SESSION['cart'][$i][0], $_SESSION['cart'][$i][5], $_SESSION['cart'][$i][4], strtolower( $_SESSION['cart'][$i][3]), $_SESSION['cart'][$i][2]);
+                                                                $resultAddDetail = $detailBillController->setBillDetail($billId, $_SESSION['cart'][$i][0], $_SESSION['cart'][$i][5], $_SESSION['cart'][$i][4], strtolower( $_SESSION['cart'][$i][3]), $_SESSION['cart'][$i][2]);
                                                                 if($resultAddDetail == 0) {
                                                                     $countAddDetail++;
                                                                 }

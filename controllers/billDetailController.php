@@ -10,7 +10,7 @@
             $this->model = new billDetailModel();
         }
 
-        public function setBillDetail($link, $bill_id, $product_name, $product_quantity, $product_color, $product_size, $product_price){
+        public function setBillDetail($bill_id, $product_name, $product_quantity, $product_color, $product_size, $product_price){
             //$count = 0;
             $result = NULL;
             // $billDetailInfo = ['billID', 'prod-name', 'prod-quant', 'prod-color', 'prod-size', 'prod-price'];
@@ -23,7 +23,7 @@
             //     }
             // }
             // if($count == count($billDetailInfo)) {
-                $resultInsert = $this->model->setBillDetail($link, $bill_id, $product_name, $product_quantity, $product_color, $product_size, $product_price);
+                $resultInsert = $this->model->setBillDetail($bill_id, $product_name, $product_quantity, $product_color, $product_size, $product_price);
                 // if($result == true) {
                 //     header('Location: ../../views/admin/index.php?msg=done');
                 // }else if($result == false) {
@@ -38,9 +38,9 @@
             return $result;
         }
 
-        public function getNumberOfPurchases($link) {
+        public function getNumberOfPurchases() {
             $data = NULL;
-            $data = $this->model->getNumberOfPurchases($link);
+            $data = $this->model->getNumberOfPurchases();
             return $data;
         }
     }
