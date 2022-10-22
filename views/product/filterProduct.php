@@ -130,7 +130,7 @@
 
 
 <div class="page-list">
-    <?php 
+    <?php
         $limit = 4;
         $currentPage = 1;
         $arrInfo = array();

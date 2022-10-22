@@ -146,21 +146,14 @@
                                                     <strike><div class='product-price__old'>1.150.000đ</div></strike>
                                                 </div>
                                             </p>
-                                            <a href='#' class='btn btn-primary' style='background-color: transparent; border: none;'>
-                                                <form action='#' method='post'>
-                                                    <button type='submit' name='action' value='add' class='product-cart'>
-                                                        <span class='material-symbols-outlined product-cart-icon'>
-                                                            local_mall
-                                                        </span>
-                                                        <p class='product-cart-buy'>Mua ngay</p>
-                                                    </button>
-                                                    <input type='hidden' name='product_id' value='".$product->getId()."'>
-                                                    <input type='hidden' name='product_img' value='".$product->getImage02()."'>
-                                                    <input type='hidden' name='product_name' value='".$product->getName()."'>
-                                                    <input type='hidden' name='product_price' value='".currency_format($product->getPrice())."'>
-                                                    <input type='hidden' name='product_color' value='".$product->getColor()."'>
-                                                </form>
-                                            </a>
+                                            <a href='../detailProduct/index.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>
+                                            <div class='product-cart'>
+                                                <span class='material-symbols-outlined product-cart-icon'>
+                                                    local_mall
+                                                </span>
+                                                <p class='product-cart-buy'>Mua ngay</p>
+                                            </div>
+                                        </a>
                                         </div>
                                     </div>
                                 </div>

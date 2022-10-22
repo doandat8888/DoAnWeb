@@ -304,7 +304,7 @@
                 <?php 
                     include_once "../../controllers/productController.php";
                     $controller = new ProductController();
-                    $currentPage = 1;
+                    $currentPage = null;
                     if(isset($_GET['current-page'])) {
                         $currentPage = $_GET['current-page'];
                     }
