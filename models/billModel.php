@@ -1,16 +1,60 @@
 <?php
     $filepath = realpath(dirname(__FILE__));
     include ($filepath. '/../modules/db_module.php');
-    include ($filepath. '/./bill_detail.php');
-
+    include ($filepath. '/./bill.php');
+   
     class billModel{
+        
         //Thêm mới
-        function setBill($cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address){
+        function setBill($id, $cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address){
             $link = NULL;
             taoKetNoi($link);
-            $query = "INSERT INTO `bill` (`cus_firstName`, `cus_lastName`, `email`, `phoneNumber`, `total`, `address`, `status`) VALUES ('$cus_firstName', '$cus_lastName', '$email', '$phoneNumber', '$total', '$address', 1)";
+            $resultArr = [];
+            $resultArr[0] = $link;
+            $query = "INSERT INTO `bill` (`id`, `cus_firstName`, `cus_lastName`, `email`, `phoneNumber`, `total`, `address`, `status`) VALUES ('$id', '$cus_firstName', '$cus_lastName', '$email', '$phoneNumber', '$total', '$address', 1)";
             $result = chayTruyVanKhongTraVeDL($link, $query);
-            return $result;
+            $resultArr[1] = $result;
+            return $resultArr;
+        }
+
+        
+
+        public function getAllBill() {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            $data = array();
+            $query = "SELECT * from bill";
+            $result = chayTruyVanTraVeDL($link, $query);
+            if(mysqli_num_rows($result) > 0) {
+                while($rows = mysqli_fetch_assoc($result)) {
+                    $category = new Bill($rows["id"], $rows["cus_firstName"], $rows["cus_lastName"], $rows["email"], $rows['phoneNumber'], $rows['total'], $rows['address'], $rows['status']);
+                    array_push($data, $category);
+                }
+                giaiPhongBoNho($link, $result);
+            }else{
+                $data = NULL;
+            }
+            return $data;
+        }
+
+        public function getBillByLimit($limit, $offset) {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            $data = array();
+            $query = "SELECT * from bill ORDER BY `id` ASC limit $limit OFFSET $offset";
+            $result = chayTruyVanTraVeDL($link, $query);
+            if(mysqli_num_rows($result) > 0) {
+                while($rows = mysqli_fetch_assoc($result)) {
+                    $category = new Bill($rows["id"], $rows["cus_firstName"], $rows["cus_lastName"], $rows["email"], $rows['phoneNumber'], $rows['total'], $rows['address'], $rows['status']);
+                    array_push($data, $category);
+                }
+                giaiPhongBoNho($link, $result);
+            }else{
+                $data = NULL;
+            }
+            return $data;
         }
     }
 ?>

@@ -1,6 +1,6 @@
 <?php
     $filepath = realpath(dirname(__FILE__));
-    include ($filepath. '/../models/billModel.php');
+    include_once ($filepath. '/../models/billModel.php');
 ?>
 
 <?php
@@ -8,34 +8,35 @@
         public $model;
         public function __construct() {
             $this->model = new billModel();
+            $this->model1 = new billDetailModel();
         }
 
-        public function setBill($cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address){
+        public function setBill($id, $cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address){
             $count = 0;
             $result = NULL;
-            $billInfo = [$cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address];
-            for($i = 0; $i < count($billInfo); $i++) {
-                if($billInfo[$i] == '') {
-                    $result = -1;
-                    break;
-                }else {
-                    $count++;
-                }
-            }
-            if($count == count($billInfo)) {
-                $resultInsert = $this->model->setBill($cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address);
+            // $billInfo = [$cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address];
+            // for($i = 0; $i < count($billInfo); $i++) {
+            //     if($billInfo[$i] == '') {
+            //         $result = -1;
+            //         break;
+            //     }else {
+            //         $count++;
+            //     }
+            // }
+            // if($count == count($billInfo)) {
+                $resultArr = $this->model->setBill($id, $cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address);
+                //$result = $resultArr;
                 // if($result == true) {
                 //     header('Location: ../../views/admin/index.php?msg=done');
                 // }else if($result == false) {
                 //     header('Location: ../../views/admin/index.php?msg=productname-existed');
                 // }
-                if($resultInsert) {
-                    $result = 0;
-                }else if($resultInsert == false) {
-                    $result = 1;
-                }
-            }
-            return $result;
+            //}
+            return $resultArr;
+        }
+
+        public function getAllBill() {
+            return $this->model->getAllBill();
         }
 
         //Tách tên thành họ và phần còn lại

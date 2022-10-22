@@ -1,7 +1,7 @@
 <?php 
 
     $filepath = realpath(dirname(__FILE__));
-    include ($filepath. '/../models/productModel.php');
+    include_once ($filepath. '/../models/productModel.php');
 ?>
 
 <?php 
