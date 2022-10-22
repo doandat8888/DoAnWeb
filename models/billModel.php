@@ -1,7 +1,7 @@
 <?php
     $filepath = realpath(dirname(__FILE__));
-    include ($filepath. '/../modules/db_module.php');
-    include ($filepath. '/./bill.php');
+    include_once ($filepath. '/../modules/db_module.php');
+    include_once ($filepath. '/./bill.php');
    
     class billModel{
         
@@ -9,12 +9,9 @@
         function setBill($id, $cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address){
             $link = NULL;
             taoKetNoi($link);
-            $resultArr = [];
-            $resultArr[0] = $link;
             $query = "INSERT INTO `bill` (`id`, `cus_firstName`, `cus_lastName`, `email`, `phoneNumber`, `total`, `address`, `status`) VALUES ('$id', '$cus_firstName', '$cus_lastName', '$email', '$phoneNumber', '$total', '$address', 1)";
             $result = chayTruyVanKhongTraVeDL($link, $query);
-            $resultArr[1] = $result;
-            return $resultArr;
+            return $result;
         }
 
         
@@ -24,7 +21,7 @@
             $link = NULL;
             taoKetNoi($link);
             $resultArr = [];
-            $resultArr[0] = $link;
+            //$resultArr[0] = $link;
             $data = array();
             $query = "SELECT * from bill";
             $result = chayTruyVanTraVeDL($link, $query);
@@ -37,8 +34,8 @@
             }else{
                 $data = NULL;
             }
-            $resultArr[1] = $data;
-            return $resultArr;
+            //$resultArr[1] = $data;
+            return $data;
         }
 
         public function getBillByLimit($limit, $offset) {

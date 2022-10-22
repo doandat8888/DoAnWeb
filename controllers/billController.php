@@ -12,7 +12,7 @@
         }
 
         public function setBill($id, $cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address){
-            $count = 0;
+            
             $result = NULL;
             // $billInfo = [$cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address];
             // for($i = 0; $i < count($billInfo); $i++) {
@@ -24,7 +24,7 @@
             //     }
             // }
             // if($count == count($billInfo)) {
-                $resultArr = $this->model->setBill($id, $cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address);
+                $result = $this->model->setBill($id, $cus_firstName, $cus_lastName, $email, $phoneNumber, $total, $address);
                 //$result = $resultArr;
                 // if($result == true) {
                 //     header('Location: ../../views/admin/index.php?msg=done');
@@ -32,7 +32,7 @@
                 //     header('Location: ../../views/admin/index.php?msg=productname-existed');
                 // }
             //}
-            return $resultArr;
+            return $result;
         }
 
         public function getAllBill() {
