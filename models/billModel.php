@@ -23,6 +23,8 @@
             $result = NULL;
             $link = NULL;
             taoKetNoi($link);
+            $resultArr = [];
+            $resultArr[0] = $link;
             $data = array();
             $query = "SELECT * from bill";
             $result = chayTruyVanTraVeDL($link, $query);
@@ -35,7 +37,8 @@
             }else{
                 $data = NULL;
             }
-            return $data;
+            $resultArr[1] = $data;
+            return $resultArr;
         }
 
         public function getBillByLimit($limit, $offset) {

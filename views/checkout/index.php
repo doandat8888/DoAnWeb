@@ -190,8 +190,8 @@
                                                 $detailBillController = new BillDetailController();
                                                 $nameArr = $billController->formatName($_POST['checkout-info-name']);
                                                 $listBills = $billController->getAllBill();
-                                                if($listBills != NULL) {
-                                                    $billId = count($listBills) + 1;  
+                                                if($listBills[1] != NULL) {
+                                                    $billId = count($listBills[1]) + 1;  
                                                 }else {
                                                     $billId = 1;
                                                 }

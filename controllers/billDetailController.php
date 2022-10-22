@@ -37,5 +37,11 @@
             //}
             return $result;
         }
+
+        public function getNumberOfPurchases($link) {
+            $data = NULL;
+            $data = $this->model->getNumberOfPurchases($link);
+            return $data;
+        }
     }
 ?>
