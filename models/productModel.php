@@ -1,9 +1,9 @@
 <?php 
     
     $filepath = realpath(dirname(__FILE__));
-    include ($filepath. '/../modules/db_module.php');
-    include ($filepath. '/./product.php');
-    include ($filepath. '/../validate_module.php');
+    include_once ($filepath. '/../modules/db_module.php');
+    include_once ($filepath. '/./product.php');
+    include_once ($filepath. '/../validate_module.php');
     
     class ProductModel {
         public function getAllProduct() {
@@ -123,6 +123,42 @@
             }
             return $data;
         }
+
+        public function getProductByNameProduct($name){
+            $result = null;
+            $link = null;
+            taoKetNoi($link);
+            $data = array();
+            $query = "SELECT * FROM products WHERE `name` = '$name'";
+            $result = chayTruyVanTraVeDL($link, $query);
+            if (mysqli_num_rows($result) > 0){
+                while ($rows = mysqli_fetch_assoc($result)){
+                    $product = new Product($rows["id"], $rows["name"], $rows["color"], 
+                    $rows["size"], $rows["price"], $rows["quantity"], $rows["type"], 
+                    $rows["description"], $rows["category_id"], $rows["image01"], 
+                    $rows["image02"], $rows["status"]);
+                    array_push($data, $product);
+                }
+                giaiPhongBoNho($link, $result);
+            }
+            else {
+                $data = null;
+            }
+            return $data;
+        }
+
+        public function updateQuantity($quantity, $name) {
+            $result = NULL;
+            $link = NULL;
+            taoKetNoi($link);
+            $query = "UPDATE products SET `quantity` = $quantity WHERE `name` = '$name'";
+            $updateResult = chayTruyVanKhongTraVeDL($link, $query);
+            if($updateResult) {
+                $result = true;
+            }
+            return $result;
+        }
+
 
         public function getProductByNameLimit($name, $limit, $offset) {
             $result = NULL;

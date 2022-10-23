@@ -52,10 +52,19 @@
             $result = $this->model->deleteProduct($id);
             return $result;
         }
-
+         //Lấy thông tin sản phẩm theo tên gần đúng
         public function getProductByName($name) {
             $data = $this->model->getProductByName($name);
             return $data;
+        }
+        //Lấy thông tin sản phẩm theo tên
+        public function getProductByNameProduct($name) {
+            $data = $this->model->getProductByNameProduct($name);
+            return $data;
+        }
+
+        public function updateQuantity($quantity, $name) {
+            return $this->model->updateQuantity($quantity, $name);
         }
 
         public function getProductByNameLimit($name, $limit, $offset) {

@@ -91,7 +91,6 @@ $data = $billDetailController->getNumberOfPurchases();
                     echo "['" . $key['product_name'] . "', " . $key['number_of_purchases'] . ", '#6C6D70'],";
                 }
                 ?>
-
             ]);
 
             var view = new google.visualization.DataView(data);

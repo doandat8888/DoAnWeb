@@ -182,6 +182,7 @@
                                 <?php
                                     include_once "../../controllers/billController.php";
                                     include_once "../../controllers/billDetailController.php";
+                                    include_once "../../controllers/productController.php";
                                     if(isset($_POST['checkout-complete'])){
                                         if(isset($_POST['checkout-method']) && isset($_POST['checkout-info-name']) && isset($_POST['checkout-info-email']) && isset($_POST['checkout-info-number']) && isset($_POST['total']) && isset($_POST['checkout-info-address'])){
                                             if($_POST['checkout-info-name']!=="" && $_POST['checkout-info-email']!=="" && $_POST['checkout-info-number']!=="" && isset($_POST['total'])!=="" && $_POST['checkout-info-address']!==""){
@@ -195,7 +196,6 @@
                                                 }else {
                                                     $billId = 1;
                                                 }
-                                                
                                                 $countAddDetail = 0;                                            
                                                 $result = $billController->setBill($billId, $nameArr[0], $nameArr[1], $_POST['checkout-info-email'], $_POST['checkout-info-number'], $_POST['total'], $_POST['checkout-info-address']);
                                                 if ($result == true){
@@ -211,6 +211,23 @@
                                                     }
                                                     if($countAddDetail == count($_SESSION['cart'])) {
                                                         echo "<script type='text/javascript'>alert('Thanh toán thành công');</script>";
+                                                        //Cập nhật lại số lượng sản phẩm
+                                                        $productController = new ProductController();
+                                                        if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))){
+                                                            if(count($_SESSION['cart']) > 0){
+                                                                for($i = 0; $i < count($_SESSION['cart']); $i++){
+                                                                    $quantityBuy = $_SESSION['cart'][$i][5];
+                                                                    $name = $_SESSION['cart'][$i][0];
+                                                                    $productBuy = $productController->getProductByNameProduct($name);
+                                                                    $productQuantity = $productBuy[0]->getQuantity();
+                                                                    $productQuantityNew = $productQuantity - $quantityBuy;
+                                                                    $resultUpdate = $productController->updateQuantity($productQuantityNew, $name);
+                                                                    if($resultUpdate) {
+                                                                        echo "<script type='text/javascript'>alert('Cập nhật số lượng thành công');</script>";
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
                                                     }
                                                 }
                                                 else{
