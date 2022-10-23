@@ -109,217 +109,206 @@
             </div>
 
             <div class="filter container" style="text-align: center;">
+                <form action="#" method="get">
+                    <!-- <select title="Size" class="selectpicker" name="size" id="size" multiple required>
+                        <option value="s">S</option>
+                        <option value="m">M</option>
+                        <option value="l">L</option>
+                        <option value="xl">XL</option>
+                        <option value="xxl">XXL</option>
+                    </select> -->
 
-                <!-- <select title="Size" class="selectpicker" name="size" id="size" multiple required>
-                    <option value="s">S</option>
-                    <option value="m">M</option>
-                    <option value="l">L</option>
-                    <option value="xl">XL</option>
-                    <option value="xxl">XXL</option>
-                </select> -->
+                    <!-- <div class="size-container filter">
+                        <div class="filter-title">Size</div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-size" value="s" />  S
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-size" value="m" />  M
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-size" value="l" />  L
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-size" value="xl" />  XL
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-size" value="xxl" />  XXL
+                        </div>
+                    </div>-->
+                    <!-- <select title="Màu sắc" class="selectpicker" name="color" id="color" multiple required>
+                        <option value="yellow" style="color: var(--yellow);">Vàng</option>
+                        <option value="green" style="color: var(--green);">Xanh lá</option>
+                        <option value="pink" style="color: var(--pink);">Hồng</option>
+                        <option value="red" style="color: var(--red);">Đỏ</option>
+                        <option value="white" style="color: var(--white);">Trắng</option>
+                        <option value="brown" style="color: var(--brown);">Nâu</option>
+                        <option value="black" style="color: var(--black);">Đen</option>
+                        <option value="orange" style="color: var(--orange);">Cam</option>
+                        <option value="violet" style="color: var(--violet);">Tím</option>
+                    </select> -->
 
-                <!-- <div class="size-container filter">
-                    <div class="filter-title">Size</div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-size" value="s" />  S
+                    <!-- <div class="color-container filter">
+                        <div class="filter-title">Màu sắc</div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-color" value="yellow" />  Vàng
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-color" value="green" />  Xanh lá
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-color" value="pink" />  Hồng
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-color" value="red" />  Đỏ
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-color" value="white" />  Trắng
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-color" value="brown" />  Nâu
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-color" value="black" />  Đen
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-color" value="orange" />  Cam
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" class="filter-item-check pro-color" value="gray" />  Xám
+                        </div>
+                    </div> -->
+                    <div class="category-container filter">
+                        <div class="filter-title">Danh mục</div>
+                        <div class="filter-item">
+                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="0" />  Đầm thun
+                        </div>
+                        <div class="filter-item">
+                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="1" />  Đầm dạ hội
+                        </div>
+                        <div class="filter-item">
+                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="2" />  Áo Set
+                        </div>
+                        <div class="filter-item">
+                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="3" />  Áo thun
+                        </div>
+                        <div class="filter-item">
+                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="4" />  Áo Polo
+                        </div>
+                        <div class="filter-item">
+                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="5" />  Áo ngắn tay
+                        </div>
+                        <div class="filter-item">
+                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="6" />  Quần sooc
+                        </div>
+                        <div class="filter-item">
+                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="7" />  Áo somi
+                        </div>
                     </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-size" value="m" />  M
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-size" value="l" />  L
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-size" value="xl" />  XL
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-size" value="xxl" />  XXL
-                    </div>
-                </div>
- -->
-                <!-- <select title="Màu sắc" class="selectpicker" name="color" id="color" multiple required>
-                    <option value="yellow" style="color: var(--yellow);">Vàng</option>
-                    <option value="green" style="color: var(--green);">Xanh lá</option>
-                    <option value="pink" style="color: var(--pink);">Hồng</option>
-                    <option value="red" style="color: var(--red);">Đỏ</option>
-                    <option value="white" style="color: var(--white);">Trắng</option>
-                    <option value="brown" style="color: var(--brown);">Nâu</option>
-                    <option value="black" style="color: var(--black);">Đen</option>
-                    <option value="orange" style="color: var(--orange);">Cam</option>
-                    <option value="violet" style="color: var(--violet);">Tím</option>
-                </select> -->
-
-                <!-- <div class="color-container filter">
-                    <div class="filter-title">Màu sắc</div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-color" value="yellow" />  Vàng
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-color" value="green" />  Xanh lá
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-color" value="pink" />  Hồng
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-color" value="red" />  Đỏ
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-color" value="white" />  Trắng
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-color" value="brown" />  Nâu
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-color" value="black" />  Đen
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-color" value="orange" />  Cam
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-color" value="gray" />  Xám
-                    </div>
-                </div> -->
-
-                <div class="category-container filter">
-                    <div class="filter-title">Danh mục</div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-category" value="0" />  Đầm thun
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-category" value="1" />  Đầm dạ hội
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-category" value="2" />  Áo Set
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-category" value="3" />  Áo thun
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-category" value="4" />  Áo Polo
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-category" value="5" />  Áo ngắn tay
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-category" value="6" />  Quần sooc
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-item-check pro-category" value="7" />  Áo somi
-                    </div>
-                </div>
 
 
-                <!-- <select title="Mức giá" class="selectpicker" name="price" id="price" required>
-                    <option value="less_1m">Dưới đ1.000.000</option>
-                    <option value="1m-2m">đ1.000.000 - đ2.000.000</option>
-                    <option value="2m-3.5m">đ2.000.000 - đ3.500.000</option>
-                    <option value="3.5m-5m">đ3.500.000 - đ5.000.000</option>
-                    <option value="more_5m">Trên đ5.000.000</option>
-                </select> -->
-                <div class="price">
-                    <div class="price-title">Khoảng giá</div>
-                    <input type="hidden" id="hidden-minimum-price" value="0"></input>
-                    <input type="hidden" id="hidden-maximum-price" value="10000000"></input>
-                    <div id="price-show"></div>
-                    <div id="price-range"></div>
-                </div>
-                
+                    <!-- <select title="Mức giá" class="selectpicker" name="price" id="price" required>
+                        <option value="less_1m">Dưới đ1.000.000</option>
+                        <option value="1m-2m">đ1.000.000 - đ2.000.000</option>
+                        <option value="2m-3.5m">đ2.000.000 - đ3.500.000</option>
+                        <option value="3.5m-5m">đ3.500.000 - đ5.000.000</option>
+                        <option value="more_5m">Trên đ5.000.000</option>
+                    </select> -->
+                    <div class="price">
+                        <div class="price-title">Khoảng giá</div>
+                        <input type="hidden" name="hidden-minimum-price" value="0"></input>
+                        <input type="hidden" name="hidden-maximum-price" value="10000000"></input>
+                        <div id="price-show"></div>
+                        <div id="price-range"></div>
+                    </div>
 
-                <!-- <select title="Mức chiết khấu" class="selectpicker" name="discount" id="discount" required>
-                    <option value="less_30">Dưới 30%</option>
-                    <option value="30-50">30% - 50%</option>
-                    <option value="50-70">50% - 70%</option>
-                    <option value="more_70">Trên 70%</option>
-                    <option value="special">Giá đặc biệt</option>
-                </select> -->
+                    <!-- <select title="Mức chiết khấu" class="selectpicker" name="discount" id="discount" required>
+                        <option value="less_30">Dưới 30%</option>
+                        <option value="30-50">30% - 50%</option>
+                        <option value="50-70">50% - 70%</option>
+                        <option value="more_70">Trên 70%</option>
+                        <option value="special">Giá đặc biệt</option>
+                    </select> -->
 
-                <!-- <div type="button" class="btn btnFilter" id="filterbutton">Filter</div>
-                <div type="button" class="btn btnFilter" id="resetbutton">Reset</div> -->
+                    <button type="submit" class="btn btn-black btnFilter" id="filterbutton">Lọc</button>
+                    <!-- <?php 
+                        if (isset($_GET["type"])){
+                            $type = $_GET["type"];
+                            echo "<input type='hidden' name='type' value='".$type."'></input>";
+                        }else {
+                            echo "<input type='hidden' name='type' value='-1'></input>";
+                        }
+        
+                        if(isset($_GET["current-page"])) {
+                            $currentPage = $_GET["current-page"];
+                            echo "<input type='hidden' name='current-page' value='".$currentPage."'></input>";
+                        }else {
+                            echo "<input type='hidden' name='current-page' value='1'></input>";
+                        }
+        
+                        if(isset($_GET["size"])) {
+                            $size = $_GET["size"];
+                            if($size != '') {
+                                echo "<input type='hidden' name='size' value='".$size."'></input>";
+                            }else {
+                                echo "<input type='hidden' name='size' value=''></input>";
+                            }
+                        }
+        
+                        if(isset($_GET["color"])) {
+                            $color = $_GET["color"];
+                            if($color != '') {
+                                echo "<input type='hidden' name='color' value='".$color."'></input>";
+                            }else {
+                                echo "<input type='hidden' name='color' value=''></input>";
+                            }
+                        }
+        
+                        if(isset($_POST["category"])) {
+                            $category = $_POST["category"];
+                            if($category != '') {
+                                echo "<input type='hidden' name='category' value='".$category."'></input>";
+                            }else {
+                                echo "<input type='hidden' name='category' value='-1'></input>";
+                            }
+                        }else {
+                            echo "<input type='hidden' name='category' value='-1'></input>";
+                        }
+        
+                        if(isset($_GET["min-price"]) && $_GET["max-price"]) {
+                            $minPrice = $_GET["min-price"];
+                            $maxPrice = $_GET["max-price"];
+                            if($minPrice != -1 && $maxPrice != -1) {
+                                echo "<input type='hidden' name='minimum-price' value='".$minPrice."'></input>";
+                                echo "<input type='hidden' name='maximum-price' value='".$maxPrice."'></input>";
+                            }else {
+                                echo "<input type='hidden' name='minimum-price' value='-1'></input>";
+                                echo "<input type='hidden' name='maximum-price' value='-1'></input>";
+                            }
+                        }else {
+                            echo "<input type='hidden' name='minimum-price' value='-1'></input>";
+                            echo "<input type='hidden' name='maximum-price' value='-1'></input>";
+                        }
+                    ?> -->
+                </form>
             </div>
         </div>
         <!--Products-->
         <div class="col-12 col-lg-9">
-            <!--The product-->
-            <?php 
-                if (isset($_GET["type"])){
-                    $type = $_GET["type"];
-                    echo "<input type='hidden' id='type' value='".$type."'></input>";
-                }else {
-                    echo "<input type='hidden' id='type' value='-1'></input>";
-                }
-
-                if(isset($_GET["current-page"])) {
-                    $currentPage = $_GET["current-page"];
-                    echo "<input type='hidden' id='current-page' value='".$currentPage."'></input>";
-                }else {
-                    echo "<input type='hidden' id='current-page' value='1'></input>";
-                }
-
-                if(isset($_GET["size"])) {
-                    $size = $_GET["size"];
-                    if($size != '') {
-                        echo "<input type='hidden' id='size' value='".$size."'></input>";
-                    }else {
-                        echo "<input type='hidden' id='size' value=''></input>";
-                    }
-                }
-
-                if(isset($_GET["color"])) {
-                    $color = $_GET["color"];
-                    if($color != '') {
-                        echo "<input type='hidden' id='color' value='".$color."'></input>";
-                    }else {
-                        echo "<input type='hidden' id='color' value=''></input>";
-                    }
-                }
-
-                if(isset($_GET["category"])) {
-                    $category = $_GET["category"];
-                    if($category != '') {
-                        echo "<input type='hidden' id='category' value='".$category."'></input>";
-                    }else {
-                        echo "<input type='hidden' id='category' value='-1'></input>";
-                    }
-                }else {
-                    echo "<input type='hidden' id='category' value='-1'></input>";
-                }
-
-                if(isset($_GET["min-price"]) && $_GET["max-price"]) {
-                    $minPrice = $_GET["min-price"];
-                    $maxPrice = $_GET["max-price"];
-                    if($minPrice != -1 && $maxPrice != -1) {
-                        echo "<input type='hidden' id='minimum-price' value='".$minPrice."'></input>";
-                        echo "<input type='hidden' id='maximum-price' value='".$maxPrice."'></input>";
-                    }else {
-                        echo "<input type='hidden' id='minimum-price' value='-1'></input>";
-                        echo "<input type='hidden' id='maximum-price' value='-1'></input>";
-                    }
-                }else {
-                    echo "<input type='hidden' id='minimum-price' value='-1'></input>";
-                    echo "<input type='hidden' id='maximum-price' value='-1'></input>";
-                }
-            ?>
-            <div class='products' id='product-body'>
-                
-                <?php 
-                    include_once "../../controllers/productController.php";
-                    $controller = new ProductController();
-                    $currentPage = null;
-                    if(isset($_GET['current-page'])) {
-                        $currentPage = $_GET['current-page'];
-                    }
+            <div class='products' id='product-body'>          
+                <?php
+                    $currentPage = isset($_GET['current-page'])?$_GET['current-page']:1;
                     $limit = 4;
                     $offset = ($currentPage - 1) * $limit;
                     $totalPages = 0;
-                    $data = NULL;
+
+                    include "./filterProduct.php";
                 ?>
-                
-                
             </div>
         </div>
     </div>
     <footer>
-        <?php 
+        <?php
             include_once "../../components/footer.php";
         ?>
     </footer>
@@ -334,75 +323,77 @@
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
         }
 
-        $(document).ready(function() {
+        $(document).ready(function(){
 
-            filterData();
+            // $('#filterbutton').click(function(){
+            //     filterData();
+            // });
 
-            function filterData() {
-                var action = 'get-product';
-                var minimumPrice = $('#minimum-price').val();
-                var maximumPrice = $('#maximum-price').val();
-                var size = $('#size').val();
-                var color = $('#color').val();
-                var categoryId = $('#category').val();
-                var category = -2;
-                var size = getFilter('pro-size');
-                var color = getFilter('pro-color');
-                if(categoryId == -1) {
-                    category = getFilter('pro-category');
-                }else {
-                    category = getFilter1('category');
-                }
-                if(minimumPrice == -1) {
-                    minimumPrice = $('#hidden-minimum-price').val();
-                }else {
-                    minimumPrice = $('#minimum-price').val();
-                }
+            // function filterData() {
+            //     var action = 'get-product';
+            //     var minimumPrice = $('#minimum-price').val();
+            //     var maximumPrice = $('#maximum-price').val();
+            //     var size = $('#size').val();
+            //     var color = $('#color').val();
+            //     var categoryId = $('#category').val();
+            //     var category = -2;
+            //     var size = getFilter('pro-size');
+            //     var color = getFilter('pro-color');
+            //     if(categoryId == -1) {
+            //         category = getFilter('pro-category');
+            //     }else {
+            //         category = getFilter1('category');
+            //     }
+            //     if(minimumPrice == -1) {
+            //         minimumPrice = $('#hidden-minimum-price').val();
+            //     }else {
+            //         minimumPrice = $('#minimum-price').val();
+            //     }
 
-                if(maximumPrice == -1) {
-                    maximumPrice = $('#hidden-maximum-price').val();
-                }else {
-                    maximumPrice = $('#maximum-price').val();
-                }
+            //     if(maximumPrice == -1) {
+            //         maximumPrice = $('#hidden-maximum-price').val();
+            //     }else {
+            //         maximumPrice = $('#maximum-price').val();
+            //     }
                 
-                var type = $('#type').val();
-                var currentPage = $('#current-page').val();
+            //     var type = $('#type').val();
+            //     var currentPage = $('#current-page').val();
 
-                $.ajax({
-                    url: `./filterProduct.php?type=${type}&current-page=${currentPage}`,
-                    //url: `./index.php`,
-                    method: 'POST',
-                    data: {
-                        action: action,
-                        minimumPrice: minimumPrice,
-                        maximumPrice: maximumPrice,
-                        // size: size,
-                        // color: color,
-                        category: category,
-                    },
-                    success: function(data) {
-                        $('#product-body').html(data);
-                    }
-                });
-            }
+            //     // $.ajax({
+            //     //     url: `./filterProduct.php?type=${type}&current-page=${currentPage}`,
+            //     //     //url: `./index.php`,
+            //     //     method: 'POST',
+            //     //     data: {
+            //     //         action: action,
+            //     //         minimumPrice: minimumPrice,
+            //     //         maximumPrice: maximumPrice,
+            //     //         // size: size,
+            //     //         // color: color,
+            //     //         category: category,
+            //     //     },
+            //     //     success: function(data) {
+            //     //         $('#product-body').html(data);
+            //     //     }
+            //     // });
+            // }
 
-            function getFilter(className) {
-                var filter = [];
-                $('.' + className + ':checked').each(function() {
-                    filter.push($(this).val());
-                });
-                return filter;
-            }
+            // function getFilter(className) {
+            //     var filter = [];
+            //     $('.' + className + ':checked').each(function() {
+            //         filter.push($(this).val());
+            //     });
+            //     return filter;
+            // }
 
-            function getFilter1(id) {
-                var filter = [];
-                filter.push($(`#${id}`).val());
-                return filter;
-            }
+            // function getFilter1(id) {
+            //     var filter = [];
+            //     filter.push($(`#${id}`).val());
+            //     return filter;
+            // }
 
-            $('.filter-item-check').click(function() {
-                filterData();
-            })
+            // $('.filter-item-check').click(function() {
+            //     filterData();
+            // })
 
             //$('#price-show').html("Từ " + numberWithComat(100000) + 'đ' + " - " + numberWithComat(10000000) + 'đ');
             $('#price-range').slider({
@@ -419,6 +410,6 @@
                 }
             })
         })
-    </script>
+    </script> 
 </body>
 </html>

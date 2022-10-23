@@ -253,10 +253,10 @@
                 $query .= "AND color LIKE '%$color_filter%' ";
             }
 
-            if(isset($_POST['category'])) {
-                $categoryId = $_POST['category'];
-                $category_filter = implode("','", $categoryId);
-                $query .= "AND category_id IN ('".$category_filter."') ";
+            if(isset($_GET['category'])) {
+                $categoryId = $_GET['category'];
+                $category_filter = implode(",", $categoryId);
+                $query .= "AND category_id IN ($category_filter)";
             }
 
             $result = chayTruyVanTraVeDL($link, $query);
@@ -295,10 +295,10 @@
                 $query .= "AND color LIKE '%$color_filter%' ";
             }
 
-            if(isset($_POST['category'])) {
-                $categoryId = $_POST['category'];
-                $category_filter = implode("','", $categoryId);
-                $query .= "AND category_id IN ('".$category_filter."') ";
+            if(isset($_GET['category'])) {
+                $categoryId = $_GET['category'];
+                $category_filter = implode(",", $categoryId);
+                $query .= "AND category_id IN ($category_filter)";
             }
 
             $result = chayTruyVanTraVeDL($link, $query);
@@ -337,14 +337,13 @@
                 $query .= "AND color LIKE '%$color_filter%' ";
             }
 
-            if(isset($_POST['category'])) {
-                $categoryId = $_POST['category'];
-                $category_filter = implode("','", $categoryId);
-                $query .= "AND category_id IN ('".$category_filter."') ";
+            if(isset($_GET['category'])) {
+                $categoryId = $_GET['category'];
+                $category_filter = implode(",", $categoryId);
+                $query .= "AND category_id IN ($category_filter)";
             }
 
             $query .= "ORDER BY `id` ASC limit $limit OFFSET $offset";
-
             $result = chayTruyVanTraVeDL($link, $query);
             if(mysqli_num_rows($result) > 0) {
                 while($rows = mysqli_fetch_assoc($result)) {
@@ -381,10 +380,10 @@
                 $query .= "AND color LIKE '%$color_filter%' ";
             }
 
-            if(isset($_POST['category'])) {
-                $categoryId = $_POST['category'];
-                $category_filter = implode("','", $categoryId);
-                $query .= "AND category_id IN ('".$category_filter."') ";
+            if(isset($_GET['category'])) {
+                $categoryId = $_GET['category'];
+                $category_filter = implode(",", $categoryId);
+                $query .= "AND category_id IN ($category_filter)";
             }
 
             $query .= "ORDER BY `id` ASC limit $limit OFFSET $offset";

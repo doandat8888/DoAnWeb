@@ -324,20 +324,20 @@ h2{
 
 /*The filter 'n' reset btn*/
 .btnFilter{
-    width: 6rem;
-    margin: 2rem;
-    margin-top: 1rem;
+    width: 100%;
+    margin-top: 2rem;
     padding: 1rem;
-    border: 1px #221F20 solid;
-    color: #6C6D70;
-    border-top-left-radius: 2rem;
-    border-bottom-right-radius: 2rem;
+    border: none;
+    color: var(--white);
+    border-radius: 1rem;
+    background-color: var(--main-color);
     font-size: 1.5rem;
 }
 
 .btnFilter:hover{
-    color: white;
-    background-color: #221F20;
+    color: var(--main-color);
+    background-color: var(--white);
+    border: 1px var(--main-color) solid;
 }
 
 #discount{

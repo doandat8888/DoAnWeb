@@ -121,10 +121,8 @@
         }
 
         public function filterProduct() {
-            if(isset($_POST['action'])) {
-                $data = $this->model->filterProduct();
-                return $data;
-            }
+            $data = $this->model->filterProduct();
+            return $data;
         }
 
         public function filterProductByType($type) {
