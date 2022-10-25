@@ -58,7 +58,7 @@
                                 <div class="content">Sản phẩm</div>
                             </a>
                         </div>
-                        <div class="menu-item">
+                        <!-- <div class="menu-item">
                             <a href="?page=manage-customer" class="menu-item-link">
                                 <span class="material-symbols-outlined">
                                     person
@@ -73,7 +73,7 @@
                             </span>
                                 <div class="content">Đơn hàng</div>
                             </a>
-                        </div>
+                        </div> -->
                         <div class="menu-item">
                             <a href="?page=statistic" class="menu-item-link">
                             <span class="material-symbols-outlined">

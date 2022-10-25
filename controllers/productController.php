@@ -73,13 +73,15 @@
             include_once "../../views/admin/page-list-view.php";
         }
         //Lấy thông tin sản phẩm theo tên
-        public function getProductByNameProduct($name) {
+        public function getProductByNameProduct($quantity, $name) {
+            $quantityBuy = $quantity;
             $data = $this->model->getProductByNameProduct($name);
-            return $data;
+            include_once "../../views/checkout/update-quantity-view.php";
         }
 
         public function updateQuantity($quantity, $name) {
-            return $this->model->updateQuantity($quantity, $name);
+            $result =  $this->model->updateQuantity($quantity, $name);
+            include_once "../../views/checkout/result-update-quantity.php";
         }
 
         public function getProductByNameLimit($name, $limit, $offset) {

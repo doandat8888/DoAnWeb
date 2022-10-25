@@ -189,50 +189,7 @@
                                                 // Nếu khách hàng nhập đủ thông tin
                                                 $billController = new BillController();
                                                 $detailBillController = new BillDetailController();
-                                                $nameArr = $billController->formatName($_POST['checkout-info-name']);
-                                                $listBills = $billController->getAllBill();
-                                                if($listBills != NULL) {
-                                                    $billId = count($listBills) + 1;  
-                                                }else {
-                                                    $billId = 1;
-                                                }
-                                                $countAddDetail = 0;                                            
-                                                $result = $billController->setBill($billId, $nameArr[0], $nameArr[1], $_POST['checkout-info-email'], $_POST['checkout-info-number'], $_POST['total'], $_POST['checkout-info-address']);
-                                                if ($result == true){
-                                                    if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))){
-                                                        if(count($_SESSION['cart']) > 0){
-                                                            for($i = 0; $i < count($_SESSION['cart']); $i++){
-                                                                $resultAddDetail = $detailBillController->setBillDetail($billId, $_SESSION['cart'][$i][0], $_SESSION['cart'][$i][5], $_SESSION['cart'][$i][4], strtolower( $_SESSION['cart'][$i][3]), $_SESSION['cart'][$i][2]);
-                                                                if($resultAddDetail == 0) {
-                                                                    $countAddDetail++;
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                    if($countAddDetail == count($_SESSION['cart'])) {
-                                                        echo "<script type='text/javascript'>alert('Thanh toán thành công');</script>";
-                                                        //Cập nhật lại số lượng sản phẩm
-                                                        $productController = new ProductController();
-                                                        if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))){
-                                                            if(count($_SESSION['cart']) > 0){
-                                                                for($i = 0; $i < count($_SESSION['cart']); $i++){
-                                                                    $quantityBuy = $_SESSION['cart'][$i][5];
-                                                                    $name = $_SESSION['cart'][$i][0];
-                                                                    $productBuy = $productController->getProductByNameProduct($name);
-                                                                    $productQuantity = $productBuy[0]->getQuantity();
-                                                                    $productQuantityNew = $productQuantity - $quantityBuy;
-                                                                    $resultUpdate = $productController->updateQuantity($productQuantityNew, $name);
-                                                                    if($resultUpdate) {
-                                                                        echo "<script type='text/javascript'>alert('Cập nhật số lượng thành công');</script>";
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                                else{
-                                                    echo "<script type='text/javascript'>alert('Đã có lỗi xảy ra. Vui lòng thử lại');</script>";
-                                                }
+                                                $billController->getAllBill();
                                             }
                                             else {
                                                 // Nếu khách hàng nhập còn thiếu thông tin

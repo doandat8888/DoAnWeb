@@ -35,13 +35,12 @@
                     $result = 1;
                 }
             //}
-            return $result;
+            include_once "../../views/checkout/result-add-detail-bill.php";
         }
 
         public function getNumberOfPurchases() {
-            $data = NULL;
             $data = $this->model->getNumberOfPurchases();
-            return $data;
+            include "../../views/admin/statistic-view.php";
         }
     }
 ?>
