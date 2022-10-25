@@ -148,7 +148,7 @@
                 <?php
                     include_once "../../controllers/productController.php";
                     $controller = new ProductController();
-                    $data = $controller->getAllProduct();
+                    //$controller->getAllProduct();
                     
                     
                     if(isset($_POST['add-submit'])) {
@@ -248,14 +248,14 @@
                                 $keyword = $_POST['keyword'];
                                 unset($_SESSION['keyword']);
                                 $_SESSION['keyword'] = $keyword;
-                                $data = $controller->getProductByNameLimit($keyword, $limit, $offset);
+                                $controller->getProductByNameLimit($keyword, $limit, $offset);
                             }else {
                                 if(isset($_POST['page-submit'])) {
                                     $keyword = $_SESSION['keyword'];
-                                    $data = $controller->getProductByNameLimit($keyword, $limit, $offset);
+                                    $controller->getProductByNameLimit($keyword, $limit, $offset);
                                 }else {
                                     unset($_SESSION['keyword']);
-                                    $data = $controller->getAllProductByLimit($limit, $offset);
+                                    $controller->getAllProductByLimit($limit, $offset);
                                 }
                             }
                         }else {
@@ -268,74 +268,33 @@
                             }
                         }
                     }
-                    if($data != NULL) {
-                        foreach ($data as $product) {
-                            if($product->getStatus() == 1) {
-                                echo "
-                                    <tr>
-                                        <th scope='row'>" . $product->getId() . "</th>
-                                        <td class='product-img-container col-2'><img src='" . $product->getImage01() . "' class='manage-product-img col-lg-6'></td>
-                                        <td>" . $product->getName() . "</td>
-                                        <td>" . currency_format($product->getPrice()) . "</td>
-                                        <td class='manage-product-action'>
-                                            <a href='./index.php?page=update-product&id=".$product->getId()."'>
-                                                <button class='edit action-btn' data-toggle='modal' data-target='#editModal'>
-                                                    Sửa
-                                                </button>
-                                            </a>
-                                            <a href='./index.php?page=manage-product&action=delete&id=".$product->getId()."'>
-                                                <button class='delete action-btn' type='submit'>Xóa</button>
-                                            </a>
-                                        </td>
-                                    </tr>   
-                                ";
-                            }
-                        }
-                    }else {
-                        echo "Không có sản phẩm nào được tìm thấy. Vui lòng thử lại";
-                    }
+                    // if($data != NULL) {
+                        
+                    // }else {
+                    //     echo "Không có sản phẩm nào được tìm thấy. Vui lòng thử lại";
+                    // }
                     
                 ?>
             </tbody>
         </table>
         <div class="page-list">
-            <?php 
+            <?php
                 include_once "../../controllers/productController.php";
                 $controller = new ProductController();
-                $products = NULL;
                 $name = "";
                 if(isset($_POST['search-submit'])) {
                     if(isset($_POST['keyword'])) {
                         $name = $_POST['keyword'];
-                        $products = $controller->getProductByName($name);
+                        $controller->getProductPageByName($name);
                     }
                 }else {
                     if(isset($_SESSION['keyword'])) {
                         $name = $_SESSION['keyword'];
-                        $products = $controller->getProductByName($name);
+                        $controller->getProductPageByName($name);
                     }else {
-                        $products = $controller->getAllProduct();
+                        $controller->getAllProductPage();
                     }
                 }
-                $currentPage = 1;
-                if(isset($_GET['current-page'])) {
-                    $currentPage = $_GET['current-page'];
-                }
-                $limit = 4;
-                $offset = ($currentPage - 1) * $limit;
-                $totalPages = 0;
-                if($products != NULL) {
-                    $totalProducts = count($products);
-                    $totalPages = ceil($totalProducts / $limit);
-                    for($i = 1; $i <= $totalPages; $i++) {
-                        echo "
-                            <form method='post' action='./index.php?page=manage-product'>
-                                <button class='page-item' name='page-submit' type='submit' value='".$i."'>$i</button>
-                            </form>
-                        ";
-                    }
-                }
-                  
             ?>
         </div>
     </div>

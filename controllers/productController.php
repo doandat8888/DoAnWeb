@@ -12,12 +12,27 @@
         }
         public function getAllProduct() {
             $data = $this->model->getAllProduct();
-            return $data;
+            include_once "../../views/admin/manage-product-view.php";
+        }
+
+        public function getAllProductHome() {
+            $data = $this->model->getAllProduct();
+            include_once "../../index.php";
+        }
+
+        public function getAllProductPage() {
+            $data = $this->model->getAllProduct();
+            include_once "../../views/admin/page-list-view.php";
         }
 
         public function getAllProductByLimit($limit, $offset) {
             $data = $this->model->getAllProductByLimit($limit, $offset);
-            return $data;
+            include_once "../../views/admin/manage-product-view.php";
+        }
+
+        public function getAllProductPageByLimit($limit, $offset) {
+            $data = $this->model->getAllProductByLimit($limit, $offset);
+            include_once "../../views/admin/page-list-view.php";
         }
 
         public function setProduct($name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02) {
@@ -55,7 +70,12 @@
          //Lấy thông tin sản phẩm theo tên gần đúng
         public function getProductByName($name) {
             $data = $this->model->getProductByName($name);
-            return $data;
+            include_once "../../views/admin/manage-product-view.php";
+        }
+
+        public function getProductPageByName($name) {
+            $data = $this->model->getProductByName($name);
+            include_once "../../views/admin/page-list-view.php";
         }
         //Lấy thông tin sản phẩm theo tên
         public function getProductByNameProduct($name) {
@@ -69,7 +89,12 @@
 
         public function getProductByNameLimit($name, $limit, $offset) {
             $data = $this->model->getProductByNameLimit($name, $limit, $offset);
-            return $data;
+            include_once "../../views/admin/manage-product-view.php";
+        }
+
+        public function getProductPageByNameLimit($name, $limit, $offset) {
+            $data = $this->model->getProductByNameLimit($name, $limit, $offset);
+            include_once "../../views/admin/page-list-view.php";
         }
 
         public function getProductByType($type) {
