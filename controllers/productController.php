@@ -49,18 +49,13 @@
             }
             if($count == count($productInfo)) {
                 $resultInsert = $this->model->setProduct($name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
-                // if($result == true) {
-                //     header('Location: ../../views/admin/index.php?msg=done');
-                // }else if($result == false) {
-                //     header('Location: ../../views/admin/index.php?msg=productname-existed');
-                // }
                 if($resultInsert == true) {
                     $result = 0;
                 }else if($resultInsert == false) {
                     $result = 1;
                 }
             }
-            return $result;
+            include_once "../../views/admin/resultAdd.php";
         }
 
         public function deleteProduct($id) {
@@ -131,18 +126,13 @@
             }
             if($count == count($productInfo)) {
                 $resultEdit = $this->model->updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
-                // if($result == true) {
-                //     header('Location: ../../views/admin/index.php?msg=done');
-                // }else if($result == false) {
-                //     header('Location: ../../views/admin/index.php?msg=productname-existed');
-                // }
                 if($resultEdit == true) {
                     $result = 0;
                 }else if($resultEdit == false) {
                     $result = 1;
                 }
             }
-            return $result;
+            include_once "../../views/admin/resultEdit.php";
         }
 
         public function filterProduct() {

@@ -121,124 +121,124 @@
 
 <div class="page-list">
     <?php
-        $_SESSION['type'] = isset($_GET['type'])?$_GET['type']:null;
-        $limit = 4;
-        $size_filter = '';
-        $color_filter = '';
-        $category_filter = '';
-        $minPrice = -1;
-        $maxPrice = -1;
-        $currentPage = isset($_GET['current-page'])?$_GET['current-page']:1;
+        // $_SESSION['type'] = isset($_GET['type'])?$_GET['type']:null;
+        // $limit = 4;
+        // $size_filter = '';
+        // $color_filter = '';
+        // $category_filter = '';
+        // $minPrice = -1;
+        // $maxPrice = -1;
+        // $currentPage = isset($_GET['current-page'])?$_GET['current-page']:1;
 
-        if(isset($_POST['size'])) {
-            $size = $_POST['size'];
-            $size_filter = implode("','", $size);
-            //array_push($arrInfo, $size);
-        }
-        if(isset($_POST['color'])) {
-            $color = $_POST['color'];
-            $color_filter = implode("','", $color);
-        }
+        // if(isset($_POST['size'])) {
+        //     $size = $_POST['size'];
+        //     $size_filter = implode("','", $size);
+        //     //array_push($arrInfo, $size);
+        // }
+        // if(isset($_POST['color'])) {
+        //     $color = $_POST['color'];
+        //     $color_filter = implode("','", $color);
+        // }
 
-        if(isset($_GET['category'])) {
-            $category = $_GET['category'];
-            $category_filter = implode("", $category);
-            $querystring = "";
-            for($i = 0; $i < strlen($category_filter); $i++){
-                $querystring  .= "&category%5B%5D=".$category_filter[$i];
-            }
-        }
+        // if(isset($_GET['category'])) {
+        //     $category = $_GET['category'];
+        //     $category_filter = implode("", $category);
+        //     $querystring = "";
+        //     for($i = 0; $i < strlen($category_filter); $i++){
+        //         $querystring  .= "&category%5B%5D=".$category_filter[$i];
+        //     }
+        // }
 
-        if(isset($_POST['minimumPrice']) && isset($_POST['maximumPrice'])) {
-            $minPrice = $_POST['minimumPrice'];
-            $maxPrice = $_POST['maximumPrice'];
-            //array_push($arrInfo, $minPrice);
-        }
+        // if(isset($_POST['minimumPrice']) && isset($_POST['maximumPrice'])) {
+        //     $minPrice = $_POST['minimumPrice'];
+        //     $maxPrice = $_POST['maximumPrice'];
+        //     //array_push($arrInfo, $minPrice);
+        // }
         
-        if(isset($type)){
-            if($type != -1) {
-                if(isset($_POST['action'])) {
-                    $type = $_GET['type'];
-                    $products = $controller->filterProductByType($type);
-                }else {
-                    $products = $controller->getProductByType($type);
-                }
-                if($products != NULL) {
-                    $totalProducts = count($products);
-                    $totalPages = ceil($totalProducts / $limit);
+        // if(isset($type)){
+        //     if($type != -1) {
+        //         if(isset($_POST['action'])) {
+        //             $type = $_GET['type'];
+        //             $products = $controller->filterProductByType($type);
+        //         }else {
+        //             $products = $controller->getProductByType($type);
+        //         }
+        //         if($products != NULL) {
+        //             $totalProducts = count($products);
+        //             $totalPages = ceil($totalProducts / $limit);
                     
-                    if(isset($_GET['category'])){
-                        for($i = 1; $i <= $totalPages; $i++) {
-                            if($i != $currentPage){
-                                echo "
-                                    <a href='./index.php?&type=".$type."&current-page=".$i.$querystring ."' class='page-item'>$i</a>
-                                ";
-                            }
-                            else{
-                                echo"
-                                    <strong style='background-color:black;' class='page-item'>$i</strong>
-                                ";
-                            }
-                        }                        
-                    }
-                    else{
-                        for($i = 1; $i <= $totalPages; $i++) {
-                            if($i != $currentPage){
-                                echo "
-                                    <a href='./index.php?&type=".$type."&current-page=".$i."' class='page-item'>$i</a>
-                                ";
-                            }
-                            else{
-                                echo"
-                                    <strong style='background-color:black;' class='page-item'>$i</strong>
-                                ";
-                            }
-                        } 
-                    }
-                }   
-            }
-        }else {
+        //             if(isset($_GET['category'])){
+        //                 for($i = 1; $i <= $totalPages; $i++) {
+        //                     if($i != $currentPage){
+        //                         echo "
+        //                             <a href='./index.php?&type=".$type."&current-page=".$i.$querystring ."' class='page-item'>$i</a>
+        //                         ";
+        //                     }
+        //                     else{
+        //                         echo"
+        //                             <strong style='background-color:black;' class='page-item'>$i</strong>
+        //                         ";
+        //                     }
+        //                 }                        
+        //             }
+        //             else{
+        //                 for($i = 1; $i <= $totalPages; $i++) {
+        //                     if($i != $currentPage){
+        //                         echo "
+        //                             <a href='./index.php?&type=".$type."&current-page=".$i."' class='page-item'>$i</a>
+        //                         ";
+        //                     }
+        //                     else{
+        //                         echo"
+        //                             <strong style='background-color:black;' class='page-item'>$i</strong>
+        //                         ";
+        //                     }
+        //                 } 
+        //             }
+        //         }   
+        //     }
+        // }else {
 
-            if(isset($_GET['category'])){
-                $products = $controller->filterProduct();
-            }else {
-                $products = $controller->getAllProduct();
-            }
+        //     if(isset($_GET['category'])){
+        //         $products = $controller->filterProduct();
+        //     }else {
+        //         $products = $controller->getAllProduct();
+        //     }
 
-            if($products != NULL) {
-                $totalProducts = count($products);
-                $totalPages = ceil($totalProducts / $limit);
+        //     if($products != NULL) {
+        //         $totalProducts = count($products);
+        //         $totalPages = ceil($totalProducts / $limit);
                 
-                // Nếu có lọc
-                if (isset($_GET['category'])){
-                    for($i = 1; $i <= $totalPages; $i++) {
-                        if($i != $currentPage){
-                            echo "
-                                <a href='./index.php?&current-page=".$i.$querystring."' class='page-item'>$i</a>
-                            ";
-                        }
-                        else{
-                            echo"
-                                <strong style='background-color:black;' class='page-item'>$i</strong>
-                            ";
-                        }
-                    }                    
-                }
-                else{ // Nếu ko lọc
-                    for($i = 1; $i <= $totalPages; $i++) {
-                        if($i != $currentPage){
-                            echo "
-                                <a href='./index.php?&current-page=".$i."' class='page-item'>$i</a>
-                            ";
-                        }
-                        else{
-                            echo"
-                                <strong style='background-color:black;' class='page-item'>$i</strong>
-                            ";
-                        }
-                    }  
-                }
-            }
-        }
+        //         // Nếu có lọc
+        //         if (isset($_GET['category'])){
+        //             for($i = 1; $i <= $totalPages; $i++) {
+        //                 if($i != $currentPage){
+        //                     echo "
+        //                         <a href='./index.php?&current-page=".$i.$querystring."' class='page-item'>$i</a>
+        //                     ";
+        //                 }
+        //                 else{
+        //                     echo"
+        //                         <strong style='background-color:black;' class='page-item'>$i</strong>
+        //                     ";
+        //                 }
+        //             }                    
+        //         }
+        //         else{ // Nếu ko lọc
+        //             for($i = 1; $i <= $totalPages; $i++) {
+        //                 if($i != $currentPage){
+        //                     echo "
+        //                         <a href='./index.php?&current-page=".$i."' class='page-item'>$i</a>
+        //                     ";
+        //                 }
+        //                 else{
+        //                     echo"
+        //                         <strong style='background-color:black;' class='page-item'>$i</strong>
+        //                     ";
+        //                 }
+        //             }  
+        //         }
+        //     }
+        // }
     ?>
-</div>
+</div> 

@@ -164,14 +164,7 @@
                         $categoryId = $_POST['pro-category'];
                         $image01 = $_POST['pro-img-01'];
                         $image02 = $_POST['pro-img-02'];
-                        $result = $controller->setProduct($name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
-                        if($result === -1) {
-                            echo "<script type='text/javascript'>alert('Vui lòng nhập đủ thông tin sản phẩm');</script>";
-                        }else if($result == 1) {
-                            echo "<script type='text/javascript'>alert('Tên sản phẩm đã tồn tại');</script>";
-                        }else if($result == 0) {
-                            echo "<script type='text/javascript'>alert('Thêm sản phẩm thành công');</script>";
-                        }
+                        $controller->setProduct($name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
                     }
                     
                     if(isset($_POST['edit-submit'])) {
@@ -189,14 +182,7 @@
                             $categoryId = $_POST['pro-category'];
                             $image01 = $_POST['pro-img-01'];
                             $image02 = $_POST['pro-img-02'];
-                            $result = $controller->updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);
-                            if($result === -1) {
-                                echo "<script type='text/javascript'>alert('Vui lòng nhập đủ thông tin sản phẩm');</script>";
-                            }else if($result == 1) {
-                                echo "<script type='text/javascript'>alert('Có lỗi xảy ra');</script>";
-                            }else if($result == 0) {
-                                echo "<script type='text/javascript'>alert('Cập nhật sản phẩm thành công');</script>";
-                            }
+                            $controller->updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, $categoryId, $image01, $image02);                        
                         }
                     }
                     
@@ -206,12 +192,7 @@
                             if(isset($_GET['id'])) {
                                 $id = $_GET['id'];
                                 $controller = new ProductController();
-                                $result = $controller->deleteProduct($id);
-                                if($result == true) {
-                                    echo "<script type='text/javascript'>alert('Xóa sản phẩm thành công');</script>";
-                                }else if($result == false) {
-                                    echo "<script type='text/javascript'>alert('Có lỗi xảy ra');</script>";
-                                }
+                                $controller->deleteProduct($id);
                             }
                         }
                     }
@@ -241,7 +222,7 @@
                                 $_SESSION['keyword'] = $keyword;
                             }
                         }
-                        $data = $controller->getProductByNameLimit($keyword, $limit, $offset);
+                        $controller->getProductByNameLimit($keyword, $limit, $offset);
                     }else {
                         if(isset($_SESSION['keyword'])) {
                             if(isset($_POST['keyword'])) {
@@ -262,9 +243,9 @@
                             if(isset($_POST['keyword'])) {
                                 $keyword = $_POST['keyword'];
                                 $_SESSION['keyword'] = $keyword;
-                                $data = $controller->getProductByNameLimit($keyword, $limit, $offset);
+                                $controller->getProductByNameLimit($keyword, $limit, $offset);
                             }else {
-                                $data = $controller->getAllProductByLimit($limit, $offset);
+                                $controller->getAllProductByLimit($limit, $offset);
                             }
                         }
                     }

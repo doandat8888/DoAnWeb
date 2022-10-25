@@ -209,7 +209,7 @@
             }else {
                 $result = false;
             }
-            return $result;
+            include "../../views/admin/resultDelete.php";
         }
 
         public function updateProduct($id, $name, $color, $size, $price, $quantity, $type, $description, 
