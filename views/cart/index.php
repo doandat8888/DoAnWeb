@@ -65,6 +65,11 @@
                                             </div>
                                         </div>
                                         <div class="cart-info-btn">
+                                            <a href="../checkout/index.php" class="cart-btn-link">
+                                                <div class="cart-btn-view" style="border: 1px solid #000 !important;"">
+                                                    Đặt hàng
+                                                </div>
+                                            </a>
                                             <a href="./index.php?delcart=1" class="cart-btn-link">
                                                 <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
                                                     Xóa giỏ hàng
@@ -73,11 +78,6 @@
                                             <a href="./index.php?updatecart=1" class="cart-btn-link">
                                                 <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
                                                     Cập nhật giỏ hàng
-                                                </div>
-                                            </a>
-                                            <a href="../checkout/index.php" class="cart-btn-link">
-                                                <div class="cart-btn-view" style="border: 1px solid #000 !important;"">
-                                                    Đặt hàng
                                                 </div>
                                             </a>
                                             <a href="../../index.php" class="cart-btn-link">
