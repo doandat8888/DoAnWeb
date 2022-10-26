@@ -8,8 +8,6 @@
     }
 ?>
 
-
-
 <div class="manage-product">
     <!-- Modal -->
     <form method="post" action="./index.php?page=manage-product">

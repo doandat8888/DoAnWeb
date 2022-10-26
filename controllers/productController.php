@@ -25,6 +25,11 @@
             include_once "../../views/admin/page-list-view.php";
         }
 
+        public function getAllProductDetail() {
+            $data = $this->model->getAllProduct();
+            include_once "../../views/detailProduct/all-product-like.php";
+        }
+
         public function getAllProductByLimit($limit, $offset) {
             $data = $this->model->getAllProductByLimit($limit, $offset);
             include_once "../../views/admin/manage-product-view.php";
@@ -60,7 +65,7 @@
 
         public function deleteProduct($id) {
             $result = $this->model->deleteProduct($id);
-            return $result;
+            include_once "../../views/admin/resultDelete.php";
         }
          //Lấy thông tin sản phẩm theo tên gần đúng
         public function getProductByName($name) {
@@ -107,7 +112,22 @@
 
         public function getProductById($id) {
             $data = $this->model->getProductById($id);
-            return $data;
+            include_once "../../views/detailProduct/product-detail-view.php";
+        }
+
+        public function getProductByIdBreadCrumb($id) {
+            $data = $this->model->getProductById($id);
+            include_once "../../views/detailProduct/breadcrumb.php";
+        }
+
+        public function getProductByIdImage($id) {
+            $data = $this->model->getProductById($id);
+            include_once "../../views/detailProduct/productImage.php";
+        }
+
+        public function getProductByIdUpdate($id) {
+            $data = $this->model->getProductById($id);
+            include_once "../../views/admin/update-product-view.php";
         }
 
         // public function searchforProduct($searchstr){

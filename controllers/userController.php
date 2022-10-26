@@ -30,9 +30,9 @@
             }
         }
 
-        public function getInfoUser($username, $password) {
+        public function getInfoAdmin($username, $password) {
             $data = $this->model->getUser($username, $password);
-            return $data;
+            include_once "../../views/admin/admin-info-view.php";
         }
 
         //Đăng ký

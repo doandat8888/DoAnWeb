@@ -14,17 +14,6 @@
                 }
             }
         }
-        //Cập nhật lại số lượng sản phẩm
-        // $productController = new ProductController();
-        // if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))){
-        //     if(count($_SESSION['cart']) > 0){
-        //         for($i = 0; $i < count($_SESSION['cart']); $i++){
-        //             $quantityBuy = $_SESSION['cart'][$i][5];
-        //             $name = $_SESSION['cart'][$i][0];
-                    
-        //         }
-        //     }
-        // }
     }
     else{
         echo "<script type='text/javascript'>alert('Đã có lỗi xảy ra. Vui lòng thử lại');</script>";

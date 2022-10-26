@@ -14,6 +14,12 @@
             return $data;
         }
 
+        public function getCategoryListUpdateProduct($name) {
+            $nameSelected = $name;
+            $data = $this->model->getCategoryList();
+            include_once "../../views/admin/all-category-update-product-view.php";
+        }
+
         //Thêm một danh mục mới
         public function setCategory($categoryname) {
             $result = NULL;
@@ -38,6 +44,11 @@
         public function getCategoryById($id) {
             $data = $this->model->getCategoryById($id);
             return $data;
+        }
+
+        public function getCategoryByIdUpdateProduct($id) {
+            $data = $this->model->getCategoryById($id);
+            include_once "../../views/admin/category-update-view.php";
         }
         //xóa danh mục sản phẩm
         public function deleteCategory($id) {
