@@ -75,8 +75,9 @@
         //Lấy thông tin sản phẩm theo tên
         public function getProductByNameProduct($quantity, $name) {
             $quantityBuy = $quantity;
-            $data = $this->model->getProductByNameProduct($name);
-            include_once "../../views/checkout/update-quantity-view.php";
+            $nameProduct = $name;
+            $data = $this->model->getProductByNameProduct($nameProduct);
+            include "../../views/checkout/update-quantity-view.php";
         }
 
         public function updateQuantity($quantity, $name) {

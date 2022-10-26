@@ -3,5 +3,5 @@
     $productController = new ProductController();
     $productQuantity = $data[0]->getQuantity();
     $productQuantityNew = $productQuantity - $quantityBuy;
-    $productController->updateQuantity($productQuantityNew, $name);
+    $productController->updateQuantity($productQuantityNew, $nameProduct);
 ?>
