@@ -79,15 +79,7 @@
                                     <?php 
                                         include "../../controllers/categoryProductController.php";
                                         $controller = new CategoryProductController();
-                                        $data = $controller->getCategoryList();
-                                        foreach ($data as $category) {
-                                            if($category->getStatus() == 1) {
-                                                $categoryName = $category->getName();
-                                                echo "
-                                                    <option value='".$category->getId()."'>$categoryName</option>
-                                                ";
-                                            }
-                                        }
+                                        $controller->getCategoryListManageProduct();
                                     ?>
                                     
                                 </select>

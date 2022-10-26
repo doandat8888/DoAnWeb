@@ -9,15 +9,20 @@
         }
 
         //Danh sách danh mục sản phẩm
-        public function getCategoryList() {
+        public function getCategoryListManageProduct() {
             $data = $this->model->getCategoryList();
-            return $data;
+            include_once "../../views/admin/category-manage-product.php";
         }
 
         public function getCategoryListUpdateProduct($name) {
             $nameSelected = $name;
             $data = $this->model->getCategoryList();
             include_once "../../views/admin/all-category-update-product-view.php";
+        }
+
+        public function getCategoryListPage() {
+            $data = $this->model->getCategoryList();
+            include_once "../../views/admin/page-list-category-view.php";
         }
 
         //Thêm một danh mục mới
@@ -33,32 +38,27 @@
                         $result = 1;
                     }
             }
-            return $result;
+            include_once "../../views/admin/result-add-category.php";
         }
-        //Lấy ra danh mục theo tên danh mục
-        public function getCategoryByName($categoryname) {
+
+        public function getCategoryPageByName($categoryname) {
             $data = $this->model->getCategoryByName($categoryname);
-            return $data;
+            include_once "../../views/admin/page-list-category-view.php";
         }
-        //Lấy ra danh mục sản phẩm theo id danh mục
-        public function getCategoryById($id) {
+
+        public function getCategoryByIdUpdateCategory($id) {
             $data = $this->model->getCategoryById($id);
-            return $data;
+            include_once "../../views/admin/category-update-view.php";
         }
 
         public function getCategoryByIdUpdateProduct($id) {
             $data = $this->model->getCategoryById($id);
-            include_once "../../views/admin/category-update-view.php";
+            include_once "../../views/admin/category-update-product-view.php";
         }
         //xóa danh mục sản phẩm
         public function deleteCategory($id) {
             $result = $this->model->deleteCategory($id);
-            return $result;
-        }
-        //cập nhật danh mục sản phẩm
-        public function editCategory1($id, $name) {
-            $result = $this->model->editCategory($id, $name);
-            return $result;
+            include_once "../../views/admin/result-delete-category.php";
         }
 
         public function editCategory($id, $name) {
@@ -81,17 +81,17 @@
                     $result = 1;
                 }
             }
-            return $result;
+            include_once "../../views/admin/result-edit-category.php";
         }
 
         public function getAllCategoryByLimit($limit, $offset) {
             $data = $this->model->getAllCategoryByLimit($limit, $offset);
-            return $data;
+            include_once "../../views/admin/category-view.php";
         }
 
         public function getCategoryByNameLimit($name, $limit, $offset) {
             $data = $this->model->getCategoryByNameLimit($name, $limit, $offset);
-            return $data;
+            include_once "../../views/admin/category-view.php";
         }
     }
 ?>

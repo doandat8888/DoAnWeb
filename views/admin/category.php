@@ -60,18 +60,10 @@ include_once "../../controllers/categoryProductController.php";
                 <?php
                 include_once "../../controllers/categoryProductController.php";
                 $controller = new CategoryProductController();
-                $data = $controller->getCategoryList();
                 if(isset($_POST['add-submit'])) {
                     $name = $_POST['cat-name'];
                     $controller = new CategoryProductController();
-                    $result = $controller->setCategory($name);
-                    if($result === -1) {
-                        echo "<script type='text/javascript'>alert('Vui lòng nhập tên danh mục sản phẩm');</script>";
-                    }else if($result == 1) {
-                        echo "<script type='text/javascript'>alert('Danh mục sản phẩm đã tồn tại');</script>";
-                    }else if($result == 0) {
-                        echo "<script type='text/javascript'>alert('Thêm danh mục sản phẩm thành công');</script>";
-                    }
+                    $controller->setCategory($name);
                 }
                 if(isset($_POST['edit-submit'])) {
                     if(isset($_GET['id'])) {
@@ -79,14 +71,7 @@ include_once "../../controllers/categoryProductController.php";
                         $name = $_POST['cat-name'];
                         $controller = new CategoryProductController();
                         // $id = $controller->getCategoryByName('cat-name');
-                        $result = $controller->editCategory($id, $name);
-                        if($result == -1) {
-                            echo "<script type='text/javascript'>alert('Vui lòng nhập tên danh mục sản phẩm');</script>";
-                        }else if($result == 1) {
-                            echo "<script type='text/javascript'>alert('Danh mục sản phẩm đã tồn tại');</script>";
-                        }else if($result == 0) {
-                            echo "<script type='text/javascript'>alert('Cập nhật danh mục sản phẩm thành công');</script>";
-                        }
+                        $controller->editCategory($id, $name);
                     }
                 }
                 if(isset($_GET['action'])) {
@@ -94,22 +79,17 @@ include_once "../../controllers/categoryProductController.php";
                         if(isset($_GET['id'])) {
                             $id = $_GET['id'];
                             $controller = new CategoryProductController();
-                            $result = $controller->deleteCategory($id);
-                            if($result == true) {
-                                echo "<script type='text/javascript'>alert('Xóa danh mục sản phẩm thành công');</script>";
-                            }else if($result == false) {
-                                echo "<script type='text/javascript'>alert('Có lỗi xảy ra');</script>";
-                            }
+                            $controller->deleteCategory($id);
                         }
                     }
                 }
                 
-                if(isset($_POST['search-submit'])) {
-                    if($_POST['keyword'] != '') {
-                        $name = $_POST['keyword'];
-                        $data = $controller->getCategoryByName($name);
-                    }
-                }
+                // if(isset($_POST['search-submit'])) {
+                //     if($_POST['keyword'] != '') {
+                //         $name = $_POST['keyword'];
+                //         $data = $controller->getCategoryByName($name);
+                //     }
+                // }
                 $currentPage = 0;
                 if(isset($_POST['page-submit'])) {
                     $currentPage = $_POST['page-submit'];
@@ -135,58 +115,35 @@ include_once "../../controllers/categoryProductController.php";
                             $_SESSION['keyword'] = $keyword;
                         }
                     }
-                    $data = $controller->getCategoryByNameLimit($keyword, $limit, $offset);
+                    $controller->getCategoryByNameLimit($keyword, $limit, $offset);
                 }else {
                     if(isset($_SESSION['keyword'])) {
                         if(isset($_POST['keyword'])) {
                             $keyword = $_POST['keyword'];
                             unset($_SESSION['keyword']);
                             $_SESSION['keyword'] = $keyword;
-                            $data = $controller->getCategoryByNameLimit($keyword, $limit, $offset);
+                            $controller->getCategoryByNameLimit($keyword, $limit, $offset);
                         }else {
                             if(isset($_POST['page-submit'])) {
                                 $keyword = $_SESSION['keyword'];
-                                $data = $controller->getCategoryByNameLimit($keyword, $limit, $offset);
+                                $controller->getCategoryByNameLimit($keyword, $limit, $offset);
                             }else {
                                 unset($_SESSION['keyword']);
-                                $data = $controller->getAllCategoryByLimit($limit, $offset);
+                                $controller->getAllCategoryByLimit($limit, $offset);
                             }
                         }
                     }else {
                         if(isset($_POST['keyword'])) {
                             $keyword = $_POST['keyword'];
                             $_SESSION['keyword'] = $keyword;
-                            $data = $controller->getCategoryByNameLimit($keyword, $limit, $offset);
+                            $controller->getCategoryByNameLimit($keyword, $limit, $offset);
                         }else {
-                            $data = $controller->getAllCategoryByLimit($limit, $offset);
+                            $controller->getAllCategoryByLimit($limit, $offset);
                         }
                     }
                 }
                 
-                if($data != NULL) {
-                    foreach ($data as $category) {
-                        if($category->getStatus() == 1) {
-                            echo "
-                                <tr>
-                                    <th scope='row'>" . $category->getId() . "</th>
-                                    <td>" . $category->getName() . "</td>
-                                    <td class='manage-category-action'>
-                                        <a href='./index.php?page=update-category&id=".$category->getId()."'>
-                                            <button class='edit action-btn' data-toggle='modal' data-target='#editModal'>
-                                                Sửa
-                                            </button>
-                                        </a>    
-                                        <a href='./index.php?page=category&action=delete&id=".$category->getId()."'>
-                                            <button class='delete action-btn' type='submit'>Xóa</button>
-                                        </a>
-                                    </td>
-                                </tr>   
-                            ";
-                        }
-                    }
-                } else {
-                    echo "Không có danh mục nào được tìm thấy. Vui lòng thử lại";
-                }
+                
                 ?>
             </tbody>
         </table>
@@ -201,34 +158,16 @@ include_once "../../controllers/categoryProductController.php";
                 if(isset($_POST['search-submit'])) {
                     if(isset($_POST['keyword'])) {
                         $name = $_POST['keyword'];
-                        $products = $controller->getCategoryByName($name);
+                        $controller->getCategoryPageByName($name);
                     }
                 }else {
                     if(isset($_SESSION['keyword'])) {
                         $name = $_SESSION['keyword'];
-                        $products = $controller->getCategoryByName($name);
+                        $controller->getCategoryPageByName($name);
                     }else {
-                        $products = $controller->getCategoryList();
+                        $controller->getCategoryListPage();
                     }
-                }
-                $currentPage = 1;
-                if(isset($_GET['current-page'])) {
-                    $currentPage = $_GET['current-page'];
-                }
-                $limit = 4;
-                $offset = ($currentPage - 1) * $limit;
-                $totalPages = 0;
-                if($products != NULL) {
-                    $totalProducts = count($products);
-                    $totalPages = ceil($totalProducts / $limit);
-                    for($i = 1; $i <= $totalPages; $i++) {
-                        echo "
-                            <form method='post' action='./index.php?page=category'>
-                                <button class='page-item' name='page-submit' type='submit' value='".$i."'>$i</button>
-                            </form>
-                        ";
-                    }
-                }           
+                } 
             ?>
         </div>
     </div>
