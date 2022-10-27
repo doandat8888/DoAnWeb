@@ -201,5 +201,15 @@
             $data = $this->model->filterProductByTypeLimit($type, $limit, $offset);
             include_once "../../views/product/filter-product-view.php";
         }
+
+        public function Display()
+        {
+            $currentPage = isset($_GET['current-page'])?$_GET['current-page']:1;
+            $limit = 4;
+            $offset = ($currentPage - 1) * $limit;
+            $totalPages = 0;
+
+            include_once "../../views/product/filterProduct.php";
+        }
     }
 ?>

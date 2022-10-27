@@ -164,6 +164,7 @@ html, body {
     .filter{
         display: none;
         transition: all 0.3s ease 0;
+
     }
 
     #product-body{
@@ -297,6 +298,16 @@ h2{
     font-size: 1.5rem;
 }
 
+.filter-content-first{
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.filter-content{
+    margin-top:2rem;
+    margin-bottom: 2rem;
+}
+
 .dropdown{
     margin-top: 1rem;
     font-size: 1rem;
@@ -322,6 +333,91 @@ h2{
     font-weight: 900 !important;
 }
 
+/*Price slider*/
+.price-input{
+    width: 100%;
+    display: flex;
+    margin: 2rem 0 2rem;
+}
+
+.price-input .field{
+    align-items: center;
+    width: 100%;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+.price-input .separator{
+    display: flex;
+    margin: 0.2rem 0.5rem 0rem 0.5rem;
+}
+
+.field input{
+    width: 100%;
+    outline: none;
+    text-align: center;
+    border-radius: 0.5rem;
+    border: 1px solid #999;
+    -moz-appearance: textfield;
+}
+
+.price{
+    text-align: left;
+    font-size: 15px;
+}
+
+.slider{
+    height: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: lightgray;
+    position: relative;
+}
+
+.slider .progress{
+    height: 0.5rem;
+    left: 0%;
+    right: 0%;
+    position: absolute;
+    border-radius: 0.5rem;
+    background: var(--main-color);
+}
+
+.range-input{
+    position: relative;
+}
+
+.range-input input{
+    position: absolute;
+    top: -0.5rem;
+    height: 0.5rem;
+    width: 100%;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    height: 1.7rem;
+    width: 1.7rem;
+    border-radius: 50%;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    background: var(--main-color);
+}
+
+input[type="range"]::-moz-range-thumb{
+    height: 1.7rem;
+    width: 1.7rem;
+    border-radius: 50%;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    background: var(--main-color);
+    position: inherit;
+
+}
 /*The filter 'n' reset btn*/
 .btnFilter{
     width: 100%;

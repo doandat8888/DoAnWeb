@@ -178,7 +178,7 @@
                             <input type="checkbox" class="filter-item-check pro-color" value="gray" />  Xám
                         </div>
                     </div> -->
-                    <div class="category-container filter">
+                    <div class="category-container filter-content-first">
                         <div class="filter-title">Danh mục</div>
                         <div class="filter-item">
                             <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="0" />  Đầm thun
@@ -206,7 +206,6 @@
                         </div>
                     </div>
 
-
                     <!-- <select title="Mức giá" class="selectpicker" name="price" id="price" required>
                         <option value="less_1m">Dưới đ1.000.000</option>
                         <option value="1m-2m">đ1.000.000 - đ2.000.000</option>
@@ -214,16 +213,35 @@
                         <option value="3.5m-5m">đ3.500.000 - đ5.000.000</option>
                         <option value="more_5m">Trên đ5.000.000</option>
                     </select> -->
-                    <div class="price">
-                        <div class="price-title">Khoảng giá</div>
+                    
+                    <div class="price filter-content">
+                        <!-- <div class="price-title">Khoảng giá</div>
                         <input type="hidden" name="hidden-minimum-price" value="0"></input>
                         <input type="hidden" name="hidden-maximum-price" value="10000000"></input>
                         <div id="price-show"></div>
-                        <div id="price-range"></div>
+                        <div id="price-range"></div> -->
+                        <div class="price-title">Khoảng giá</div>
+                        <p style="font-size: 12px; margin-top:1rem;">Dùng slider hoặc nhập giá trị vào</p>
+                        <div class="price-input">
+                            <div class="field">
+                                <input type="number" name="input-min" class="input-min" value="0">
+                            </div>
+                            <div class="separator"> đến </div>
+                            <div class="field">
+                                <input type="number" name="input-max" class="input-max" value="10000000">
+                            </div>
+                        </div>
+                        <div class="slider">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="range-input">
+                            <input type="range" class="range-min" min="0" max="10000000" value="0" step="500000">
+                            <input type="range" class="range-max" min="0" max="10000000" value="10000000" step="500000">
+                        </div>
                     </div>
 
                     <!-- <select title="Mức chiết khấu" class="selectpicker" name="discount" id="discount" required>
-                        <option value="less_30">Dưới 30%</option>
+                        <-value="less_30">Dưới 30%</->
                         <option value="30-50">30% - 50%</option>
                         <option value="50-70">50% - 70%</option>
                         <option value="more_70">Trên 70%</option>
@@ -232,80 +250,79 @@
 
                     <button type="submit" class="btn btn-black btnFilter" id="filterbutton">Lọc</button>
                     <!-- <?php 
-                        if (isset($_GET["type"])){
-                            $type = $_GET["type"];
-                            echo "<input type='hidden' name='type' value='".$type."'></input>";
-                        }else {
-                            echo "<input type='hidden' name='type' value='-1'></input>";
-                        }
+                        // if (isset($_GET["type"])){
+                        //     $type = $_GET["type"];
+                        //     echo "<input type='hidden' name='type' value='".$type."'></input>";
+                        // }else {
+                        //     echo "<input type='hidden' name='type' value='-1'></input>";
+                        // }
         
-                        if(isset($_GET["current-page"])) {
-                            $currentPage = $_GET["current-page"];
-                            echo "<input type='hidden' name='current-page' value='".$currentPage."'></input>";
-                        }else {
-                            echo "<input type='hidden' name='current-page' value='1'></input>";
-                        }
+                        // if(isset($_GET["current-page"])) {
+                        //     $currentPage = $_GET["current-page"];
+                        //     echo "<input type='hidden' name='current-page' value='".$currentPage."'></input>";
+                        // }else {
+                        //     echo "<input type='hidden' name='current-page' value='1'></input>";
+                        // }
         
-                        if(isset($_GET["size"])) {
-                            $size = $_GET["size"];
-                            if($size != '') {
-                                echo "<input type='hidden' name='size' value='".$size."'></input>";
-                            }else {
-                                echo "<input type='hidden' name='size' value=''></input>";
-                            }
-                        }
+                        // if(isset($_GET["size"])) {
+                        //     $size = $_GET["size"];
+                        //     if($size != '') {
+                        //         echo "<input type='hidden' name='size' value='".$size."'></input>";
+                        //     }else {
+                        //         echo "<input type='hidden' name='size' value=''></input>";
+                        //     }
+                        // }
         
-                        if(isset($_GET["color"])) {
-                            $color = $_GET["color"];
-                            if($color != '') {
-                                echo "<input type='hidden' name='color' value='".$color."'></input>";
-                            }else {
-                                echo "<input type='hidden' name='color' value=''></input>";
-                            }
-                        }
+                        // if(isset($_GET["color"])) {
+                        //     $color = $_GET["color"];
+                        //     if($color != '') {
+                        //         echo "<input type='hidden' name='color' value='".$color."'></input>";
+                        //     }else {
+                        //         echo "<input type='hidden' name='color' value=''></input>";
+                        //     }
+                        // }
         
-                        if(isset($_POST["category"])) {
-                            $category = $_POST["category"];
-                            if($category != '') {
-                                echo "<input type='hidden' name='category' value='".$category."'></input>";
-                            }else {
-                                echo "<input type='hidden' name='category' value='-1'></input>";
-                            }
-                        }else {
-                            echo "<input type='hidden' name='category' value='-1'></input>";
-                        }
+                        // if(isset($_POST["category"])) {
+                        //     $category = $_POST["category"];
+                        //     if($category != '') {
+                        //         echo "<input type='hidden' name='category' value='".$category."'></input>";
+                        //     }else {
+                        //         echo "<input type='hidden' name='category' value='-1'></input>";
+                        //     }
+                        // }else {
+                        //     echo "<input type='hidden' name='category' value='-1'></input>";
+                        // }
         
-                        if(isset($_GET["min-price"]) && $_GET["max-price"]) {
-                            $minPrice = $_GET["min-price"];
-                            $maxPrice = $_GET["max-price"];
-                            if($minPrice != -1 && $maxPrice != -1) {
-                                echo "<input type='hidden' name='minimum-price' value='".$minPrice."'></input>";
-                                echo "<input type='hidden' name='maximum-price' value='".$maxPrice."'></input>";
-                            }else {
-                                echo "<input type='hidden' name='minimum-price' value='-1'></input>";
-                                echo "<input type='hidden' name='maximum-price' value='-1'></input>";
-                            }
-                        }else {
-                            echo "<input type='hidden' name='minimum-price' value='-1'></input>";
-                            echo "<input type='hidden' name='maximum-price' value='-1'></input>";
-                        }
+                        // if(isset($_GET["min-price"]) && $_GET["max-price"]) {
+                        //     $minPrice = $_GET["min-price"]
+                        //     $maxPrice = $_GET["max-price"];
+                        //     if($minPrice != -1 && $maxPrice != -1) {
+                        //         echo "<input type='hidden' name='minimum-price' value='".$minPrice."'></input>";
+                        //         echo "<input type='hidden' name='maximum-price' value='".$maxPrice."'></input>";
+                        //     }else {
+                        //         echo "<input type='hidden' name='minimum-price' value='-1'></input>";
+                        //         echo "<input type='hidden' name='maximum-price' value='-1'></input>";
+                        //     }
+                        // }else {
+                        //     echo "<input type='hidden' name='minimum-price' value='-1'></input>";
+                        //     echo "<input type='hidden' name='maximum-price' value='-1'></input>";
+                        // }
                     ?> -->
                 </form>
             </div>
         </div>
-        <!--Products-->
+
+        <!--NƠI HIỆN SẢN PHẨM + PHÂN TRANG-->
         <div class="col-12 col-lg-9">
             <div class='products' id='product-body'>          
                 <?php
-                    $currentPage = isset($_GET['current-page'])?$_GET['current-page']:1;
-                    $limit = 4;
-                    $offset = ($currentPage - 1) * $limit;
-                    $totalPages = 0;
-
-                    include_once "./filterProduct.php";
+                    require_once "../../controllers/productController.php";
+                    $controller = new ProductController();
+                    $controller->Display();
                 ?>
             </div>
         </div>
+
     </div>
     <footer>
         <?php
@@ -396,19 +413,19 @@
             // })
 
             //$('#price-show').html("Từ " + numberWithComat(100000) + 'đ' + " - " + numberWithComat(10000000) + 'đ');
-            $('#price-range').slider({
-                range: true,
-                min: 100000,
-                max: 10000000,
-                values: [100000, 10000000],
-                step: 100000,
-                stop: function (event, ui) {
-                    $('#price-show').html("Từ " + numberWithComat(ui.values[0]) + 'đ' + " - " + numberWithComat(ui.values[1]) + 'đ');
-                    $('#hidden-minimum-price').val(ui.values[0]);
-                    $('#hidden-maximum-price').val(ui.values[1]);
-                    filterData();
-                }
-            })
+            // $('#price-range').slider({
+            //     range: true,
+            //     min: 100000,
+            //     max: 10000000,
+            //     values: [100000, 10000000],
+            //     step: 100000,
+            //     stop: function (event, ui) {
+            //         $('#price-show').html("Từ " + numberWithComat(ui.values[0]) + 'đ' + " - " + numberWithComat(ui.values[1]) + 'đ');
+            //         $('#hidden-minimum-price').val(ui.values[0]);
+            //         $('#hidden-maximum-price').val(ui.values[1]);
+            //         filterData();
+            //     }
+            // })
         })
     </script> 
 </body>

@@ -236,9 +236,9 @@
             taoKetNoi($link);
             $data = array();
             $query = "SELECT * from products WHERE `status` = 1 ";
-            if(isset($_POST['minimumPrice']) && isset($_POST['maximumPrice'])) {
-                $minimumPrice = $_POST['minimumPrice'];
-                $maximumPrice = $_POST['maximumPrice'];
+            if(isset($_GET['input-min']) && isset($_GET['input-max'])) {
+                $minimumPrice = $_GET['input-min'];
+                $maximumPrice = $_GET['input-max'];
                 $query .= "AND price BETWEEN $minimumPrice AND $maximumPrice ";
             }
             if(isset($_POST['size'])) {
@@ -278,9 +278,9 @@
             taoKetNoi($link);
             $data = array();
             $query = "SELECT * from products WHERE `type` = $type ";
-            if(isset($_POST['minimumPrice']) && isset($_POST['maximumPrice'])) {
-                $minimumPrice = $_POST['minimumPrice'];
-                $maximumPrice = $_POST['maximumPrice'];
+            if(isset($_GET['input-min']) && isset($_GET['input-max'])) {
+                $minimumPrice = $_GET['input-min'];
+                $maximumPrice = $_GET['input-max'];
                 $query .= "AND price BETWEEN $minimumPrice AND $maximumPrice ";
             }
             if(isset($_POST['size'])) {
@@ -320,9 +320,9 @@
             taoKetNoi($link);
             $data = array();
             $query = "SELECT * from products  WHERE `status` = 1 ";
-            if(isset($_POST['minimumPrice']) && isset($_POST['maximumPrice'])) {
-                $minimumPrice = $_POST['minimumPrice'];
-                $maximumPrice = $_POST['maximumPrice'];
+            if(isset($_GET['input-min']) && isset($_GET['input-max'])) {
+                $minimumPrice = $_GET['input-min'];
+                $maximumPrice = $_GET['input-max'];
                 $query .= "AND price BETWEEN $minimumPrice AND $maximumPrice ";
             }
             if(isset($_POST['size'])) {
@@ -363,9 +363,9 @@
             taoKetNoi($link);
             $data = array();
             $query = "SELECT * from products WHERE `type` = $type ";
-            if(isset($_POST['minimumPrice']) && isset($_POST['maximumPrice'])) {
-                $minimumPrice = $_POST['minimumPrice'];
-                $maximumPrice = $_POST['maximumPrice'];
+            if(isset($_GET['input-min']) && isset($_GET['input-max'])) {
+                $minimumPrice = $_GET['input-min'];
+                $maximumPrice = $_GET['input-max'];
                 $query .= "AND price BETWEEN $minimumPrice AND $maximumPrice ";
             }
             if(isset($_POST['size'])) {

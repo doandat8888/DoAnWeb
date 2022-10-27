@@ -25,7 +25,6 @@ var filterControl = document.getElementById('filter-control');
 var filterArrow = document.getElementById('filter-arrow');
 
 filterControl.onclick = function() {
-                
     if (filter.classList.contains('active')){
         filter.classList.remove('active');
         filterArrow.classList.replace('fa-angle-up', 'fa-angle-down');
@@ -39,33 +38,14 @@ filterControl.onclick = function() {
     }
 }
 
-//Filters' dropdown open + collapse
-var selected = document.querySelectorAll('.selected');
-var optionContainer = document.querySelectorAll('.option-container');
-
-for (let i = 0; i < selected.length; i++){
-    selected[i].onclick = function() {
-        optionContainer[i].classList.toggle('active');
-    }
-}
-
-for (let i = 0; i < optionContainer.length; i++){
-    let optionList = optionContainer[i].querySelectorAll('.option');
-        optionList.forEach(o => {
-            o.addEventListener("click", () => {
-                selected[i].innerHTML = o.querySelector('label').innerHTML;
-                optionContainer[i].classList.remove('active');
-            })
-        });
-}
-
 //Hàm biến đổi đơn vị tiền tệ thành số nguyên. VD: 20.000đ -> 20000
 const formatNumber = (number) => {
     return Number(number.replace(/[^0-9,-]+/g,""));
 }
+
 //Hàm biến đổi số nguyên thành đơn vị tiền tệ
 const numberWithCommat = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
 var navBtn = document.getElementById('navigation-bar');
@@ -102,6 +82,7 @@ cancleBtnCart.onclick = function() {
     cartMenu.classList.remove('translateX');
 }
 const cartItems = document.querySelectorAll('.cart-item');
+
 //Tính tổng số lượng hàng & tính tổng tiền
 var count = 0;
 
@@ -123,20 +104,52 @@ cartNumber.innerHTML = count;
 const totalMoney = document.querySelector('.cart-total-money');
 totalMoney.innerHTML = numberWithCommat(totalPrice) + 'đ';
 
-// //scrollToTop
-// mybutton = document.getElementById("back-to-top");
+//Slider function
+const rangeInput = document.querySelectorAll(".range-input input");
+priceInput = document.querySelectorAll(".price-input input");
+progress = document.querySelector(".slider .progress");
 
-// window.onscroll = function() {scrollFunction()};
+let priceGap = 500000;
 
-// function scrollFunction() {
-//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-//     mybutton.style.display = "block";
-//   } else {
-//     mybutton.style.display = "none";
-//   }
-  
-// }
-// function scrollToTop() {
-  
-// 	window.scrollTo(0, 0);
-// }
+priceInput.forEach(input=>{
+    input.addEventListener("input", e=>{
+        let minVal = parseInt(priceInput[0].value),
+        maxVal = parseInt(priceInput[1].value);
+
+        if ((maxVal - minVal >= priceGap) && maxVal <= 10000000){
+            if(e.target.className === "input-min"){
+                rangeInput[0].value = minVal;
+                progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+            }
+            else{
+                rangeInput[1].value = maxVal;
+                progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+            }
+        }
+        else {
+            rangeInput[1].value = 10000000;
+        }
+    })
+})
+
+rangeInput.forEach(input=>{
+    input.addEventListener("input", e=>{
+        let minVal = parseInt(rangeInput[0].value),
+        maxVal = parseInt(rangeInput[1].value);
+
+        if (maxVal - minVal < priceGap){
+            if(e.target.className === "range-min"){
+                rangeInput[0].value = maxVal - priceGap;
+            }
+            else{
+                rangeInput[1].value = minVal + priceGap;
+            }
+        }
+        else{
+            priceInput[0].value = minVal;
+            priceInput[1].value = maxVal;
+            progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+            progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+        }
+    })
+})

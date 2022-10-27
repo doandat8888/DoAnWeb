@@ -1,3 +1,5 @@
+<!-- IN RA SẢN PHẨM (ĐƯỢC GỌI BỞI CONTROLLER) -->
+
 <?php 
     if($data == NULL) {
         echo "Không có sản phẩm nào được tìm thấy";

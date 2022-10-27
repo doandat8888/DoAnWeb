@@ -1,3 +1,5 @@
+<!-- PHÂN TRANG NẾU KHÔNG CÓ TYPE -->
+
 <?php 
     if($products != NULL) {
         $currentPage = isset($_GET['current-page'])?$_GET['current-page']:1;
@@ -6,19 +8,20 @@
         $totalProducts = count($products);
         $totalPages = ceil($totalProducts / $limit);
         
-        if(isset($_GET['category'])){
+        if(isset($_GET['category']) || isset($_GET['input-min']) || isset($_GET['input-max'])){
             for($i = 1; $i <= $totalPages; $i++) {
                 if($i != $currentPage){
                     echo "
-                        <a href='./index.php?&current-page=".$i.$querystring ."' class='page-item'>$i</a>
+                        <a href='./index.php?&current-page=".$i.$_SESSION['querystring']."' class='page-item'>$i</a>
                     ";
                 }
                 else{
                     echo"
-                        <strong style='background-color:black;' class='page-item'>$i</strong>
+                        <strong style='color:black; text-decoration:underline;' class='page-item'>$i</strong>
                     ";
                 }
-            }                        
+            }
+            unset($_SESSION['querystring']);                        
         }
         else{
             for($i = 1; $i <= $totalPages; $i++) {
@@ -29,7 +32,7 @@
                 }
                 else{
                     echo"
-                        <strong style='background-color:black;' class='page-item'>$i</strong>
+                        <strong style='color:black; text-decoration:underline;' class='page-item'>$i</strong>
                     ";
                 }
             } 
