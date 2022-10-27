@@ -302,7 +302,7 @@
                     $offset = ($currentPage - 1) * $limit;
                     $totalPages = 0;
 
-                    include "./filterProduct.php";
+                    include_once "./filterProduct.php";
                 ?>
             </div>
         </div>

@@ -25,6 +25,11 @@
             include_once "../../views/admin/page-list-view.php";
         }
 
+        public function getAllProductFilterPage() {
+            $products = $this->model->getAllProduct();
+            include_once "../../views/product/filter-product-page-view.php";
+        }
+
         public function getAllProductDetail() {
             $data = $this->model->getAllProduct();
             include_once "../../views/detailProduct/all-product-like.php";
@@ -105,9 +110,19 @@
             return $data;
         }
 
+        public function getProductByTypePage($type) {
+            $products = $this->model->getProductByType($type);
+            include_once "../../views/product/filter-product-page-type-view.php";
+        }
+
         public function getProductByTypeLimit($type, $limit, $offset) {
             $data = $this->model->getProductByTypeLimit($type, $limit, $offset);
             return $data;
+        }
+
+        public function getProductByTypeLimitHome($type, $limit, $offset) {
+            $data = $this->model->getProductByTypeLimit($type, $limit, $offset);
+            include_once "./product-type-view.php";
         }
 
         public function getProductById($id) {
@@ -159,8 +174,8 @@
         }
 
         public function filterProduct() {
-            $data = $this->model->filterProduct();
-            return $data;
+            $products = $this->model->filterProduct();
+            include_once "../../views/product/filter-product-page-view.php";
         }
 
         public function filterProductByType($type) {
@@ -170,14 +185,21 @@
             }
         }
 
+        public function filterProductByTypePage($type) {
+            if(isset($_POST['action'])) {
+                $products = $this->model->filterProductByType($type);
+                include_once "../../views/product/filter-product-page-type-view.php";
+            }
+        }
+
         public function filterProductByLimit($limit, $offset) {
             $data = $this->model->filterProductByLimit($limit, $offset);
-            return $data;
+            include_once "../../views/product/filter-product-view.php";
         }
 
         public function filterProductByTypeLimit($type, $limit, $offset) {
             $data = $this->model->filterProductByTypeLimit($type, $limit, $offset);
-            return $data;
+            include_once "../../views/product/filter-product-view.php";
         }
     }
 ?>
