@@ -53,7 +53,7 @@
                                 <p class='card-text'>
                                     <div class='product-price d-flex'>
                                         <div class='product-price__new'>".currency_format($product->getPrice())."</div>
-                                        <strike><div class='product-price__old'>1.150.000đ</div></strike>
+                                        <strike><div class='product-price__old' style='font-size:12px;'>1.150.000đ</div></strike>
                                     </div>
                                 </p>
                                 <a href='../detailProduct/index.php?id=".$product->getId()."' class='btn btn-primary' style='background-color: transparent; border: none;'>

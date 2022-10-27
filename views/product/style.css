@@ -118,7 +118,7 @@ html, body {
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px){
     html, body {
         height: 100%;
         width: 100%;
@@ -164,11 +164,10 @@ html, body {
     .filter{
         display: none;
         transition: all 0.3s ease 0;
-
     }
 
     #product-body{
-        margin-top: 8rem !important;
+        margin-top: 4rem !important;
         display: flex;
         justify-content: center;
     }
@@ -179,6 +178,13 @@ html, body {
 
     .bootstrap-select .dropdown-menu{
         min-width: 95% !important;
+    }
+}
+
+@media only screen and (max-width: 990px){
+    .filter{
+        display: none;
+        transition: all 0.3s ease 0;
     }
 }
 
@@ -230,8 +236,8 @@ html, body {
     .product-price__new {
         font-size: 1.2rem !important;
     }
-    .product-price__old {
-        font-size: 1.2rem !important;
+    .product-price .product-price__old {
+        font-size: 12px !important;
     }
     /* .product-cart {
         width: 2rem !important;
