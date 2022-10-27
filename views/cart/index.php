@@ -1,4 +1,3 @@
-<!-- format đơn vị tiền tệ -->
 <?php
     // session_start();
     if (!function_exists('currency_format')) {
@@ -33,10 +32,7 @@
             <?php 
                 include_once "../../components/header.php";
             ?>
-            <?php
-                include_once "../../controllers/manageCart.php";              
-            ?>
-            <form action="../../views/cart/index.php?action=submit" method="POST">
+            <form action="#" method="POST">
                 <div class="cart-body">
                     <div class="row">
                         <div class="col-lg-7 col-md-12 col-12 cart-products">
@@ -53,7 +49,7 @@
                                                 <?php
                                                     if(count($_SESSION['cart'])>0) {
                                                         echo'
-                                                        <p class="cart-info-content-price-money">'.currency_format($totalcartprice).'</p>';
+                                                        <p class="cart-info-content-price-money">'.currency_format($total_cart_price).'</p>';
                                                     }
                                                     else {
                                                         echo'
@@ -70,21 +66,17 @@
                                                     Đặt hàng
                                                 </div>
                                             </a>
-                                            <a href="./index.php?delcart=1" class="cart-btn-link">
-                                                <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
-                                                    Xóa giỏ hàng
-                                                </div>
+                                            <a href="./index.php" class="cart-btn-link">
+                                                <button type="submit" name="action" value="Empty cart" class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">Xóa giỏ hàng</button>
                                             </a>
-                                            <a href="./index.php?updatecart=1" class="cart-btn-link">
-                                                <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
-                                                    Cập nhật giỏ hàng
-                                                </div>
+                                            <a href="./index.php" class="cart-btn-link">
+                                                <button type="submit" name="action" value="Update cart" class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">Cập nhật giỏ hàng</button>
                                             </a>
                                             <a href="../../index.php" class="cart-btn-link">
                                                 <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
                                                     Về trang chủ
                                                 </div>
-                                            </a>
+                                            </a>             
                                         </div>
                                     </div>';
                                 } 

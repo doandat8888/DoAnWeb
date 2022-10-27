@@ -31,7 +31,7 @@
         <div class="cart-total-title">Tổng cộng:</div>
         <div class="cart-total-money"></div>
     </div>
-    <a href="../../views/cart/index.php" class="cart-btn-link">
+    <a href="../views/cart/index.php" class="cart-btn-link">
         <div class="cart-btn-view">
             Xem giỏ hàng
         </div>

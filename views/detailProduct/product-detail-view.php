@@ -36,105 +36,87 @@ if (!function_exists('color_format')) {
     }
 }
 ?>
-
 <?php 
     foreach ($data as $product) {
         $arraysize = explode(", ",$product->getSize());
-        $arraycolor = explode(", ",$product->getColor());
-        echo '      
-            <div class="pro-title">
-                <h3>'.$product->getName().'</h3>
-            </div>
-            <div class="detail-pro-price">
-                <span class="detail-pro-sale">-30%</span>
-                <span class="detail-pro-price" name="price">'.currency_format($product->getPrice()).'</span>
-                <del>'.currency_format(2000000).'</del>
-            </div>
-            <div class="size-select">';?>
-                <?php
-                    $sizechoose = '';
-                    foreach ($arraysize as $spro) { 
-                        echo '
-                            <input type="radio" class="size-selector" name="size" id="'.strtoupper($spro).'" value="'.strtoupper($spro).' "autocomplete="off" checked="">
-                            <label class="size-btn" for="'.strtoupper($spro).'">'.strtoupper($spro).'</label>';  
-                        $sizechoose = strtoupper($spro);
-                    }?>
+        $arraycolor = explode(", ",$product->getColor());?>
+             
+        <form action="#" method="POST">
         <?php
-        echo '
-            </div>
-            <div class="color-select">';
-        ?>
-        <?php
-                $colorchoose = '';
-                foreach ($arraycolor as $cpro) {
-                    $colorHex = color_format($cpro);
-                    echo '
-                        <input type="radio" class="color-selector" name="color" id="'.strtolower($cpro).'" value="'.strtolower($cpro).'" autocomplete="off" checked="">
-                        <label class="color-btn" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>';
-                    $colorchoose = strtolower($cpro);
-                }
-        ?>
-        <?php
-        echo '
-            </div>
-            <div class="selector-actions">
-                <div class="quantity mb-3" style="clear: both;">
-                    <button class="minusdecrease">-</button>
-                    <input type="text" value="1" min="0" max="'.$product->getQuantity().'" name="prod_quantity" class="detail-number">
-                    <button class="plusincrease">+</button>
-                </div>
-                <br style="clear: both"></br>
-
-                <div class="d-flex">
-                    <form action="./index.php?page=detailproduct&id='.$product->getId().'" method="POST">
-                        <input type="hidden" name="prod_id" value="'.$product->getId().'">
-                        <input type="hidden" name="prod_name" value="'.$product->getName().'">
-                        <input type="hidden" name="prod_image" value="'.$product->getImage01().'">
-                        <input type="hidden" name="prod_price" value="'.$product->getPrice().'">
-                        <input type="hidden" name="prod_size" value="'.$sizechoose.'">  
-                        <input type="hidden" name="prod_color" value="'.$colorchoose.'">
-                        <input type="hidden" value="1" min="0" max="'.$product->getQuantity().'" name="prod_quantity" class="detail-number">
-                        <button type="submit" name="action" value="addtocart" class="detail-btn add-btn gap-2  mx-auto">Thêm vào giỏ</button>
-                    </form>
-                    <form action="../../views/cart/index.php?action=buynow&id='.$product->getId().'" method="POST">
-                        <input type="hidden" name="prod_id" value="'.$product->getId().'">
-                        <input type="hidden" name="prod_name" value="'.$product->getName().'">
-                        <input type="hidden" name="prod_image" value="'.$product->getImage01().'">
-                        <input type="hidden" name="prod_price" value="'.$product->getPrice().'">
-                        <input type="hidden" name="prod_size" value="'.$sizechoose.'">  
-                        <input type="hidden" name="prod_color" value="'.$colorchoose.'">
-                        <input type="hidden" value="1" min="0" max="'.$product->getQuantity().'" name="prod_quantity" class="detail-number">
-                        <button type="submit" name="action" value="buynow" class="detail-btn buy-btn gap-2">Mua ngay</button>
-                    </form>
-                </div>
-            </div>';?>
-        <?php
-            // information product
             echo'
-            <div class="info">
-                <div class="info-list d-flex">
-                    <div class="info-item">Giới thiệu</div>
+                <div class="pro-title">
+                    <h3 id="prod_name">'.$product->getName().'</h3>
                 </div>
-                <div class="info-content">
-                    <div class="info-content-item block">
-                        '.$product->getDescription().'
+                <div class="detail-pro-price">
+                    <span class="detail-pro-sale">-30%</span>
+                    <span class="detail-pro-price" name="price">'.currency_format($product->getPrice()).'</span>
+                    <del>'.currency_format(2000000).'</del>
+                </div>
+                <div class="size-select">';?>
+                    <?php
+                        foreach ($arraysize as $spro) { 
+                            echo '
+                                <input type="radio" class="size-selector" name="size" id="'.strtoupper($spro).'" value="'.strtoupper($spro).' "autocomplete="off" checked="">
+                                <label class="size-btn" for="'.strtoupper($spro).'">'.strtoupper($spro).'</label>';  
+                        }?>
+            <?php
+            echo '
+                </div>
+                <div class="color-select">';
+            ?>
+            <?php
+                    foreach ($arraycolor as $cpro) {
+                        $colorHex = color_format($cpro);
+                        echo '
+                            <input type="radio" class="color-selector" name="color" id="'.strtolower($cpro).'" value="'.strtolower($cpro).'" autocomplete="off" checked="">
+                            <label class="color-btn" style="background-color:#'.$colorHex.';" for="'.strtolower($cpro).'"></label>';
+                    }
+            ?>
+            <?php
+            echo '
+                </div>
+                <div class="selector-actions">
+                    <div class="quantity mb-3" style="clear: both;">
+                            <button class="minusdecrease">-</button>
+                            <input type="text" value="1" min="0" max="'.$product->getQuantity().'" name="prod_quantity" class="detail-number">
+                            <button class="plusincrease">+</button>
+                    </div>
+                    <br style="clear: both"></br>
+                    <div class="d-flex">                     
+                        <button type="submit" name="addToCart" value="addToCart" class="detail-btn add-btn gap-2 mx-auto ">Thêm vào giỏ</button>
+                        <button type="submit" name="buyNow" value="buyNow" class="detail-btn buy-btn gap-2">Mua ngay</button>
                     </div>
                 </div>
-            </div>
-            <div class="desc">
-                <p class="desc-policy">
-                    <i class="fa-solid fa-truck-fast"></i>
-                    Giao hàng toàn quốc
-                </p>
-                <p class="desc-policy"> 
-                    <i class="fa-solid fa-thumbs-up"></i>
-                    Cam kết chính hãng
-                </p>
-                <p class="desc-policy">
-                    <i class="fa-solid fa-chess-queen"></i>
-                    Bảo hành trọn đời
-                </p>
-            </div>
-            ';
+                ';?>
+            <?php
+                // information product
+                echo'
+                <div class="info">
+                    <div class="info-list d-flex">
+                        <div class="info-item">Giới thiệu</div>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-content-item block">
+                            '.$product->getDescription().'
+                        </div>
+                    </div>
+                </div>
+                <div class="desc">
+                    <p class="desc-policy">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        Giao hàng toàn quốc
+                    </p>
+                    <p class="desc-policy"> 
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        Cam kết chính hãng
+                    </p>
+                    <p class="desc-policy">
+                        <i class="fa-solid fa-chess-queen"></i>
+                        Bảo hành trọn đời
+                    </p>
+                </div>
+        </form>
+        ';
     }
 ?>
+
