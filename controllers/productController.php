@@ -219,7 +219,8 @@
             $limit = 4;
             $offset = ($currentPage - 1) * $limit;
             $totalPages = 0;
-
+            $type = isset($_GET['type']) ? $_GET['type'] : -1;
+            
             include_once "../../views/product/filterProduct.php";
         }
     }
