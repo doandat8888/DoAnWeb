@@ -6,33 +6,34 @@
         $totalProducts = count($products);
         $totalPages = ceil($totalProducts / $limit);
         
-        if(isset($_GET['category'])){
-            for($i = 1; $i <= $totalPages; $i++) {
-                if($i != $currentPage){
-                    echo "
-                        <a href='./index.php?&current-page=".$i.$querystring ."' class='page-item'>$i</a>
-                    ";
-                }
-                else{
-                    echo"
-                        <strong style='background-color:black;' class='page-item'>$i</strong>
-                    ";
-                }
-            }                        
-        }
-        else{
-            for($i = 1; $i <= $totalPages; $i++) {
-                if($i != $currentPage){
-                    echo "
-                        <a href='./index.php?&current-page=".$i."' class='page-item'>$i</a>
-                    ";
-                }
-                else{
-                    echo"
-                        <strong style='background-color:black;' class='page-item'>$i</strong>
-                    ";
-                }
-            } 
-        }
+            if(isset($_GET['category']) && $queryString != ''){
+                for($i = 1; $i <= $totalPages; $i++) {
+                    if($i != $currentPage){
+                        echo "
+                            <a href='./index.php?&current-page=".$i.$queryString ."' class='page-item'>$i</a>
+                        ";
+                    }
+                    else{
+                        echo"
+                            <strong style='background-color:black;' class='page-item'>$i</strong>
+                        ";
+                    }
+                }                        
+            }
+            else{
+                for($i = 1; $i <= $totalPages; $i++) {
+                    if($i != $currentPage){
+                        echo "
+                            <a href='./index.php?&current-page=".$i."' class='page-item'>$i</a>
+                        ";
+                    }
+                    else{
+                        echo"
+                            <strong style='background-color:black;' class='page-item'>$i</strong>
+                        ";
+                    }
+                } 
+            }
+        
     }   
 ?>

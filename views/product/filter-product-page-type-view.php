@@ -6,11 +6,11 @@
         $totalProducts = count($products);
         $totalPages = ceil($totalProducts / $limit);
         
-        if(isset($_GET['category'])){
+        if(isset($_GET['category']) && $queryString != ''){
             for($i = 1; $i <= $totalPages; $i++) {
                 if($i != $currentPage){
                     echo "
-                        <a href='./index.php?&type=".$type."&current-page=".$i.$querystring ."' class='page-item'>$i</a>
+                        <a href='./index.php?&type=".$type."&current-page=".$i.$queryString ."' class='page-item'>$i</a>
                     ";
                 }
                 else{
@@ -34,5 +34,7 @@
                 }
             } 
         }
+
+        
     }   
 ?>

@@ -25,7 +25,8 @@
             include_once "../../views/admin/page-list-view.php";
         }
 
-        public function getAllProductFilterPage() {
+        public function getAllProductFilterPage($queryStr) {
+            $queryString = $queryStr;
             $products = $this->model->getAllProduct();
             include_once "../../views/product/filter-product-page-view.php";
         }
@@ -78,6 +79,11 @@
             include_once "../../views/admin/manage-product-view.php";
         }
 
+        public function getProductByNameSearchPage($name) {
+            $data = $this->model->getProductByName($name);
+            include_once "../../views/search/search-view.php";
+        }
+
         public function getProductPageByName($name) {
             $data = $this->model->getProductByName($name);
             include_once "../../views/admin/page-list-view.php";
@@ -110,7 +116,9 @@
             return $data;
         }
 
-        public function getProductByTypePage($type) {
+        public function getProductByTypePage($queryStr, $typeProduct) {
+            $type = $typeProduct;
+            $queryString = $queryStr;
             $products = $this->model->getProductByType($type);
             include_once "../../views/product/filter-product-page-type-view.php";
         }
@@ -173,7 +181,8 @@
             include_once "../../views/admin/resultEdit.php";
         }
 
-        public function filterProduct() {
+        public function filterProduct($queryStr) {
+            $queryString = $queryStr;
             $products = $this->model->filterProduct();
             include_once "../../views/product/filter-product-page-view.php";
         }
@@ -185,7 +194,9 @@
             }
         }
 
-        public function filterProductByTypePage($type) {
+        public function filterProductByTypePage($queryStr, $typeProduct) {
+            $type = $typeProduct;
+            $queryString = $queryStr;
             if(isset($_POST['action'])) {
                 $products = $this->model->filterProductByType($type);
                 include_once "../../views/product/filter-product-page-type-view.php";

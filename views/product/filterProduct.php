@@ -37,15 +37,16 @@
         $limit = 4;
         $offset = ($currentPage - 1) * $limit;
         $totalPages = 0;
-        if (isset($_GET["type"])){
-            $type = $_GET["type"];
+        $_SESSION['type'] = isset($_GET['type'])?$_GET['type']:null;
+        if (isset($type)){
             if($type != -1) {
                 $controller->filterProductByTypeLimit($type, $limit, $offset);
             }
-        }
-        else{
+            else{
                 $controller->filterProductByLimit($limit, $offset);
+            }
         }
+        
 
         
     ?>
@@ -53,7 +54,7 @@
 
 <div class="page-list">
     <?php
-        $_SESSION['type'] = isset($_GET['type'])?$_GET['type']:null;
+        //$_SESSION['type'] = isset($_GET['type'])?$_GET['type']:null;
         $limit = 4;
         $size_filter = '';
         $color_filter = '';
@@ -71,11 +72,10 @@
             $color = $_POST['color'];
             $color_filter = implode("','", $color);
         }
-
+        $querystring = "";
         if(isset($_GET['category'])) {
             $category = $_GET['category'];
             $category_filter = implode("", $category);
-            $querystring = "";
             for($i = 0; $i < strlen($category_filter); $i++){
                 $querystring  .= "&category%5B%5D=".$category_filter[$i];
             }
@@ -91,18 +91,18 @@
             if($type != -1) {
                 if(isset($_POST['action'])) {
                     $type = $_GET['type'];
-                    $controller->filterProductByTypePage($type);
+                    $controller->filterProductByTypePage($querystring, $type);
                 }else {
-                    $controller->getProductByTypePage($type);
+                    $controller->getProductByTypePage($querystring, $type);
                 }
                 
             }
-        }else {
-
-            if(isset($_GET['category'])){
-                $controller->filterProduct();
-            }else {
-                $controller->getAllProductFilterPage();
+            else {
+                if(isset($_GET['category'])){
+                    $controller->filterProduct($querystring);
+                }else {
+                    $controller->getAllProductFilterPage($querystring);
+                }
             }
         }
     ?>
