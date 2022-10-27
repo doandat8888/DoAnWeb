@@ -8,7 +8,7 @@
         $totalProducts = count($products);
         $totalPages = ceil($totalProducts / $limit);
         
-        if(isset($_GET['category'])){
+        if(isset($_GET['category']) && $queryString != ''){
             for($i = 1; $i <= $totalPages; $i++) {
                 if($i != $currentPage){
                     echo "
@@ -37,5 +37,7 @@
                 }
             } 
         }
+
+        
     }   
 ?>

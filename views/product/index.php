@@ -248,7 +248,7 @@
                         <option value="special">Giá đặc biệt</option>
                     </select> -->
 
-                    <button type="submit" class="btn btn-black btnFilter" id="filterbutton">Lọc</button>
+                    <button type="submit" class="btn btn-black btnFilter" id="filterbutton" name="action">Lọc</button>
                     <!-- <?php 
                         // if (isset($_GET["type"])){
                         //     $type = $_GET["type"];
