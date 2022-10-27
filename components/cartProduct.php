@@ -6,14 +6,10 @@
             }
         }
     }
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath. '/../controllers/cartController.php');
 ?>
 <?php
-    // include_once "../controllers/cartController.php";
-    // $controller = new CartController();
-    // if(isset($_GET['id'])) {
-    //     $id = $_GET['id'];
-    //     $controller->addProductToCart($id);
-    // }
     if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))):
         $total_cart_price = 0;
         if(sizeof($_SESSION['cart'])>0):
@@ -69,5 +65,11 @@
                 <h3 class="text-center" >Giỏ hàng rỗng</h3>
             </div>';
         endif;
+    else:
+        echo'
+            <div class="col-12 mb-4 overflow-hidden">
+                <img src="../../src/img/nocart.png" class="cart-img w-100 p-3" alt="">
+                <h3 class="text-center" >Giỏ hàng rỗng</h3>
+            </div>';
     endif;
 ?>

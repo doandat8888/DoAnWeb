@@ -1,5 +1,4 @@
 <?php
-    session_start();
     $filepath = realpath(dirname(__FILE__));
     include_once ($filepath. '/../models/userModel.php');
     include_once ($filepath. '/../models/productModel.php');
