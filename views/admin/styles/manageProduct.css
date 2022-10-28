@@ -20,7 +20,7 @@
     margin: 0 auto;
 }
 
-.manage-product .title {
+.title {
     width: 100%;
     text-align: center;
     font-size: 1.8rem;
@@ -30,6 +30,8 @@
     letter-spacing: 0.1rem;
     color: var(--text-color);
 }
+
+
 
 .manage-product-table {
     margin-top: 2rem;

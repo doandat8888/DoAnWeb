@@ -8,6 +8,11 @@
             $this->model = new CategoryProductModel();
         }
 
+        public function getCategoryListFilter() {
+            $data = $this->model->getCategoryList();
+            include_once "../../views/product/filter-product-category-view.php";
+        }
+
         //Danh sách danh mục sản phẩm
         public function getCategoryListManageProduct() {
             $data = $this->model->getCategoryList();

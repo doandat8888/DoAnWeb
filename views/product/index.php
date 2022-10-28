@@ -180,30 +180,11 @@
                     </div> -->
                     <div class="category-container filter-content-first">
                         <div class="filter-title">Danh mục</div>
-                        <div class="filter-item">
-                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="0" />  Đầm thun
-                        </div>
-                        <div class="filter-item">
-                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="1" />  Đầm dạ hội
-                        </div>
-                        <div class="filter-item">
-                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="2" />  Áo Set
-                        </div>
-                        <div class="filter-item">
-                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="3" />  Áo thun
-                        </div>
-                        <div class="filter-item">
-                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="4" />  Áo Polo
-                        </div>
-                        <div class="filter-item">
-                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="5" />  Áo ngắn tay
-                        </div>
-                        <div class="filter-item">
-                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="6" />  Quần sooc
-                        </div>
-                        <div class="filter-item">
-                            <input name="category[]" type="checkbox" class="filter-item-check pro-category" value="7" />  Áo somi
-                        </div>
+                        <?php 
+                            include_once "../../controllers/categoryProductController.php";
+                            $controller = new CategoryProductController();
+                            $controller->getCategoryListFilter();
+                        ?>
                     </div>
 
                     <!-- <select title="Mức giá" class="selectpicker" name="price" id="price" required>
