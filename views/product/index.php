@@ -178,6 +178,13 @@
                             <input type="checkbox" class="filter-item-check pro-color" value="gray" />  Xám
                         </div>
                     </div> -->
+
+                    <?php 
+                        if(isset($_GET['type'])){
+                            echo "<input type='hidden' name='type' value='".$_GET['type']."'>";
+                        }
+                    ?>
+
                     <div class="category-container filter-content-first">
                         <div class="filter-title">Danh mục</div>
                         <?php 
@@ -229,7 +236,7 @@
                         <option value="special">Giá đặc biệt</option>
                     </select> -->
 
-                    <button type="submit" class="btn btn-black btnFilter" id="filterbutton" name="action">Lọc</button>
+                    <button type="submit" class="btn btn-black btnFilter" id="filterbutton">Lọc</button>
                     <!-- <?php 
                         // if (isset($_GET["type"])){
                         //     $type = $_GET["type"];
@@ -315,99 +322,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <script>
-
-        function numberWithComat(number){
-            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-        }
-
-        $(document).ready(function(){
-
-            // $('#filterbutton').click(function(){
-            //     filterData();
-            // });
-
-            // function filterData() {
-            //     var action = 'get-product';
-            //     var minimumPrice = $('#minimum-price').val();
-            //     var maximumPrice = $('#maximum-price').val();
-            //     var size = $('#size').val();
-            //     var color = $('#color').val();
-            //     var categoryId = $('#category').val();
-            //     var category = -2;
-            //     var size = getFilter('pro-size');
-            //     var color = getFilter('pro-color');
-            //     if(categoryId == -1) {
-            //         category = getFilter('pro-category');
-            //     }else {
-            //         category = getFilter1('category');
-            //     }
-            //     if(minimumPrice == -1) {
-            //         minimumPrice = $('#hidden-minimum-price').val();
-            //     }else {
-            //         minimumPrice = $('#minimum-price').val();
-            //     }
-
-            //     if(maximumPrice == -1) {
-            //         maximumPrice = $('#hidden-maximum-price').val();
-            //     }else {
-            //         maximumPrice = $('#maximum-price').val();
-            //     }
-                
-            //     var type = $('#type').val();
-            //     var currentPage = $('#current-page').val();
-
-            //     // $.ajax({
-            //     //     url: `./filterProduct.php?type=${type}&current-page=${currentPage}`,
-            //     //     //url: `./index.php`,
-            //     //     method: 'POST',
-            //     //     data: {
-            //     //         action: action,
-            //     //         minimumPrice: minimumPrice,
-            //     //         maximumPrice: maximumPrice,
-            //     //         // size: size,
-            //     //         // color: color,
-            //     //         category: category,
-            //     //     },
-            //     //     success: function(data) {
-            //     //         $('#product-body').html(data);
-            //     //     }
-            //     // });
-            // }
-
-            // function getFilter(className) {
-            //     var filter = [];
-            //     $('.' + className + ':checked').each(function() {
-            //         filter.push($(this).val());
-            //     });
-            //     return filter;
-            // }
-
-            // function getFilter1(id) {
-            //     var filter = [];
-            //     filter.push($(`#${id}`).val());
-            //     return filter;
-            // }
-
-            // $('.filter-item-check').click(function() {
-            //     filterData();
-            // })
-
-            //$('#price-show').html("Từ " + numberWithComat(100000) + 'đ' + " - " + numberWithComat(10000000) + 'đ');
-            // $('#price-range').slider({
-            //     range: true,
-            //     min: 100000,
-            //     max: 10000000,
-            //     values: [100000, 10000000],
-            //     step: 100000,
-            //     stop: function (event, ui) {
-            //         $('#price-show').html("Từ " + numberWithComat(ui.values[0]) + 'đ' + " - " + numberWithComat(ui.values[1]) + 'đ');
-            //         $('#hidden-minimum-price').val(ui.values[0]);
-            //         $('#hidden-maximum-price').val(ui.values[1]);
-            //         filterData();
-            //     }
-            // })
-        })
-    </script> 
 </body>
 </html>

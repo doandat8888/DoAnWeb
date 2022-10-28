@@ -188,19 +188,15 @@
         }
 
         public function filterProductByType($type) {
-            if(isset($_POST['action'])) {
-                $data = $this->model->filterProductByType($type);
-                return $data;
-            }
+            $data = $this->model->filterProductByType($type);
+            return $data;
         }
 
         public function filterProductByTypePage($queryStr, $typeProduct) {
             $type = $typeProduct;
             $queryString = $queryStr;
-            if(isset($_POST['action'])) {
-                $products = $this->model->filterProductByType($type);
-                include_once "../../views/product/filter-product-page-type-view.php";
-            }
+            $products = $this->model->filterProductByType($type);
+            include_once "../../views/product/filter-product-page-type-view.php";
         }
 
         public function filterProductByLimit($limit, $offset) {
@@ -219,8 +215,8 @@
             $limit = 4;
             $offset = ($currentPage - 1) * $limit;
             $totalPages = 0;
-            $type = isset($_GET['type']) ? $_GET['type'] : -1;
-            
+            $type = isset($_GET['type'])?$_GET['type']:null;
+
             include_once "../../views/product/filterProduct.php";
         }
     }

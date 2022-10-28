@@ -8,6 +8,7 @@
         $totalProducts = count($products);
         $totalPages = ceil($totalProducts / $limit);
         
+        // In nếu có lọc
         if(isset($_GET['category']) || isset($_GET['input-min']) || isset($_GET['input-max'])){
             for($i = 1; $i <= $totalPages; $i++) {
                 if($i != $currentPage){
@@ -23,7 +24,7 @@
             }
             unset($_SESSION['querystring']);                        
         }
-        else{
+        else{ //In nếu ko có lọc
             for($i = 1; $i <= $totalPages; $i++) {
                 if($i != $currentPage){
                     echo "
@@ -35,7 +36,7 @@
                         <strong style='color:black; text-decoration:underline;' class='page-item'>$i</strong>
                     ";
                 }
-            } 
+            }
         }
     }   
 ?>

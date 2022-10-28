@@ -116,18 +116,26 @@ priceInput.forEach(input=>{
         let minVal = parseInt(priceInput[0].value),
         maxVal = parseInt(priceInput[1].value);
 
-        if ((maxVal - minVal >= priceGap) && maxVal <= 10000000){
-            if(e.target.className === "input-min"){
-                rangeInput[0].value = minVal;
-                progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+        if (minVal == '' || maxVal == ''){
+            rangeInput[0].value = 0;
+            rangeInput[1].value = 10000000;
+        }
+        else{
+            if ((maxVal - minVal >= priceGap)){
+                if (maxVal <= 10000000){
+                    if(e.target.className === "input-min"){
+                        rangeInput[0].value = minVal;
+                        progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+                    }
+                    else{
+                        rangeInput[1].value = maxVal;
+                        progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+                    }
+                }
             }
             else{
-                rangeInput[1].value = maxVal;
-                progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
-            }
-        }
-        else {
-            rangeInput[1].value = 10000000;
+                rangeInput[1].value = 10000000;
+            }   
         }
     })
 })

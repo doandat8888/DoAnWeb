@@ -2,7 +2,7 @@
 
 <?php 
     if($data == NULL) {
-        echo "Không có sản phẩm nào được tìm thấy";
+        echo "<h1 style='text-align:center;'>Không có sản phẩm nào được tìm thấy</h1>";
     }else {
         foreach($data as $product){
             if($product->getStatus() == 1) {
