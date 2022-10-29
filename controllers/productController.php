@@ -187,11 +187,6 @@
             include_once "../../views/product/filter-product-page-view.php";
         }
 
-        public function filterProductByType($type) {
-            $data = $this->model->filterProductByType($type);
-            return $data;
-        }
-
         public function filterProductByTypePage($queryStr, $typeProduct) {
             $type = $typeProduct;
             $queryString = $queryStr;
