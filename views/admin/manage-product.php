@@ -67,9 +67,11 @@
                                 <div class="product-info-item-title">Loại</div>
                                 <select class="product-info-item-input" name="pro-type">
                                     <option value="-1">Chọn loại</option>
-                                    <option value="0">Nam</option>
-                                    <option value="1">Nữ</option>
-                                    <option value="2">Trẻ em</option>
+                                    <?php 
+                                        include "../../controllers/typeController.php";
+                                        $controller = new TypeController();
+                                        $controller->getTypeListManageProduct();
+                                    ?>
                                 </select>
                             </div>
                             <div class="product-info-item col-12 col-sm-12 col-lg-6">
