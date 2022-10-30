@@ -80,21 +80,12 @@
                         Sản phẩm
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="../../views/product/index.php?type=0" class="nav-item-link">
-                        Nam
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../../views/product/index.php?type=1" class="nav-item-link">
-                        Nữ
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../../views/product/index.php?type=2" class="nav-item-link">
-                        Trẻ em
-                    </a>
-                </li>
+                <?php
+                    $filepath = realpath(dirname(__FILE__));
+                    include_once ($filepath. '/../controllers/typeController.php'); 
+                    $typeController = new TypeController();
+                    $typeController->getTypeListProduct();
+                ?>
             </ul>
         </div>
        

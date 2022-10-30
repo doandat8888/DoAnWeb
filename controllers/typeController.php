@@ -16,7 +16,8 @@
 
         public function getTypeListProduct() {
             $data = $this->model->getTypeList();
-            include_once "./type-product-view.php";
+            $filepath1 = realpath(dirname(__FILE__));
+            include_once ($filepath1. '/../type-product-view.php');
         }
     }
 ?>
