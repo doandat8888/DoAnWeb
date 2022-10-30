@@ -1,0 +1,27 @@
+.category-info-item-input {
+    padding: 0.4rem 0.4rem;
+    width: 100% !important;
+    font-size: 1rem;
+}
+
+.category-info-item-title {
+    font-size: 0.8rem;
+}
+
+.manage-category-action .action-btn {
+    border: none;
+    outline: none;
+    margin: 0.4rem;
+    padding: 0.2rem 0.8rem;
+}
+
+.manage-category-action .edit {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.manage-category-action .delete {
+    background-color: var(--gray);
+    color: var(--white);
+}
+

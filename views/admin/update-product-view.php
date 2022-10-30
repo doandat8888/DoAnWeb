@@ -86,28 +86,10 @@
                         <div class='product-info-item-title'>Loại</div>
                         <select class='product-info-item-input' name='pro-type'>
                             ";?>
-                                <?php 
-                                    $genderArr = array(
-                                        "0" => "Nam",
-                                        "1" => "Nữ",
-                                        "2" => "Trẻ em"
-                                    );
-                                    foreach ($genderArr as $key=>$gender) {
-                                        if($key == $product->getType()) {
-                                            echo "
-                                                <option value='".$key."' selected>
-                                                    ".$gender."
-                                                </option>
-                                            ";
-                                        }else {
-                                            echo "
-                                                <option value='".$key."'>
-                                                    ".$gender."
-                                                </option>
-                                            ";
-                                        }
-                                    }
-                                    
+                                <?php
+                                    include_once "../../controllers/typeController.php";
+                                    $typeController = new TypeController();
+                                    $typeController->getTypeListUpdateProduct($product->getType());
                                 ?>
                             <?php 
                             echo "

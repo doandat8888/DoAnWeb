@@ -19,5 +19,11 @@
             $filepath1 = realpath(dirname(__FILE__));
             include_once ($filepath1. '/../type-product-view.php');
         }
+
+        public function getTypeListUpdateProduct($type) {
+            $typeProduct = $type;
+            $data = $this->model->getTypeList();
+            include_once "../../views/admin/type-update-product-view.php";
+        }
     }
 ?>
