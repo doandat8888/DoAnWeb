@@ -86,25 +86,76 @@
                                 if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))){
                                     if(count($_SESSION['cart']) > 0){
                                         $totalcartprice = 0;
-                                        for($i = 0; $i < count($_SESSION['cart']); $i++ ){
-                                            $totalpriceprod = (int)$_SESSION['cart'][$i][2] * (int)$_SESSION['cart'][$i][5];
-                                            $totalcartprice += $totalpriceprod;
-                                            echo '
-                                                <div class="cart-item">
+                                        // for($i = 0; $i < count($_SESSION['cart']); $i++ ){
+                                        //     $totalpriceprod = (int)$_SESSION['cart'][$i][2] * (int)$_SESSION['cart'][$i][5];
+                                        //     $totalcartprice += $totalpriceprod;
+                                        //     //name: $_SESSION['cart][$i][0];
+                                        //     //image: $_SESSION['cart'][$i][1];
+                                        //     //price: $_SESSION['cart'][$i][2];
+                                        //     //size: $_SESSION['cart'][$i][3];
+                                        //     //color: $_SESSION['cart'][$i][4];
+                                        //     //quantity: $_SESSION['cart'][$i][5];
+                                        //     echo '
+                                        //         <div class="cart-item">
+                                        //             <div class="row">
+                                        //                 <div class="col-3">
+                                        //                     <img src="'.$_SESSION['cart'][$i][1].'" class="cart-item-img" alt="">
+                                        //                 </div>
+                                        //                 <div class="col-9">
+                                        //                     <div class="cart-item-name">
+                                        //                         '.$_SESSION['cart'][$i][0].'
+                                        //                     </div>
+                                        //                 <div class="cart-item-color-size">
+                                        //                     <div class="color">
+                                        //                         Màu sắc: '.$_SESSION['cart'][$i][4].'
+                                        //                     </div>
+                                        //                     <div class="size">
+                                        //                         Size: '.$_SESSION['cart'][$i][3].'
+                                        //                     </div>
+                                        //                 </div>
+                                        //                 <div class="cart-item-quantity-price">
+                                        //                     <div class="cart-item-quantity">
+                                        //                         <div class="cart-item-quantity-minus">
+                                        //                             <span class="material-symbols-outlined minus-icon">
+                                        //                                 remove
+                                        //                             </span>
+                                        //                         </div>
+                                        //                         <input type="text" value="'.$_SESSION['cart'][$i][5].'" min="0" max="10" class="cart-item-quantity-input" name="quantity">
+                                        //                         <div class="cart-item-quantity-plus">
+                                        //                             <span class="material-symbols-outlined plus-icon">
+                                        //                                 add
+                                        //                             </span>
+                                        //                         </div>
+                                        //                     </div>
+                                        //                     <div class="cart-item-price">'.currency_format($totalpriceprod).'</div>
+                                        //                         <a href="index.php?delid='.$i.'">
+                                        //                             <span class="material-symbols-outlined del-icon">
+                                        //                                 delete
+                                        //                             </span>
+                                        //                         </a> 
+                                        //                     </div>
+                                        //                 </div>
+                                        //             </div>
+                                        //         </div>
+                                        //     ';
+                                        // }
+                                        foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
+                                            <?php $totalcartprice += $prod_price_total?>
+                                            <div class="cart-item">
                                                     <div class="row">
                                                         <div class="col-3">
-                                                                <img src="'.$_SESSION['cart'][$i][1].'" class="cart-item-img" alt="">
+                                                            <img src="<?= $prod_image ?>" class="cart-item-img" alt="">
                                                         </div>
                                                         <div class="col-9">
                                                             <div class="cart-item-name">
-                                                                '.$_SESSION['cart'][$i][0].'
+                                                                <?= $prod_name ?>
                                                             </div>
                                                         <div class="cart-item-color-size">
                                                             <div class="color">
-                                                                Màu sắc: '.$_SESSION['cart'][$i][4].'
+                                                                Màu sắc: <?= $prod_color ?>
                                                             </div>
                                                             <div class="size">
-                                                                Size: '.$_SESSION['cart'][$i][3].'
+                                                                Size: <?= $prod_size ?>
                                                             </div>
                                                         </div>
                                                         <div class="cart-item-quantity-price">
@@ -114,15 +165,15 @@
                                                                         remove
                                                                     </span>
                                                                 </div>
-                                                                <input type="text" value="'.$_SESSION['cart'][$i][5].'" min="0" max="10" class="cart-item-quantity-input" name="quantity">
+                                                                <input type="text" value="<?= $prod_quantity ?>" min="0" max="10" class="cart-item-quantity-input" name="quantity">
                                                                 <div class="cart-item-quantity-plus">
                                                                     <span class="material-symbols-outlined plus-icon">
                                                                         add
                                                                     </span>
                                                                 </div>
                                                             </div>
-                                                            <div class="cart-item-price">'.currency_format($totalpriceprod).'</div>
-                                                                <a href="index.php?delid='.$i.'">
+                                                            <div class="cart-item-price"><?= currency_format($totalcartprice) ?></div>
+                                                                <a href="index.php?delid='<?= $prod_id?>'">
                                                                     <span class="material-symbols-outlined del-icon">
                                                                         delete
                                                                     </span>
@@ -131,8 +182,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            ';
-                                        }
+                                            <?php
+                                        endforeach;
+                                            
+                                        
                                     }
                                     else{
                                         echo'
