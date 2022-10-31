@@ -27,18 +27,23 @@ session_start();
     }
 
     function removeFromCart($key){
-        if (isset($_SESSION['cart'])){
+        if (isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
-            unset($cart[$key]);
+            for ($i = 0; $i < count($cart); $i++) {
+                unset($cart[$key[$i]]);
+            }
             $_SESSION['cart'] = $cart;
             createProdPriceTotal();
         }
     }
 
     function updateCart($key, $quantity){
-        if (isset($_SESSION['cart'])){
+        if (isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
-            $cart[$key]['prod_quantity'] = $quantity;
+            for ($i = 0; $i < count($cart); $i++) {
+                $cart[$key[$i]]['prod_quantity_cart'] =  $quantity[$i];
+                $cart[$key[$i]]['prod_price_total'] = $cart[$key[$i]]['prod_quantity_cart'] * $cart[$key[$i]]['prod_price'];
+            }
             $_SESSION['cart'] = $cart;
             createProdPriceTotal();
         }

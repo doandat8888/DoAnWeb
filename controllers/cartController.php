@@ -15,18 +15,24 @@ if (isset($_POST['cartcontroller'])) {
     "prod_quantity_max" => $_POST['prod_quantity_max'], 
     "prod_price_total" => $prodpricetotal
     );
-}  
-    
+    if(isset($_POST['cartcontroller'])) {
+        switch ($_POST["cartcontroller"]) {
+            case "addToCart":
+                addToCart($product);
+                header('location: ../views/detailProduct/index.php?page=detailproduct&id='.$_POST['prod_id'].'');
+                break;
+            case "buyNow":
+                addToCart($product);
+                header('location: ../views/cart/index.php');
+                break;
+            default:
+                break;
+        }
+    }
+}
 
-    switch ($_POST["cartcontroller"]) {
-        case "addToCart":
-            addToCart($product);
-            header('location: ../views/detailProduct/index.php?page=detailproduct&id='.$_POST['prod_id'].'');
-            break;
-        case "buyNow":
-            addToCart($product);
-            header('location: ../views/cart/index.php');
-            break;
+if(isset($_POST['cartaction'])) {
+    switch ($_POST["cartaction"]) {
         case "updateCart":
             updateCart($_POST['prod_id'], $_POST['prod_quantity_up']);
             header('location: ../views/cart/index.php');
@@ -42,5 +48,5 @@ if (isset($_POST['cartcontroller'])) {
         default:
             break;
     }
-
+}
 ?>

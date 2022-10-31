@@ -17,6 +17,7 @@ if (!isset($_SESSION['cart'])){
             foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
                 <?php $total_cart_price += $prod_price_total?>
                     <form action="../controllers/cartController.php" method="POST">
+                        <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
                         <div class="cart-item">
                             <div class="row">
                                 <div class="col-3">
@@ -36,12 +37,15 @@ if (!isset($_SESSION['cart'])){
                                     </div>
                                     <div class="cart-item-quantity-price">
                                         <div class="cart-item-quantity">
-                                            <input class="form-control-quantity border border-1" type="number" name="prod_quantity_up" value="<?= $prod_quantity ?>" min="1" max="10">
+                                            <input class="form-control-quantity border border-1" type="number" name="prod_quantity_up" value="<?= $prod_quantity ?>" min="1" max="<?= $prod_quantity_max ?>">
                                         </div>
                                         <div class="cart-item-price"><?= currency_format($prod_price_total) ?></div>
                                             <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
-                                            <button type="submit"  class="btn btn-light" name="cartcontroller" value="removeFromCart">Xóa</button>
-                                            <button type="submit" class="btn btn-secondary" name="cartcontroller" value="updateCart">Update</button>
+                                            <button type="submit" class="btn btn-light" name="cartaction" value="removeFromCart">
+                                                <span class="material-symbols-outlined del-icon">
+                                                    delete
+                                                </span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

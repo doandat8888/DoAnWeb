@@ -35,6 +35,7 @@
                     <form action="../../controllers/cartController.php" method="POST">
                         <div class="row">
                             <div class="col-lg-7 col-md-12 col-12 cart-products">
+                                <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
                                 <?php
                                     if(!isset($_SESSION['cart'])) {
                                         $_SESSION['cart'] = array();
@@ -61,16 +62,21 @@
                                 </div>
                                 <div class="cart-info-btn">
                                     <a href="../checkout/index.php" class="cart-btn-link">
-                                    <div class="cart-btn-view" style="border: 1px solid #000 !important;"">
+                                        <div class="cart-btn-view" style="border: 1px solid #000 !important;"">
                                             Đặt hàng
                                         </div>
                                     </a>
+                                    <a href="./index.php" class="cart-btn-link">
+                                        <button type="submit" name="cartaction" value="emptyCart" class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">Xóa giỏ hàng</button>
+                                    </a>             
+                                    <a href="./index.php" class="cart-btn-link">
+                                        <button type="submit" name="cartaction" value="updateCart" class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">Cập nhật giỏ hàng</button>
+                                    </a> 
                                     <a href="../../index.php" class="cart-btn-link">
                                         <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
                                             Về trang chủ
-                                            </div>
-                                    </a>             
-                                </div>
+                                        </div>
+                                    </a>
                             </div>';
                                 } 
                             else {
