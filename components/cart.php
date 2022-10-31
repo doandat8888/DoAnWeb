@@ -71,7 +71,7 @@
     <?php
     if($_SERVER['PHP_SELF'] == '/index.php') {
         echo '
-        <a href="../views/cart/index.php" class="cart-btn-link">
+        <a href="../../views/cart/index.php" class="cart-btn-link">
             <div class="cart-btn-view">
                 Xem giỏ hàng
             </div>
@@ -80,7 +80,7 @@
     }
     else {
         echo '
-        <a href="../cart/index.php" class="cart-btn-link">
+        <a href="../../views/cart/index.php" class="cart-btn-link">
             <div class="cart-btn-view">
                 Xem giỏ hàng
             </div>
