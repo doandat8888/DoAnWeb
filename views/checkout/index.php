@@ -175,7 +175,7 @@
                                                             <div class="cart-item-price"><?= currency_format($totalcartprice) ?></div>
                                                                 <a href="index.php?delid='<?= $prod_id?>'">
                                                                     <span class="material-symbols-outlined del-icon">
-                                                                        delete
+                                                                        delet
                                                                     </span>
                                                                 </a> 
                                                             </div>
