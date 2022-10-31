@@ -11,7 +11,7 @@
 if (!isset($_SESSION['cart'])){
     $_SESSION['cart'] = array();
 }
-
+    $total_cart_price = 0;
     if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))):
         if(sizeof($_SESSION['cart'])>0):
             foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>

@@ -86,7 +86,9 @@ if (!function_exists('color_format')) {
                         <input type="hidden" name="prod_id" value="'.$product->getId().'">
                         <input type="hidden" name="prod_name" value="'.$product->getName().'">
                         <input type="hidden" name="prod_image" value="'.$product->getImage01().'">
-                        <input type="hidden" name="prod_price" value="'.$product->getPrice().'">   
+                        <input type="hidden" name="prod_price" value="'.$product->getPrice().'">
+                        <input type="hidden" name="prod_quantity_max" value="'.$product->getQuantity().'">
+            
                         <button type="submit" name="cartcontroller" value="addToCart" class="detail-btn add-btn gap-2 mx-auto ">Thêm vào giỏ</button>
                         <button type="submit" name="cartcontroller" value="buyNow" class="detail-btn buy-btn gap-2">Mua ngay</button>
                     </div>

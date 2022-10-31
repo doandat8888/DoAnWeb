@@ -1,18 +1,24 @@
 <?php
 session_start();
     function addToCart($product){
-        if (isset($_SESSION['cart'])){
+        if (isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
-            //Nếu sản phẩm chưa có trong giỏ thì tiến hành Thêm.
-            if(!array_key_exists($product["prod_id"], $cart))
-            {
-                //key của mảng sẽ lấy theo id của sản phẩm.
+
+            if (!array_key_exists($product["prod_id"], $product["prod_id"], $cart)) {
                 $cart[$product["prod_id"]] = $product;
-            }  
+            } else {
+                $tmp = $cart[$product["prod_id"]]['prod_quantity'] + $product['prod_quantity'];
+                if ($tmp > $product['prod_quantity_max']) {
+                    $cart[$product["prod_id"]]['prod_quantity'] = $product['prod_quantity_max'];
+                    $cart[$product["prod_id"]]['prod_price_total'] = $cart[$product["prod_id"]]['prod_quantity'] * $cart[$product['prod_id']]['prod_price'];
+                } else {
+                    $cart[$product["prod_id"]]['prod_quantity'] = $tmp;
+                    $cart[$product["prod_id"]]['prod_price_total'] = $cart[$product["prod_id"]]['prod_quantity'] * $cart[$product['prod_id']]['prod_price'];
+                }
+            }
             $_SESSION['cart'] = $cart;
             createProdPriceTotal();
-        }
-        else{
+        } else {
             $cart[$product["prod_id"]] = $product;
             $_SESSION['cart'] = $cart;
             createProdPriceTotal();
