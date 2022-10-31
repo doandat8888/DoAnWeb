@@ -4,7 +4,7 @@ session_start();
         if (isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
 
-            if (!array_key_exists($product["prod_id"], $product["prod_id"], $cart)) {
+            if (!array_key_exists($product["prod_id"], $cart)) {
                 $cart[$product["prod_id"]] = $product;
             } else {
                 $tmp = $cart[$product["prod_id"]]['prod_quantity'] + $product['prod_quantity'];
