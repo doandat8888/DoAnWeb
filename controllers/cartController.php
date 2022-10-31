@@ -31,22 +31,18 @@ if (isset($_POST['cartcontroller'])) {
     }
 }
 
-if(isset($_POST['cartaction'])) {
-    switch ($_POST["cartaction"]) {
-        case "updateCart":
-            updateCart($_POST['prod_id'], $_POST['prod_quantity_up']);
-            header('location: ../views/cart/index.php');
-            break;
-        case "removeFromCart":
-            removeFromCart($_POST['prod_id']);
-            header('location: ../views/cart/index.php');
-            break;
-        case "emptyCart":
-            emptyCart();
-            header('location: ../views/cart/index.php');
-            break;
-        default:
-            break;
-    }
-}
+// if(isset($_POST['cartaction'])) {
+//     switch ($_POST["cartaction"]) {
+//         case "addToCart":
+//             addToCart($product);
+//             header('location: ../views/detailProduct/index.php?page=detailproduct&id='.$_POST['prod_id'].'');
+//             break;
+//         case "buyNow":
+//             addToCart($product);
+//             header('location: ../views/cart/index.php');
+//             break;
+//         default:
+//             break;
+//     }
+// }
 ?>

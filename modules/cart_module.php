@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
     function addToCart($product){
         if (isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];

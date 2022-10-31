@@ -8,16 +8,12 @@
     }
 ?>
 <?php
-if (!isset($_SESSION['cart'])){
-    $_SESSION['cart'] = array();
-}
     $total_cart_price = 0;
     if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))):
         if(sizeof($_SESSION['cart'])>0):
             foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
                 <?php $total_cart_price += $prod_price_total?>
-                    <form action="../controllers/cartController.php" method="POST">
-                        <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
+                    <form action="../controllers/cartAction.php" method="POST">
                         <div class="cart-item">
                             <div class="row">
                                 <div class="col-3">

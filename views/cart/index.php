@@ -32,10 +32,9 @@
                 include_once "../../components/header.php";
             ?>
                 <div class="cart-body">
-                    <form action="../../controllers/cartController.php" method="POST">
+                    <form action="../../controllers/cartAction.php" method="POST">
                         <div class="row">
                             <div class="col-lg-7 col-md-12 col-12 cart-products">
-                                <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
                                 <?php
                                     if(!isset($_SESSION['cart'])) {
                                         $_SESSION['cart'] = array();
