@@ -36,13 +36,13 @@ if (!function_exists('color_format')) {
     }
 }
 ?>
-<?php 
+<?php
     foreach ($data as $product) {
         $arraysize = explode(", ",$product->getSize());
         $arraycolor = explode(", ",$product->getColor());?>
-             
-        <form action="#" method="POST">
-        <?php
+            
+        <form action="../../controllers/cartController.php" method="POST">
+            <?php
             echo'
                 <div class="pro-title">
                     <h3 id="prod_name">'.$product->getName().'</h3>
@@ -82,15 +82,16 @@ if (!function_exists('color_format')) {
                             <button class="plusincrease">+</button>
                     </div>
                     <br style="clear: both"></br>
-                    <div class="d-flex">                     
-                        <button type="submit" name="addToCart" value="addToCart" class="detail-btn add-btn gap-2 mx-auto ">Thêm vào giỏ</button>
-                        <button type="submit" name="buyNow" value="buyNow" class="detail-btn buy-btn gap-2">Mua ngay</button>
+                    <div class="d-flex">
+                        <input type="hidden" name="prod_id" value="'.$product->getId().'">
+                        <input type="hidden" name="prod_name" value="'.$product->getName().'">
+                        <input type="hidden" name="prod_image" value="'.$product->getImage01().'">
+                        <input type="hidden" name="prod_price" value="'.$product->getPrice().'">   
+                        <button type="submit" name="cartcontroller" value="addToCart" class="detail-btn add-btn gap-2 mx-auto ">Thêm vào giỏ</button>
+                        <button type="submit" name="cartcontroller" value="buyNow" class="detail-btn buy-btn gap-2">Mua ngay</button>
                     </div>
                 </div>
-                ';?>
-            <?php
-                // information product
-                echo'
+
                 <div class="info">
                     <div class="info-list d-flex">
                         <div class="info-item">Giới thiệu</div>
@@ -114,9 +115,8 @@ if (!function_exists('color_format')) {
                         <i class="fa-solid fa-chess-queen"></i>
                         Bảo hành trọn đời
                     </p>
-                </div>
+                </div>';
+            ?>
         </form>
-        ';
-    }
-?>
-
+ <?php }
+ ?>

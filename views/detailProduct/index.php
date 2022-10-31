@@ -2,12 +2,8 @@
     session_start();
     include_once "../../modules/db_module.php";
     include_once "../../validate_module.php";
-    require_once "../../modules/cart_module.php";
+    
 ?>
-
-<!-- format đơn vị tiền tệ -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

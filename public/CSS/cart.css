@@ -94,3 +94,6 @@ p{
 .up-icon:hover {
     fill: var(--black);
 }
+.form-control-quantity {
+    font-size: 1.4rem;
+}

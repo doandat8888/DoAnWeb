@@ -128,9 +128,10 @@
                 </span>
                 <?php
                     if(isset($_SESSION['cart'])) {
+                        $cartnumber = (string)count($_SESSION['cart']);
                         if(sizeof($_SESSION['cart'])>0) {
                             echo'
-                            <span class="cart-number"></span>';
+                            <span class="cart-number">'.$cartnumber.'</span>';
                         } else {
                             echo'
                             <span class="cart-number">0</span>';

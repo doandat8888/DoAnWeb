@@ -6,19 +6,21 @@
             }
         }
     }
-    $filepath = realpath(dirname(__FILE__));
-    include_once ($filepath. '/../controllers/cartController.php');
 ?>
 <?php
+if (!isset($_SESSION['cart'])){
+    $_SESSION['cart'] = array();
+}
+
     if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))):
-        $total_cart_price = 0;
         if(sizeof($_SESSION['cart'])>0):
             foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
-                <?php $total_cart_price += $pricetotal?>
-                    <div class="cart-item">
+                <?php $total_cart_price += $prod_price_total?>
+                    <form action="../controllers/cartController.php" method="POST">
+                        <div class="cart-item">
                             <div class="row">
                                 <div class="col-3">
-                                    <img src="<?= $prod_img ?>" class="cart-item-img" alt="">
+                                    <img src="<?= $prod_image ?>" class="cart-item-img" alt="">
                                 </div>
                                 <div class="col-9">
                                     <div class="cart-item-name">
@@ -34,29 +36,18 @@
                                     </div>
                                     <div class="cart-item-quantity-price">
                                         <div class="cart-item-quantity">
-                                            <div class="cart-item-quantity-minus">
-                                                <span class="material-symbols-outlined minus-icon">
-                                                    remove
-                                                </span>
-                                            </div>
-                                            <input type="text" value=" <?= $prod_qty_cart ?>" min="0" max=" <?= $prod_qty_max ?>" class="cart-item-quantity-input" name="quantity">
-                                            <div class="cart-item-quantity-plus">
-                                                <span class="material-symbols-outlined plus-icon">
-                                                    add
-                                                </span>
-                                            </div>
+                                            <input class="form-control-quantity border border-1" type="number" name="prod_quantity_up" value="<?= $prod_quantity ?>" min="1" max="10">
                                         </div>
-                                        <div class="cart-item-price">'.currency_format( <?= $pricetotal ?>).'</div>
-                                            <button type="submit" name="action" value="Remove" style="border: none; background: white;">
-                                                <span class="material-symbols-outlined del-icon">
-                                                    delete
-                                                </span>
-                                            </button>
+                                        <div class="cart-item-price"><?= currency_format($prod_price_total) ?></div>
+                                            <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
+                                            <button type="submit"  class="btn btn-light" name="cartcontroller" value="removeFromCart">Xóa</button>
+                                            <button type="submit" class="btn btn-secondary" name="cartcontroller" value="updateCart">Update</button>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
-                    </div>
-            <?php
+                    </form>
+                <?php
             endforeach;
         else:
             echo'

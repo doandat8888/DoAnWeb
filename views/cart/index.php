@@ -6,7 +6,6 @@
             }
         }
     }
-    include_once "../../controllers/cartController.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,70 +31,66 @@
             <?php 
                 include_once "../../components/header.php";
             ?>
-            <form action="#" method="POST">
                 <div class="cart-body">
-                    <div class="row">
-                        <div class="col-lg-7 col-md-12 col-12 cart-products">
-                            <?php
-                                if(!isset($_SESSION['cart'])) {
-                                    $_SESSION['cart'] = array();
-                                }
-                                if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
-                                    include '../../components/cartProduct.php';
-                        echo '
-                        </div>
-                        <div class="col-lg-5 col-md-12 col-12 cart-info">
-                            <div class="cart-info-content">
-                                <p class="cart-info-txt"></p>
-                                <div class="cart-info-content-price">                            
-                                        <p class="cart-info-content-price-txt">Thành tiền</p>'?>
+                    <form action="../../controllers/cartController.php" method="POST">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-12 col-12 cart-products">
                                 <?php
-                                if(count($_SESSION['cart'])>0) {
-                                    echo '<p class="cart-info-content-price-money">'.currency_format($total_cart_price).'</p>';
-                                }
-                                else {
-                                    echo '<p class="cart-info-content-price-money">0</p>';
+                                    if(!isset($_SESSION['cart'])) {
+                                        $_SESSION['cart'] = array();
+                                    }
+                                    if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
+                                        include "../../components/cartProduct.php";
+                                        echo '
+                                        </div>
+                                        <div class="col-lg-5 col-md-12 col-12 cart-info">
+                                        <div class="cart-info-content">
+                                        <p class="cart-info-txt"></p>
+                                        <div class="cart-info-content-price">                            
+                                        <p class="cart-info-content-price-txt">Thành tiền</p>'?>
+                                    <?php
+                                        if(isset($_SESSION['prod_price_total'])) {
+                                            echo '<p class="cart-info-content-price-money">'.currency_format($_SESSION['prod_price_total']).'</p>';
+                                        }
+                                        else {
+                                            echo '<p class="cart-info-content-price-money">0</p>';
+                                        }
+                                        ?>
+                                    <?php
+                                echo'</div>
+                                </div>
+                                <div class="cart-info-btn">
+                                    <a href="../checkout/index.php" class="cart-btn-link">
+                                    <div class="cart-btn-view" style="border: 1px solid #000 !important;"">
+                                            Đặt hàng
+                                        </div>
+                                    </a>
+                                    <a href="../../index.php" class="cart-btn-link">
+                                        <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
+                                            Về trang chủ
+                                            </div>
+                                    </a>             
+                                </div>
+                            </div>';
+                                } 
+                            else {
+                                echo'
+                                <div class="col-12 mb-4 overflow-hidden">
+                                    <img src="../../src/img/nocart.png" class="cart-img w-100 p-3" alt="">
+                                    <h3 class="text-center" >Giỏ hàng rỗng</h3>
+                                </div>';
                                 }
                                 ?>
-                                <?php
-                            echo'</div>
-                            </div>
-                            <div class="cart-info-btn">
-                                <a href="../checkout/index.php" class="cart-btn-link">
-                                    <div class="cart-btn-view" style="border: 1px solid #000 !important;"">
-                                        Đặt hàng
-                                    </div>
-                                </a>
-                                <a href="./index.php" class="cart-btn-link">
-                                    <button type="submit" name="action" value="Empty cart" class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">Xóa giỏ hàng</button>
-                                </a>
-                                <a href="./index.php" class="cart-btn-link">
-                                    <button type="submit" name="action" value="Update cart" class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">Cập nhật giỏ hàng</button>
-                                </a>
-                                <a href="../../index.php" class="cart-btn-link">
-                                    <div class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">
-                                        Về trang chủ
-                                    </div>
-                                </a>             
-                            </div>
-                        </div>';
-                            } else {
-                                echo'
-                            <div class="col-12 mb-4 overflow-hidden">
-                                <img src="../../src/img/nocart.png" class="cart-img w-100 p-3" alt="">
-                                <h3 class="text-center" >Giỏ hàng rỗng</h3>
-                            </div>';
-                            }
-                        ?>
-                    </div>          
+                        </div>          
+                    </form>
                     <?php include_once "../../components/footer.php"?>
                 </div>
-            </form>
             <?php include_once "../../components/scrollToTop.php"?>
         </div>      
     </body>
 
-    <script src="../../public/JS/cart.js"></script>
-    <!-- <script src="../../public/JS/detailProduct.js"></script> -->
     <script src="https://kit.fontawesome.com/644376ed9d.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../../public/JS/cart.js"></script>
+    <script src="../../public/JS/detailProduct.js"></script>
 </html>

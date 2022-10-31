@@ -62,93 +62,93 @@ const cancleBtnCart = document.querySelector('.cart-header .cancel-icon');
 cancleBtnCart.onclick = function() {
     cartMenu.classList.remove('translateX');
 }
-const cartItems = document.querySelectorAll('.cart .cart-item');
-var count = 0;
+// const cartItems = document.querySelectorAll('.cart .cart-item');
+// var count = 0;
 
-var cartQuantity = document.querySelector('.cart-title .quantity');
+// var cartQuantity = document.querySelector('.cart-title .quantity');
 
-var totalPrice = 0;
-const productPrices = document.querySelectorAll('.cart-item-price');
-const productQuantities = document.querySelectorAll('.cart-item-quantity-input');
-for(let i = 0; i < cartItems.length; i++) {
-    let productPrice = formatNumber(productPrices[i].innerText);
-    let productQuantity = productQuantities[i].value;
-    count += Number.parseInt(productQuantity);
-    console.log(Number.parseInt(productPrice) * productQuantity);
-    totalPrice += productPrice * productQuantity;
-}
-const totalMoney = document.querySelector('.cart-total-money');
-totalMoney.innerHTML = numberWithCommat(totalPrice) + 'đ';
-cartQuantity.innerHTML = count;
-var cartNumber = document.querySelector('.cart-number');
-cartNumber.innerHTML = count;
-var cartInfoTxt = document.querySelector('.cart-info-txt');
-cartInfoTxt.innerText = `Bạn đang có ${count} sản phẩm trong giỏ hàng`;
-var totalMoneyTxt = document.querySelector('.cart-info-content-price-money');
-totalMoneyTxt.innerText = numberWithCommat(totalPrice) + 'đ';
+// var totalPrice = 0;
+// const productPrices = document.querySelectorAll('.cart-item-price');
+// const productQuantities = document.querySelectorAll('.cart-item-quantity-input');
+// for(let i = 0; i < cartItems.length; i++) {
+//     let productPrice = formatNumber(productPrices[i].innerText);
+//     let productQuantity = productQuantities[i].value;
+//     count += Number.parseInt(productQuantity);
+//     console.log(Number.parseInt(productPrice) * productQuantity);
+//     totalPrice += productPrice * productQuantity;
+// }
+// const totalMoney = document.querySelector('.cart-total-money');
+// totalMoney.innerHTML = numberWithCommat(totalPrice) + 'đ';
+// cartQuantity.innerHTML = count;
+// var cartNumber = document.querySelector('.cart-number');
+// cartNumber.innerHTML = count;
+// var cartInfoTxt = document.querySelector('.cart-info-txt');
+// cartInfoTxt.innerText = `Bạn đang có ${count} sản phẩm trong giỏ hàng`;
+// var totalMoneyTxt = document.querySelector('.cart-info-content-price-money');
+// totalMoneyTxt.innerText = numberWithCommat(totalPrice) + 'đ';
 
 
-//Xóa sản phẩm khỏi giỏ hàng và tính lại tổng tiền
-var cancelBtns = document.querySelectorAll('.del-icon');
-console.log(cancelBtns);
-for(let i = 0; i < cancelBtns.length; i++) {
-    var cancelBtn = cancelBtns[i];
-    cancelBtn.addEventListener('click', function(event) {
-        let btnClicked = event.target;
-        btnClicked.parentElement.parentElement.parentElement.parentElement.remove();
-        updateCartTotal();
-    });
-}
+// //Xóa sản phẩm khỏi giỏ hàng và tính lại tổng tiền
+// var cancelBtns = document.querySelectorAll('.del-icon');
+// console.log(cancelBtns);
+// for(let i = 0; i < cancelBtns.length; i++) {
+//     var cancelBtn = cancelBtns[i];
+//     cancelBtn.addEventListener('click', function(event) {
+//         let btnClicked = event.target;
+//         btnClicked.parentElement.parentElement.parentElement.parentElement.remove();
+//         updateCartTotal();
+//     });
+// }
 
-//Update số lượng
-var totalUpdate = 0;
-var quantityUpdate = 0;
-var cartProductContainer = document.getElementsByClassName('cart-products')[1];
-var cartItemContainer = cartProductContainer.getElementsByClassName('cart-item');
-var minusBtns = cartProductContainer.querySelectorAll('.cart-item-quantity-minus');
-console.log(minusBtns);
-var plusBtns = cartProductContainer.querySelectorAll('.cart-item-quantity-plus');
-console.log(plusBtns);
-for(let i = 0; i < cartItemContainer.length; i++) {
-    minusBtns[i].onclick = function() {
-        let productQuantityInput = cartItemContainer[i].querySelector('.cart-item-quantity-input');
-        let productQuantity = Number.parseInt(productQuantityInput.value);
-        if(productQuantity <= 1) {
-            productQuantityInput.value = 1;
-        }else {
-            productQuantity = productQuantity - 1;
-            productQuantityInput.value = productQuantity;
-        }
-        updateCartTotal();
-    }
-    plusBtns[i].onclick = function() {
-        let productQuantityInput = cartItemContainer[i].querySelector('.cart-item-quantity-input');
-        let productQuantity = Number.parseInt(productQuantityInput.value);
-        productQuantity = productQuantity + 1;
-        productQuantityInput.value = productQuantity;
-        updateCartTotal();
-    }
+// //Update số lượng
+// var totalUpdate = 0;
+// var quantityUpdate = 0;
+// var cartProductContainer = document.getElementsByClassName('cart-products')[1];
+// var cartItemContainer = cartProductContainer.getElementsByClassName('cart-item');
+// var minusBtns = cartProductContainer.querySelectorAll('.cart-item-quantity-minus');
+// console.log(minusBtns);
+// var plusBtns = cartProductContainer.querySelectorAll('.cart-item-quantity-plus');
+// console.log(plusBtns);
+// for(let i = 0; i < cartItemContainer.length; i++) {
+//     minusBtns[i].onclick = function() {
+//         let productQuantityInput = cartItemContainer[i].querySelector('.cart-item-quantity-input');
+//         let productQuantity = Number.parseInt(productQuantityInput.value);
+//         if(productQuantity <= 1) {
+//             productQuantityInput.value = 1;
+//         }else {
+//             productQuantity = productQuantity - 1;
+//             productQuantityInput.value = productQuantity;
+//         }
+//         updateCartTotal();
+//     }
+//     plusBtns[i].onclick = function() {
+//         let productQuantityInput = cartItemContainer[i].querySelector('.cart-item-quantity-input');
+//         let productQuantity = Number.parseInt(productQuantityInput.value);
+//         productQuantity = productQuantity + 1;
+//         productQuantityInput.value = productQuantity;
+//         updateCartTotal();
+//     }
     
-}
+// }
 
-//Tính tổng giỏ hàng
-function updateCartTotal() {
-    let cartProducts = document.getElementsByClassName('cart-products')[1];
-    console.log(cartProducts);
-    let totalNew = 0;
-    let quantityNew = 0;
-    let cartItems = cartProducts.getElementsByClassName('cart-item');
-    for(let i = 0; i < cartItems.length; i++) {
-        var productPrice = formatNumber((cartItems[i].querySelector('.cart-item-price')).innerText);
-        var productQuantity = (cartItems[i].querySelector('.cart-item-quantity-input')).value;
-        quantityNew += Number.parseInt(productQuantity);
-        totalNew += productPrice * productQuantity;
-    }
-    totalMoneyTxt.innerText = numberWithCommat(totalNew) + 'đ';
-    cartInfoTxt.innerText = `Bạn đang có ${quantityNew} sản phẩm trong giỏ hàng`;
-    cartNumber.innerText = quantityNew;
-    cartQuantity.innerText = quantityNew;
-}
+// //Tính tổng giỏ hàng
+// function updateCartTotal() {
+//     let cartProducts = document.getElementsByClassName('cart-products')[1];
+//     console.log(cartProducts);
+//     let totalNew = 0;
+//     let quantityNew = 0;
+//     let cartItems = cartProducts.getElementsByClassName('cart-item');
+//     for(let i = 0; i < cartItems.length; i++) {
+//         var productPrice = formatNumber((cartItems[i].querySelector('.cart-item-price')).innerText);
+//         var productQuantity = (cartItems[i].querySelector('.cart-item-quantity-input')).value;
+//         quantityNew += Number.parseInt(productQuantity);
+//         totalNew += productPrice * productQuantity;
+//     }
+//     totalMoneyTxt.innerText = numberWithCommat(totalNew) + 'đ';
+//     cartInfoTxt.innerText = `Bạn đang có ${quantityNew} sản phẩm trong giỏ hàng`;
+//     cartNumber.innerText = quantityNew;
+//     cartQuantity.innerText = quantityNew;
+// }
 //scrollToTop
 mybutton = document.getElementById("back-to-top");
 
