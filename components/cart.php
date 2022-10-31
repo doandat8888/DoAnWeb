@@ -13,10 +13,17 @@
             <div class="content">Giỏ hàng</div>
                 <?php
                     if(isset($_SESSION['cart'])) {
+                        $totalQuantity = 0;
+                        foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
+                        <?php
+                            $totalQuantity += $prod_quantity;
+                        ?>
+                        <?php
+                        endforeach;
                         $cartnumber = (string)count($_SESSION['cart']);
                         if(count($_SESSION['cart'])>0) {
                             echo'
-                            <div class="quantity">'.$cartnumber.'</div>';
+                            <div class="quantity">'.$totalQuantity.'</div>';
                         } else {
                             echo'
                             <div class="quantity">0</div>';

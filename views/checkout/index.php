@@ -140,7 +140,7 @@
                                         //     ';
                                         // }
                                         foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
-                                            <?php $totalcartprice += $prod_price_total?>
+                                            <?php $totalcartprice += $prod_price?>
                                             <div class="cart-item">
                                                     <div class="row">
                                                         <div class="col-3">
@@ -172,10 +172,10 @@
                                                                     </span>
                                                                 </div>
                                                             </div>
-                                                            <div class="cart-item-price"><?= currency_format($totalcartprice) ?></div>
+                                                            <div class="cart-item-price"><?= currency_format($prod_price) ?></div>
                                                                 <a href="index.php?delid='<?= $prod_id?>'">
                                                                     <span class="material-symbols-outlined del-icon">
-                                                                        delet
+                                                                        delete
                                                                     </span>
                                                                 </a> 
                                                             </div>

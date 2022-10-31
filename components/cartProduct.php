@@ -13,7 +13,7 @@
         if(sizeof($_SESSION['cart'])>0):
             foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
                 <?php $total_cart_price += $prod_price_total?>
-                    <form action="../controllers/cartAction.php" method="POST">
+                    <form action="../../controllers/cartAction.php" method="POST">
                         <div class="cart-item">
                             <div class="row">
                                 <div class="col-3">
@@ -35,7 +35,7 @@
                                         <div class="cart-item-quantity">
                                             <input class="form-control-quantity border border-1" type="number" name="prod_quantity_up" value="<?= $prod_quantity ?>" min="1" max="<?= $prod_quantity_max ?>">
                                         </div>
-                                        <div class="cart-item-price"><?= currency_format($prod_price_total) ?></div>
+                                        <div class="cart-item-price"><?= currency_format($prod_price) ?></div>
                                             <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
                                             <button type="submit" class="btn btn-light" name="cartaction" value="removeFromCart">
                                                 <span class="material-symbols-outlined del-icon">
