@@ -6,6 +6,9 @@
             }
         }
     }
+    if(isset($_POST['prod_id'])) {
+        echo $_POST['prod_id'];
+    }
 ?>
 <form action="../../controllers/cartAction.php" method="POST">
     <?php
@@ -15,37 +18,40 @@
                 foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
                     <?php $total_cart_price += $prod_price_total?>
                         <div class="cart-item">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <img src="<?= $prod_image ?>" class="cart-item-img" alt="">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="<?= $prod_image ?>" class="cart-item-img" alt="">
+                                </div>
+                                <div class="col-9">
+                                    <div class="cart-item-name">
+                                        <?= $prod_name ?>
                                     </div>
-                                    <div class="col-9">
-                                        <div class="cart-item-name">
-                                            <?= $prod_name ?>
+                                    <div class="cart-item-color-size">
+                                        <div class="color">
+                                            Màu sắc: <?= $prod_color ?>
                                         </div>
-                                        <div class="cart-item-color-size">
-                                            <div class="color">
-                                                Màu sắc: <?= $prod_color ?>
-                                            </div>
-                                            <div class="size">
-                                                Size: <?= $prod_size ?>
-                                            </div>
+                                        <div class="size">
+                                            Size: <?= $prod_size ?>
                                         </div>
-                                        <div class="cart-item-quantity-price">
-                                            <div class="cart-item-quantity">
-                                                <input class='form-control-quantity border border-1' type='number' name='prod_quantity_up[<?=$prod_id?>]' value='<?= $prod_quantity ?>' min='1' max='<?= $prod_quantity_max ?>' />
-                                            </div>
-                                            <div class="cart-item-price"><?= currency_format($prod_price) ?></div>
-                                                <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
-                                                <button type="submit" class="btn btn-light" name="cartaction" value="removeFromCart">
-                                                    <span class="material-symbols-outlined del-icon">
-                                                        delete
-                                                    </span>
-                                                </button>
-                                            </div>
+                                    </div>
+                                    <div class="cart-item-quantity-price">
+                                        <div class="cart-item-quantity">
+                                            <input class='form-control-quantity border border-1' type='number' name='prod_quantity_up[<?=$prod_id?>]' value='<?= $prod_quantity ?>' min='1' max='<?= $prod_quantity_max ?>' />
                                         </div>
+                                        <div class="cart-item-price"><?= currency_format($prod_price) ?></div>
+                                        <form action="../../components/cartProduct.php">
+                                            <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
+                                            <button type="submit" class="btn btn-light" name="cartaction" value="removeFromCart">
+                                                <span class="material-symbols-outlined del-icon">
+                                                    delete
+                                                </span>
+                                            </button>
+                                        </form>
+                                            
                                     </div>
                                 </div>
+                            </div>
+                        </div>
                         
                     <?php
                 endforeach;
