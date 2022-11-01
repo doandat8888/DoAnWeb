@@ -14,8 +14,7 @@
             if(sizeof($_SESSION['cart'])>0):
                 foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
                     <?php $total_cart_price += $prod_price_total?>
-                        
-                            <div class="cart-item">
+                        <div class="cart-item">
                                 <div class="row">
                                     <div class="col-3">
                                         <img src="<?= $prod_image ?>" class="cart-item-img" alt="">
@@ -34,18 +33,7 @@
                                         </div>
                                         <div class="cart-item-quantity-price">
                                             <div class="cart-item-quantity">
-                                                <?php 
-                                                    if(isset($_POST['prod_quantity_up'])) {
-                                                        echo '
-                                                            <input class="form-control-quantity border border-1" type="number" name="prod_quantity_up[<?=$prod_id?>]" value="<?= $_POST["prod_quantity_up"][$prod_id] ?>" min="1" max="<?= $prod_quantity_max ?>">
-                                                        ';
-                                                    }else {
-                                                        echo '
-                                                            <input class="form-control-quantity border border-1" type="number" name="prod_quantity_up[<?=$prod_id?>]" value="<?= $prod_quantity ?>" min="1" max="<?= $prod_quantity_max ?>">
-                                                        ';
-                                                    }
-                                                ?>
-                                                
+                                                <input class='form-control-quantity border border-1' type='number' name='prod_quantity_up[<?=$prod_id?>]' value='<?= $prod_quantity ?>' min='1' max='<?= $prod_quantity_max ?>' />
                                             </div>
                                             <div class="cart-item-price"><?= currency_format($prod_price) ?></div>
                                                 <input type="hidden" name="prod_id" value="<?= $prod_id ?>">

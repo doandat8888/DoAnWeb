@@ -41,8 +41,8 @@
         if(isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
             foreach($quantity as $id => $productQuantity) {
-                $cart[$id]['prof_quantity_cart'] = $productQuantity;
-                $cart[$id]['prod_price_total'] = $cart[$id]['prof_quantity_cart'] * $cart[$id]['prod_price'];
+                $cart[$id]['prod_quantity'] = $productQuantity;
+                $cart[$id]['prod_price_total'] = $cart[$id]['prod_quantity'] * $cart[$id]['prod_price'];
             }
             $_SESSION['cart'] = $cart;
             createProdPriceTotal();

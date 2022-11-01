@@ -60,7 +60,6 @@
             <?php } ?>
     <div class="cart-total">
         <div class="cart-total-title">Tổng cộng:</div>
-        <div class="cart-total-money"></div>
         <?php
             if(isset($_SESSION['prod_price_total'])) {
                 echo '<div class="cart-total-money">'.currency_format($_SESSION['prod_price_total']).'</div>';
