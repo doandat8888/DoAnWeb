@@ -1,5 +1,7 @@
 <?php
-require_once "../modules/cart_module.php";
+    //require_once "../modules/cart_module.php";
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath. '/../modules/cart_module.php');
 
 if (isset($_POST['cartcontroller'])) {
     $prodpricetotal = $_POST['prod_quantity'] * $_POST['prod_price'];
