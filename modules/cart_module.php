@@ -28,15 +28,13 @@
 
     function removeFromCart($key){
         if (isset($_SESSION['cart'])) {
-            $cart = $_SESSION['cart'];
-            for ($i = 0; $i < count($cart); $i++) {
-                unset($cart[$key]);
-            }
-            // foreach($key as $id => $idProduct) {
-            //     unset($cart[$idProduct]);
+            // $cart = $_SESSION['cart'];
+            // for ($i = 0; $i < count($cart); $i++) {
+            //     unset($cart[$key]);
             // }
-            $_SESSION['cart'] = $cart;
-            createProdPriceTotal();
+            // $_SESSION['cart'] = $cart;
+            // createProdPriceTotal();
+            //var_dump($key);
         }
     }
 

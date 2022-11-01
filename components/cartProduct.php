@@ -6,8 +6,20 @@
             }
         }
     }
-    if(isset($_POST['prod_id'])) {
-        echo $_POST['prod_id'];
+
+    if($id != '') {
+        if (isset($_SESSION['cart'])) {
+            $cart = $_SESSION['cart'];
+            for ($i = 0; $i < count($cart); $i++) {
+                unset($cart[$id]);
+            }
+            $_SESSION['cart'] = $cart;
+            $prod_price_total = 0;
+            foreach ($_SESSION['cart'] as $value) {
+                $prod_price_total += $value['prod_price_total'];
+            }
+            $_SESSION['prod_price_total'] = $prod_price_total;
+        }
     }
 ?>
 <form action="../../controllers/cartAction.php" method="POST">
@@ -39,15 +51,17 @@
                                             <input class='form-control-quantity border border-1' type='number' name='prod_quantity_up[<?=$prod_id?>]' value='<?= $prod_quantity ?>' min='1' max='<?= $prod_quantity_max ?>' />
                                         </div>
                                         <div class="cart-item-price"><?= currency_format($prod_price) ?></div>
-                                        <form action="../../components/cartProduct.php">
-                                            <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
-                                            <button type="submit" class="btn btn-light" name="cartaction" value="removeFromCart">
-                                                <span class="material-symbols-outlined del-icon">
-                                                    delete
-                                                </span>
-                                            </button>
-                                        </form>
-                                            
+                                        <!-- <input type="hidden" name="prod_id[]" value="<?= $prod_id ?>">
+                                        <button type="submit" class="btn btn-light" name="cartaction" value="removeFromCart">
+                                            <span class="material-symbols-outlined del-icon">
+                                                delete
+                                            </span>
+                                        </button>    --> 
+                                        <a href="../../views/cart/index.php?id=<?= $prod_id ?>">
+                                            <span class="material-symbols-outlined del-icon">
+                                                delete
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

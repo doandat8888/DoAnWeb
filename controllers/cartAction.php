@@ -9,7 +9,7 @@ if(isset($_POST['cartaction'])) {
             break;
         case "removeFromCart":
             removeFromCart($_POST['prod_id']);
-            header('location: ../views/cart/index.php');
+            //header('location: ../views/cart/index.php');
             break;
         case "emptyCart":
             emptyCart();

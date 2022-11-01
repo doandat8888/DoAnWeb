@@ -6,6 +6,7 @@
             }
         }
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +41,10 @@
                                         $_SESSION['cart'] = array();
                                     }
                                     if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))) {
+                                        $id = "";
+                                        if(isset($_GET['id'])) {
+                                            $id = $_GET['id'];
+                                        }
                                         include "../../components/cartProduct.php";
                                         echo '
                                         </div>

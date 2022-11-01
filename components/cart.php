@@ -40,20 +40,20 @@
     <?php if(isset($_SESSION['cart'])) {
             if(count($_SESSION['cart'])>0) {?>
                 <div class="cart-products ">
-                <?php 
+                <?php
                     include_once "cartProduct.php";
                 ?>
                 </div>
             <?php } else {?>
-                <div class="cart-products overflow-hidden">
-                <?php 
+                <div class="cart-products">
+                <?php
                     include_once "cartProduct.php";
                 ?>
                 </div>
             <?php } ?>
         <?php } else {?>
-            <div class="cart-products overflow-hidden">
-                <?php 
+            <div class="cart-products">
+                <?php
                     include_once "cartProduct.php";
                 ?>
                 </div>
