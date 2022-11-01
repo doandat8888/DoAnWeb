@@ -29,7 +29,11 @@
     <body>
         <div class="container">
             
-            <?php 
+            <?php
+                $id = "";
+                if(isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                } 
                 include_once "../../components/header.php";
             ?>
                 <div class="cart-body">
