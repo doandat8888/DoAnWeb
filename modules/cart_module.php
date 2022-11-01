@@ -38,21 +38,32 @@
     }
 
     function updateCart($key, $quantity){
-        if (isset($_SESSION['cart'])) {
+        if(isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
-            for ($i = 0; $i < count($cart); $i++) {
-                $cart[$key[$i]]['prod_quantity_cart'] =  $quantity[$i];
-                $cart[$key[$i]]['prod_price_total'] = $cart[$key[$i]]['prod_quantity_cart'] * $cart[$key[$i]]['prod_price'];
+            foreach($quantity as $id => $productQuantity) {
+                $cart[$id]['prof_quantity_cart'] = $productQuantity;
+                $cart[$id]['prod_price_total'] = $cart[$id]['prof_quantity_cart'] * $cart[$id]['prod_price'];
             }
             $_SESSION['cart'] = $cart;
             createProdPriceTotal();
         }
+        
+        // if (isset($_SESSION['cart'])) {
+        //     $cart = $_SESSION['cart'];
+        //     for ($i = 0; $i < count($cart); $i++) {
+        //         $cart[$key[$i]]['prod_quantity_cart'] =  $quantity[$i];
+        //         $cart[$key[$i]]['prod_price_total'] = $cart[$key[$i]]['prod_quantity_cart'] * $cart[$key[$i]]['prod_price'];
+        //     }
+        //     $_SESSION['cart'] = $cart;
+        //     createProdPriceTotal();
+        // }
     }
 
     function emptyCart()
     {
         if (isset($_SESSION['cart'])) {
             unset($_SESSION['cart']);
+            unset($_SESSION['prod_price_total']);
         }
     }
 

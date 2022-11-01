@@ -53,7 +53,7 @@
                                             echo '<p class="cart-info-content-price-money">'.currency_format($_SESSION['prod_price_total']).'</p>';
                                         }
                                         else {
-                                            echo '<p class="cart-info-content-price-money">0</p>';
+                                            echo '<p class="cart-info-content-price-money">0đ</p>';
                                         }
                                         ?>
                                     <?php
@@ -68,7 +68,7 @@
                                     <a href="./index.php" class="cart-btn-link">
                                         <button type="submit" name="cartaction" value="emptyCart" class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">Xóa giỏ hàng</button>
                                     </a>             
-                                    <a href="./index.php" class="cart-btn-link">
+                                    <a class="cart-btn-link">
                                         <button type="submit" name="cartaction" value="updateCart" class="cart-btn-view" style="background-color: #fff !important; color: #000 !important;  border: 1px solid #000 !important;">Cập nhật giỏ hàng</button>
                                     </a> 
                                     <a href="../../index.php" class="cart-btn-link">

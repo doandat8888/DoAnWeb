@@ -7,60 +7,73 @@
         }
     }
 ?>
-<?php
-    $total_cart_price = 0;
-    if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))):
-        if(sizeof($_SESSION['cart'])>0):
-            foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
-                <?php $total_cart_price += $prod_price_total?>
-                    <form action="../../controllers/cartAction.php" method="POST">
-                        <div class="cart-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="<?= $prod_image ?>" class="cart-item-img" alt="">
+<form action="../../controllers/cartAction.php" method="POST">
+    <?php
+        $total_cart_price = 0;
+        if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))):
+            if(sizeof($_SESSION['cart'])>0):
+                foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
+                    <?php $total_cart_price += $prod_price_total?>
+                        
+                            <div class="cart-item">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="<?= $prod_image ?>" class="cart-item-img" alt="">
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="cart-item-name">
+                                            <?= $prod_name ?>
+                                        </div>
+                                        <div class="cart-item-color-size">
+                                            <div class="color">
+                                                Màu sắc: <?= $prod_color ?>
+                                            </div>
+                                            <div class="size">
+                                                Size: <?= $prod_size ?>
+                                            </div>
+                                        </div>
+                                        <div class="cart-item-quantity-price">
+                                            <div class="cart-item-quantity">
+                                                <?php 
+                                                    if(isset($_POST['prod_quantity_up'])) {
+                                                        echo '
+                                                            <input class="form-control-quantity border border-1" type="number" name="prod_quantity_up[<?=$prod_id?>]" value="<?= $_POST["prod_quantity_up"][$prod_id] ?>" min="1" max="<?= $prod_quantity_max ?>">
+                                                        ';
+                                                    }else {
+                                                        echo '
+                                                            <input class="form-control-quantity border border-1" type="number" name="prod_quantity_up[<?=$prod_id?>]" value="<?= $prod_quantity ?>" min="1" max="<?= $prod_quantity_max ?>">
+                                                        ';
+                                                    }
+                                                ?>
+                                                
+                                            </div>
+                                            <div class="cart-item-price"><?= currency_format($prod_price) ?></div>
+                                                <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
+                                                <button type="submit" class="btn btn-light" name="cartaction" value="removeFromCart">
+                                                    <span class="material-symbols-outlined del-icon">
+                                                        delete
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-9">
-                                    <div class="cart-item-name">
-                                        <?= $prod_name ?>
-                                    </div>
-                                    <div class="cart-item-color-size">
-                                        <div class="color">
-                                            Màu sắc: <?= $prod_color ?>
-                                        </div>
-                                        <div class="size">
-                                            Size: <?= $prod_size ?>
-                                        </div>
-                                    </div>
-                                    <div class="cart-item-quantity-price">
-                                        <div class="cart-item-quantity">
-                                            <input class="form-control-quantity border border-1" type="number" name="prod_quantity_up" value="<?= $prod_quantity ?>" min="1" max="<?= $prod_quantity_max ?>">
-                                        </div>
-                                        <div class="cart-item-price"><?= currency_format($prod_price) ?></div>
-                                            <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
-                                            <button type="submit" class="btn btn-light" name="cartaction" value="removeFromCart">
-                                                <span class="material-symbols-outlined del-icon">
-                                                    delete
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
-                <?php
-            endforeach;
+                        
+                    <?php
+                endforeach;
+            else:
+                echo'
+                <div class="col-12 mb-4 overflow-hidden">
+                    <img src="../../src/img/nocart.png" class="cart-img w-100 p-3" alt="">
+                    <h3 class="text-center" >Giỏ hàng rỗng</h3>
+                </div>';
+            endif;
         else:
             echo'
-            <div class="col-12 mb-4 overflow-hidden">
-                <img src="../../src/img/nocart.png" class="cart-img w-100 p-3" alt="">
-                <h3 class="text-center" >Giỏ hàng rỗng</h3>
-            </div>';
+                <div class="col-12 mb-4 overflow-hidden">
+                    <img src="../../src/img/nocart.png" class="cart-img w-100 p-3" alt="">
+                    <h3 class="text-center" >Giỏ hàng rỗng</h3>
+                </div>';
         endif;
-    else:
-        echo'
-            <div class="col-12 mb-4 overflow-hidden">
-                <img src="../../src/img/nocart.png" class="cart-img w-100 p-3" alt="">
-                <h3 class="text-center" >Giỏ hàng rỗng</h3>
-            </div>';
-    endif;
-?>
+    ?>
+</form>
