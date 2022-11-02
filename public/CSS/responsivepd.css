@@ -32,6 +32,9 @@
 }
 /* Tablet */
 @media (min-width: 740px) and (max-width: 1023px) {
+    .breadcrumb {
+        transform: translateY(-20px);
+    }
 }
 /* Mobile */
 @media (max-width: 739px) {
