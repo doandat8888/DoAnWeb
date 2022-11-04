@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    
     include_once "../../modules/db_module.php";
     include_once "../../validate_module.php";
     
