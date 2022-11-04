@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    ob_start();
     if (!function_exists('currency_format')) {
         function currency_format($number, $suffix = 'đ') {
             if (!empty($number)) {
@@ -31,6 +31,9 @@
         <div class="container">
             <?php 
                 include_once "../../components/header.php";
+                if(isset($_POST['return-cart-page'])) {
+                    header("Location: ../../views/cart/index.php");
+                }
             ?>
             <div class="checkout-body">
                 <div class="row">
@@ -81,54 +84,11 @@
                         </div>
                         
                         <div class="col-lg-6 col-md-12 col-12 checkout-body-right">
-                        <div class="cart-products checkout-products">
-                            <?php 
-                                if(isset($_SESSION['cart'])&&(is_array($_SESSION['cart']))){
-                                    if(count($_SESSION['cart']) > 0){
-                                        $totalcartprice = 0;
-                                        foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
-                                            <?php $totalcartprice += $prod_price?>
-                                            <div class="cart-item">
-                                                    <div class="row">
-                                                        <div class="col-3">
-                                                            <img src="<?= $prod_image ?>" class="cart-item-img" alt="">
-                                                        </div>
-                                                        <div class="col-9">
-                                                            <div class="cart-item-name">
-                                                                <?= $prod_name ?>
-                                                            </div>
-                                                        <div class="cart-item-color-size">
-                                                            <div class="color">
-                                                                Màu sắc: <?= $prod_color ?>
-                                                            </div>
-                                                            <div class="size">
-                                                                Size: <?= $prod_size ?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cart-item-quantity-price">
-                                                            <div class="cart-item-quantity">
-                                                                <input type="text" value="<?= $prod_quantity ?>" min="0" max="10" class="cart-item-quantity-input" name="quantity" disabled>
-                                                            </div>
-                                                            <div class="cart-item-price"><?= currency_format($prod_price) ?></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <?php
-                                        endforeach;
-                                            
-                                        
-                                    }
-                                    else{
-                                        echo'
-                                            <div class="col-12 mb-4">
-                                                <img src="../../src/img/cart.png" class="cart-img" alt="">
-                                            </div>
-                                        ';
-                                    }
-                                }
-                            ?>
-                            
-                        </div>
+                            <div class="cart-products checkout-products">
+                                <?php 
+                                    include "../../components/cartProducts.php";
+                                ?>
+                            </div>
 
                             <div class="checkout-confirm">
                                 <div class="checkout-confirm-title">
@@ -160,9 +120,14 @@
                                         <input id="hidden-total" type="hidden" name="total" value="">
                                     </div>
                                 </div>
-                                <button class="checkout-confirm-btn" type="submit" name="checkout-complete" onclick="getTotal()">
+                                <button class="checkout-confirm-btn col-12" type="submit" name="checkout-complete" onclick="getTotal()">
                                     Hoàn tất đơn hàng
                                 </button>
+                                
+                                <button class="checkout-confirm-btn col-12" style="background-color: transparent; color: black; border: 1px solid black" type="submit" name="return-cart-page" onclick="getTotal()">
+                                    Về trang giỏ hàng
+                                </button>
+                                
                                 <?php
                                     include_once "../../controllers/billController.php";
                                     include_once "../../controllers/billDetailController.php";

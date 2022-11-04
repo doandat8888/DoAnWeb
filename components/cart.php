@@ -39,24 +39,24 @@
     <?php if(isset($_SESSION['cart'])) {
             if(count($_SESSION['cart'])>0) {?>
                 <div class="cart-products ">
-                    <?php
-                        include_once "cartProduct.php";
+                    <?php 
+                        include_once "cartProducts.php";
                     ?>
                 </div>
             <?php } else {?>
                 <div class="cart-products">
-                <?php
-                    include_once "cartProduct.php";
-                ?>
+                    <?php 
+                        include_once "cartProducts.php";
+                    ?>
                 </div>
             <?php } ?>
         <?php } else {?>
             <div class="cart-products">
-                <?php
-                    include_once "cartProduct.php";
+                <?php 
+                    include_once "cartProducts.php";
                 ?>
-                </div>
-            <?php } ?>
+            </div>
+        <?php } ?>
     <div class="cart-total">
         <div class="cart-total-title">Tổng cộng:</div>
         <?php
