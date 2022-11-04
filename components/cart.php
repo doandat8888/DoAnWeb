@@ -39,9 +39,9 @@
     <?php if(isset($_SESSION['cart'])) {
             if(count($_SESSION['cart'])>0) {?>
                 <div class="cart-products ">
-                <?php
-                    include_once "cartProduct.php";
-                ?>
+                    <?php
+                        include_once "cartProduct.php";
+                    ?>
                 </div>
             <?php } else {?>
                 <div class="cart-products">

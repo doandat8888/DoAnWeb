@@ -54,7 +54,6 @@
             <div class='row' id='product-body'>
                 <?php 
                     include_once "../../controllers/productController.php";
-                    include_once "../../controllers/cartController.php";
                     $controller = new ProductController();
 
                     if (isset($_SESSION['search'])){
