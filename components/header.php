@@ -11,7 +11,16 @@
         }
     ?>
 
-    <?php 
+    <?php
+        if(isset($message)) {
+            if($message === 'login-out') {
+                if(isset($_SESSION['role']) && isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
+                    unset($_SESSION['role']);
+                    unset($_SESSION['firstName']);
+                    unset($_SESSION['lastName']);
+                }
+            }
+        }
         if(isset($id)) {
             if($id != ''){
                 if (isset($_SESSION['cart'])) {

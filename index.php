@@ -1,15 +1,7 @@
 <?php 
-    // session_start();
+    ob_start();
     $filepath = realpath(dirname(__FILE__));
-    if(isset($_GET['msg'])) {
-        if($_GET['msg'] === 'login-out') {
-            if(isset($_SESSION['role']) && isset($_SESSION['firstName']) && isset($_SESSION['lastName'])) {
-                unset($_SESSION['role']);
-                unset($_SESSION['firstName']);
-                unset($_SESSION['lastName']);
-            }
-        }
-    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +24,13 @@
     </head>
     <body>
         <div class="container">
-            <?php 
+            <?php
+                $message = "";
+                if(isset($_GET['msg'])) {
+                    if($_GET['msg'] === 'login-out') {
+                        $message = $_GET['msg'];
+                    }
+                }
                 include_once "./components/header.php";
             ?>
            
