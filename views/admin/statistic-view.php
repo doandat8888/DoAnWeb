@@ -4,8 +4,11 @@
     </head>
     <body>
         <div class="container">
-            <div class="title">Sản phẩm bán chạy</div>
-            <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+            <div class="row">
+                <div class="title">Sản phẩm bán chạy</div>
+                <div id="columnchart_values"></div>
+            </div>
+            
         </div>
         
     </body>
