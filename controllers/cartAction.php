@@ -4,7 +4,7 @@ require_once "../modules/cart_module.php";
 if(isset($_POST['cartaction'])) {
     switch ($_POST["cartaction"]) {
         case "updateCart":
-            updateCart($_POST['prod_id'], $_POST['prod_quantity_up']);
+            updateCart($_POST['prod_quantity_up']);
             header('location: ../views/cart/index.php');
             break;
         case "removeFromCart":
@@ -17,6 +17,6 @@ if(isset($_POST['cartaction'])) {
             break;
         default:
             break;
-    }
+        }
 }
 ?>
