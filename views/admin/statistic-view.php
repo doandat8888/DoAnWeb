@@ -8,7 +8,6 @@
                 <div class="title">Sản phẩm bán chạy</div>
                 <div id="columnchart_values"></div>
             </div>
-            
         </div>
         
     </body>
