@@ -36,17 +36,17 @@
                 createProdPriceTotal();
             } else {
                 for($i=0; $i<=count($cart); $i++) {
-                    if (!(array_key_exists('prod_id', $cart[$i]) && array_key_exists('prod_size', $cart[$i]) && array_key_exists('prod_color', $cart[$i]))) {
+                    if (!($cart[$i]['prod_id'] == $product['prod_id'] && $cart[$i]['prod_size'] == $product['prod_size'] && $cart[$i]['prod_color'] == $product['prod_color'])) {
                         $cart[$product["cart_id"]] = $product;
                     } else {
                         $tmp = $cart[$i]['prod_quantity'] + $product['prod_quantity'];
-                        if ($tmp > $product['prod_quantity_max']) {
-                            $cart[$i]['prod_quantity'] = $product['prod_quantity_max'];
-                            $cart[$i]['prod_price_total'] = $cart[$i]['prod_quantity'] * $cart[$i]['prod_price'];
-                        } else {
-                            $cart[$i]['prod_quantity'] = $tmp;
-                            $cart[$i]['prod_price_total'] = $cart[$i]['prod_quantity'] * $cart[$i]['prod_price'];
-                        }
+                            if ($tmp > $product['prod_quantity_max']) {
+                                $cart[$i]['prod_quantity'] = $product['prod_quantity_max'];
+                                $cart[$i]['prod_price_total'] = $cart[$i]['prod_quantity'] * $cart[$i]['prod_price'];
+                            } else {
+                                $cart[$i]['prod_quan+tity'] = $tmp;
+                                $cart[$i]['prod_price_total'] = $cart[$i]['prod_quantity'] * $cart[$i]['prod_price'];
+                            }
                     }
                     $_SESSION['cart'] = $cart;
                     createProdPriceTotal();
