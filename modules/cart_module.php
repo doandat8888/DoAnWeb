@@ -1,33 +1,6 @@
 <?php
     session_start();
     function addToCart($product){
-        // ------------------------------------//
-        // if (isset($_SESSION['cart'])) {
-        //     $cart = $_SESSION['cart'];
-
-        //     if (!array_key_exists($product["prod_id"], $cart)) {
-        //         $cart[$product["prod_id"]] = $product;
-        //     } else {
-        //         $tmp = $cart[$product["prod_id"]]['prod_quantity'] + $product['prod_quantity'];
-        //         if ($tmp > $product['prod_quantity_max']) {
-        //             $cart[$product["prod_id"]]['prod_quantity'] = $product['prod_quantity_max'];
-        //             $cart[$product["prod_id"]]['prod_price_total'] = $cart[$product["prod_id"]]['prod_quantity'] * $cart[$product['prod_id']]['prod_price'];
-        //         } else {
-        //             $cart[$product["prod_id"]]['prod_quantity'] = $tmp;
-        //             $cart[$product["prod_id"]]['prod_price_total'] = $cart[$product["prod_id"]]['prod_quantity'] * $cart[$product['prod_id']]['prod_price'];
-        //         }         
-        //     }
-        //     $_SESSION['cart'] = $cart;
-        //     createProdPriceTotal();
-        // } else {
-        //     $cart[$product["prod_id"]] = $product;
-        //     $_SESSION['cart'] = $cart;
-        //     createProdPriceTotal();
-        // }
-        // createProdPriceTotal();
-
-        // ------------------------------------//
-
         if(isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
             if(count($cart) == 0) {
@@ -72,18 +45,6 @@
             //var_dump($key);
         }
     }
-
-    // function updateCart($key, $quantity){
-    //     if(isset($_SESSION['cart'])) {
-    //         $cart = $_SESSION['cart'];
-    //         foreach($quantity as $id => $productQuantity) {
-    //             $cart[$id]['prod_quantity'] = $productQuantity;
-    //             $cart[$id]['prod_price_total'] = $cart[$id]['prod_quantity'] * $cart[$id]['prod_price'];
-    //         }
-    //         $_SESSION['cart'] = $cart;
-    //         createProdPriceTotal();
-    //     }
-    // }
 
         function updateCart($quantity){
         if(isset($_SESSION['cart'])) {

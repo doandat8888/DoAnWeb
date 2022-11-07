@@ -1,5 +1,4 @@
 <?php
-    //require_once "../modules/cart_module.php";
     $filepath = realpath(dirname(__FILE__));
     include_once ($filepath. '/../modules/cart_module.php');
 
