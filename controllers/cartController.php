@@ -22,8 +22,7 @@ if (isset($_POST['cartcontroller'])) {
         switch ($_POST["cartcontroller"]) {
             case "addToCart":
                 addToCart($product);
-                var_dump($_SESSION['cart']);
-                // header('location: ../views/detailProduct/index.php?page=detailproduct&id='.$_POST['prod_id'].'');
+                header('location: ../views/detailProduct/index.php?page=detailproduct&id='.$_POST['prod_id'].'');
                 break;
             case "buyNow":
                 addToCart($product);
