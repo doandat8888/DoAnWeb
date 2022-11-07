@@ -31,30 +31,28 @@
         if(isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
             if(count($cart) == 0) {
-                $cart[0] = $product;
+                $cart[$product["cart_id"]] = $product;
+                $_SESSION['cart'] = $cart;
+                createProdPriceTotal();
             } else {
                 for($i=0; $i<=count($cart); $i++) {
-                    if (!array_key_exists($product['prod_id'], $cart[$i])) {
+                    if (!(array_key_exists('prod_id', $cart[$i]) && array_key_exists('prod_size', $cart[$i]) && array_key_exists('prod_color', $cart[$i]))) {
                         $cart[$product["cart_id"]] = $product;
                     } else {
-                        if($cart[$i][$product['prod_id']] == $product['prod_id'] && $cart[$i][$product['prod_size']] == $product['prod_size'] && $cart[$i][$product['prod_color']] == $product['prod_color']) { 
-                            $tmp = $cart[$i]['prod_quantity'] + $product['prod_quantity'];
-                            if ($tmp > $product['prod_quantity_max']) {
-                                $cart[$i]['prod_quantity'] = $product['prod_quantity_max'];
-                                $cart[$i]['prod_price_total'] = $cart[$i]['prod_quantity'] * $cart[$i]['prod_price'];
-                            } else {
-                                $cart[$i]['prod_quantity'] = $tmp;
-                                $cart[$i]['prod_price_total'] = $cart[$i]['prod_quantity'] * $cart[$i]['prod_price'];
-                            }
-                        }else {
-                             $cart[$product["cart_id"]] = $product;
+                        $tmp = $cart[$i]['prod_quantity'] + $product['prod_quantity'];
+                        if ($tmp > $product['prod_quantity_max']) {
+                            $cart[$i]['prod_quantity'] = $product['prod_quantity_max'];
+                            $cart[$i]['prod_price_total'] = $cart[$i]['prod_quantity'] * $cart[$i]['prod_price'];
+                        } else {
+                            $cart[$i]['prod_quantity'] = $tmp;
+                            $cart[$i]['prod_price_total'] = $cart[$i]['prod_quantity'] * $cart[$i]['prod_price'];
                         }
                     }
+                    $_SESSION['cart'] = $cart;
+                    createProdPriceTotal();
                     break;
                 }
             }
-            $_SESSION['cart'] = $cart;
-            createProdPriceTotal();
         } else {
             $cart[$product["cart_id"]] = $product;
             $_SESSION['cart'] = $cart;

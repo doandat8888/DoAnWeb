@@ -4,13 +4,9 @@
     include_once ($filepath. '/../modules/cart_module.php');
 
 if (isset($_POST['cartcontroller'])) {
-    if(!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = array();
-    }
-    $cartid = count($_SESSION['cart']);
     $prodpricetotal = $_POST['prod_quantity'] * $_POST['prod_price'];
     $product = array(
-        "cart_id" => $cartid,
+        "cart_id" => count($_SESSION['cart']),
         "prod_id" => $_POST['prod_id'], 
         "prod_name" => $_POST['prod_name'], 
         "prod_image" => $_POST['prod_image'],
