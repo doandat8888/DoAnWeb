@@ -34,7 +34,7 @@
                 $cart[0] = $product;
             } else {
                 for($i=0; $i<=count($cart); $i++) {
-                    if (!in_array($cart[$i][$product['prod_id']], $cart)) {
+                    if (!array_key_exists($product['prod_id'], $cart[$i])) {
                         $cart[$product["cart_id"]] = $product;
                     } else {
                         if($cart[$i][$product['prod_id']] == $product['prod_id'] && $cart[$i][$product['prod_size']] == $product['prod_size'] && $cart[$i][$product['prod_color']] == $product['prod_color']) { 
@@ -75,12 +75,24 @@
         }
     }
 
-    function updateCart($key, $quantity){
+    // function updateCart($key, $quantity){
+    //     if(isset($_SESSION['cart'])) {
+    //         $cart = $_SESSION['cart'];
+    //         foreach($quantity as $id => $productQuantity) {
+    //             $cart[$id]['prod_quantity'] = $productQuantity;
+    //             $cart[$id]['prod_price_total'] = $cart[$id]['prod_quantity'] * $cart[$id]['prod_price'];
+    //         }
+    //         $_SESSION['cart'] = $cart;
+    //         createProdPriceTotal();
+    //     }
+    // }
+
+        function updateCart($quantity){
         if(isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
-            foreach($quantity as $id => $productQuantity) {
-                $cart[$id]['prod_quantity'] = $productQuantity;
-                $cart[$id]['prod_price_total'] = $cart[$id]['prod_quantity'] * $cart[$id]['prod_price'];
+            foreach($quantity as $idcart => $productQuantity) {
+                $cart[$idcart]['prod_quantity'] = $productQuantity;
+                $cart[$idcart]['prod_price_total'] = $cart[$idcart]['prod_quantity'] * $cart[$idcart]['prod_price'];
             }
             $_SESSION['cart'] = $cart;
             createProdPriceTotal();

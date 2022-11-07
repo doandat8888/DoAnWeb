@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="cart-item-quantity-price">
                                         <div class="cart-item-quantity">
-                                            <input class='form-control-quantity border border-1' type='number' name='prod_quantity_up[<?=$prod_id?>]' value='<?= $prod_quantity ?>' min='1' max='<?= $prod_quantity_max ?>'/>; 
+                                            <input class='form-control-quantity border border-1' type='number' name='prod_quantity_up[<?=$cart_id?>]' value='<?= $prod_quantity ?>' min='1' max='<?= $prod_quantity_max ?>'/>; 
                                         </div>
                                         <div class="cart-item-price"><?= currency_format($prod_price) ?></div>
                                         <!-- <input type="hidden" name="prod_id[]" value="<?= $prod_id ?>">
