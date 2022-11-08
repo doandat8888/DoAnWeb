@@ -6,23 +6,6 @@
             }
         }
     }
-    // if(isset($id)) {
-    //     if($id != '') {
-    //         if (isset($_SESSION['cart'])) {
-    //             $cart = $_SESSION['cart'];
-    //             for ($i = 0; $i < count($cart); $i++) {
-    //                 unset($cart[$id]);
-    //             }
-    //             $_SESSION['cart'] = $cart;
-    //             $prod_price_total = 0;
-    //             foreach ($_SESSION['cart'] as $value) {
-    //                 $prod_price_total += $value['prod_price_total'];
-    //             }
-    //             $_SESSION['prod_price_total'] = $prod_price_total;
-    //         }
-    //     }
-    // }
-    //-------------------------------//
     if(isset($_GET['cartid'])) {
         if($_GET['cartid'] != '') {
             if (isset($_SESSION['cart'])) {

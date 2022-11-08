@@ -4,6 +4,9 @@
 
 if (isset($_POST['cartcontroller'])) {
     $prodpricetotal = $_POST['prod_quantity'] * $_POST['prod_price'];
+    if(!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = array();
+    }
     $product = array(
         "cart_id" => count($_SESSION['cart']),
         "prod_id" => $_POST['prod_id'], 
