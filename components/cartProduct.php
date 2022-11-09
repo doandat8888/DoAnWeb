@@ -77,14 +77,14 @@
                 endforeach;
             else:
                 echo'
-                <div class="col-12 mb-4 overflow-hidden">
+                <div class="col-12 mb-4">
                     <img src="../../src/img/nocart.png" class="cart-img w-100 p-3" alt="">
                     <h3 class="text-center" >Giỏ hàng rỗng</h3>
                 </div>';
             endif;
         else:
             echo'
-                <div class="col-12 mb-4 overflow-hidden">
+                <div class="col-12 mb-4">
                     <img src="../../src/img/nocart.png" class="cart-img w-100 p-3" alt="">
                     <h3 class="text-center" >Giỏ hàng rỗng</h3>
                 </div>';
