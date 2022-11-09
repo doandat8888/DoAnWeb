@@ -149,6 +149,7 @@ cancleBtnCart.onclick = function() {
 //     cartNumber.innerText = quantityNew;
 //     cartQuantity.innerText = quantityNew;
 // }
+
 //scrollToTop
 mybutton = document.getElementById("back-to-top");
 

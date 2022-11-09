@@ -75,6 +75,12 @@ p{
 .cart-products  {
     overflow: scroll;
 }
+.cart-products {
+    width: 100%;
+    max-height: 500px;
+    overflow: scroll;
+    /* -ms-overflow-style: none; */
+}
 #back-to-top {
     display: none;
     position: fixed;
