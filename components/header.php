@@ -2,7 +2,7 @@
 <div class="search-section d-flex justify-content-center align-items-center">
     <form class="search-form col-12 col-sm-10 col-lg-12" action="../../views/search/index.php" method="get">
         <input name="searchstr" type="text" placeholder="TÌM KIẾM SẢN PHẨM" class="search-input">
-        <input type="submit" class="search-link" style="color:none!important;" value="Tìm kiếm">
+        <input type="submit" class="search-link btn btn-dark btn-lg" style="color:none!important;" value="Tìm kiếm">
     </form> 
 
     <?php 

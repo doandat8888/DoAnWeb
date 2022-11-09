@@ -503,6 +503,18 @@ html, body {
     transition: transform 0.3s ease;
 }
 
+input.search-link {
+    border-top-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    border: 1px solid var(--black);
+    transition: all 0.5s linear;
+}
+input.search-link:hover {
+    background-color: var(--white);
+    color: var(--black);
+}
 .translateY {
     transform: translateY(0);
     transition: transform 0.3s ease;
