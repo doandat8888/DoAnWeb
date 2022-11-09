@@ -7,12 +7,16 @@
                     <div class="cart-item">
                         <div class="row">
                             <div class="col-3">
-                                <img src="<?= $prod_image ?>" class="cart-item-img" alt="">
+                                <a href="../../views/detailProduct/index.php?page=detailproduct&id=<?= $prod_id ?>">
+                                    <img src="<?= $prod_image ?>" class="cart-item-img" alt="product-img">
+                                </a>
                             </div>
                             <div class="col-9">
-                                <div class="cart-item-name">
-                                    <?= $prod_name ?>
-                                </div>
+                                <a href="../../views/detailProduct/index.php?page=detailproduct&id=<?= $prod_id ?>" class="text-decoration-none">
+                                    <div class="cart-item-name">
+                                        <?= $prod_name ?>
+                                    </div>
+                                </a>
                                 <div class="cart-item-color-size">
                                     <div class="color">
                                         Màu sắc: <?= $prod_color ?>
