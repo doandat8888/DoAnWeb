@@ -1,7 +1,6 @@
 <?php 
     ob_start();
     $filepath = realpath(dirname(__FILE__));
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">

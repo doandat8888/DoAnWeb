@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-        <title>Home</title>
+        <title>Thanh toán</title>
     </head>
     <body>
         <div class="container">
@@ -118,6 +118,7 @@
                                         <div class="checkout-confirm-item-left">Thành tiền</div>
                                         <div class="checkout-confirm-item-right checkout-total"></div>
                                         <input id="hidden-total" type="hidden" name="total" value="">
+                                        <input id="hidden-total-1" type="hidden" name="total-1" value="">
                                     </div>
                                 </div>
                                 <button class="checkout-confirm-btn col-12" type="submit" name="checkout-complete" onclick="getTotal()">
@@ -133,6 +134,14 @@
                                     include_once "../../controllers/billDetailController.php";
                                     include_once "../../controllers/productController.php";
                                     include_once "../../controllers/checkoutController.php";
+                                    if(isset($_GET['checkoutStatus']) && isset($_GET['fullName']) && isset($_GET['email']) && isset($_GET['phoneNumber']) && isset($_GET['total']) && isset($_GET['address'])){
+                                        if($_GET['checkoutStatus'] == "success") {
+                                            echo "<script type='text/javascript'>alert('Thanh toán thành công');</script>";
+                                            $billController = new BillController();
+                                            $detailBillController = new BillDetailController();
+                                            $billController->getAllBill($_GET['fullName'], $_GET['email'], $_GET['phoneNumber'], $_GET['total'], $_GET['address']);
+                                        }
+                                    } 
                                     if(isset($_POST['checkout-complete'])){
                                         if(isset($_POST['checkout-method']) && isset($_POST['checkout-info-name']) && isset($_POST['checkout-info-email']) && isset($_POST['checkout-info-number']) && isset($_POST['total']) && isset($_POST['checkout-info-address'])){
                                             if($_POST['checkout-info-name']!=="" && $_POST['checkout-info-email']!=="" && $_POST['checkout-info-number']!=="" && isset($_POST['total'])!=="" && $_POST['checkout-info-address']!==""){
@@ -140,13 +149,12 @@
                                                 if($_POST['checkout-method'] == "cod") {
                                                     $billController = new BillController();
                                                     $detailBillController = new BillDetailController();
-                                                    $billController->getAllBill();
+                                                    $billController->getAllBill($_POST['checkout-info-name'], $_POST['checkout-info-email'], $_POST['checkout-info-number'], $_POST['total'], $_POST['checkout-info-address']);
                                                 }else {
+                                                    $totalValue = rtrim($_POST['total-1'], "đ");
                                                     $checkoutController = new CheckoutController();
-                                                    $checkoutController->onlineCheckout();
+                                                    $checkoutController->onlineCheckout($totalValue, $_POST['checkout-info-name'], $_POST['checkout-info-email'], $_POST['checkout-info-number'], $_POST['total'], $_POST['checkout-info-address']);
                                                 }
-                                                
-                                                
                                             }
                                             else {
                                                 // Nếu khách hàng nhập còn thiếu thông tin

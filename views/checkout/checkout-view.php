@@ -18,6 +18,8 @@
     }else {
         $billId = 1;
     }
-    $nameArr = formatName($_POST['checkout-info-name']);
-    $billController->setBill($billId, $nameArr[0], $nameArr[1], $_POST['checkout-info-email'], $_POST['checkout-info-number'], $_POST['total'], $_POST['checkout-info-address']);
+    // $nameArr = formatName($_POST['checkout-info-name']);
+    // $billController->setBill($billId, $nameArr[0], $nameArr[1], $_POST['checkout-info-email'], $_POST['checkout-info-number'], $_POST['total'], $_POST['checkout-info-address']);
+    $nameArr = formatName($fullName);
+    $billController->setBill($billId, $nameArr[0], $nameArr[1], $email, $phoneNumber, $total, $address);
 ?>

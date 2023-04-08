@@ -20,8 +20,7 @@
             return $result;
         }
 
-        public function onlineCheckout() {
-            echo "This is checkout page";
+        public function onlineCheckout($totalValue, $fullName, $email, $phoneNumber, $total, $address) {
             if(isset($_POST['checkout-method'])) {
                 if($_POST['checkout-method'] == "payUrl") {
                     $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
@@ -29,10 +28,10 @@
                     $accessKey = 'klm05TvNBzhg7h7j';
                     $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
                     $orderInfo = "Thanh toán qua MoMo";
-                    $amount = "10000";
+                    $amount = $totalValue;
                     $orderId = time() ."";
-                    $redirectUrl = "http://localhost:3000/views/checkout/index.php";
-                    $ipnUrl = "http://localhost:3000/views/checkout/index.php";
+                    $redirectUrl = "http://localhost:3000/views/checkout/index.php?checkoutStatus=success&fullName=$fullName&email=$email&phoneNumber=$phoneNumber&total=$total&address=$address";
+                    $ipnUrl = "http://localhost:3000/views/checkout/index.php?checkoutStatus=success&fullName=$fullName&email=$email&phoneNumber=$phoneNumber&total=$total&address=$address";
                     $extraData = "";
 
                     if (!empty($_POST)) {

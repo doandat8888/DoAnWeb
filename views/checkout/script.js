@@ -99,6 +99,7 @@ if ( window.history.replaceState ) {
 //Get the original totalcartprice value
 function getTotal(){
     document.getElementById('hidden-total').value = totalCheckOut.innerHTML;
+    document.getElementById('hidden-total-1').value = totalPrice + shipCheckout;
 }
 
 //scrollToTop

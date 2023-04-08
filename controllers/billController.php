@@ -17,9 +17,13 @@
             include_once "../../views/checkout/result-add-bill.php";
         }
 
-        public function getAllBill() {
+        public function getAllBill($fullName, $email, $phoneNumber, $total, $address) {
             $listBill = $this->model->getAllBill();
             include_once "../../views/checkout/checkout-view.php";
+        }
+
+        public function getAllBillCheckout() {
+
         }
     }
 ?>
