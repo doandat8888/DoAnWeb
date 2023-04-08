@@ -21,8 +21,5 @@
             $listBill = $this->model->getAllBill();
             include_once "../../views/checkout/checkout-view.php";
         }
-
-        
-        
     }
 ?>

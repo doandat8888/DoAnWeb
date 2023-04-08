@@ -1,5 +1,4 @@
 <?php 
-    
     $filepath = realpath(dirname(__FILE__));
     include_once ($filepath. '/../modules/db_module.php');
     include_once ($filepath. '/./product.php');

@@ -59,25 +59,25 @@
                                 </div>
                                 <div class="checkout-payment-input">
                                     <div class="checkout-payment-input-item">
-                                        <input type="radio" name="checkout-method" value="credit-card" checked> 
-                                        <span class="material-symbols-outlined checkout-payment-input-item-icon">
-                                            credit_card
-                                        </span>
-                                        <div class="checkout-payment-input-item-txt">Thanh toán thẻ (ATM, Visa, Mastercard)</div>
-                                    </div>
-                                    <div class="checkout-payment-input-item">
-                                        <input type="radio" name="checkout-method" value="shoppee-pay">
-                                        <span class="material-symbols-outlined checkout-payment-input-item-icon">
-                                            shopping_bag
-                                        </span>
-                                        <div class="checkout-payment-input-item-txt">Thanh toán bằng ví Shopee Pay</div>
-                                    </div>
-                                    <div class="checkout-payment-input-item">
-                                        <input type="radio" name="checkout-method" value="cod">
+                                        <input type="radio" name="checkout-method" value="cod" checked>
                                         <span class="material-symbols-outlined checkout-payment-input-item-icon">
                                             local_shipping
                                         </span>
                                         <div class="checkout-payment-input-item-txt">Thanh toán ngay khi nhận hàng (COD)</div>
+                                    </div>
+                                    <div class="checkout-payment-input-item">
+                                        <input type="radio" name="checkout-method" value="payUrl"> 
+                                        <span class="material-symbols-outlined checkout-payment-input-item-icon">
+                                            credit_card
+                                        </span>
+                                        <div class="checkout-payment-input-item-txt">Thanh toán qua ví Momo</div>
+                                    </div>
+                                    <div class="checkout-payment-input-item">
+                                        <input type="radio" name="checkout-method" value="vnpay">
+                                        <span class="material-symbols-outlined checkout-payment-input-item-icon">
+                                            shopping_bag
+                                        </span>
+                                        <div class="checkout-payment-input-item-txt">Thanh toán bằng ví VNPay</div>
                                     </div>
                                 </div>
                             </div>
@@ -132,13 +132,21 @@
                                     include_once "../../controllers/billController.php";
                                     include_once "../../controllers/billDetailController.php";
                                     include_once "../../controllers/productController.php";
+                                    include_once "../../controllers/checkoutController.php";
                                     if(isset($_POST['checkout-complete'])){
                                         if(isset($_POST['checkout-method']) && isset($_POST['checkout-info-name']) && isset($_POST['checkout-info-email']) && isset($_POST['checkout-info-number']) && isset($_POST['total']) && isset($_POST['checkout-info-address'])){
                                             if($_POST['checkout-info-name']!=="" && $_POST['checkout-info-email']!=="" && $_POST['checkout-info-number']!=="" && isset($_POST['total'])!=="" && $_POST['checkout-info-address']!==""){
                                                 // Nếu khách hàng nhập đủ thông tin
-                                                $billController = new BillController();
-                                                $detailBillController = new BillDetailController();
-                                                $billController->getAllBill();
+                                                if($_POST['checkout-method'] == "cod") {
+                                                    $billController = new BillController();
+                                                    $detailBillController = new BillDetailController();
+                                                    $billController->getAllBill();
+                                                }else {
+                                                    $checkoutController = new CheckoutController();
+                                                    $checkoutController->onlineCheckout();
+                                                }
+                                                
+                                                
                                             }
                                             else {
                                                 // Nếu khách hàng nhập còn thiếu thông tin
