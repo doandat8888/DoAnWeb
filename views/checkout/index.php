@@ -73,7 +73,8 @@
                                         <div class="checkout-payment-input-item-txt">Thanh toán qua ví Momo</div>
                                     </div>
                                     <div class="checkout-payment-input-item">
-                                        <input type="radio" name="checkout-method" value="vnpay">
+                                        <input type="radio" name="checkout-method" value="redirect">
+                                        <input id="hidden-redirect" type="hidden" name="redirect" value="">
                                         <span class="material-symbols-outlined checkout-payment-input-item-icon">
                                             shopping_bag
                                         </span>
