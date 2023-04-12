@@ -42,5 +42,10 @@
             $data = $this->model->getNumberOfPurchases();
             include "../../views/admin/statistic-view.php";
         }
+
+        public function getAllBillDetail() {
+            $data = $this->model->getAllBillDetail();
+            return $data;
+        }
     }
 ?>

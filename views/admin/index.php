@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="./styles/manageProduct.css">
         <link rel="stylesheet" href="./styles/category.css">
         <link rel="stylesheet" href="./styles/home.css">
+        <link rel="stylesheet" href="./styles/dashboard.css">
         
         
         <title>Admin page</title>

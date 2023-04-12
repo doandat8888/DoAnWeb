@@ -1,0 +1,52 @@
+:root {
+    --main-color: #373737;
+    --white: #fff;
+    --text-color: #6C6D70;
+    --badget-bg: #fff;
+    --green: #98a882;
+    --pink: #fb6e7c;
+    --brown: #c4b095;
+    --yellow: #f4ed95;
+    --gray: #A8A9AD;
+    --black: #212529;
+    --border-color: #221F20;
+}
+
+.dashboard-page {
+    
+}
+
+.dashboard-body {
+    
+}
+
+.dashboard-body-item {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.dashboard-body-item p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.dashboard-item-content {
+    border: 0.5px solid var(--main-color);
+    width: 90%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.dashboard-item-content-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dashboard-item-content-value {
+    color: var(--text-color);
+    font-size: 30px;
+}

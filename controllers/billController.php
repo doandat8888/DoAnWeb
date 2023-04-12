@@ -22,8 +22,9 @@
             include_once "../../views/checkout/checkout-view.php";
         }
 
-        public function getAllBillCheckout() {
-
+        public function getDashboardData() {
+            $data = $this->model->getAllBill();
+            include_once "../../views/admin/dashboard-view.php";
         }
     }
 ?>
