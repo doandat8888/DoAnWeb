@@ -114,7 +114,13 @@
                     $typeController = new TypeController();
                     $typeController->getTypeListProduct();
                 ?>
+                <li class="nav-item">
+                    <a href="../../views/product/index.php" class="nav-item-link">
+                        Kênh người bán
+                    </a>
+                </li>
             </ul>
+            
         </div>
        
         <div class="nav-icon">
